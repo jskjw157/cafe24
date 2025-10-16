@@ -1,0 +1,29 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div class="boardReport displaynone ec-base-layer">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/board/report.css)-->
+    <div class="header">
+        <h1>投稿の報告</h1>
+    </div>
+    <div class="content">
+        <h4>報告の理由</h4>
+        <div class="box">
+            <div class="selectBox">
+                <ul>
+                    <li><label class="label"><input type="radio" name="report_reason" value="1" class="radio" checked>関係のない内容</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="2" class="radio">攻撃的または侮辱的な内容</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="3" class="radio">個人情報の漏洩</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="4" class="radio">広告または広告性の情報</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="5" class="radio">その他</label></li>
+                </ul>
+            </div>
+        </div>
+        <p class="summary">ご報告いただいた内容は、運営者による検討後、ショップの運営ポリシーに基づいて処理されます。</p>
+    </div>
+
+
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS ecReportAction" onclick="{$action_report}">報告</a>
+        <a href="#none" class="btnNormalFix sizeS ecReportCloseLayer" onclick="{$board_report_displaynone}">キャンセル</a>
+    </div>
+</div>

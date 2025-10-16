@@ -1,0 +1,96 @@
+﻿<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReplyPackage_1002">
+    <!--@css(/css/module/board/replyPackage.css)-->
+    <!--@js(/js/module/board/uccurl.js)-->
+    <div id="titleArea" module="board_title_1002">
+        <h2>{$board_name}</h2>
+        <span module="Layout_MobileAction">
+            <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る" /></a>
+        </span>
+    </div>
+
+    <div module="board_reply_1002">
+        <!--
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1">
+                <caption>回答作成フォーム</caption>
+                <colgroup>
+                    <col style="width:80px;">
+                    <col style="width:auto;">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">タイトル</th>
+                        <td>{$form.board_category} {$form.subject} {$form.notice} {$form.is_post}</td>
+                    </tr>
+                    <tr class="{$config.is_login|display}">
+                        <th scope="row">作成者</th>
+                        <td>{$form.writer}</td>
+                    </tr>
+                    <tr class="{$config.use_write_email|display}">
+                        <th scope="row">メールアドレス</th>
+                        <td>{$form.email}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="write">{$form.content}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">動画URL</th>
+                        <td class="uccUrlSize">{$form.ucc}</td>
+                    </tr>
+                </tbody>
+                <tbody class="{$config.use_attach|display}">
+                    <tr>
+                        <th scope="row">添付ファイル1</th>
+                        <td>{$form.attach_file}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">添付ファイル2</th>
+                        <td>{$form.attach_file}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">添付ファイル3</th>
+                        <td>{$form.attach_file}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">添付ファイル4</th>
+                        <td>{$form.attach_file}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">添付ファイル5</th>
+                        <td>{$form.attach_file}</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="{$config.use_password|display}">
+                        <th scope="row">パスワード</th>
+                        <td>{$form.password} <p class="grid {$password_rule_help_display|display}">半角英字(大文字・小文字)/数字/特殊文字のうち、２種類以上の組み合わせで10～16文字</p></td>
+                    </tr>
+                    <tr class="{$config.use_secret|display}">
+                        <th scope="row">コメント表示設定</th>
+                        <td>{$form.secure}</td>
+                    </tr>
+                    <tr class="{$config.use_captcha_write|display}">
+                        <th scope="row">文字認証</th>
+                            <td>
+                            {$captcha_image} {$captcha_refresh}
+                            <span>{$form.captcha}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="{$config.is_login|display} {$display_privacy_agreement|display} privacy">
+            <p>{$form.privacy_agreement_radio}</p>
+            <span><a href="/board/agreement.html" target="_blank">内容を見る</a></span>
+        </div>
+
+        <div class="ec-base-button gColumn">
+            <button type="button" class="btnSubmit" onclick="{$action_reply}">登録</button>
+            <a href="{$link_board_list}" class="btnEm">キャンセル</a>
+        </div>
+    </div>
+</div>

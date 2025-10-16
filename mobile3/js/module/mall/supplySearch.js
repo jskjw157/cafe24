@@ -1,0 +1,1 @@
+$('#searchSupply').attr('placeholder', 'Shopの商品検索');

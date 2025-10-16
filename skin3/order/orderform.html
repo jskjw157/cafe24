@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>注文/お支払い</title>
+
+    <!--@css(/css/module/order/ec_orderform/form_onetouch.css)-->
+    <!--@css(/css/module/order/ec_orderform/form_onetouch_v2.css)-->
+    <!-- If you want to create your own style, create a new CSS style sheet. Try coding #userStyle #mCafe24Order { } . -->
+
+    <!--@js(/layout/basic/js/common.js)-->
+    <!--@js(/js/module/order/ec_orderform/orders.js)-->
+    <!--@js(/js/module/order/ec_orderform/orders_v2.js)-->
+</head>
+<body id="userStyle" class="v2">
+    <!--@import(/order/ec_orderform/header.html)-->
+
+    <div id="mCafe24Order" class="typeHeader" module="Order_FormGlobal" unroll="1">
+        <!-- Do not delete this code
+            $move_order_after=/order/order_result.html
+            $move_basket=/order/basket.html
+            $paymethod_selector = textButton
+            $product_weight_display=F
+        -->
+        
+        <div class="leftGroup">
+            <!-- [바로구매 주문상품] -->
+            <!--@import(/order/ec_orderform/product_detail.html)-->
+
+            <!-- [주문상품] -->
+            <!--@import(/order/ec_orderform/orderProduct_v2.html)-->
+
+            <!-- [사은품] -->
+            <div id="{$gift_orderform_id}">
+                <!--@import(/order/ec_orderform/gift.html)-->
+            </div>
+
+            <!-- [주문배송정보] 주문자정보, 배송지정보, 배송정보 -->
+            <!--@import(/order/ec_orderform/billingNshipping_v2.html)-->
+
+            <!-- [할인/부가결제] 할인/부가결제, 자동 할인내역 레이어 팝업 -->
+            <!--@import(/order/ec_orderform/discount.html)-->
+
+            <!-- [추가정보입력] 추가입력, 기타문의사항 -->
+            <!--@import(/order/ec_orderform/additionalInput.html)-->
+
+            <!-- [결제수단] -->
+            <!--@import(/order/ec_orderform/paymethod_v2.html)-->
+
+        </div>
+
+        <div class="rightGroup">
+            <div class="stickyTop">
+                <!-- [결제정보] -->
+                <!--@import(/order/ec_orderform/payment_v2.html)-->
+
+                <!-- [적립 혜택] -->
+                <!--@import(/order/ec_orderform/benefit.html)-->
+            </div>
+
+            <!-- [약관동의] -->
+            <!--@import(/order/ec_orderform/agreement_v2.html)-->
+
+            <div class="agree-msg" id="agreeMsg"><p>注文内容を確認し、規約に同意します。</p></div>
+
+            <div class="ec-base-button gFull" id="orderFixItem">
+                <button type="button" class="btnSubmit" id="{$btn_payment_id}">
+                    {$total_order_price_front_head}<span id="{$total_order_price_front_id}">{$total_order_price_front}</span>{$total_order_price_front_tail} <span class="{$subscription_hide_display|display}">注文を確定する</span><span class="{$subscription_show_display|display}">定期購入お申し込み</span>
+                </button>
+            </div>
+        </div>
+
+        <!--@import(/order/ec_orderform/confirm.html)-->
+
+        <iframe id="{$payment_proc_id}" name="h_payment" width="0" height="0" frameborder="0" src=""></iframe>
+        <label id="labelSPrdName"><input type="hidden" id="sPrdName" name="sPrdName" value="{$sPrdName}"></label>
+    </div>
+    <div id="progressPaybar" style="display:none;">
+        <div id="progressPaybarBackground" class="layerProgress"></div>
+        <div id="progressPaybarView">
+            <p class="graph">決済中です。</p>
+            <p class="txt">
+                この画面は決済完了後、自動的に閉じられます。<br>
+                決済中にこの画面を閉じると<br>
+                注文が完了しない場合がありますので <br>
+                決済が完了するまで画面を閉じないでください。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

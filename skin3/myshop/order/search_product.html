@@ -1,0 +1,110 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div class="ec-base-layer" module="Myshop_OrderSearchproductForm">
+    <!--@css(/css/module/myshop/searchProduct.css)-->
+    <div class="header">
+        <h1>商品検索</h1>
+    </div>
+    <div class="content">
+        <div>
+            <div class="ec-base-table typeWrite">
+                <table border="1" summary="">
+                    <caption>商品検索</caption>
+                    <colgroup>
+                        <col style="width:100px;" />
+                        <col style="width:auto;" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">カテゴリー</th>
+                            <td>{$form.category_no}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{$form.search_type}</th>
+                            <td>{$form.keyword}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btnSearch"><a href="#none" class="btnSubmitFix sizeS" onClick="{$search_product}">検索</a></div>
+            <div class="listCtrl {$ctrl_display|display}">
+                <p class="result">総 <strong>{$total_count}</strong>点</p>
+                <span class="select">{$form.limit}</span>
+            </div>
+
+                <div module="Myshop_OrderSearchproductList">
+                <div class="ec-base-table typeList" id="{$order_search_product_list_id}">
+                    <table border="1" summary="">
+                        <caption>検索結果</caption>
+                        <colgroup>
+                            <col style="width:auto;" />
+                            <col style="width:130px;" />
+                            <col style="width:100px;" />
+                            <col style="width:100px;" />
+                        </colgroup>
+                        <tbody class="head center">
+                            <tr>
+                                <td>商品名</td>
+                                <td>販売価格</td>
+                                <td>商品コード</td>
+                                <td>選択</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="scroll">
+                        <table border="1" summary="">
+                            <caption>検索結果</caption>
+                            <colgroup>
+                                <col style="width:auto;" />
+                                <col style="width:130px;" />
+                                <col style="width:100px;" />
+                                <col style="width:83px;" />
+                            </colgroup>
+                            <tbody class="center {$search_display|display}">
+                                <tr>
+                                    <td class="product left">
+                                        <span class="thumbnail"><img src="{$image_tiny}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></span>
+                                        <p>{$product_name}</p>
+                                    </td>
+                                    <td class="price">{$product_price}</td>
+                                    <td class="code">{$product_code}</td>
+                                    <td class="select"><a href="#none" class="btnNormal" onClick="{$selected_item_js}">選択</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="product left">
+                                        <span class="thumbnail"><img src="{$image_tiny}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></span>
+                                        <p>{$product_name}</p>
+                                    </td>
+                                    <td class="price">{$product_price}</td>
+                                    <td class="code">{$product_code}</td>
+                                    <td class="select"><a href="#none" class="btnNormal" onClick="{$selected_item_js}">選択</a></td>
+                                </tr>
+                            </tbody>
+                            <tbody class="message {$search_fail_display|display}">
+                                <tr>
+                                    <td colspan="4">検索結果が見つかりません。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div module="Myshop_OrderSearchproductPaging" class="ec-base-paginate">
+                <a href="{$param_first}" class="first"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/common/btn_page_first.gif" alt="最初ページ" /></a>
+                <a href="{$param_before}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/common/btn_page_prev.gif" alt="前へ" /></a>
+                <ol>
+                    <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+                </ol>
+                <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/common/btn_page_next.gif" alt="次へ" /></a>
+                <a href="{$param_last}" class="last"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/common/btn_page_last.gif" alt="最後ページ" /></a>
+            </div>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnNormalFix sizeS" onClick="{$closeSearchPopup}">閉じる</a>
+    </div>
+</div>

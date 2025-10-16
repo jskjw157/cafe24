@@ -1,0 +1,43 @@
+
+<div module="product_stocklayer" class="ec-base-layer typeModal">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/layout/basic/css/ec-base-table.css)-->
+    <!--@css(/css/module/product/stocklayer.css)-->
+    <div id="{$stockLayerID}" class="layer {$stockLayerClass}">
+        <h1>在庫数量</h1>
+        <div class="wrap">
+            <p class="desc">
+                現在商品の在庫数量です。<br>
+                但し、時間の経過により実際の在庫数とは異なる場合があります。
+            </p>
+            <div class="ec-base-table typeList">
+                <table border="1">
+                    <caption>在庫数量</caption>
+                    <colgroup>
+                        <col style="width:60%;">
+                        <col style="width:40%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">オプション</th>
+                            <th scope="col">在庫数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{$option_value}</td>
+                            <td class="center">{$stock_value}</td>
+                        </tr>
+                        <tr>
+                            <td>{$option_value}</td>
+                            <td class="center">{$stock_value}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="ec-base-button gFull">
+            <a href="#none" class="btnEm" onClick="{$stockLayerCloseAction}">閉じる</a>
+        </div>
+    </div>
+<div>

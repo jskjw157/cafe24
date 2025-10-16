@@ -1,0 +1,42 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>パスワードをお忘れの方</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="member_findpasswd">
+    <!--@css(/css/module/member/findpasswd.css)-->
+    <!--
+        $nextURL = /member/passwd/find_passwd_question.html
+     -->
+    <div class="ec-base-table typeWrite">
+        <p class="check displaynone">{$form.check_method}</p>
+        <table border="1">
+            <caption>パスワード検索の１段階情報を入力</caption>
+            <colgroup>
+                <col style="width:120px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr class="{$display_id|display}">
+                    <th scope="row">ID</th>
+                    <td>{$form.member_id}</td>
+                </tr>
+                <tr id="name_view" class="name {$form.name|display}">
+                    <th scope="row" id="name_lable">お名前</th>
+                    <td>{$form.name}</td>
+                </tr>
+                <tr id="email_view" class="email">
+                    <th scope="row">メールアドレス</th>
+                    <td>{$form.email}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="{$emailMsg_id}" class="emailMssage"></div>
+    <div class="ec-base-button gFull">
+        <a href="#none" class="btnSubmit" onclick="{$action_func_find_passwd_question}">確認</a>
+    </div>
+</div>

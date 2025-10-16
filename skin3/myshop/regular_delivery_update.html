@@ -1,0 +1,101 @@
+<!--@layout(/layout/basic/popup.html)-->
+<!--@css(/css/module/myshop/regularDeliveryUpdate.css)-->
+
+<div class="ec-base-layer">
+    <div class="header">
+        <h1>受取人情報の変更</h1>
+        <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="Close" /></a>
+    </div>
+    <div class="content" module="myshop_OrderRegularManageDetailReceiveredit">
+        <!--
+            $isRuleBasedAddrForm = T
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>受取人情報の変更</caption>
+                <colgroup>
+                    <col style="width:150px;">
+                    <col style="width:auto;">
+                </colgroup>
+                <tbody>
+
+                    <tr class="{$use_connected_name_input_display|display}">
+                        <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="" alt="必須"></th>
+                        <td>{$form.receiver_name}</td>
+                    </tr>
+
+                    <tr class="{$use_seperate_name_input_display|display}">
+                        <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                        <td>
+                            {$form.f_name_1}
+                            {$form.f_name_2}
+                        </td>
+                    </tr>
+
+                    <tr class="{$use_orders_english_name_display|display} {$use_connected_name_input_display|display}">
+                        <th scope="row">お名前(ローマ字) <img class="{$is_orders_english_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                        <td>
+                            {$form.f_name_en}
+                        </td>
+                    </tr>
+
+                    <tr class="{$use_orders_english_name_display|display} {$use_seperate_name_input_display|display}">
+                        <th scope="row">お名前(ローマ字) <img class="{$is_orders_english_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                        <td>
+                            {$form.f_name_en_1}
+                            {$form.f_name_en_2}
+                        </td>
+                    </tr>
+
+                    <tr class="{$use_orders_pronounce_name_display|display} {$use_connected_name_input_display|display}">
+                        <th scope="row">フリガナ <img class="{$is_orders_pronounce_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                        <td>
+                            {$form.f_name_phonetic}
+                        </td>
+                    </tr>
+
+                    <tr class="{$use_orders_pronounce_name_display|display} {$use_seperate_name_input_display|display}">
+                        <th scope="row">フリガナ <img class="{$is_orders_pronounce_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                        <td>
+                            {$form.f_name_phonetic_1}
+                            {$form.f_name_phonetic_2}
+                        </td>
+                    </tr>
+                    <tr class="{$use_delivery_tel_display|display}">
+                        <th scope="row">電話番号</th>
+                        <td>{$form.tel}</td>
+                    </tr>
+                    <tr class="{$use_delivery_cell_display|display}">
+                        <th scope="row">携帯電話番号</th>
+                        <td>{$form.phone}</td>
+                    </tr>
+                    <tr id="ec-regularDeliveryUpdate-address">
+                        <th scope="row">アドレス <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="" alt="必須"></th>
+                        <td>{$form.address}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">配送メッセージ</th>
+                        <td>
+                            {$form.delivery_msg}
+                        </td>
+                    </tr>
+                    <tr class="{$hope_shipping_time_display|display}">
+                        <th scope="row">配達希望時間</th>
+                        <td>
+                            <div class="quickdelivery">
+                                {$form.use_hope_shipping_time}
+                            </div>
+                            {$form.hope_shipping_time}
+                        </td>
+                    </tr>
+                    {$form.invoice_no}
+                    {$form.is_store_pickup}
+                </tbody>
+            </table>
+        </div>
+        <div class="ec-base-button">
+            <button id="{$updateReceiverScriptionId}" type="submit" class="btnSubmitFix sizeS">変更する</button>
+            <a href="#none" onclick="self.close();" class="btnNormalFix sizeS">閉じる</a>
+        </div>
+    </div>
+</div>

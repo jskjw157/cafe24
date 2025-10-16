@@ -1,0 +1,88 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>仮ポイント履歴</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="myshop_unavailList">
+    <!--@css(/css/module/myshop/unavailList.css)-->
+    <!--
+        $only_html = no
+        $count = 10
+        $login_page = /member/login.html
+    -->
+    <div class="{$display_unavail|display}">
+        <div class="item">
+            <h3>
+                <span class="date" title="注文日">{$order_date}</span>
+                <span class="number" title="関連注文番号"><a href="/myshop/order/detail.html?order_id={$order_id}">({$order_id})</a></span>
+            </h3>
+            <div class="ec-base-table gClearBorderTop">
+                <table border="1">
+                    <caption>仮ポイント履歴</caption>
+                    <colgroup>
+                        <col style="width:110px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{$mileage_name}</th>
+                            <td>{$product_mileage}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">使用可能予定日</th>
+                            <td>{$can_use_date}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">内容</th>
+                            <td>{$mileage_type}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="item">
+            <h3>
+                <span class="date" title="注文日">{$order_date}</span>
+                <span class="number" title="関連注文番号"><a href="/myshop/order/detail.html?order_id={$order_id}">({$order_id})</a></span>
+            </h3>
+            <div class="ec-base-table gClearBorderTop">
+                <table border="1">
+                    <caption>仮ポイント履歴</caption>
+                    <colgroup>
+                        <col style="width:110px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{$mileage_name}</th>
+                            <td>{$product_mileage}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">使用可能予定日</th>
+                            <td>{$can_use_date}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">内容</th>
+                            <td>{$mileage_type}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <p class="empty {$display_unavail_none|display}">履歴がありません。</p>
+</div>
+
+<div class="ec-base-paginate typeList" module="myshop_unavailPaging">
+    <a href="{$prev_url}" class="btnPrev">前へ</a>
+    <ol>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+    </ol>
+    <a href="{$next_url}" class="btnNext">次へ</a>
+</div>

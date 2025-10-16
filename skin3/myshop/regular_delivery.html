@@ -1,0 +1,176 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol><li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>定期購入管理</strong></li>
+    </ol></div>
+
+<div class="titleArea">
+    <h2>定期購入管理</h2>
+</div>
+
+<div class="regularDeliveryPayInfo" module="MyShop_OrderRegularPg">
+    <!--@css(/css/module/myshop/regularDeliveryPayInfo.css)-->
+    <!--@js(/js/module/myshop/regularDeliveryPayInfo.js)-->
+    <h3 class="title {$payInfo_display|display}">決済方法</h3>
+    <div class="ec-base-box {$payInfo_display|display}">
+        <div class="information">
+            <h3 class="title">定期購入決済用クレジットカード</h3>
+            <div class="content">
+                <ul class="cardList ">
+                    <!-- 참고 : 결제카드 등록 전 -->
+                    <li class="status {$unregistCard_display|display}">
+                        <p class="cardInfo"><strong class="type">クレジットカード(メイン)</strong></p>
+                        <span class="button"><a href="#"  id="{$registModifyCardId}" data-priority="0" class="btnSubmit sizeS cardSearch">登録</a></span>
+                    </li>
+                </ul>
+                <ul class="cardList registed">
+                    <!-- 참고 : 결제카드 등록 후 -->
+                    <li class="status done {$registCard_display|display}">
+                        <p class="cardInfo">
+                            <strong class="type">クレジットカード(メイン)</strong><span class="payMethod">{$subscriptionPaymethod}</span><strong id="{$registedCardNumberId}" class="cardNumber"></strong> <strong class="cardName" id="{$registedCardNameId}"></strong>
+                        </p>
+                        <span class="button">
+                            <a href="#"  id="{$registModifyCardId}" data-priority="0" class="btnSubmit sizeS cardSearch">変更</a>
+                            <a href="#"  id="{$deleteCardId}" data-priority="0" class="btnNormal sizeS">削除</a>
+                        </span>
+                    </li>
+                    <!-- 참고 : 결제보조카드 등록 전 -->
+                    <li class="status {$useMultiplePayment_display|display} {$registCard_display|display} {$unregistSecondCard_display|display}">
+                        <p class="cardInfo"><span class="type">クレジットカード(サブ)</span></p>
+                        <span class="button"><a href="#"  id="{$registModifySecondCardId}" data-priority="1" class="btnSubmit sizeS cardSearch">登録</a></span>
+                    </li>
+                    <!-- 참고 : 결제보조카드 등록 후 -->
+                    <li class="status done {$registSecondCard_display|display}">
+                        <p class="cardInfo">
+                            <strong class="type">クレジットカード(サブ)</strong><span class="payMethod">{$subscriptionPaymethod}</span><strong id="{$registedSecondCardNumberId}" class="cardNumber"></strong> <strong class="cardName" id="{$registedSecondCardNameId}"></strong>
+                        </p>
+                        <span class="button">
+                            <a href="#"  id="{$registModifySecondCardId}" data-priority="1" class="btnSubmit sizeS cardSearch">変更</a>
+                            <a href="#"  id="{$deleteSecondCardId}" data-priority="1" class="btnNormal sizeS">削除</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ec-base-tab" module="Myshop_OrderRegularManageHead">
+    <ul class="menu">
+        <li class="{$issueListTabSelected}"><a href="#" id="{$issueListTabId}" >申込履歴 ({$issueInvoiceCount})</a></li>
+        <li class="{$cancelListTabSelected}"><a href="#" id="{$cancelListTabId}" >解除履歴 ({$cancelItemCount})</a></li>
+    </ul>
+</div>
+
+<div class="ec-base-table typeList" module="myshop_OrderRegularManageList">
+    <!--@css(/css/module/myshop/regularDeliveryListItem.css)-->
+    <table border="1" summary="訂單商品資訊">
+        <colgroup>
+            <col style="width:160px;"/>
+            <col style="width:111px;"/>
+            <col style="width:111px;"/>
+            <col style="width:111px;"/>
+            <col style="width:93px;"/>
+            <col style="width:auto;"/>
+            <col style="width:61px;"/>
+            <col style="width:111px;"/>
+            <col style="width:111px;" class="{$issueList_display|display}"/>
+        </colgroup>
+        <thead>
+        <tr>
+            <th scope="col">申込日<br/>[申込番号]</th>
+            <th scope="col">定期購入周期</th>
+            <th scope="col">配送回数</th>
+            <th scope="col" class="{$issueList_display|display}">定期購入開始日<br/>[回目]</th>
+            <th scope="col" class="{$cancelList_display|display}">解除日</th>
+            <th scope="col">画像</th>
+            <th scope="col">商品情報</th>
+            <th scope="col">数量</th>
+            <th scope="col" class="{$issueList_display|display}">商品購入金額</th>
+            <th scope="col" class="{$issueList_display|display}">選択</th>
+            <th scope="col" class="{$cancelList_display|display}">解除理由</th>
+        </tr>
+        </thead>
+        <tbody class="center {$list_display|display}">
+        <tr>
+            <td class="number {$display_column|display}" rowspan="{$row_span}">
+                {$ins_timestamp}<br/>
+                <a href="regular_delivery_detail.html{$param_detail}" class="line" title="ページ移動"><span class="{$cancelList_class}">[{$invoice_no}]</span></a>
+            </td>
+            <td>{$subscription_cycle_info}</td>
+            <td>{$max_expected_pay_seq_info}</td>
+            <td class="{$issueList_display|display}">
+                {$expected_delivery_date}
+                <p>[{$expected_pay_seq}回目]</p>
+                <span class="{$display_expected_delivery_string2|display}"><p>{$subscription_state_string}</p></span>
+            </td>
+            <td class="{$cancelList_display|display}">{$cancel_timestamp}</td>
+            <td class="thumb"><a href="/product/detail.html{$param}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt=""/></a></td>
+            <td class="product left top">
+                <strong class="name">{$product_name_link}</strong>
+                <div class="option {$option_display|display}">{$option_str}</div>
+            </td>
+            <td>{$item_qty}</td>
+            <td class="right {$issueList_display|display}"><strong>{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</strong>
+                <div class="{$product_price_ref_display|display}">{$product_price_back_head}{$product_price_back}{$product_price_back_tail}</div>
+            </td>
+            <td class="{$issueList_display|display}">
+                <p>
+                    <a href="regular_delivery_detail.html{$param_detail}" class="btnNormal" title="move page">詳細</a>
+                </p>
+            </td>
+            <td class="{$cancelList_display|display}">
+                <p class="{$customerCancel_display|display}">購入者による解除</p>
+                <p class="{$systemCancel_display|display}">システムによる自動解除</p>
+                <p class="{$adminCancel_display|display}">運営者による解除</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="number {$display_column|display}" rowspan="{$row_span}">
+                {$ins_timestamp}<br/>
+                <a href="regular_delivery_detail.html{$param_detail}" class="line" title="ページ移動"><span class="{$cancelList_class}">[{$invoice_no}]</span></a>
+            </td>
+            <td>{$subscription_cycle_info}</td>
+            <td>{$max_expected_pay_seq_info}</td>
+            <td class="{$issueList_display|display}">
+                {$expected_delivery_date}
+                <p>[{$expected_pay_seq}回目]</p>
+                <span class="{$display_expected_delivery_string2|display}"><p>{$subscription_state_string}</p></span>
+            </td>
+            <td class="{$cancelList_display|display}">{$cancel_timestamp}</td>
+            <td class="thumb"><a href="/product/detail.html{$param}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt=""/></a></td>
+            <td class="product left top">
+                <strong class="name">{$product_name_link}</strong>
+                <div class="option {$option_display|display}">{$option_str}</div>
+            </td>
+            <td>{$item_qty}</td>
+            <td class="right {$issueList_display|display}"><strong>{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</strong>
+                <div class="{$product_price_ref_display|display}">{$product_price_back_head}{$product_price_back}{$product_price_back_tail}</div>
+            </td>
+            <td class="{$issueList_display|display}">
+                <p>
+                    <a href="regular_delivery_detail.html{$param_detail}" class="btnNormal" title="페이지 이동">詳細</a>
+                </p>
+            </td>
+            <td class="{$cancelList_display|display}">
+                <p class="{$customerCancel_display|display}">購入者による解除</p>
+                <p class="{$systemCancel_display|display}">システムによる自動解除</p>
+                <p class="{$adminCancel_display|display}">運営者による解除</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="message {$empty_display|display}">申込履歴がありません。</p>
+</div>
+
+<div module="Myshop_OrderRegularManagePage" class="ec-base-paginate">
+    <a href="{$param_first}" class="first"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_first.gif" alt="最初のページ"></a>
+    <a href="{$param_prev}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ"></a>
+    <ol>
+        <li><a href="{$param_page}">{$page_no}</a></li>
+        <li><a href="{$param_page}">{$page_no}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ"></a>
+    <a href="{$param_last}" class="last"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_last.gif" alt="最後のページ"></a>
+</div>

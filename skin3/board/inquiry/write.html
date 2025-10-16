@@ -1,0 +1,135 @@
+﻿<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>大量一括購入のお問い合わせ管理</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>大量一括購入のお問い合わせ管理</h2>
+    <p>大量一括購入のお問い合わせや関連情報の要請ができます。</p>
+</div>
+
+<div module="board_InquiryForm">
+    <!--@css(/css/module/board/inquiryForm.css)-->
+    <!--
+        $isRuleBasedAddrForm = T
+    -->
+    <div module="board_InquiryHead" class="ec-base-box typeProduct">
+        <p class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_img}" alt="" onerror="this.src='//img.echosting.cafe24.com/thumb/75x75.gif'" /></a></p>
+        <div class="information">
+            {$user_icon}{$new_icon}{$recommend_icon}{$soldout_icon}{$mileage_icon}
+            <h3><a href="/product/detail.html{$param_product}">{$product_name}</a></h3>
+            <p class="price">{$product_price} {$product_tax_type_text}</p>
+            <p class="button"><a href="/product/detail.html{$param_product}" class="btnEm" title="別のウィンドウで開く">商品詳細ページへ</a></p>
+        </div>
+    </div>
+
+    <p class="required"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /> 必須項目</p>
+
+    <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+        <caption>大量一括購入のお問い合わせ管理</caption>
+        <colgroup>
+            <col style="width:130px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">数量 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>
+                    <span class="ec-base-qty">
+                        {$form.bi_product_cnt}
+                        <a href="#none"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="up" class="up" onclick="{$action_amount_up}" /></a>
+                        <a href="#none"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="down" class="down" onclick="{$action_amount_down}" /></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">タイトル <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.bi_inquire_subject}</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="clear">
+                    {$form.bi_inquire_content}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">添付ファイル1</th>
+                <td>{$form.inquiry_file1}<p class="gBlank5 txtInfo txt11">添付ファイル: 10M / csv, xls, doc, ppt, pdf</p></td>
+            </tr>
+            <tr>
+                <th scope="row">添付ファイル2</th>
+                <td>{$form.inquiry_file2}<p class="gBlank5 txtInfo txt11">添付ファイル: 10M / csv, xls, doc, ppt, pdf</p></td>
+            </tr>
+            <tr>
+                <th scope="row">添付ファイル3</th>
+                <td>{$form.inquiry_file3}<p class="gBlank5 txtInfo txt11">添付ファイル: 10M / csv, xls, doc, ppt, pdf</p></td>
+            </tr>
+            <tr>
+                <th scope="row">添付ファイル4</th>
+                <td>{$form.inquiry_file4}<p class="gBlank5 txtInfo txt11">添付ファイル: 10M / csv, xls, doc, ppt, pdf</p></td>
+            </tr>
+            <tr>
+                <th scope="row">添付ファイル5</th>
+                <td>{$form.inquiry_file5}<p class="gBlank5 txtInfo txt11">添付ファイル: 10M / csv, xls, doc, ppt, pdf</p></td>
+            </tr>
+            <tr>
+                <th scope="row">カタログ申請 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.bi_is_catalog}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="title">
+        <h3>お客様情報</h3>
+    </div>
+    <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+        <caption>お客様情報</caption>
+        <colgroup>
+            <col style="width:130px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.bi_inquirer_name}</td>
+            </tr>
+            <tr>
+                <th scope="row">会社名</th>
+                <td>{$form.bi_inquirer_company_name}</td>
+            </tr>
+            <tr>
+                <th scope="row">メールアドレス <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.bi_inquirer_email}</td>
+            </tr>
+            <tr>
+                <th scope="row">住所 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.address}</td>
+            </tr>
+            <tr>
+                <th scope="row">連絡先 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.bi_inquirer_phone} (数字のみ入力してください。)</td>
+            </tr>
+            <tr class="agree {$config.is_logout|display} {$display_privacy_agreement|display}">
+                <th scope="row">個人情報の収集及び<br />利用規約同意 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>
+                    {$form.privacy_agreement}<br />
+                    個人情報の収集及び利用規約に同意しますか。 {$form.privacy_agreement_radio}
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="ec-base-button">
+        <span class="gRight">
+            <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_inquiry}">登録</a>
+        </span>
+    </div>
+</div>

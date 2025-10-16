@@ -1,0 +1,18 @@
+<!--@layout(/layout/basic/intro.html)-->
+<div module="Intro_Agelimit" class="intro">
+    <!--@css(/css/module/intro/ageLimit.css)-->
+    <div class="ageIcon">{$age_limit}+</div>
+    <div class="ageDetail">
+        <ul class="info">
+            <li>当サイトには、<br>{$age_limit}歳未満の方には販売できない商品が含まれております。</li>
+            <li><strong>あなたは、{$age_limit}歳以上ですか？</strong></li>
+        </ul>
+        <div class="ec-base-button gFull">
+            <a href="#none" class="btnSubmit" onclick="{$action_agree}">はい、{$age_limit}歳以上です。</a>
+            <a href="#none" class="btnEm" onclick="{$action_disagree}">いいえ、{$age_limit}歳未満です。</a>
+        </div>
+        <div class="confirm">
+            <label class="gLabel"><input type="checkbox" class="fChk" onclick="{$action_state}"> 次回から表示しない</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>お届け先の追加・変更</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="myshop_AddrRegister">
+    <!--@css(/css/module/myshop/addrRegister.css)-->
+    <!--
+        $return_url = /myshop/addr/list.html
+        $isRuleBasedAddrForm = T
+    -->
+    <h3>新規追加</h3>
+    <div class="ec-base-table typeWrite gClearBorderTop">
+        <table border="1">
+            <caption>お届け先の入力</caption>
+            <colgroup>
+                <col style="width:110px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">お届け先名 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5"></th>
+                    <td>{$form.ma_rcv_title}</td>
+                </tr>
+                <tr>
+                    <th scope="row">お名前<br>(受取人) <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5"></th>
+                    <td>{$form.ma_rcv_name}{$form.ma_rcv_name_last}</td>
+                </tr>
+                <tr class="{$english_name_display|display}">
+                    <th scope="row">お名前<br>(ローマ字) <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5" id="{$icon_id_english_name}"></th>
+                    <td>{$form.ma_rcv_name_en}{$form.name_en_last}</td>
+                </tr>
+                <tr class="{$pron_name_display|display}">
+                    <th scope="row">フリガナ <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5" id="{$icon_id_pron_name}"></th>
+                    <td>{$form.ma_rcv_name_phonetic}{$form.name_phonetic_last}</td>
+                </tr>
+                <tr>
+                    <th scope="row">住所 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5"></th>
+                    <td>{$form.address}</td>
+                </tr>
+                <tr class="{$use_delivery_tel_display|display}">
+                    <th scope="row">電話番号 <span class="{$phone1_display|display}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5"></span></th>
+                    <td>
+                        {$form.ma_rcv_phone}
+                        <p class="ec-base-help typeDash">ハイフンなしの半角数字で入力してください。 例）0312345678</p>
+                    </td>
+                </tr>
+                <tr class="{$use_delivery_cell_display|display}">
+                    <th scope="row">携帯電話番号 <span class="{$phone2_display|display}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/myshop/ico_required.png" alt="必須" width="5" height="5"></span></th>
+                    <td>
+                        {$form.ma_rcv_mobile_no}
+                        <p class="ec-base-help typeDash">ハイフンなしの半角数字で入力してください。 例）09012345678</p>
+                    </td>
+                </tr>
+                <tr class="shipping">
+                    <td colspan="2">{$form.ma_main_flag}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="ec-base-button gColumn">
+        <a href="#none" onclick="{$action_check}" class="btnSubmit">登録</a>
+        <a href="list.html" class="btnEm">キャンセル</a>
+    </div>
+</div>

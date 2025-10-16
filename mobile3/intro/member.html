@@ -1,0 +1,53 @@
+<!--@layout(/layout/basic/intro.html)-->
+<div id="titleArea">
+    <h2>ログイン</h2>
+</div>
+
+<div module="Intro_memberPackage">
+    <!--@css(/css/module/intro/memberPackage.css)-->
+    <!--@js(/js/module/intro/login.js)-->
+    <div module="member_login">
+        <!--
+            $forbidIpUrl = member/adminFail.html
+            $defaultReturnUrl = /index.html
+        -->
+        <div class="loginHeader">
+            <h3><span class="txtEm">会員専用</span> ショッピングモール</h3>
+        </div>
+        <fieldset>
+            <div class="formBox">
+                <div class="form">
+                    {$form.member_id}
+                    {$form.member_passwd}
+                </div>
+                <div class="option">
+                    <span class="auto">{$form.use_login_keeping}</span>
+                    <span class="save">{$form.check_save_id}</span>
+                    <span class="ssl"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_ssl.png" alt="セキュリティ接続"><em>セキュリティ接続</em></span>
+                    <span class="setIpSecurity">
+                        <span class="{$display_useloginkeeping_ip|display}">IPセキュリティ</span>
+                        {$form.is_use_login_keeping_ip}
+                    </span>
+                </div>
+                <div class="ec-base-button gFull">
+                    <button type="button" class="btnSubmit" onclick="{$action_func_login}">ログイン</button>
+                </div>
+                <div class="loginUtil">
+                    <a href="/member/id/find_id.html" class="btnLogin">IDを探す</a>
+                    <a href="/member/passwd/find_passwd_info.html" class="btnLogin">パスワードを探す</a>
+                    <a href="/member/agreement.html" class="btnLogin">会員登録</a>
+                </div>
+                <p class="ec-base-help">お買い物をお楽しみいただくには、ログインが必要です。まず会員登録を行ってください。</p>
+                <div class="snsLogin">
+                    <a href="#none" class="btnNaver {$display_naver|display}" onclick="{$naver_func_login}"><span>Naverでログイン</span></a>
+                    <a href="#none" class="btnFacebook {$display_facebook|display}" onclick="{$facebook_func_login}"><span>Facebookでログイン</span></a>
+                    <a href="#none" class="btnYahoo {$display_yahoojp|display}" onclick="{$yahoojp_func_login}"><span>Yahoo!でログイン</span></a>
+                    <a href="#none" class="btnGoogle {$display_google|display}" onclick="{$google_func_login}"><span>Googleでログイン</span></a>
+                    <a href="#none" class="btnKakao {$display_kakao|display}" onclick="{$kakao_func_login}"><span>Kakaoで始める</span></a>
+                    <a href="#none" class="btnLine {$display_line|display}" onclick="{$line_func_login}"><span>LINEでログイン</span></a>
+                    <a href="#none" class="btnApple {$display_apple|display}" onclick="{$apple_func_login}"><span>Appleでログイン</span></a>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

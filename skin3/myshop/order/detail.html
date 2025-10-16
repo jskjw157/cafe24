@@ -1,0 +1,1364 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>注文詳細内訳</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>注文詳細内訳</h2>
+</div>
+
+<div module="MyShop_OrderHistoryDetail" unroll="1">
+    <!--@css(/css/module/myshop/orderHistoryDetail.css)-->
+    <!--
+        $print_spec_url = /myshop/order/print/spec.html
+        $print_pg_card_url = /myshop/order/print/pg.html
+        $print_tax_url = /myshop/order/print/tax.html
+        $issue_tax_url = /myshop/order/issue/tax.html
+        $issue_cash_url = /myshop/order/issue/cash.html
+        $select_gift_url = /order/gift_select.html
+     -->
+
+    <div class="orderArea">
+        <div class="title">
+            <h3>注文情報</h3>
+        </div>
+
+        <div class="ec-base-table">
+            <table border="1" summary="">
+            <caption>注文情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">注文番号</th>
+                    <td>{$order.order_id}<span>{$order.order_icon}</span><br><a href="{$order.subscription_invoice_link}" class="line {$order.subscription_invoice_order_display|display}" title="페이지 이동">[{$order.subscription_invoice_no}]</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">注文日</th>
+                    <td>{$order.date}</td>
+                </tr>
+                <tr>
+                    <th scope="row">注文者</th>
+                    <td>{$order.name}</td>
+                </tr>
+                <tr class="{$order_state_display|display}">
+                    <th scope="row">注文状態</th>
+                    <td>
+                        {$order.state}
+                        <button type="submit" class="btnNormal {$cancel_display|display}">キャンセルする</button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea">
+        <div class="title">
+            <h3>初期決済情報</h3>
+        </div>
+        <div class="ec-base-table">
+            <table border="1" summary="" class="{$order.product_price_display|display}">
+            <caption>初期決済情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody>
+                <tr class="sum">
+                    <th scope="row">注文金額合計</th>
+                    <td>
+                        <span class="gSpace20">
+                            {$total.total_order_price_front_head}<strong class="txt14">{$total.first_order_price}</strong>{$total.total_order_price_front_tail} <span class="{$total.total_order_price_ref_display|display}">{$total.total_order_price_back_head}{$total.total_order_price_back}{$total.total_order_price_back_tail}</span>
+                        </span>
+                        <a href="#none" class="btnNormal" onclick="{$total.total_order_layer_on}">内訳を見る</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody class="{$total.total_addsale_summary_display|display}">
+                <tr class="sum">
+                    <th scope="row">割引金額合計</th>
+                    <td>{$total.price_unit_head}<strong class="txt14">{$total.total_addsale_price}</strong>{$total.price_unit_tail}</td>
+                </tr>
+                <tr class="{$total.total_coupon_price_display|display}">
+                    <th scope="row">割引クーポン</th>
+                    <td>
+                        <span class="gSpace20">{$total.price_unit_head}{$total.total_coupon_price}{$total.price_unit_tail}</span>
+                        <a href="#none" class="btnNormal eUsedCouponDetail">内訳を見る</a>
+                    </td>
+                </tr>
+                <tr class="{$total.total_discountcode_price_display|display}">
+                    <th scope="row">割引コード 適用</th>
+                    <td>
+                        <span class="gSpace20">{$total.price_unit_head}{$total.total_discountcode_price}{$total.price_unit_tail} /
+                        {$total.total_discountcode_price_detail}</span>
+                    </td>
+                </tr>
+                <tr class="{$total.total_benefit_price_display|display}">
+                    <th scope="row" >追加割引金額</th>
+                    <td>
+                        <span class="gSpace20">{$total.price_unit_head}{$total.total_benefit_price}{$total.price_unit_tail}</span>
+                        <a href="#none" class="btnNormal" onclick="{$total.total_benefit_layer_on}">内訳を見る</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody class="{$total.total_tax_display|display}">
+            <tr>
+                <th scope="row">{$total.total_tax_name}</th>
+                <td>{$total.price_unit_head}<strong class="txt14">{$total.total_tax_amount}</strong>{$total.price_unit_tail}</td>
+            </tr>
+            </tbody>
+            <tbody class="{$total.total_addpay_summary_display|display}">
+                <tr class="sum">
+                    <th scope="row">付加決済金額合計</th>
+                    <td>{$total.price_unit_head}<strong>{$total.total_addpay_price}</strong>{$total.price_unit_tail}</td>
+                </tr>
+                <tr class="{$total.mileage_display|display}">
+                    <th scope="row">{$mileage_name}</th>
+                    <td>{$total.mileage_unit_head}{$total.mileage_used}{$total.mileage_unit_tail}</td>
+                </tr>
+                <tr class="{$total.deposit_display|display}">
+                    <th scope="row">{$deposit_name}</th>
+                    <td>{$total.deposit_used}{$deposit_unit}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="ec-base-table total">
+            <table border="1" summary="" class="{$order.product_price_display|display}">
+            <caption>決済情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody>
+                <tr class="sum">
+                    <th scope="row">支払金額合計</th>
+                    <td>
+                        <span class="txtEm">
+                            <strong class="txt18">{$payment.price_front_head}{$payment.price_front}</strong>{$payment.price_front_tail}
+                            <span class="{$payment.price_ref_display|display}">{$payment.price_back_head}{$payment.price_back}{$payment.price_back_tail}</span>
+                        </span>
+                        <div class="btnTooltip {$dcc_info_display|display}">
+                            (DCC <a href="#none" onclick="{$dcc_tooltip_layer_on}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/common/ico_tooltip.gif" alt="ヘルプ" /></a> : {$dcc_info})
+                            <div class="eximbayDCC ec-base-layer" id="{$dcc_tooltip_layer}">
+                                <div class="header">
+                                    <h3>Eximbay DCC (多通貨決済サービス)</h3>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li>- クレジットカート決済の際、Eximbayが提供するDCCサービスを選択し、決済した注文です。
+                                            <span class="dccLink"><a href="https://www.eximbay.com/service/dcc_service.do?pageGroup=MS0000001&pageType=M&m_root_seq=1000&m_mnu_seq=5000" target="_blank">[Eximbay DCC (多通貨決済サービス)のご案内 ▶]</a></span>
+                                        </li>
+                                        <li>- 決済した金額は、Eximbayが決めた決済時点の為替で適用されます。</li>
+                                        <li>- 一部キャンセルした場合は、決済時点の為替を基準に処理されます。</li>
+                                    </ul>
+                                </div>
+                                <a href="#none" class="close" onclick="{$dcc_tooltip_layer_off}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="{$payment.paymethod_display|display}">
+                    <th scope="row">お支払い方法</th>
+                    <td>
+                        <strong>{$payment.paymethod}</strong>
+                        <p>
+                            {$payment.paymethod_detail}
+                            <a target="_blank" href="{$payment.pay_extra_url}" id="{$payment.btn_payment_link_id}" class="btnNormal {$payment.paymenturl_display|display}">決済サイトのショートカット</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="{$payment.eguarantee_display|display}">
+                    <th scope="row">電子保証保険サービス情報</th>
+                    <td>{$payment.eguarantee_detail}</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <table class="{$order.rental_display|display}" border="1" summary="">
+                <caption>決済情報</caption>
+                <colgroup>
+                    <col style="width:160px" />
+                    <col style="width:auto" />
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th scope="row">月額レンタル料金</th>
+                    <td>
+                        <span class="gSpace20">
+                            <span class="txt14">{$total.price_unit_head}{$order.rental_amount}{$total.price_unit_tail}</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">レンタル期間</th>
+                    <td>
+                        <span class="gSpace20">
+                            <span class="txt14">{$order.rental_period} ヶ月</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">お支払い方法</th>
+                    <td>
+                        <span class="gSpace20">
+                        <span class="txt14">{$payment.paymethod}</span>
+                    </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea {$order.product_price_display|display}">
+        <div class="title">
+            <h3>注文情報</h3>
+        </div>
+        <div class="ec-base-table typeList">
+            <table border="1" summary="" class="{$oversea_display|display}">
+                <caption>注文内容</caption>
+                <colgroup>
+                    <col style="width:92px" />
+                    <col style="width:auto" />
+                    <col style="width:60px" />
+                    <col style="width:110px" />
+                    <col style="width:120px" />
+                    <col style="width:110px" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">画像</th>
+                        <th scope="col">商品情報</th>
+                        <th scope="col">数量</th>
+                        <th scope="col">購入金額</th>
+                        <th scope="col">注文状態</th>
+                        <th scope="col">キャンセル/<br />交換/返品</th>
+                    </tr>
+                </thead>
+                <tbody module="Myshop_OrderHistoryDetailOversea" class="center">
+                    <tr>
+                        <td class="thumb"><a href="/product/detail.html{$param_product}"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></a></td>
+                        <td class="left gClearLine">
+                            <strong class="name">{$product_name_link}</strong>
+                            <div class="option {$option_display|display}">{$option_str}</div>
+                            <ul class="option" module="Myshop_optionSet">
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            </ul>
+                            <div class="option {$service_period_display|display}">[サービス利用可能期間 : {$service_period_start} ~ {$service_period_end}]</div>
+                        </td>
+                        <td>{$quantity}</td>
+                        <td>
+                            <div>
+                                <strong>{$product_purchase_price_front_head}{$product_purchase_price_front}{$product_purchase_price_front_tail}</strong>
+                                <div class="{$product_purchase_price_ref_display|display}">{$product_purchase_price_back_head}{$product_purchase_price_back}{$product_purchase_price_back_tail}</div>
+                            </div>
+                        </td>
+                        <td class="state">
+                            <p>{$status}</p>
+                            <p class="{$multi_invoice_display|display}"><a href="#none" class="line" onclick="{$multi_invoice_layer}">全{$multi_invoice_count}件</a></p>
+                            <p class="{$shipping_company_display|display}"><a href="{$shipping_company_link}" target="{$shipping_company_target}">{$shipping_company}</a></p>
+                            <p class="{$invoice_no_display|display}"><a href="#none" class="line" onclick="{$shipping_trace_popup}">[{$invoice_no}]</a></p>
+                            <a href="#none" class="btnNormal {$withdraw_cancel_display|display}" onclick="{$action_withdraw_cancel}">キャンセルの取消</a>
+                            <a href="#none" class="btnNormal {$withdraw_exchange_display|display}" onclick="{$action_withdraw_exchange}">交換の取消</a>
+                            <a href="#none" class="btnNormal {$withdraw_return_display|display}" onclick="{$action_withdraw_return}">返品の取消</a>
+                            <a href="#none" class="btnNormal {$purchase_confirmation_display|display}" onclick="{$action_purchase_confirmation}">購入確定</a>
+                            <p class="deliveryDate {$shipping_expected_date_display|display}">{$shipping_expected_date}<br />発送予定</p>
+                        </td>
+                        <td>
+                            <p class="{$detail_info_display|display}"><a href="#none" class="btnNormal" onclick="{$detail_info}">詳細内訳</a></p>
+                            <p class="{$hyphen_display|display}">-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="thumb"><a href="/product/detail.html{$param_product}"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></a></td>
+                        <td class="left gClearLine">
+                            <strong class="name">{$product_name_link}</strong>
+                            <div class="option {$option_display|display}">{$option_str}</div>
+                            <ul class="option" module="Myshop_optionSet">
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            </ul>
+                            <div class="option {$service_period_display|display}">[サービス利用可能期間 : {$service_period_start} ~ {$service_period_end}]</div>
+                        </td>
+                        <td>{$quantity}</td>
+                        <td>
+                            <div>
+                                <strong>{$product_purchase_price_front_head}{$product_purchase_price_front}{$product_purchase_price_front_tail}</strong>
+                                <div class="{$product_purchase_price_ref_display|display}">{$product_purchase_price_back_head}{$product_purchase_price_back}{$product_purchase_price_back_tail}</div>
+                            </div>
+                        </td>
+                        <td class="state">
+                            <p>{$status}</p>
+                            <p class="{$multi_invoice_display|display}"><a href="#none" class="line" onclick="{$multi_invoice_layer}">全{$multi_invoice_count}件</a></p>
+                            <p class="{$shipping_company_display|display}"><a href="{$shipping_company_link}" target="{$shipping_company_target}">{$shipping_company}</a></p>
+                            <p class="{$invoice_no_display|display}"><a href="#none" class="line" onclick="{$shipping_trace_popup}">[{$invoice_no}]</a></p>
+                            <a href="#none" class="btnNormal {$withdraw_cancel_display|display}" onclick="{$action_withdraw_cancel}">キャンセルの取消</a>
+                            <a href="#none" class="btnNormal {$withdraw_exchange_display|display}" onclick="{$action_withdraw_exchange}">交換の取消</a>
+                            <a href="#none" class="btnNormal {$withdraw_return_display|display}" onclick="{$action_withdraw_return}">返品の取消</a>
+                            <a href="#none" class="btnNormal {$purchase_confirmation_display|display}" onclick="{$action_purchase_confirmation}">購入確定</a>
+                            <p class="deliveryDate {$shipping_expected_date_display|display}">{$shipping_expected_date}<br />発送予定</p>
+                        </td>
+                        <td>
+                            <p class="{$detail_info_display|display}"><a href="#none" class="btnNormal" onclick="{$detail_info}">詳細内訳</a></p>
+                            <p class="{$hyphen_display|display}">-</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Rental infomation -->
+    <div class="orderArea {$order.rental_display|display}">
+        <div class="title">
+            <h3>注文情報</h3>
+        </div>
+        <div class="ec-base-table typeList">
+            <table border="1" summary="" class="{$oversea_display|display}">
+                <caption>注文内容</caption>
+                <colgroup>
+                    <col style="width:92px" />
+                    <col style="width:auto" />
+                    <col style="width:60px" />
+                    <col style="width:120px" />
+                    <col style="width:110px" />
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">画像</th>
+                    <th scope="col">商品情報</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">注文状態</th>
+                    <th scope="col">キャンセル/<br />交換/返品</th>
+                </tr>
+                </thead>
+                <tbody module="Myshop_OrderHistoryDetailOversea" class="center">
+                <tr>
+                    <td class="thumb"><a href="/product/detail.html{$param_product}"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></a></td>
+                    <td class="left gClearLine">
+                        <strong class="name">{$product_name_link}</strong>
+                        <div class="option {$option_display|display}">{$option_str}</div>
+                        <ul class="option" module="Myshop_optionSet">
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                        </ul>
+                        <div class="option {$service_period_display|display}">[サービス利用可能期間 : {$service_period_start} ~ {$service_period_end}]</div>
+                    </td>
+                    <td>{$quantity}</td>
+                    <td class="state">
+                        <p>{$status}</p>
+                        <p class="{$multi_invoice_display|display}"><a href="#none" class="line" onclick="{$multi_invoice_layer}">全{$multi_invoice_count}件</a></p>
+                        <p class="{$shipping_company_display|display}"><a href="{$shipping_company_link}" target="{$shipping_company_target}">{$shipping_company}</a></p>
+                        <p class="{$invoice_no_display|display}"><a href="#none" class="line" onclick="{$shipping_trace_popup}">[{$invoice_no}]</a></p>
+                        <a href="#none" class="btnNormal {$withdraw_cancel_display|display}" onclick="{$action_withdraw_cancel}">キャンセルの取消</a>
+                        <a href="#none" class="btnNormal {$withdraw_exchange_display|display}" onclick="{$action_withdraw_exchange}">交換の取消</a>
+                        <a href="#none" class="btnNormal {$withdraw_return_display|display}" onclick="{$action_withdraw_return}">返品の取消</a>
+                        <a href="#none" class="btnNormal {$purchase_confirmation_display|display}" onclick="{$action_purchase_confirmation}">購入確定</a>
+                        <p class="deliveryDate {$shipping_expected_date_display|display}">{$shipping_expected_date}<br />発送予定</p>
+                    </td>
+                    <td>
+                        <p class="{$detail_info_display|display}"><a href="#none" class="btnNormal" onclick="{$detail_info}">詳細内訳</a></p>
+                        <p class="{$hyphen_display|display}">-</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="thumb"><a href="/product/detail.html{$param_product}"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></a></td>
+                    <td class="left gClearLine">
+                        <strong class="name">{$product_name_link}</strong>
+                        <div class="option {$option_display|display}">{$option_str}</div>
+                        <ul class="option" module="Myshop_optionSet">
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                        </ul>
+                        <div class="option {$service_period_display|display}">[サービス利用可能期間 : {$service_period_start} ~ {$service_period_end}]</div>
+                    </td>
+                    <td>{$quantity}</td>
+                    <td class="state">
+                        <p>{$status}</p>
+                        <p class="{$multi_invoice_display|display}"><a href="#none" class="line" onclick="{$multi_invoice_layer}">全{$multi_invoice_count}件</a></p>
+                        <p class="{$shipping_company_display|display}"><a href="{$shipping_company_link}" target="{$shipping_company_target}">{$shipping_company}</a></p>
+                        <p class="{$invoice_no_display|display}"><a href="#none" class="line" onclick="{$shipping_trace_popup}">[{$invoice_no}]</a></p>
+                        <a href="#none" class="btnNormal {$withdraw_cancel_display|display}" onclick="{$action_withdraw_cancel}">キャンセルの取消</a>
+                        <a href="#none" class="btnNormal {$withdraw_exchange_display|display}" onclick="{$action_withdraw_exchange}">交換の取消</a>
+                        <a href="#none" class="btnNormal {$withdraw_return_display|display}" onclick="{$action_withdraw_return}">返品の取消</a>
+                        <a href="#none" class="btnNormal {$purchase_confirmation_display|display}" onclick="{$action_purchase_confirmation}">購入確定</a>
+                        <p class="deliveryDate {$shipping_expected_date_display|display}">{$shipping_expected_date}<br />発送予定</p>
+                    </td>
+                    <td>
+                        <p class="{$detail_info_display|display}"><a href="#none" class="btnNormal" onclick="{$detail_info}">詳細内訳</a></p>
+                        <p class="{$hyphen_display|display}">-</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea {$gift_display|display}">
+        <div class="title">
+            <h3>ノベルティ</h3>
+        </div>
+        <div class="ec-base-table typeList">
+            <table border="1" summary="">
+                <caption>ノベルティ</caption>
+                <colgroup>
+                    <col style="width:92px" />
+                    <col style="width:auto" />
+                    <col style="width:60px" />
+                    <col style="width:110px" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">イメージ</th>
+                        <th scope="col">商品情報</th>
+                        <th scope="col">数量</th>
+                        <th scope="col">区分</th>
+                    </tr>
+                </thead>
+                <tfoot class="right">
+                    <tr>
+                        <td colspan="4"><span class="gLeft">[ノベルティ]</span></td>
+                    </tr>
+                </tfoot>
+                <tbody module="Myshop_OrderHistoryDetailGift" class="center">
+                    <tr>
+                        <td class="thumb"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></td>
+                        <td class="left">
+                            <span class="{$gift_icon_display|display}"><img src="{$gift_icon}" /></span> {$product_name}
+                            <div class="option">{$option_str}</div>
+                        </td>
+                        <td>{$quantity}</td>
+                        <td>{$gift_type_text}</td>
+                    </tr>
+                    <tr>
+                        <td class="thumb"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></td>
+                        <td class="left">
+                            <span class="{$gift_icon_display|display}"><img src="{$gift_icon}" /></span> {$product_name}
+                            <div class="option">{$option_str}</div>
+                        </td>
+                        <td>{$quantity}</td>
+                        <td>{$gift_type_text}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea {$final_payed_display|display}">
+        <div class="title">
+            <h3>最終支払情報</h3>
+        </div>
+        <div class="ec-base-table total">
+            <table border="1" summary="">
+            <caption>最終支払情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">支払金額合計</th>
+                    <td>
+                        <span class="txtEm">{$total.price_unit_head}<strong class="txt18">{$total.final_payed_order_price}</strong>{$total.price_unit_tail}</span>
+                        <span class="{$total.final_payed_order_price_ref_display|display}">{$total.final_payed_order_price_ref}</span>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+            <caption>最終支払情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody module="Myshop_OrderHistoryDetailPaymentFinal">
+                <tr>
+                    <th scope="row">{$title}</th>
+                    <td>
+                        <strong>{$price_unit_head}{$price}{$price_unit_tail}</strong>
+                        <p>{$detail}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">{$title}</th>
+                    <td>
+                        <strong>{$price_unit_head}{$price}{$price_unit_tail}</strong>
+                        <p>{$detail}</p>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea {$cs_info_display|display}">
+        <div class="title">
+            <h3>キャンセル/交換/返品の申請情報</h3>
+        </div>
+        <div class="ec-base-table" module="Myshop_OrderHistoryDetailCsInfo">
+            <table border="1" summary="">
+            <caption>キャンセル/交換/返品の申請情報</caption>
+            <colgroup>
+                <col style="width:170px" />
+                <col style="width:auto" />
+                <col style="width:80px" />
+                <col style="width:150px" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">区分</th>
+                    <th scope="col">商品情報</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">商品購入金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{$cancel_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_cancelProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="{$exchange_action_display|display}">
+                    <th scope="row">{$exchange_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_exchangeProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">申込日</th>
+                    <td colspan="3">{$request_date}</td>
+                </tr>
+
+                <tr module="Myshop_Csaddinfo">
+                    <th scope="row">{$cs_add_info_title}</th>
+                    <td colspan="3">{$cs_add_info_value}</td>
+                </tr>
+                <tr class="{$cs_shipfee_display|display}">
+                    <th scope="row">{$cs_shipfee_label}</th>
+                    <td colspan="3">{$cs_shipfee_paid_by} / {$cs_shipfee} / {$cs_shipfee_paymethod}</td>
+                </tr>
+                <tr>
+                    <th scope="row">返金予定金額</th>
+                    <td colspan="3">返金予定金額は、販売者が受付処理完了した後、ご確認頂けます。<span class="gBlank5 {$refund_exchange_comment_display|display}">交換商品によって追加決済金額が発生する場合がございます。</span></td>
+                </tr>
+                <tr class="{$refund_account_display|display}">
+                    <th scope="row">返金口座</th>
+                    <td colspan="3">
+                        [{$bank_name}] {$bank_acc_no} 受取人 : {$bank_acc_owner}
+                        <a href="#none" onclick="{$action_bank_acc_change}" class="btnNormal {$bank_acc_change_display|display}">口座情報の変更</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th scope="row">{$cancel_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_cancelProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="{$exchange_action_display|display}">
+                    <th scope="row">{$exchange_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_exchangeProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">申込日</th>
+                    <td colspan="3">{$request_date}</td>
+                </tr>
+
+                <tr module="Myshop_Csaddinfo">
+                    <th scope="row">{$cs_add_info_title}</th>
+                    <td colspan="3">{$cs_add_info_value}</td>
+                </tr>
+                <tr class="{$cs_shipfee_display|display}">
+                    <th scope="row">{$cs_shipfee_label}</th>
+                    <td colspan="3">{$cs_shipfee_paid_by} / {$cs_shipfee} / {$cs_shipfee_paymethod}</td>
+                </tr>
+                <tr>
+                    <th scope="row">返金予定金額</th>
+                    <td colspan="3">返金予定金額は、販売者が受付処理完了した後、ご確認頂けます。<span class="gBlank5 {$refund_exchange_comment_display|display}">交換商品によって追加決済金額が発生する場合がございます。</span></td>
+                </tr>
+                <tr class="{$refund_account_display|display}">
+                    <th scope="row">返金口座</th>
+                    <td colspan="3">
+                        [{$bank_name}] {$bank_acc_no} 受取人 : {$bank_acc_owner}
+                        <a href="#none" onclick="{$action_bank_acc_change}" class="btnNormal {$bank_acc_change_display|display}">口座情報の変更</a>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea" module="Myshop_OrderHistoryDetailRefundNew">
+        <div class="title">
+            <h3>返金情報</h3>
+        </div>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+            <caption>返金情報</caption>
+            <colgroup>
+                <col style="width:170px" />
+                <col style="width:auto" />
+                <col style="width:80px" />
+                <col style="width:150px" />
+            </colgroup>
+            <thead>
+                <tr class="ec-payment-refund-header">
+                    <th scope="col">区分</th>
+                    <th scope="col">商品情報</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">商品購入金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="{$add_payment_product_display|display}">
+                    <th scope="row">{$cancel_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_cancelProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="{$exchange_action_display|display}">
+                    <th scope="row">{$exchange_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_exchangeProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">{$display_date_title} (状態)</th>
+                    <td colspan="3">{$display_date} <strong>({$status})</strong></td>
+                </tr>
+                <tr class="{$cancel_form_display|display}">
+                    <th scope="row">{$refund_amount_title}</th>
+                    <td colspan="3" class="total">商品金額 {$product_amount_org} {$additional_amount} = 合計 : <strong>{$payment_amount_front_head}{$payment_amount_front}{$payment_amount_front_tail}<span class="{$payment_amount_ref_display|display}">{$payment_amount_back_head}{$payment_amount_back}{$payment_amount_back_tail}</span></strong></td>
+                </tr>
+                <tr class="{$add_payment_amount_display|display}">
+                    <th scope="row">{$refund_amount_title}</th>
+                    <td colspan="3" class="total">送料追加決済 :<strong>{$payment_amount_front_head}{$payment_amount_front}{$payment_amount_front_tail}<span class="{$payment_amount_ref_display|display}">{$payment_amount_back_head}{$payment_amount_back}{$payment_amount_back_tail}</span></strong></td>
+                </tr>
+                <tr class="{$hold_show_ord_detail|display}">
+                    <th scope="row">保留原因</th>
+                    <td colspan="3">{$hold_reason_customer_display|nl2br}</td>
+                </tr>
+                <tr>
+                    <th scope="row">返金方法</th>
+                    <td colspan="3">{$refund_paymethod}</td>
+                </tr>
+                <tr class="{$bank_display|display}">
+                    <th scope="row">返金口座</th>
+                    <td colspan="3">
+                        [{$bank_name}] {$bank_acc_no} 受取人 : {$bank_acc_owner}
+                        <a href="#none" onclick="{$action_bank_acc_change}" class="btnNormal {$bank_acc_change_display|display}">口座情報の変更</a>
+                    </td>
+                </tr>
+                <tr class="{$additional_display|display}">
+                    <th scope="row">割引及び付加決済<br />復元内容</th>
+                    <td colspan="3">
+                        <ul class="coupon">
+                            <li class="{$coupon_display|display}">復元クーポン金額 : {$total.price_unit_head}<strong>{$coupon_price}</strong>{$total.price_unit_tail}</li>
+                            <li class="{$addsale_display|display}">復元割引金額 : {$total.price_unit_head}<strong>{$addsale_price}</strong>{$total.price_unit_tail}</li>
+                            <li class="{$mileage_display|display}">復元ポイント : {$total.price_unit_head}<strong>{$mileage_price}</strong>{$total.price_unit_tail}</li>
+                            <li class="{$deposit_display|display}">復元預かり金 : {$total.price_unit_head}<strong>{$deposit_price}</strong>{$total.price_unit_tail}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr class="{$add_payment_product_display|display}">
+                    <th scope="row">{$cancel_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_cancelProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="{$exchange_action_display|display}">
+                    <th scope="row">{$exchange_action_type}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_exchangeProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">{$display_date_title} (状態)</th>
+                    <td colspan="3">{$display_date} <strong>({$status})</strong></td>
+                </tr>
+                <tr class="{$cancel_form_display|display}">
+                    <th scope="row">{$refund_amount_title}</th>
+                    <td colspan="3" class="total">商品金額 {$product_amount_org} {$additional_amount} = 合計 : <strong>{$payment_amount_front_head}{$payment_amount_front}{$payment_amount_front_tail}<span class="{$payment_amount_ref_display|display}">{$payment_amount_back_head}{$payment_amount_back}{$payment_amount_back_tail}</span></strong></td>
+                </tr>
+                <tr class="{$add_payment_amount_display|display}">
+                    <th scope="row">{$refund_amount_title}</th>
+                    <td colspan="3" class="total">送料追加決済 :<strong>{$payment_amount_front_head}{$payment_amount_front}{$payment_amount_front_tail}<span class="{$payment_amount_ref_display|display}">{$payment_amount_back_head}{$payment_amount_back}{$payment_amount_back_tail}</span></strong></td>
+                </tr>
+                <tr class="{$hold_show_ord_detail|display}">
+                    <th scope="row">保留原因</th>
+                    <td colspan="3">{$hold_reason_customer_display|nl2br}</td>
+                </tr>
+                <tr>
+                    <th scope="row">返金方法</th>
+                    <td colspan="3">{$refund_paymethod}</td>
+                </tr>
+                <tr class="{$bank_display|display}">
+                    <th scope="row">返金口座</th>
+                    <td colspan="3">
+                        [{$bank_name}] {$bank_acc_no} 受取人 : {$bank_acc_owner}
+                        <a href="#none" onclick="{$action_bank_acc_change}" class="btnNormal {$bank_acc_change_display|display}">口座情報の変更</a>
+                    </td>
+                </tr>
+                <tr class="{$additional_display|display}">
+                    <th scope="row">割引及び付加決済<br />復元内容</th>
+                    <td colspan="3">
+                        <ul class="coupon">
+                            <li class="{$coupon_display|display}">復元クーポン金額 : {$total.price_unit_head}<strong>{$coupon_price}</strong>{$total.price_unit_tail}</li>
+                            <li class="{$addsale_display|display}">復元割引金額 : {$total.price_unit_head}<strong>{$addsale_price}</strong>{$total.price_unit_tail}</li>
+                            <li class="{$mileage_display|display}">復元ポイント : {$total.price_unit_head}<strong>{$mileage_price}</strong>{$total.price_unit_tail}</li>
+                            <li class="{$deposit_display|display}">復元預かり金 : {$total.price_unit_head}<strong>{$deposit_price}</strong>{$total.price_unit_tail}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea" module="Myshop_OrderHistoryDetailPaymentAdd">
+        <div class="title">
+            <h3>追加支払</h3>
+        </div>
+        <div class="ec-base-table total">
+            <table border="1" summary="">
+            <caption>追加支払</caption>
+            <colgroup>
+                <col style="width:170px" />
+                <col style="width:auto" />
+                <col style="width:80px" />
+                <col style="width:150px" />
+            </colgroup>
+            <thead>
+                <tr class="ec-payment-add-header">
+                    <th scope="col">区分</th>
+                    <th scope="col">商品情報</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">商品購入金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="{$cancel_product_class} {$cancel_product_display|display}">
+                    <th scope="row">{$sType}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_cancelProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="{$return_shipfee_title_class} {$return_shipfee_title_display|display}">
+                    <th scope="row">{$shipfee_title_label}</th>
+                    <td colspan="3">
+                        {$shipfee_title}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">お支払い方法</th>
+                    <td colspan="3" class="total"><strong class="txtEm">{$total_payment_price_front_head}{$total_payment_price_front}{$total_payment_price_front_tail} <span class="{$total_payment_price_ref_display|display}">{$total_payment_price_back_head}{$total_payment_price_back}{$total_payment_price_back_tail}</span></strong></td>
+                </tr>
+                <tr class="{$tax_display|display}">
+                    <th scope="row">{$tax_name}</th>
+                    <td colspan="3"><strong>{$tax_amount_front_head}{$tax_amount_front}{$tax_amount_front_tail}</strong></td>
+                </tr>
+                <tr class="{$payer_name_area_display|display}">
+                    <th scope="row">入金者名</th>
+                    <td colspan="3">{$payer_name} </td>
+                </tr>
+                <tr>
+                    <th scope="row">お支払い方法</th>
+                    <td colspan="3">
+                        {$paymethod} {$paymethod_detail}<span class="{$paid_display|display}">(決済完了)</span><span class="{$unpaid_display|display}">(<span class="txtWarn">決済キャンセル</span>)</span>
+                        <ul class="{$payment_date_area_display|display}">
+                            <li class="{$pay_date_display|display}">決済日 : {$pay_date}</li>
+                            <li class="{$canel_date_display|display}">キャンセル日 : <span class="txtWarn">{$canel_date}</span></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr class="{$cancel_product_class} {$cancel_product_display|display}">
+                    <th scope="row">{$sType}</th>
+                    <td class="productList" colspan="3">
+                        <ul module="Myshop_cancelProduct">
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                            <li>
+                                <div class="product">
+                                    <strong>{$product_name}</strong> <span class="option">{$option_str}</span>
+                                    <ul class="option" module="Myshop_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                        <li><strong>{$product_name}</strong>{$option_str}</li>
+                                    </ul>
+                                </div>
+                                <p class="quantity">{$quantity}</p>
+                                <p class="price"><strong>{$product_price}</strong></p>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="{$return_shipfee_title_class} {$return_shipfee_title_display|display}">
+                    <th scope="row">{$shipfee_title_label}</th>
+                    <td colspan="3">
+                        {$shipfee_title}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">支払金額</th>
+                    <td colspan="3" class="total"><strong class="txtEm">{$total_payment_price_front_head}{$total_payment_price_front}{$total_payment_price_front_tail} <span class="{$total_payment_price_ref_display|display}">{$total_payment_price_back_head}{$total_payment_price_back}{$total_payment_price_back_tail}</span></strong></td>
+                </tr>
+                <tr class="{$tax_display|display}">
+                    <th scope="row">{$tax_name}</th>
+                    <td colspan="3"><strong>{$tax_amount_front_head}{$tax_amount_front}{$tax_amount_front_tail}</strong></td>
+                </tr>
+                <tr class="{$payer_name_area_display|display}">
+                    <th scope="row">入金者名</th>
+                    <td colspan="3">{$payer_name} </td>
+                </tr>
+                <tr>
+                    <th scope="row">お支払い方法</th>
+                    <td colspan="3">
+                        {$paymethod} {$paymethod_detail}<span class="{$paid_display|display}">(決済完了)</span><span class="{$unpaid_display|display}">(<span class="txtWarn">決済キャンセル</span>)</span>
+                        <ul class="{$payment_date_area_display|display}">
+                            <li class="{$pay_date_display|display}">決済日 : {$pay_date}</li>
+                            <li class="{$canel_date_display|display}">キャンセル日 : <span class="txtWarn">{$canel_date}</span></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="orderArea">
+        <div class="title {$delivery_info_display|display}">
+            <h3>お届け情報</h3>
+            <p class="{$delivery.receiver_update_button_display|display}"><a href="#none" onclick="{$delivery.action_receiver_update_button}" class="btnNormal">お届け先変更</a></p>
+        </div>
+        <div class="ec-base-table {$delivery_info_display|display}">
+            <table border="1" summary="">
+            <caption>お届け情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody>
+                <tr class="{$delivery.receive_info_display|display}">
+                    <th scope="row">受取り店舗</th>
+                    <td>
+                        <strong>{$delivery.store_name}</strong>
+                        <ul class="list">
+                            <li>- 住所 : {$delivery.store_receive_addr}</li>
+                            <li>- 電話番号 : {$delivery.store_main_phone}</li>
+                            <li>- 営業時間 : {$delivery.store_office_hour}</li>
+                            <li>- 受取り可能日 : {$delivery.store_receive_period}</li>
+                            <li>- 受取り店舗案内 : {$delivery.store_receive_info}</li>
+                        </ul>
+                        <div class="map {$delivery.store_receive_map_display|display}">
+                            <p>* 地図</p>
+                            {$delivery.store_receive_map}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">お名前</th>
+                    <td>{$delivery.name}</td>
+                </tr>
+                <tr class="{$delivery.english_name_display|display}">
+                    <th scope="row">お名前(ローマ字)</th>
+                    <td>{$delivery.english_name}</td>
+                </tr>
+                <tr class="{$delivery.pron_name_display|display}">
+                    <th scope="row">フリガナ</th>
+                    <td>{$delivery.pron_name}</td>
+                </tr>
+                <tr class="{$delivery.country_name_display|display}">
+                    <th scope="row">国</th>
+                    <td>{$delivery.country_name}</td>
+                </tr>
+                <tr>
+                    <th scope="row">住所</th>
+                    <td>{$delivery.rzipcode}<br />{$delivery.raddr}</td>
+                </tr>
+                <tr class="{$delivery.si_gun_do_display|display}">
+                    <th scope="row">市</th>
+                    <td>{$delivery.si_gun_do}</td>
+                </tr>
+                <tr class="{$delivery.ju_do_display|display}">
+                    <th scope="row">都道府県</th>
+                    <td>{$delivery.ju_do}</td>
+                </tr>
+                <tr>
+                    <th scope="row">電話番号</th>
+                    <td>{$delivery.rphone_1}</td>
+                </tr>
+                <tr>
+                    <th scope="row">携帯電話番号</th>
+                    <td>{$delivery.rphone_2}</td>
+                </tr>
+                <tr class="{$delivery.email_display|display}">
+                    <th scope="row">メールアドレス</th>
+                    <td>{$delivery.o_email}</td>
+                </tr>
+                <tr>
+                    <th scope="row">配送メッセージ</th>
+                    <td>{$delivery.message}</td>
+                </tr>
+                <tr class="{$hope_shipping_date_display|display}">
+                    <th scope="row">希望配送日</th>
+                    <td>{$delivery.hope_shipping_date}</td>
+                </tr>
+                <tr class="{$hope_shipping_time_display|display}">
+                    <th scope="row">配達希望時間</th>
+                    <td>{$delivery.hope_shipping_time}</td>
+                </tr>
+                <tr class="{$delivery.sc_display|display}">
+                    <th scope="row">配送会社</th>
+                    <td>{$delivery.sc_name}</td>
+                </tr>
+                <tr class="{$delivery.store_receive_period_display|display}">
+                    <th scope="row">受取り可能日</th>
+                    <td>{$delivery.store_receive_period}</td>
+                </tr>
+                <tr class="{$delivery.shipping_manager_display|display}">
+                    <th scope="row">配送方法</th>
+                    <td>{$delivery.shipping_name}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="title {$delivery_info_list_display|display}">
+            <h3>お届け情報</h3>
+        </div>
+        <div class="ec-base-table multiDelivery {$delivery_info_list_display|display}">
+            <table border="1" summary="">
+                <caption>お届け情報</caption>
+                <colgroup>
+                    <col style="width:60px" />
+                    <col style="width:400px" />
+                    <col style="width:92px" />
+                    <col style="width:auto" />
+                    <col style="width:60px" />
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">お届け情報</th>
+                    <th scope="col" colspan="2">商品情報</th>
+                    <th scope="col">数量</th>
+                </tr>
+                </thead>
+                <tbody module="Myshop_DeliveryList">
+                <tr>
+                    <th {$rowspan} scope="row" class="center {$delivery_code_column_display|display}">{$no}</th>
+                    <td {$rowspan} class="top {$delivery_code_column_display|display}">
+                        <ul class="list {$receive_info_display|display}">
+                            <li>- 受取り店舗 : {$store_name}</li>
+                            <li>- 住所 : {$store_receive_addr}</li>
+                            <li>- 電話番号 : {$store_main_phone}</li>
+                            <li>- 営業時間 : {$store_office_hour}</li>
+                            <li>- 受取り可能日 : {$store_receive_period}</li>
+                            <li>- 受取り店舗案内 : {$store_receive_info}</li>
+                        </ul>
+                        <ul class="list">
+                            <li>- お名前: {$name}</li>
+                            <li class="{$english_name_display|display}">- お名前(ローマ字) : {$english_name}</li>
+                            <li class="{$pron_name_display|display}">- フリガナ : {$pron_name}</li>
+                            <li class="{$country_name_display|display}">- 国 : {$country_name}</li>
+                            <li>- 住所 : {$rzipcode} {$raddr}</li>
+                            <li class="{$si_gun_do_display|display}">- 市 : {$si_gun_do}</li>
+                            <li class="{$ju_do_display|display}">- 都道府県 : {$ju_do}</li>
+                            <li>- 電話番号 : {$rphone_1}</li>
+                            <li>- 携帯電話番号 : {$rphone_2}</li>
+                            <li>- メールアドレス : {$o_email}</li>
+                            <li>- 配送メッセージ : {$message}</li>
+                            <li class="{$hope_shipping_date_display|display}">- 希望配送日 : {$hope_shipping_date}</li>
+                            <li class="{$hope_shipping_time_display|display}">- 配達希望時間 : {$hope_shipping_time}</li>
+                            <li class="{$sc_display|display}">- 配送会社 : {$sc_name}</li>
+                            <li class="{$shipping_manager_display|display}">- 配送方法 : {$shipping_name}</li>
+                        </ul>
+                        <p class="{$receiver_update_button_display|display}"><a href="#none" onclick="{$action_receiver_update_button}" class="btnNormal">お届け先変更</a></p>
+                    </td>
+                    <td class="thumb"><a href="/product/detail.html{$param_product}"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></a></td>
+                    <td class="left">
+                        <strong class="name">{$product_name_link}</strong>
+                        <div class="option {$option_display|display}">{$option_str}</div>
+                        <ul class="option" module="Myshop_optionSet">
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                        </ul>
+                    </td>
+                    <td>{$quantity}</td>
+                </tr>
+                <tr>
+                    <th {$rowspan} scope="row" class="center {$delivery_code_column_display|display}">{$no}</th>
+                    <td {$rowspan} class="top {$delivery_code_column_display|display}">
+                        <ul class="list {$receive_info_display|display}">
+                            <li>- 受取り店舗 : {$store_name}</li>
+                            <li>- 住所 : {$store_receive_addr}</li>
+                            <li>- 電話番号 : {$store_main_phone}</li>
+                            <li>- 営業時間 : {$store_office_hour}</li>
+                            <li>- 受取り可能日 : {$store_receive_period}</li>
+                            <li>- 受取り店舗案内 : {$store_receive_info}</li>
+                        </ul>
+                        <ul class="list">
+                            <li>- お名前: {$name}</li>
+                            <li class="{$english_name_display|display}">- お名前(ローマ字) : {$english_name}</li>
+                            <li class="{$pron_name_display|display}">- フリガナ : {$pron_name}</li>
+                            <li class="{$country_name_display|display}">- 国 : {$country_name}</li>
+                            <li>- 住所 : {$rzipcode} {$raddr}</li>
+                            <li class="{$si_gun_do_display|display}">- 市 : {$si_gun_do}</li>
+                            <li class="{$ju_do_display|display}">- 都道府県 : {$ju_do}</li>
+                            <li>- 電話番号 : {$rphone_1}</li>
+                            <li>- 携帯電話番号 : {$rphone_2}</li>
+                            <li>- メールアドレス : {$o_email}</li>
+                            <li>- 配送メッセージ : {$message}</li>
+                            <li class="{$hope_shipping_date_display|display}">- 希望配送日 : {$hope_shipping_date}</li>
+                            <li class="{$hope_shipping_time_display|display}">- 配達希望時間 : {$hope_shipping_time}</li>
+                            <li class="{$sc_display|display}">- 配送会社 : {$sc_name}</li>
+                            <li class="{$shipping_manager_display|display}">- 配送方法 : {$shipping_name}</li>
+                        </ul>
+                        <p class="{$receiver_update_button_display|display}"><a href="#none" onclick="{$action_receiver_update_button}" class="btnNormal">お届け先変更</a></p>
+                    </td>
+                    <td class="thumb"><a href="/product/detail.html{$param_product}"><img src="{$thumbnail}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" /></a></td>
+                    <td class="left">
+                        <strong class="name">{$product_name_link}</strong>
+                        <div class="option {$option_display|display}">{$option_str}</div>
+                        <ul class="option" module="Myshop_optionSet">
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                        </ul>
+                    </td>
+                    <td>{$quantity}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="orderArea {$ordadd.display|display}">
+        <div class="title">
+            <h3>追加情報</h3>
+        </div>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+            <caption>追加情報</caption>
+            <colgroup>
+                <col style="width:160px" />
+                <col style="width:auto" />
+            </colgroup>
+            <tbody module="Myshop_ordadd">
+                <tr>
+                    <th scope="row">{$title}</th>
+                    <td>{$content}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{$title}</th>
+                    <td>{$content}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="orderArea {$customer_msg_display|display}">
+        <div class="title">
+            <h3>お知らせ</h3>
+        </div>
+        <p class="customer">{$customer_msg}</p>
+    </div>
+
+    <div class="ec-base-button">
+        <span class="gLeft">
+            <a href="#none" onclick="{$action_print_spec}" class="btnNormal {$print_spec_display|display}">明細書印刷</a>
+            <a href="#none" onclick="{$action_print_pg_card}" class="btnNormal {$print_pg_card_display|display}">売上票印刷</a>
+            <a href="#none" onclick="{$action_select_gift}" class="btnNormal {$select_gift_display|display}">ノベルティ選択</a>
+            <a href="#none" onclick="{$action_print_store}" class="btnNormal {$delivery.print_store_display|display}">受取り店舗情報を印刷</a>
+        </span>
+        <span class="gRight">
+            <a  href="/myshop/order/list.html{$param_list}" class="btnSubmitFix sizeM">注文一覧へ戻る</a>
+        </span>
+    </div>
+
+    <div id="{$total.total_order_layer}" class="totalDetail ec-base-layer">
+        <div class="header">
+            <h3>注文金額詳細内容</h3>
+        </div>
+        <div class="content">
+            <p>{$total.price_unit_head}{$total.first_order_price}{$total.price_unit_tail}</p>
+            <ul class="ec-base-desc typeDot gLarge rightDD">
+                <li><strong class="term">商品金額</strong><span class="desc">{$total.price_unit_head}{$total.first_product_price_sum}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_vat_price_display|display}"><strong class="term">消費税</strong><span class="desc">{$total.price_unit_head}{$total.total_vat_price}{$total.price_unit_tail}</span></li>
+                <li class="{$delivery.shipping_fee_display|display}"><strong class="term">送料</strong><span class="desc">{$total.price_unit_head}{$total.first_ship_fee}{$total.price_unit_tail}</span></li>
+                <li class="{$delivery.shipping_info_display|display}"><strong class="term">地域別送料</strong><span class="desc">{$total.price_unit_head}{$total.total_local_ship_fee}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_defer_commission_display|display}"><strong class="term">決済手数料</strong><span class="desc">{$total.price_unit_head}{$total.total_defer_commission}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_admin_amount_display|display}"><strong class="term">運営者入力金額</strong><span class="desc">{$total.price_unit_head}{$total.total_admin_amount}{$total.price_unit_tail}</span></li>
+            </ul>
+        </div>
+        <a href="#none" class="close" onclick="{$total.total_order_layer_off}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+    </div>
+
+    <div id="{$total.total_benefit_layer}" class="totalDetail ec-base-layer">
+        <div class="header">
+            <h3>追加割引金額内容</h3>
+        </div>
+        <div class="content">
+            <p>{$total.price_unit_head}{$total.total_benefit_price}{$total.price_unit_tail}</p>
+            <ul class="ec-base-desc typeDot gLarge rightDD">
+                <li class="{$total.total_mobilesale_price_display|display}"><strong class="term">モバイル割引</strong><span class="desc">{$total.price_unit_head}{$total.total_mobilesale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_subscriptionpayseqsale_price_display|display}"><strong class="term">定期購入割引</strong><span class="desc">{$total.price_unit_head}{$total.total_subscriptionpayseqsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_periodsale_price_display|display}"><strong class="term">期間限定割引</strong><span class="desc">{$total.price_unit_head}{$total.total_periodsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_membersale_price_display|display}"><strong class="term">会員限定割引</strong><span class="desc">{$total.price_unit_head}{$total.total_membersale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_rebuysale_price_display|display}"><strong class="term">{$rebuysale_head}リピート割引</strong><span class="desc">{$total.price_unit_head}{$total.total_rebuysale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_paymethodsale_price_display|display}"><strong class="term">支払手段割引</strong><span class="desc">{$total.price_unit_head}{$total.total_paymethodsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_newproductsale_price_display|display}"><strong class="term">新商品割引</strong><span class="desc">{$total.price_unit_head}{$total.total_newproductsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_bulksale_price_display|display}"><strong class="term">大量購入割引</strong><span class="desc">{$total.price_unit_head}{$total.total_bulksale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_pbpsale_price_display|display}"><strong class="term">アバウトpbp割引</strong><span class="desc">{$total.price_unit_head}{$total.total_pbpsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_membergroupsale_price_display|display}"><strong class="term">会員ランク割引</strong><span class="desc">{$total.price_unit_head}{$total.total_membergroupsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_setproductsale_price_display|display}"><strong class="term">セット割引</strong><span class="desc">{$total.price_unit_head}{$total.total_setproductsale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.explode_set_product_discount_amount_display|display}"><strong class="term">セット商品割引</strong><span class="desc">{$total.price_unit_head}{$total.explode_set_product_discount_amount}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_shipfeesale_price_display|display}"><strong class="term">送料割引</strong><span class="desc">{$total.price_unit_head}{$total.total_shipfeesale_price}{$total.price_unit_tail}</span></li>
+                <li class="{$total.total_externaladdsale_price_display|display}"><strong class="term">追加割引(商品)</strong><span class="desc">{$total.price_unit_head}{$total.total_externaladdsale_price}{$total.price_unit_tail}</span></li>
+            </ul>
+            <ul class="ec-base-desc typeDot gLarge rightDD {$total.total_appproductsale_price_display|display}">
+                {$total.total_appproductsale_price_detail}
+            </ul>
+            <ul class="ec-base-desc typeDot gLarge rightDD {$total.total_appordersale_price_display|display}">
+                {$total.total_appordersale_price_detail}
+            </ul>
+        </div>
+        <a href="#none" class="close" onclick="{$total.total_benefit_layer_off}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+    </div>
+</div>

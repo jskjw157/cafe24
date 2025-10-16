@@ -1,0 +1,114 @@
+﻿<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReplyPackage_4">
+    <!--@css(/css/module/board/replyPackage.css)-->
+    <div module="board_title_4">
+        <div class="titleArea">
+            <h2>一括回答</h2>
+        </div>
+    </div>
+
+    <div module="board_reply_4">
+        <!--
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>一括回答</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th scope="row">対象投稿 <br/> 全<span class="ecActionReplyCount"></span>件</th>
+                    <td>
+                        <ul module="board_replyList_4">
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td><p class="txtInfo">回答を一括登録する場合はタイトルを修正することができません。<p></td>
+                </tr>
+                <tr class="{$config.is_admin|display}">
+                    <th scope="row">よくある回答</th>
+                    <td><a href="#none" class="btnNormal" onclick="{$action_comment_admin}">管理者返信表示</a></td>
+                </tr>
+                <tr class="{$config.is_login|display}">
+                    <th scope="row">作成者</th>
+                    <td>{$form.writer}</td>
+                </tr>
+                <tr class="{$config.use_write_email|display}">
+                    <th scope="row">メールアドレス</th>
+                    <td>{$form.email}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="clear">{$form.content}</td>
+                </tr>
+                <tr class="ucc">
+                    <th scope="row">動画URL</th>
+                    <td>{$form.ucc}</td>
+                </tr>
+                </tbody>
+
+                <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">添付ファイル1</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル2</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル3</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル4</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル5</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                </tbody>
+
+                <tbody>
+                <tr class="{$config.use_password|display}">
+                    <th scope="row">パスワード</th>
+                    <td>{$form.password} <span class="{$password_rule_help_display|display}">(半角英字(大文字・小文字)/数字/特殊文字のうち、２種類以上の組み合わせで10～16文字)</span></td>
+                </tr>
+                <tr class="{$config.use_secret|display}">
+                    <th scope="row">秘密コメント設定</th>
+                    <td>{$form.secure}</td>
+                </tr>
+                <tr class="captcha {$config.use_captcha_write|display}">
+                    <th scope="row">文字認証</th>
+                    <td>
+                        {$captcha_image} {$captcha_refresh}
+                        <p class="gBlank5">{$form.captcha} <span class="ec-base-help txtInfo">スペースを空けずに入力してください。(大小文字を区別)</span></p>
+                    </td>
+                </tr>
+                <tr class="agree {$config.is_login|display} {$display_privacy_agreement|display}">
+                    <th scope="row">個人情報の収集及び<br />利用規約同意</th>
+                    <td>
+                        {$form.privacy_agreement}<br />
+                        個人情報の収集及び利用規約に同意しますか。 {$form.privacy_agreement_radio}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gRight">
+                <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_reply}">登録</a>
+                <a href="{$link_board_list}" class="btnBasicFix sizeS">キャンセル</a>
+            </span>
+        </div>
+    </div>
+</div>

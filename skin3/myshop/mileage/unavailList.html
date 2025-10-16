@@ -1,0 +1,118 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>ポイント</strong></li>
+    </ol>
+</div>
+
+<div module="Myshop_mileageUnavailPackage">
+<!--@css(/css/module/myshop/mileageUnavailPackage.css)-->
+    <div class="titleArea" module="myshop_head">
+        <h2>{$mileage_name}</h2>
+        <p>使用できる{$mileage_name}は以下の通りです。</p>
+    </div>
+
+    <div module="myshop_summary" class="ec-base-box gHalf">
+        <ul>
+            <li><strong class="title">{$mileage_name}合計</strong> <span class="data">{$total_mileage}</span></li>
+            <li><strong class="title">使用可能の{$mileage_name}</strong> <span class="data">{$avail_mileage}</span></li>
+            <li><strong class="title">使用済みの{$mileage_name}</strong> <span class="data">{$used_mileage}</span></li>
+            <li><strong class="title">仮{$mileage_name}</strong> <span class="data">{$unavail_mileage}</span></li>
+            <li><strong class="title">返金予定{$mileage_name}</strong> <span class="data">{$refunded_mileage}</span></li>
+        </ul>
+    </div>
+
+    <div class="ec-base-tab">
+        <ul class="menu">
+            <li><a href="/myshop/mileage/historyList.html">ポイント表示</a></li>
+            <li class="selected"><a href="/myshop/mileage/unavailList.html">仮ポイント表示</a></li>
+            <li><a href="/myshop/mileage/couponList.html">仮クーポン・会員ランク別ポイント</a></li>
+        </ul>
+    </div>
+
+    <div module="myshop_unavailList">
+        <!--
+            $only_html = no
+            $count = 10
+            $login_page = /member/login.html
+        -->
+        <div class="ec-base-table typeList">
+            <table border="1" summary="">
+                <caption>{$mileage_name}履歴</caption>
+                <colgroup>
+                    <col style="width:15%" />
+                    <col style="width:15%" />
+                    <col style="width:20%" />
+                    <col style="width:20%" />
+                    <col style="width:auto" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">注文日</th>
+                        <th scope="col">{$mileage_name}</th>
+                        <th scope="col">注文内容</th>
+                        <th scope="col">使用可能予定日</th>
+                        <th scope="col">詳細</th>
+                    </tr>
+                </thead>
+                <tbody class="{$display_unavail|display} center">
+                    <tr>
+                        <td>{$order_date}</td>
+                        <td class="right">{$product_mileage}</td>
+                        <td><a href="/myshop/order/detail.html?order_id={$order_id}">{$order_id}</a></td>
+                        <td>{$can_use_date}</td>
+                        <td class="left">{$mileage_type}</td>
+                    </tr>
+                    <tr>
+                        <td>{$order_date}</td>
+                        <td class="right">{$product_mileage}</td>
+                        <td><a href="/myshop/order/detail.html?order_id={$order_id}">{$order_id}</a></td>
+                        <td>{$can_use_date}</td>
+                        <td class="left">{$mileage_type}</td>
+                    </tr>
+                    <tr>
+                        <td>{$order_date}</td>
+                        <td class="right">{$product_mileage}</td>
+                        <td><a href="/myshop/order/detail.html?order_id={$order_id}">{$order_id}</a></td>
+                        <td>{$can_use_date}</td>
+                        <td class="left">{$mileage_type}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="message {$display_unavail_none|display}">{$mileage_name}履歴がありません。</p>
+        </div>
+    </div>
+</div>
+
+<div module="myshop_unavailPaging" class="ec-base-paginate">
+    <a href="{$first_url}" class="first"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_first.gif" alt="最初ページ" /></a>
+    <a href="{$prev_url}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ" /></a>
+    <ol>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+    </ol>
+    <a href="{$next_url}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ" /></a>
+    <a href="{$last_url}" class="last"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_last.gif" alt="最後ページ" /></a>
+</div>
+
+<div class="ec-base-help" module="myshop_head">
+    <h3>{$mileage_name}のご案内</h3>
+    <div class="inner">
+        <ol module="myshop_historyInfo">
+            <li class="item1">商品購入時付与された{$mileage_name}は配送完了後、{$mileage_period} から使用できる{$mileage_name}に加算されます。<br/>配送完了後から {$mileage_period} 間は仮{$mileage_name}です。 </li>
+            <li class="item2">仮{$mileage_name}は返品・注文キャンセル等に備えた加算予定{$mileage_name}であり、使用可能な{$mileage_name}に加算されるまでご利用になれません。</li>
+            <li class="item3">使用できる{$mileage_name}(総{$mileage_name}-使用済み{$mileage_name}-仮{$mileage_name})は注文の際、すぐに御利用頂けます。</li>
+        </ol>
+    </div>
+</div>

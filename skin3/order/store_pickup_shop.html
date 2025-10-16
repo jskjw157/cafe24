@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Store Details</title>
+    <!--@css(/css/module/order/ec_orderform/form_onetouch_popup.css)-->
+    <!--@js(/js/popup_scroll.js)-->
+    <!--@js(/js/common.js)-->
+</head>
+<body id="popup" class="v2">
+<div module="Order_StorePickupShop" class="ec-base-layer">
+    <div class="header">
+        <h1>受取り店舗案内</h1>
+    </div>
+    <div class="wrap">
+        <dl class="ec-base-card pickupLocation">
+            <dt class="card-head"><strong>{$sc_name}</strong><br />{$receive_addr}</dt>
+            <dd class="card-content">
+                <div class="ec-base-table">
+                    <table>
+                        <caption>受取り店舗案内</caption>
+                        <tbody>
+                            <tr>
+                                <th scope="row">電話番号</th>
+                                <td><div class="gridSet gMiddle gap8">{$main_phone} <a href="tel:{$main_phone}" class="btnBasic">発信</a></div></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">営業時間</th>
+                                <td>{$office_hour}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">受取り店舗案内</th>
+                                <td>{$receive_info}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="top">地図</th>
+                                <td>{$receive_map}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="footer ec-base-button">
+        <a href="#none" onclick="window.close()" class="btnSubmit">閉じる</a>
+    </div>
+    <button type="button" class="btnClose" onclick="javascript:self.close();">閉じる</button>
+</div>
+</body>
+</html>

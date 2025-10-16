@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>ノベルティ</title>
+    <!--@js(/js/common.js)-->
+    <!--@js(/layout/basic/js/popup.js)-->
+    <!--@css(/css/module/order/ec_orderform/form_onetouch_layer.css)-->
+</head>
+<body id="layer" class="v2">
+<div class="dimmed"></div>
+<div module="gift_select" class="ec-base-layer">
+    <div class="header">
+        <h1>ノベルティ</h1>
+    </div>
+    <div class="wrap">
+        <p class="infoBox">ノベルティは、お持ちのノベルティポイント以内でご選択ください。</p>
+        <div module="gift_point" class="pointDetail">
+            <dl class="gridSet">
+                <dt><strong class="txtEm">ポイント合計</strong></dt>
+                <dd><strong class="txtEm">{$total_point} 点</strong></dd>
+            </dl>
+            <dl class="gridSet">
+                <dt>利用ポイント</dt>
+                <dd>{$use_point} 点</dd>
+            </dl>
+            <dl class="gridSet">
+                <dt>ポイント残高</dt>
+                <dd>{$able_point} 点 <span class="{$display_selected_count|display}">(選択ノベルティ : <span id="{$selected_count_id}">0</span>)</span></dd>  
+            </dl>
+        </div>
+
+        <div class="giftList">
+            <div class="ec-base-prdInfo">
+                {$product_choice}
+                <div class="prdBox">
+                    <div class="thumbnail"><img src="{$gift_image}" alt="" width="71" /></div>
+                    <div class="description">
+                        <strong class="prdName" title="Product">{$soldout_icon}{$product_name}</strong>
+                        <ul class="info">
+                            <li><span class="txtEm">ポイント <strong>{$gift_price} 点</strong></span></li>
+                            <li>{$option1}</li>
+                            <li>{$option2}</li>
+                            <li>{$option3}</li>
+                            <li>{$option4}</li>
+                            <li>{$option5}</li>
+                            <li>
+                                <div class="{$display_amount|display} qtyBox">
+                                    <span class="ec-base-qty">
+                                        {$product_amount}
+                                        <a href="#none" class="up" onclick="{$action_change_amount_up}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" alt="Increase"></a>
+                                        <a href="#none" class="down" onclick="{$action_change_amount_down}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" alt="Decrease"></a>
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{$display_choice_single_btn|display}">
+                                    <a href="#none" onclick="{$action_choice_single}" class="btnNormal {$display_choice_btn|display}">Select</a>
+                                    <span class="txtWarn {$display_soldout_msg|display}">品切れ</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-base-prdInfo">
+                {$product_choice}
+                <div class="prdBox">
+                    <div class="thumbnail"><img src="{$gift_image}" alt="" width="71" /></div>
+                    <div class="description">
+                        <strong class="prdName" title="Product">{$soldout_icon}{$product_name}</strong>
+                        <ul class="info">
+                            <li><span class="txtEm">ポイント <strong>{$gift_price} 点</strong></span></li>
+                            <li>{$option1}</li>
+                            <li>{$option2}</li>
+                            <li>{$option3}</li>
+                            <li>{$option4}</li>
+                            <li>{$option5}</li>
+                            <li>
+                                <div class="{$display_amount|display} qtyBox">
+                                    <span class="ec-base-qty">
+                                        {$product_amount}
+                                        <a href="#none" class="up" onclick="{$action_change_amount_up}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" alt="Increase"></a>
+                                        <a href="#none" class="down" onclick="{$action_change_amount_down}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" alt="Decrease"></a>
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{$display_choice_single_btn|display}">
+                                    <a href="#none" onclick="{$action_choice_single}" class="btnNormal {$display_choice_btn|display}">Select</a>
+                                    <span class="txtWarn {$display_soldout_msg|display}">品切れ</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="ec-base-help typeDot {$display_order_result_only|display}">
+            <li>ノベルティを選択してください。</li>
+            <li>次のステップに進むと、ノベルティは選択できませんので、ご注意ください。</li>
+        </ul>
+    
+        <ul class="ec-base-help typeDot {$display_order_detail|display}">
+            <li>ノベルティは配送前までご選択いただけます。</li>
+            <li>配送後にはご選択いただけませんので、ご注意ください。</li>
+        </ul>
+    </div>
+
+    <div class="ec-base-button">
+        <button type="button" class="btnEm sizeS" onclick="{$action_gift_cancel}">キャンセル"</button>
+        <button type="button" class="btnSubmit sizeS {$display_choice_multi_btn|display}" onclick="{$action_gift_select}">選択</button>
+    </div>
+    <a href="#none" class="btnClose" onclick="{$action_gift_close}">閉じる</a>
+</div>
+</body>
+</html>

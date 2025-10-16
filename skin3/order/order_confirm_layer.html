@@ -1,0 +1,340 @@
+<div id="{$order_confirm_layer_id}" class="orderConfirmLayer">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/order/confirm_layer.css)-->
+    <div class="dimmed"></div>
+    <div class="orderConfirmLayer ec-base-layer">
+        <div class="header">
+            <h3>注文内容確認</h3>
+        </div>
+        <div class="content">
+            <p class="desc">下記の内容をご確認の上、[決済する]ボタンをクリックしてください</p>
+            <div class="confirm">
+                <div class="title">
+                    <h4>注文商品情報</h4>
+                </div>
+                <div class="orderListArea ec-base-table typeList gBorder {$oversea_display|display}">
+                    <table border="1" summary="" nspace="oversea">
+                        <caption>注文内容</caption>
+                        <colgroup>
+                            <col style="width:92px" />
+                            <col style="width:auto" />
+                            <col style="width:98px" />
+                            <col style="width:60px" />
+                            <col style="width:98px" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">画像</th>
+                                <th scope="col">商品名</th>
+                                <th scope="col">価格</th>
+                                <th scope="col">数量</th>
+                                <th scope="col">小計</th>
+                            </tr>
+                        </thead>
+                        <tbody module="Order_oversealist" class="center">
+                            <tr>
+                                <td class="thumb gClearLine"><a href="/product/detail.html{$param}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></td>
+                                <td class="left gClearLine">
+                                    <strong class="name">{$product_name_link}</strong>
+                                    <div class="option {$option_display|display}">{$option_str}</div>
+                                    <ul class="option" module="Order_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                        <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                    </ul>
+                                    <p class="txtInfo {$expiration_date_display|display}">有效期限 : {$expiration_date}</p>
+                                </td>
+                                <td class="right">
+                                    <div id="{$confirm_product_price_div_id}" class="{$discount}"><strong>{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</strong><p class="{$product_price_display|display}">{$product_price_back_head}{$product_price_back}{$product_price_back_tail}</p></div>
+                                    <div id="{$confirm_product_sale_price_div_id}" class="{$product_sale_price_display|display}"><strong>{$product_sale_price_front_head}<span id="{$confirm_product_sale_price_front_id}">{$product_sale_price_front}</span>{$product_sale_price_front_tail}</strong><p class="{$product_sale_price_ref_display|display}">{$product_sale_price_back_head}{$product_sale_price_back}{$product_sale_price_back_tail}</p></div>
+                                </td>
+                                <td>{$product_quantity_text}</td>
+                                <td class="right"><strong>{$product_total_price_front_head}<span id="{$confirm_product_total_price_front_id}">{$product_total_price_front}</span>{$product_total_price_front_tail}</strong><div class="{$product_total_price_ref_display|display}">{$product_total_price_back_head}{$product_total_price_back}{$product_total_price_back_tail}</div></td>
+                            </tr>
+                            <tr>
+                                <td class="thumb gClearLine"><a href="/product/detail.html{$param}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></td>
+                                <td class="left gClearLine">
+                                    <strong class="name">{$product_name_link}</strong>
+                                    <div class="option {$option_display|display}">{$option_str}</div>
+                                    <ul class="option" module="Order_optionSet">
+                                        <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                        <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                    </ul>
+                                    <p class="txtInfo {$expiration_date_display|display}">有效期限 : {$expiration_date}</p>
+                                </td>
+                                <td class="right">
+                                    <div id="{$confirm_product_price_div_id}" class="{$discount}"><strong>{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</strong><p class="{$product_price_display|display}">{$product_price_back_head}{$product_price_back}{$product_price_back_tail}</p></div>
+                                    <div id="{$confirm_product_sale_price_div_id}" class="{$product_sale_price_display|display}"><strong>{$product_sale_price_front_head}<span id="{$confirm_product_sale_price_front_id}">{$product_sale_price_front}</span>{$product_sale_price_front_tail}</strong><p class="{$product_sale_price_ref_display|display}">{$product_sale_price_back_head}{$product_sale_price_back}{$product_sale_price_back_tail}</p></div>
+                                </td>
+                                <td>{$product_quantity_text}</td>
+                                <td class="right"><strong>{$product_total_price_front_head}<span id="{$confirm_product_total_price_front_id}">{$product_total_price_front}</span>{$product_total_price_front_tail}</strong><div class="{$product_total_price_ref_display|display}">{$product_total_price_back_head}{$product_total_price_back}{$product_total_price_back_tail}</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="title">
+                    <h4>お届け情報</h4>
+                </div>
+                <div class="ec-base-table">
+                    <table border="1" summary="">
+                        <caption>注文配送情報入力</caption>
+                        <colgroup>
+                            <col style="width:139px;" />
+                            <col style="width:auto;" />
+                        </colgroup>
+                        <tbody class="{$address_form} {$address_oversea_display|display}">
+                            <tr>
+                                <th scope="row">お名前</th>
+                                <td><span class="{$confirm_rname_css}"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">お名前(ローマ字)</th>
+                                <td><span class="{$confirm_rname_english_css}"></span></td>
+                            </tr>
+                            <tr class="{$pron_name_display|display}">
+                                <th scope="row">フリガナ</th>
+                                <td><span class="{$confirm_rpron_name_css}"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">電話番号</th>
+                                <td><span class="{$confirm_rphone_css}"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">携帯電話番号</th>
+                                <td><span class="{$confirm_rcell_css}"></span></td>
+                            </tr>
+                            <tr id="{$confirm_oemail_area}">
+                                <th scope="row">メールアドレス 必須</th>
+                                <td><span class="{$confirm_oemail_css}"></span></td>
+                            </tr>
+                            <tr class="{$use_delivery_message_display|display}">
+                                <th scope="row">配送メッセージ</th>
+                                <td><span class="{$confirm_delivery_msg_css}"></span></td>
+                            </tr>
+                            <tr class="{$hope_shipping_display|display}">
+                                <th scope="row">配送希望日</th>
+                                <td><span class="{$confirm_hope_date_css}"></span></td>
+                            </tr>
+                            <tr class="{$hope_shipping_time_display|display}">
+                                <th scope="row">配達希望時間</th>
+                                <td><span class="{$confirm_hope_time_css}"></span></td>
+                            </tr>
+                            <tr class="{$shipcompany_display|display} {$confirm_shipcompany_area}">
+                                <th scope="row">配送会社(配送方式)の選択</th>
+                                <td><span class="{$confirm_shipcompany_css}"></span></td>
+                            </tr>
+                            <tr class="{$shipping_method_display|display}">
+                                <th scope="row">配送方法</th>
+                                <td><span id="{$confirm_shipping_method_name}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="orderArea {$ordadd.display|display}">
+                    <div class="title">
+                        <h4>追加情報</h4>
+                    </div>
+                    <div class="ec-base-table">
+                        <table border="1" summary="">
+                            <caption>追加情報</caption>
+                            <colgroup>
+                                <col style="width:139px;" />
+                                <col style="width:auto;" />
+                            </colgroup>
+                            <tbody id="{$confirm_ord_add_id}"></tbody>
+                         </table>
+                    </div>
+                </div>
+
+                <div id="{$confirm_question_area}" class="orderArea">
+                    <div class="title">
+                        <h4>その他のお問い合わせ</h4>
+                    </div>
+                    <div class="ec-base-table">
+                        <table border="1" summary="">
+                            <caption>その他のお問い合わせ</caption>
+                            <colgroup>
+                                <col style="width:139px;" />
+                                <col style="width:auto;" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">その他のお問い合わせ</th>
+                                    <td id="{$confirm_question_id}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="totalArea">
+                    <div class="title">
+                        <h4>決済／割引／付加決済／獲得予定金額</h4>
+                    </div>
+                    <div class="ec-base-table typeList total">
+                        <table border="1" summary="">
+                            <caption>決済予定金額</caption>
+                            <colgroup>
+                                <col style="width:33.33%" />
+                                <col style="width:33.33%" class="{$total_sale_display|display}" />
+                                <col style="width:auto" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span>注文金額合計</span> <a href="#none" onclick="{$total_order_layer_on}" class="btnNormal">詳細を見る</a></th>
+                                    <th scope="col" id="{$confirm_total_sale_area1}" class="{$total_sale_display|display}"><span>合計 </span><span id="{$total_addsale_text_id}" class="{$total_addsale_text_display|display}">割引</span><span id="{$total_sale_plus_mark}" class="{$plus_mark_display|display}"> + </span><span id="{$total_addpay_text_id}" class="{$total_addpay_text_display|display}">付加決済</span><span> 金額</span></th>
+                                    <th scope="col">総決済予定金額</th>
+                                </tr>
+                            </thead>
+                            <tbody class="center">
+                                <tr>
+                                    <td class="{$total_sale_css}">
+                                        <div class="box txt16"><strong>{$total_product_ship_price_front_head}<span id="{$confirm_total_product_ship_price_front_id}" class="txt23">{$total_product_ship_price_front}</span>{$total_product_ship_price_front_tail}</strong> <span class="{$total_product_ship_price_ref_display|display}">{$total_product_ship_price_back_head}<span id="{$confirm_total_product_ship_price_back_id}">{$total_product_ship_price_back}</span>{$total_product_ship_price_back_tail}</span></div>
+                                    </td>
+                                    <td class="option {$total_sale_display|display}" id="{$confirm_total_sale_area2}">
+                                        <div class="box txt16"><strong>- {$total_sale_price_front_head}<strong id="{$confirm_total_sale_price_id}" class="txt23"></strong>{$total_sale_price_front_tail}</strong> <span class="{$total_sale_ref_display|display}">{$total_sale_price_back_head}<span id="{$confirm_total_sale_price_ref_id}"></span>{$total_sale_price_back_tail}</span></div>
+                                    </td>
+                                    <td>
+                                        <div class="box txtEm txt16"><strong>=</strong> <strong>{$total_order_price_front_head}<span id="{$confirm_total_order_price_front_id}" class="txt23">{$total_order_price_front}</span>{$total_order_price_front_tail}</strong> <span class="{$total_order_price_ref_display|display}">{$total_order_price_back_head}<span id="{$confirm_total_order_price_back_id}">{$total_order_price_back}</span>{$total_order_price_back_tail}</span></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail">
+                         <div class="ec-base-table gMerge" id="{$confirm_addsale_summary_area}">
+                            <table border="1" summary="">
+                                <caption>割引詳細</caption>
+                                <colgroup>
+                                    <col style="width:139px;" />
+                                    <col style="width:auto;" />
+                                </colgroup>
+                                <tbody>
+                                    <tr class="sum txt14">
+                                        <th scope="row">割引金額合計</th>
+                                        <td>{$price_unit_head}<strong id="{$confirm_total_addsale_price_id}"></strong>{$price_unit_tail}</td>
+                                    </tr>
+                                    <tr id="{$confirm_total_coupon_price_area}">
+                                        <th scope="row">割引クーポン</th>
+                                        <td><span class="grid" id="{$confirm_total_coupon_price_id}"></span></td>
+                                    </tr>
+                                    <tr id="{$confirm_total_discountcode_price_area}">
+                                        <th scope="row">割引コード 適用</th>
+                                        <td>
+                                            <span id="{$confirm_total_discountcode_price_id}"></span>
+                                            <ul id="{$confirm_total_discountcode_price_info}" class="info">
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr id="{$confirm_total_benefit_price_area}">
+                                        <th scope="row">追加割引金額</th>
+                                        <td><span class="gSpace20">{$price_unit_head}<span id="{$confirm_total_benefit_price_id}"></span>{$price_unit_tail}</span><a href="#none" class="btnNormal" onclick="{$total_benefit_layer_on}">詳細を見る</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ec-base-table gMerge" id="{$confirm_total_addpay_summary_area}">
+                            <table border="1" summary="">
+                                <caption>付加決済詳細</caption>
+                                <colgroup>
+                                    <col style="width:139px;" />
+                                    <col style="width:auto;" />
+                                </colgroup>
+                                <tbody>
+                                    <tr class="sum txt14">
+                                        <th scope="row">付加決済金額合計</th>
+                                        <td>{$price_unit_head}<strong id="{$confirm_used_total_addpay_id}">0</strong>{$price_unit_tail}</td>
+                                    </tr>
+                                    <tr id="{$confirm_used_mileage_area}">
+                                        <th scope="row">{$mileage_name}</th>
+                                        <td id="{$confirm_used_mileage_id}"></td>
+                                    </tr>
+                                    <tr id="{$confirm_used_deposit_area}">
+                                        <th scope="row">{$deposit_name}</th>
+                                        <td id="{$confirm_used_deposit_id}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ec-base-table gMerge" id="{$confirm_sum_mileage_area}">
+                            <table border="1" summary="">
+                                <caption>加算予定ポイント</caption>
+                                <colgroup>
+                                    <col style="width:139px;" />
+                                    <col style="width:auto;" />
+                                </colgroup>
+                                <tbody>
+                                    <tr class="sum txt14">
+                                        <th scope="row">加算予定ポイント金額合計</th>
+                                        <td><strong id="{$confirm_sum_mileage_id}"></strong></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">商品{$mileage_name}</th>
+                                        <td><span class="grid" id="{$confirm_product_mileage_id}"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">会員{$mileage_name}</th>
+                                        <td><span class="grid" id="{$confirm_member_mileage_id}"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">クーポン{$mileage_name}</th>
+                                        <td><span class="grid" id="{$confirm_coupon_mileage_id}"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="{$confirm_gift_list_area_id}">
+                    <div class="title">
+                        <h3>ノベルティ</h3>
+                    </div>
+                    <div class="ec-base-table typeList">
+                        <table border="1" summary="">
+                            <caption>ノベルティ</caption>
+                            <colgroup>
+                                <col style="width:92px" />
+                                <col style="width:auto" />
+                                <col style="width:98px" id="{$confirm_gift_point_col_id}" />
+                                <col style="width:75px" />
+                                <col style="width:98px" id="{$confirm_gift_totalpoint_col_id}" />
+                                <col style="width:98px" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">イメージ</th>
+                                    <th scope="col">商品情報</th>
+                                    <th scope="col" id="{$confirm_gift_point_id}">ノベルティポイント</th>
+                                    <th scope="col">数量</th>
+                                    <th scope="col" id="{$confirm_gift_totalpoint_id}">小計</th>
+                                    <th scope="col">区分</th>
+                                </tr>
+                            </thead>
+                            <tbody class="center" id="{$confirm_gift_list_id}">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="title">
+                    <h4>お支払い方法</h4>
+                </div>
+                <div class="ec-base-table">
+                    <table border="1" summary="">
+                        <caption>お支払い方法</caption>
+                        <colgroup>
+                            <col style="width:139px;" />
+                            <col style="width:auto;" />
+                        </colgroup>
+                        <tbody id="{$confirm_paymethod_id}"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="ec-base-button">
+            <a href="#none" id="{$btn_layer_payment_id}" class="btnSubmitFix sizeS">決済する</a>
+            <a href="#none" class="btnNormalFix sizeS" onclick="{$order_confirm_layer_off}">閉じる</a>
+        </div>
+        <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" onclick="{$order_confirm_layer_off}" /></a>
+    </div>
+</div>

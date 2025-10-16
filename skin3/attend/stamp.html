@@ -1,0 +1,107 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>出席チェック</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>出席チェック</h2>
+</div>
+
+<div module="Attend_calendarPackage">
+    <!--@css(/css/module/attend/calendarPackage.css)-->
+    <div module="attend_calendarhead">
+        <!--
+            $login_page = /member/login.html
+        -->
+        <div class="date">
+            <a href="{$prev_month}"><img src="//img.echosting.cafe24.com/skin/base/calendar/btn_date_prev.gif" alt="前月" /></a>
+            <span class="day">{$year}.{$month}</span>
+            <a href="{$next_month}"><img src="//img.echosting.cafe24.com/skin/base/calendar/btn_date_next.gif" alt="翌月" /></a>
+        </div>
+    </div>
+
+    <table module="attend_calendar" border="1" summary="">
+        <!--
+            $login_page = /member/login.html
+        -->
+        <caption>出席チェックカレンダー</caption>
+        <colgroup>
+            <col style="width:15%;" />
+            <col style="width:14%;" />
+            <col style="width:14%;" />
+            <col style="width:14%;" />
+            <col style="width:14%;" />
+            <col style="width:14%;" />
+            <col style="width:15%;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" class="sun">SUN</th>
+                <th scope="col">MON</th>
+                <th scope="col">TUE</th>
+                <th scope="col">WED</th>
+                <th scope="col">THU</th>
+                <th scope="col">FRI</th>
+                <th scope="col" class="sat">SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><p>{$sun}</p></td>
+                <td><p>{$mon}</p></td>
+                <td><p>{$the}</p></td>
+                <td><p>{$wed}</p></td>
+                <td><p>{$thu}</p></td>
+                <td><p>{$fri}</p></td>
+                <td><p>{$sat}</p></td>
+            </tr>
+            <tr>
+                <td><p>{$sun}</p></td>
+                <td><p>{$mon}</p></td>
+                <td><p>{$the}</p></td>
+                <td><p>{$wed}</p></td>
+                <td><p>{$thu}</p></td>
+                <td><p>{$fri}</p></td>
+                <td><p>{$sat}</p></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="ec-base-box center gBlank20" module="attend_message">
+        <p>{$attend_message}</p>
+    </div>
+
+    <div module="attend_button">
+        <!--
+            $login_page = /member/login.html
+        -->
+        <div class="ec-base-button">
+            <span class="gRight">
+                <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_attend}">出席チェック</a>
+            </span>
+        </div>
+
+        <div class="{$attendSecurityLayer}" style="display:none; left:300px; top:700px; text-align:left;">
+            <h3>スパム防止のための文字認証</h3>
+            <div class="content">
+                <fieldset>
+                    <legend>スパム防止のための文字認証</legend>
+                    <p class="form">
+                        <img src="{$secure_img}" alt="文字認証" />
+                        {$form.secure_text}
+                    </p>
+                    <p class="ec-base-help txt11">スペースなしで入力してください。(大文字/小文字の区分あり)</p>
+                </fieldset>
+            </div>
+            <div class="btnArea">
+                <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_capcha_do}">確認</a>
+                <a href="#none" class="btnNormalFix sizeS" onclick="{$action_capcha_undo}">キャンセル</a>
+            </div>
+            <div class="close"><a href="#none" onclick="$('.attendSecurityLayer').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a></div>
+        </div>
+    </div>
+</div>

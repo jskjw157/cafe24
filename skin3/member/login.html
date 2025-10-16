@@ -1,0 +1,80 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>ログイン</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>ログイン</h2>
+</div>
+
+<div module="member_login" class="ec-base-box typeThin">
+    <!--@css(/css/module/member/login.css)-->
+    <!--
+        $defaultReturnUrl = /index.html
+        $forbidIpUrl = member/adminFail.html
+    -->
+    <div class="login">
+        <h3 class="boxTitle">会員登録がお済みのお客様</h3>
+        <fieldset>
+            <legend>会員ログイン</legend>
+            <label class="id ePlaceholder" title="{$login_id_type_text}">{$form.member_id}</label>
+            <label class="password ePlaceholder" title="パスワード">{$form.member_passwd}</label>
+            <p class="security">
+                {$form.member_check_save_id}
+                {$form.member_check_secret_connect}
+            </p>
+            <a href="#none" class="btnLogin" onclick="{$action_func_login}">ログイン</a>
+            <ul class="snsArea">
+                <li class="{$display_naver|display}">
+                    <a href="#none" onclick="{$naver_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_naver_login.gif" alt="Naverでログイン" /></a>
+                </li>
+                <li class="{$display_facebook|display}">
+                    <a href="#none" onclick="{$facebook_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_facebook_login.gif" alt="Facebookでログイン" /></a>
+                </li>
+                <li class="{$display_yahoojp|display}">
+                    <a href="#none" onclick="{$yahoojp_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_yahoo_login3.gif" alt="Yahoo! JAPAN IDでログイン" /></a>
+                </li>
+                <li class="{$display_google|display}">
+                    <a href="#none" onclick="{$google_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_google_login.gif" alt="Googleでログイン" /></a>
+                </li>
+                <li class="{$display_kakao|display}">
+                    <a href="#none" onclick="{$kakao_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_kakao_login.gif" alt="Kakaoで始める" /></a>
+                </li>
+                <li class="{$display_line|display}">
+                    <a href="#none" onclick="{$line_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_line_login.gif" alt="LINEでログイン" /></a>
+                </li>
+                <li class="{$display_apple|display}">
+                    <a href="#none" onclick="{$apple_func_login}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/member/btn_apple_login.gif" alt="Appleでログイン" /></a>
+                </li>
+            </ul>
+            <ul>
+                <li class="{$display_find_id|display}"><a href="/member/id/find_id.html">IDをお忘れの方</a></li>
+                <li><a href="/member/passwd/find_passwd_info.html">パスワードをお忘れの方</a></li>
+                <li><a href="/member/join.html">会員登録後に購入</a></li>
+            </ul>
+            <p class="link {$display_nomember|display}" id="noMemberWrap">
+                登録されなくてもお買物はできます。<br />ただ、会員登録されていない方は特典を<br />ご利用いただけない場合がございます。予めご了承ください。
+                <a href="{$returnUrl}" class="btnEm" onclick="{$action_nomember_order}">会員登録せずに購入</a>
+            </p>
+        </fieldset>
+    </div>
+</div>
+
+<div module="MyShop_OrderHistoryNologin" class="ec-base-box typeThin">
+    <!--@css(/css/module/myshop/orderHistoryNologin.css)-->
+    <!--
+        $orderDetailUrl = /myshop/order/list.html
+    -->
+    <h3 class="boxTitle">ご利用が初めてのお客様</h3>
+    <p>会員に登録されていない場合、注文の際発生した注文番号で注文内容がご確認できます。</p>
+    <dl class="ec-base-desc gBlank20">
+        <dt>{$form_label.order_name}</dt><dd>{$form.order_name}</dd>
+        <dt>{$form_label.order_id}</dt><dd>{$form.order_id}</dd>
+        <dt>{$form_label.order_password}</dt><dd>{$form.order_password}</dd>
+    </dl>
+    <p class="ec-base-button gColumn"><button type="submit" class="btnNormal sizeM">照会</button></p>
+</div>

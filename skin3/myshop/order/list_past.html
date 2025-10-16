@@ -1,0 +1,136 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>注文履歴</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>注文履歴</h2>
+</div>
+
+<div module="Myshop_OrderHistoryTab" class="ec-base-tab">
+    <ul class="menu">
+        <li class="{$tab_class}"><a href="/myshop/order/list.html{$param}">注文履歴 ({$total_orders}件)</a></li>
+        <li class="{$tab_class_cs}"><a href="/myshop/order/list.html{$param_cs}">キャンセル/交換/返品履歴 ({$total_orders_cs}件)</a></li>
+        <li class="{$tab_class_past}"><a href="/myshop/order/list_past.html{$param_past}">過去の注文履歴 ({$total_orders_past}件)</a></li>
+        <li class="{$tab_class_old} {$old_list_display|display}"><a href="/myshop/order/list_old.html{$param_old}">注文履歴(移転前) ({$total_orders_old}件)</a></li>
+    </ul>
+</div>
+
+<div module="Myshop_OrderHistoryHead">
+    <!--@css(/css/module/myshop/orderHistoryHead.css)-->
+    <fieldset class="ec-base-box">
+        <legend>検索期間設定</legend>
+
+        <div class="periodSelect">
+
+            {$order_search_year}
+        </div>
+        <input alt="照会" id="order_search_btn" type="image" src="//img.echosting.cafe24.com/skin/admin_ja_JP/myshop/btn_search.gif" onclick="OrderHistory.searchPast(true)">
+    </fieldset>
+    <ul>
+        <li>注文処理が完了してから36ヶ月以内の注文については､｢注文履歴｣のタブで確認することができます。</li>
+        <li>商品購入金額は注文時の販売価格とオプション追加金額の合計(消費税含む)に数量が反映された金額です。</li>
+    </ul>
+</div>
+
+<div module="Myshop_OrderHistoryListPast" class="ec-base-table typeList">
+    <!--@css(/css/module/myshop/orderHistoryListPast.css)-->
+    <!--
+        $login_url = /member/login.html
+    -->
+
+    <div class="title">
+        <h3>{$list_title}</h3>
+    </div>
+
+    <table border="1" summary="">
+        <caption>{$list_title}</caption>
+        <colgroup>
+            <col style="width:135px;" />
+            <col style="width:93px;" />
+            <col style="width:auto;" />
+            <col style="width:61px;" />
+            <col style="width:111px;" />
+            <col style="width:111px;" />
+            <col style="width:111px;" />
+        </colgroup>
+        <thead>
+        <tr>
+            <th scope="col">注文日<br />[注文番号]</th>
+            <th scope="col">画像</th>
+            <th scope="col">商品情報</th>
+            <th scope="col">数量</th>
+            <th scope="col">注文金額</th>
+            <th scope="col">注文状態</th>
+            <th scope="col">実際の決済額の合計</th>
+        </tr>
+        </thead>
+        <tbody class="center {$list_display|display}">
+        <tr>
+            <td {$rowspan} class="number {$display_column|display}">
+                {$order_date}
+                <p>[{$order_id}]</p>
+            </td>
+            <td class="thumb"><a href="/product/detail.html{$param}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></td>
+            <td class="product left top">
+                <strong class="name">{$product_name_link}</strong>
+                <div class="option {$option_display|display}">{$option_str}</div>
+                <ul class="option" module="Myshop_optionSet">
+                    <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                    <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                </ul>
+            </td>
+            <td>{$quantity}</td>
+            <td class="right"><strong>{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</strong><div class="{$product_price_ref_display|display}">{$product_price_back_head}{$product_price_back}{$product_price_back_tail}</div></td>
+            <td class="state gBorder">
+                <p class="txtEm">{$status}</p>
+            </td>
+            <td {$rowspan} class="{$display_column|display}">
+                <p><strong>{$total_order_price_front_head}{$total_order_price_front}{$total_order_price_front_tail}</strong></p>
+                <p class="{$total_order_price_ref_display|display}">({$total_order_price_back_head}{$total_order_price_back}{$total_order_price_back_tail})</p>
+            </td>
+        </tr>
+        <tr>
+            <td {$rowspan} class="number {$display_column|display}">
+                {$order_date}
+                <p>[{$order_id}]</p>
+            </td>
+            <td class="thumb"><a href="/product/detail.html{$param}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></td>
+            <td class="product left top">
+                <strong class="name">{$product_name_link}</strong>
+                <div class="option {$option_display|display}">{$option_str}</div>
+                <ul class="option" module="Myshop_optionSet">
+                    <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                    <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                </ul>
+            </td>
+            <td>{$quantity}</td>
+            <td class="right"><strong>{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</strong><div class="{$product_price_ref_display|display}">{$product_price_back_head}{$product_price_back}{$product_price_back_tail}</div></td>
+            <td class="state gBorder">
+                <p class="txtEm">{$status}</p>
+            </td>
+            <td {$rowspan} class="{$display_column|display}">
+                <p><strong>{$total_order_price_front_head}{$total_order_price_front}{$total_order_price_front_tail}</strong></p>
+                <p class="{$total_order_price_ref_display|display}">({$total_order_price_back_head}{$total_order_price_back}{$total_order_price_back_tail})</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="message {$empty_display|display}">注文履歴がありません。</p>
+</div>
+
+<div module="Myshop_OrderHistoryPaging" class="ec-base-paginate">
+    <a href="{$param_first}" class="first"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_first.gif" alt="最初ページ" /></a>
+    <a href="{$param_prev}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ" /></a>
+    <ol>
+        <li><a href="{$param_page}" class="{$param_class}">{$num}</a></li>
+        <li><a href="{$param_page}" class="{$param_class}">{$num}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ" /></a>
+    <a href="{$param_last}" class="last"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_last.gif" alt="最後ページ" /></a>
+</div>

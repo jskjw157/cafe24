@@ -1,0 +1,81 @@
+<div module="product_searchdata">
+    <!--@css(/css/module/product/searchdata.css)-->
+    <form class="searchField" id="{$searchkeyword_form}" action="/product/search.html" method="get">
+        <fieldset>
+            <legend>商品検索</legend>
+            <div class="searchInput">
+                {$searchdata_keywordform}<input type="image" id="{$search_submit_button}" src="//img.echosting.cafe24.com/skin/base/product/btn_search.gif" alt="検索" class="btnSearch" /><ul class="autoDrop" id="{$search_auto_id}"></ul>
+            </div>
+            <button type="button" class="btnSearchOption">検索オプション</button>
+            <!-- 검색옵션 레이어 -->
+            <div id="ec-product-searchoption" class="searchOption ec-base-layer">
+                <!--@css(/layout/basic/css/ec-base-layer.css)-->
+                <div class="header">
+                    <h3>検索オプション</h3>
+                </div>
+                <div class="content">
+                    <div class="boardWrite">
+                        <table border="1" summary="">
+                            <caption>検索オプション</caption>
+                            <colgroup>
+                                <col style="width:80px;" />
+                                <col style="width:auto;" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">検索キワード</th>
+                                    <td>
+                                        {$searchdata_detail_keywordform}
+                                        <p class="desc">{$searchdata_detail_type_form}<label for="{$search_detail_type_id}"> キーワードを一つ以上含むすべての商品を検索</label></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">除外キーワード</th>
+                                    <td>
+                                        {$searchdata_except_keywordform}
+                                        <p class="desc">検索結果から除きたいキーワードを入力してください。</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="ec-base-button">
+                    <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/product/btn_search.gif" alt="検索" id="{$searchdata_layer_submit}" /></a>
+                    <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/product/btn_reset.gif" alt="初期化" id="{$searchdata_layer_reset}" /></a>
+                </div>
+                <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+            </div><!-- //참고: 검색옵션 레이어 -->
+        </fieldset>
+        <div module="product_RelateKeyword" class="keywordArea">
+            <strong class="heading">関連キーワード</strong>
+            <ul class="list">
+                <li><a href="{$relate_url}">{$relate_word}</a></li>
+                <li><a href="{$relate_url}">{$relate_word}</a></li>
+            </ul>
+        </div>
+        <div module="product_HotKeyword" class="keywordArea">
+            <strong class="heading">人気キワード</strong>
+            <ul class="list">
+                <li><a href="{$hot_keyword_search_url}">{$hot_keyword_name}</a></li>
+                <li><a href="{$hot_keyword_search_url}">{$hot_keyword_name}</a></li>
+            </ul>
+        </div>
+    </form>
+
+    <div module="product_searchConditionData">
+        <button type="button" class="btnRefresh ec-product-searchdata-reset">一括削除</button>
+        <ul class="list">
+            <li>{$search_condition_data}<button type="button" class="btnSearchDelete" {$search_attr}>削除</button></li>
+            <li>{$search_condition_data}<button type="button" class="btnSearchDelete" {$search_attr}>削除</button></li>
+        </ul>
+    </div>
+    <div class="searchResult">
+        <p class="record">全<strong>{$total_count}</strong>件が検索されました。</p>
+        <ul module="product_searchOrderby">
+            <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+            <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+        </ul>
+    </div>
+    <p class="noData {$search_fail_display|display}">一致する情報は見つかりません。</p>
+</div>

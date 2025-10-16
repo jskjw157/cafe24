@@ -1,0 +1,35 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>パスワードをお忘れの方</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>パスワードをお忘れの方</h2>
+</div>
+
+<div module="member_findpasswdresult" class="ec-base-box typeThin">
+    <!--@css(/css/module/member/find_passwd_result.css)-->
+    <div class="findPw">
+        <h3 class="boxTitle">パスワードを忘れたら</h3>
+        <div class="desc">
+            <p class="{$display_email_method|display}">お客様のメールアドレスに仮パスワードを送信しました。</p>
+        </div>
+        <div class="ec-base-box typeMember gMessage">
+            <strong class="message">いつも当サイトをご利用いただき、誠にありがとうございます。</strong>
+            <div class="information">
+                <p class="thumbnail"><img src="//img.echosting.cafe24.com/skin/base/member/img_member_default.gif" alt="" /></p>
+                <p class="description">
+                    <span class="{$display_id_method|display}"><strong class="txtEm">{$id}</strong>様、<br /></span>
+                    <strong class="txtEm"><span class="{$display_email_method|display}">{$email}</span><span class="{$display_mobile_method|display}">{$mobile}</span></strong>に仮パスワードをお送りしました。
+                </p>
+            </div>
+        </div>
+        <div class="ec-base-button gBlank20">
+            <a href="/member/login.html" class="btnSubmitFix sizeM">ログイン</a>
+        </div>
+    </div>
+</div>

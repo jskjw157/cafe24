@@ -1,0 +1,41 @@
+<div module="product_stocklayer">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/product/stocklayer.css)-->
+    <div id="{$stockLayerID}" class="layer {$stockLayerClass} ec-base-layer">
+        <div class="header">
+            <h3>在庫数量</h3>
+        </div>
+        <div class="content">
+            <p class="desc">
+                現在商品の在庫数量です。<br />
+                但し、時間の経過により実際の在庫数とは異なる場合があります。
+            </p>
+            <div class="ec-base-table typeList gBorder gBlank10">
+                <table summary="" border="1">
+                    <caption>在庫数量</caption>
+                    <colgroup>
+                    <col style="width:70%" />
+                    <col style="width:30%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">オプション</th>
+                            <th scope="col">在庫数量</th>
+                        </tr>
+                    </thead>
+                    <tbody class="center">
+                        <tr>
+                            <td class="left">{$option_value}</td>
+                            <td>{$stock_value}</td>
+                        </tr>
+                        <tr>
+                            <td class="left">{$option_value}</td>
+                            <td>{$stock_value}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a href="#none" class="close" onClick="{$stockLayerCloseAction}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+    </div>
+</div>

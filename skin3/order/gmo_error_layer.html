@@ -1,0 +1,30 @@
+<div id="ec-order-gmo-error-layer" class="gmoErrorLayer">
+    <!--@css(/css/module/order/gmo_error_layer.css)-->
+    <h1>審査ＮＧ</h1>
+    <div class="content">
+        <p>
+            審査の処理に失敗しました。<br />
+            連続して失敗する場合、<br />
+            カスタマーサービスまでお問合せください。
+        </p>
+        <table border="1" summary="">
+            <caption>失敗理由</caption>
+            <colgroup>
+                <col style="width:120px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">失敗理由</th>
+                    <td>
+                        <div id="{$gmo_error_message}" class="causeFail"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="btnArea center">
+        <a href="#none" class="btnNormal sizeS" onclick="$('#ec-order-gmo-error-layer').hide();">閉じる</a>
+    </div>
+    <div class="close"><a href="#none" onclick="$('#ec-order-gmo-error-layer').hide();"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/common/btn_close.png" alt="閉じる" /></a></div>
+</div>

@@ -1,0 +1,80 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<div class="titleArea">
+    <h2>アカウントを有効にする</h2>
+</div>
+
+<div module="member_activation" class="activationArea">
+    <!--@css(/css/module/member/activation.css)-->
+    <!--
+        $returnUrl = /member/join_result.html
+     -->
+    <h3>基本情報</h3>
+    <p class="required"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /> 必須項目</p>
+    <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+            <caption>基本情報</caption>
+            <colgroup>
+                <col style="width:150px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">パスワード <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        <div class="eTooltip">
+                            {$form.passwd}
+                            <div class="ec-base-tooltip typeUpper">
+                                <div class="content">
+                                    <strong class="txtWarn">※ {$passwd_terms}</strong>
+                                    <ul class="ec-base-help typeDash gBlank10 txtWarn">
+                                        {$passwd_chk_info}
+                                    </ul>
+                                </div>
+                                <a href="#none" class="btnClose"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif" alt="閉じる" /></a>
+                                <span class="edge"></span>
+                            </div>
+                        </div>
+                        {$passwd_type_desc}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">パスワード(確認) <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>{$form.user_passwd_confirm} <span id="{$pwConfirmMsg_id}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mAgreement">
+        <div class="desc"><a href="agreement/agreement1.html" class="txtLink" target="_blank" onclick="{$agreementPopup}">利用規約</a>、<a href="agreement/agreement2.html" class="txtLink" target="_blank" onclick="{$agreementPopup}">個人情報の収集および利用</a>(必須)に関する内容にすべて同意します。</div>
+        <div class="{$display_privacy_optional|display} box">
+            <label class="gLabel">{$form.agree_privacy_optional_check} 個人情報の収集および利用目的(任意)</label>
+            <a href="agreement/agreement6.html" class="btnDetail" target="_blank" onclick="{$agreementPopup}">詳細を見る</a>
+        </div>
+        <div class="{$display_information|display} box">
+            <label class="gLabel">{$form.agree_information_check} 個人情報の第三者提供 (任意)</label>
+            <a href="agreement/agreement3.html" class="btnDetail" target="_blank" onclick="{$agreementPopup}">詳細を見る</a>
+        </div>
+        <div class="{$display_consignment|display} box">
+            <label class="gLabel">{$form.agree_consignment_check} 個人情報取扱の委託 (任意)</label>
+            <a href="agreement/agreement4.html" class="btnDetail" target="_blank" onclick="{$agreementPopup}">詳細を見る</a>
+        </div>
+        <div class="{$display_marketing|display} box">
+            <label class="gLabel">{$sMarketingAgreeAllChecked} お得な情報の受信(任意)</label>
+            <ul class="check">
+                <li class="{$display_is_sms|display}">
+                    <span>SMSを受信しますか?</span> {$form.is_sms}
+                </li>
+                <li class="{$display_is_news_mail|display}">
+                    <span>メールマガジンを受信しますか?</span> {$form.is_news_mail}
+                </li>
+            </ul>
+            <a href="agreement/agreement5.html" class="btnDetail" target="_blank" onclick="{$agreementPopup}">詳細を見る</a>
+        </div>
+    </div>
+
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_func_join}">アカウントを有効にする</a>
+    </div>
+</div>

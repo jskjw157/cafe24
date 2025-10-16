@@ -1,0 +1,54 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Estimate_Userform" class="ec-base-layer">
+    <!--@css(/css/module/estimate/userform.css)-->
+    <!--
+        $action_url = /estimate/print.html
+    -->
+    <div class="header">
+        <h1>情報入力</h1>
+    </div>
+
+    <div class="content">
+        <h2>申込者情報</h2>
+        <div class="ec-base-table">
+            {$form.begin}
+            <table border="1" summary="">
+                <caption>申込者情報</caption>
+                <colgroup>
+                    <col style="width:150px" />
+                    <col style="width:auto" />
+                </colgroup>
+                <tr>
+                    <th scope="row">お名前</th>
+                    <td>{$form.user_name}</td>
+                </tr>
+                <tr>
+                    <th scope="row">携帯電話番号</th>
+                    <td>{$form.mobile}</td>
+                </tr>
+                <tr>
+                    <th scope="row">メールアドレス</th>
+                    <td>
+                        {$form.email}
+                        <p class="gBlank5">- 見積書を受信するメールアドレスを入力してください。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">個人情報の収集および利用に同意</th>
+                    <td>
+                        <div class="agree">{$privacy_agreement}</div>
+                        <p class="gBlank5">
+                            <span class="gSpace20">個人情報の収集および利用に同意しますか？</span>
+                            {$form.agree_T}<label for="agreement_check_T">同意する</label> {$form.agree_F}<label for="agreement_check_F">同意しない</label>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            {$form.end}
+        </div>
+    </div>
+
+    <div class="ec-base-button">
+        <a href="#none" onclick="{$action_confirm}" class="btnSubmitFix sizeS">確認</a>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div module="Product_BasketAdd" class="ec-base-layer">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/product/basketAdd.css)-->
+    <div class="header">
+        <h3>カートに入れる</h3>
+    </div>
+    <div class="content">
+        <p>選択した商品をカートに入れました。</p>
+    </div>
+    <div class="ec-base-button">
+        <a href="/order/basket.html?delvtype={$delvtype}" class="btnSubmitFix sizeS">カートを見る</a>
+        <a href="#none" class="btnNormal sizeS" onclick="$('#confirmLayer').remove();" complete="complete">ショッピングを続ける</a>
+    </div>
+    <a class="close" onclick="$('#confirmLayer').remove();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+</div>

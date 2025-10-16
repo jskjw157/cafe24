@@ -1,0 +1,79 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReadPackage_4">
+    <!--@css(/css/module/board/replyPackage.css)-->
+    <div module="board_title_4">
+
+        <div class="titleArea">
+            <h2>一括コメント</h2>
+        </div>
+    </div>
+
+    <div module="board_CommentPackage_4">
+        <!--
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>一括コメント</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th scope="row">対象投稿 <br/> 全<span class="ecActionReplyCount"></span>件</th>
+                    <td>
+                        <ul module="board_replyList_4">
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+
+                <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">添付ファイル1</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル2</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル3</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル4</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル5</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div module="board_CommentPackage_4">
+            <!--@css(/css/module/board/commentPackage.css)-->
+            <div module="board_commentwrite_4" class="commentwrite-all">
+
+                <div class="{$comment_write_display|display}">
+                    <fieldset>
+                        <legend>コメント作成</legend>
+                        <div class="input">
+                            <strong>コメント作成</strong>
+                            <span class="{$comment_input_name|display}">お名前 : {$form.comment_name}</span><a href="#none" onclick="{$action_comment_admin}" class="btnNormal">管理者返信表示</a>
+                        </div>
+                        <div class="view">
+                            {$form.comment}
+                            <a href="#none" onclick="{$action_comment_insert}" class="btnEm sizeL {$comment_button|display}">確認</a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

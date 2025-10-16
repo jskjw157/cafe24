@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>クーポン</title>
+    <!--@css(/css/module/order/ec_orderform/form_onetouch_popup.css)-->
+    <!-- If you want to create your own style, create a new CSS style sheet. Try coding #userStyle #mCafe24Order { } . -->
+
+    <!--@js(/js/popup_scroll.js)-->
+    <!--@js(/layout/basic/js/common.js)-->
+</head>
+<body id="popup" class="v2">
+
+<div module="Coupon_SelectNew" class="ec-base-layer {$gClearFlex}">
+    <!--
+        $prd_non_coupon_display = F
+    -->
+    <div class="header">
+        <h1>クーポン</h1>
+    </div>
+    <div class="wrap">
+        <div class="ec-base-card productCoupon {$bPrdCoupon|display}">
+            <div class="card-head">
+                <h2>商品クーポン</h2>
+            </div>
+            <div class="card-content">
+                <div module="Coupon_aPrd" class="segment">
+                    <strong class="prdName">{$product_name}<span>{$sOptStr}</span><span id="{$coupon_prd_hidden}">{$sHidden}</span></strong>
+                    <div class="ec-base-table">
+                        <table>
+                            <caption>商品クーポン</caption>
+                            <tbody>
+                            <tr>
+                                <th scope="row">販売価格</th>
+                                <td>{$sOrdPrice}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="top">割引特典</th>
+                                <td class="top">
+                                    <span id="{$coupon_prd_total_sale_price}" class="benefit">{$sTotalMemberSalePrice}</span>
+                                    <div id="{$coupon_prd_select}" class="selectCoupon">{$sCoupon}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">割引/獲得予定ポイント</th>
+                                <td>
+                                    <strong class="txtStrong txtDiscount">{$sCouponSaleSpan}</strong>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ec-base-card {$bOrdCoupon|display}">
+            <div class="card-head">
+                <h2>注文書クーポン</h2>
+            </div>
+            <div class="card-content">
+                <div class="ec-base-table">
+                    <table>
+                        <caption>注文書クーポン</caption>
+                        <tbody>
+                        <tr>
+                            <th scope="row">注文書クーポン</th>
+                            <td>
+                                <div class="segment">
+                                    <ul id="{$selected_order_coupon_id}" class="ordCouponList">
+                                        <li>{$sOrdCoupon}</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ec-base-card ec-shipCoupon">
+            <div class="card-head">
+                <h2>送料クーポン</h2>
+            </div>
+            <div class="card-content">
+                <div class="ec-base-table">
+                    <table>
+                        <caption>送料クーポン</caption>
+                        <tbody>
+                        <tr>
+                            <th scope="row">送料クーポン</th>
+                            <td>
+                                <div class="segment">
+                                    <ul id="{$selected_ship_coupon_id}" class="shipCouponList"></ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ec-base-card">
+            <div class="card-head">
+                <h2>割引/獲得予定ポイントの内訳(クーポン別)</h2>
+                <!-- このコメントを削除すると正常に動作しません。絶対に削除しないでください。 -->
+                <!-- <span class="txtStrong gRight txtDiscount">{$price_unit_head}<span id="{$total_coupon_discount_id}">0</span>{$price_unit_tail}</span> -->
+            </div>
+            <div class="card-content">
+                <div class="ec-base-table">
+                    <table>
+                        <caption>割引/獲得予定ポイントの内訳(クーポン別)</caption>
+                        <tbody>
+                        <tr>
+                            <th scope="row">クーポン割引総額</th>
+                            <td><strong class="txtStrong txtDiscount">{$price_unit_head}<span id="{$total_coupon_discount_id}">0</span>{$price_unit_tail}</strong></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">商品(クーポン)</th>
+                            <td><span class="txtDiscount">{$price_unit_head}<span id="{$product_coupon_discount_id}">0{$price_unit_tail}</span>/<span id="{$product_coupon_mileage_id}">0</span></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">注文書(クーポン)</th>
+                            <td><span class="txtDiscount">{$price_unit_head}<span id="{$order_coupon_discount_id}">0{$price_unit_tail}</span>/<span id="{$order_coupon_mileage_id}">0</span></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">送料割引</th>
+                            <td><span class="txtDiscount">{$price_unit_head}<span id="{$ship_coupon_discount_id}">0{$price_unit_tail}</span></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="helpArea gBlank16">
+                    <ul class="ec-base-help">
+                        <li>お持ちのクーポンのうち、適用可能なクーポンのみ表示されます。</li>
+                        <li>クーポンは会員ランク割引が行われてから適用されるため、現在表示されている販売価格は実際のお支払い金額と異なる場合があります。</li>
+                        <li>追加クーポンとは、使用枚数の上限に関係なく追加的に適用できるクーポンを意味します(商品クーポン・注文書クーポンにおいて1枚ずつ適用可能)。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer ec-base-button">
+        <button type="button" class="btnReset" onclick="{$action_init}"><i class="icoReset"></i>リセット</button>
+        <button type="button" class="btnSubmit" onclick="{$action_result}">クーポン適用</button>
+    </div>
+    <button type="button" class="btnClose" onclick="javascript:self.close();">閉じる</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<div id="{$join_confirm_layer_id}" class="joinConfirm ec-base-layer">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/member/join_confirm.css)-->
+    <div class="header">
+        <h3>入力内容のご確認</h3>
+    </div>
+    <div class="content">
+        <p>下記の内容をご確認の上、[会員登録]ボタンをクリックしてください。</p>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+                <caption>入力内容のご確認</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">メールアドレス</th>
+                        <td><span id="{$join_confirm_field_email1}"></span></td>
+                    </tr>
+                    <tr class="{$display_use_id|display}">
+                        <th scope="row">ID</th>
+                        <td><span id="{$join_confirm_field_member_id}"></span></td>
+                    </tr>
+                    <tr class="{$display_name|display}">
+                        <th scope="row">お名前</th>
+                        <td><span id="{$join_confirm_field_name}"></span></td>
+                    </tr>
+                    <tr class="{$display_eng_name|display}">
+                        <th scope="row">お名前<br>(ローマ字)</th>
+                        <td><span id="{$join_confirm_field_name_en}"></span></td>
+                    </tr>
+                    <tr class="{$display_pron_name|display}">
+                        <th scope="row">フリガナ</th>
+                        <td><span id="{$join_confirm_field_name_phonetic}"></span></td>
+                    </tr>
+                    <tr class="{$display_addr|display}">
+                        <th scope="row">国</th>
+                        <td><span id="{$join_confirm_field_country}"></span></td>
+                    </tr>
+                    <tr class="{$display_addr|display}">
+                        <th scope="row">郵便番号</th>
+                        <td><span id="{$join_confirm_field_postcode1}"></span></td>
+                    </tr>
+                    <tr class="{$display_addr|display}">
+                        <th scope="row">住所 1</th>
+                        <td><span id="{$join_confirm_field_addr1}"></span></td>
+                    </tr>
+                    <tr class="{$display_addr|display}">
+                        <th scope="row">住所 2</th>
+                        <td><span id="{$join_confirm_field_addr2}"></span></td>
+                    </tr>
+                    <tr class="{$display_addr|display}">
+                        <th scope="row">市</th>
+                        <td><span id="{$join_confirm_field_city_name}"></span></td>
+                    </tr>
+                    <tr class="{$display_addr|display}">
+                        <th scope="row">都道府県</th>
+                        <td><span id="{$join_confirm_field_state_name}"></span></td>
+                    </tr>
+                    <tr class="{$display_phone|display}">
+                        <th scope="row">電話番号</th>
+                        <td><span id="{$join_confirm_field_phone}"></span></td>
+                    </tr>
+                    <tr class="{$display_mobile|display}">
+                        <th scope="row">携帯電話番号</th>
+                        <td><span id="{$join_confirm_field_mobile}"></span></td>
+                    </tr>
+                    <tr class="{$display_is_sms|display}">
+                        <th scope="row">SMS</th>
+                        <td><span id="{$join_confirm_field_is_sms}"></span></td>
+                    </tr>
+                    <tr class="{$display_is_news_mail|display}">
+                        <th scope="row">メールマガジン</th>
+                        <td><span id="{$join_confirm_field_is_news_mail}"></span></td>
+                    </tr>
+                    <tr class="{$display_nick|display}">
+                        <th scope="row">ニックネーム</th>
+                        <td><span id="{$join_confirm_field_nick_name}"></span></td>
+                    </tr>
+                    <tr class="{$display_is_sex|display}">
+                        <th scope="row">性別</th>
+                        <td><span id="{$join_confirm_field_is_sex}"></span></td>
+                    </tr>
+                    <tr class="{$display_birthday|display}">
+                        <th scope="row">生年月日</th>
+                        <td><span id="{$join_confirm_field_birth_year}"></span> 年 <span id="{$join_confirm_field_birth_month}"></span> 月 <span id="{$join_confirm_field_birth_day}"></span> 日</td>
+                    </tr>
+                    <tr class="{$display_marry|display}">
+                        <th scope="row">結婚記念日</th>
+                        <td><span id="{$join_confirm_field_marry_year}"></span> 年 <span id="{$join_confirm_field_marry_month}"></span> 月 <span id="{$join_confirm_field_marry_day}"></span> 日</td>
+                    </tr>
+                    <tr class="{$display_add1|display}">
+                        <th scope="row">{$title_add1}</th>
+                        <td><span id="{$join_confirm_field_add1}"></span></td>
+                    </tr>
+                    <tr class="{$display_add2|display}">
+                        <th scope="row">{$title_add2}</th>
+                        <td><span id="{$join_confirm_field_add2}"></span></td>
+                    </tr>
+                    <tr class="{$display_add3|display}">
+                        <th scope="row">{$title_add3}</th>
+                        <td><span id="{$join_confirm_field_add3}"></span></td>
+                    </tr>
+                    <tr class="{$display_add4|display}">
+                        <th scope="row">{$title_add4}</th>
+                        <td><span id="{$join_confirm_field_add4}"></span></td>
+                    </tr>
+                    <tr class="{$display_add5|display}">
+                        <th scope="row">{$title_add5}</th>
+                        <td><span id="{$join_confirm_field_add5}"></span></td>
+                    </tr>
+                    <tr class="{$display_add6|display}">
+                        <th scope="row">{$title_add6}</th>
+                        <td><span id="{$join_confirm_field_add6}"></span></td>
+                    </tr>
+                    <tr class="{$display_add7|display}">
+                        <th scope="row">{$title_add7}</th>
+                        <td><span id="{$join_confirm_field_add7}"></span></td>
+                    </tr>
+                    <tr class="{$display_add8|display}">
+                        <th scope="row">{$title_add8}</th>
+                        <td><span id="{$join_confirm_field_add8}"></span></td>
+                    </tr>
+                    <tr class="{$display_add9|display}">
+                        <th scope="row">{$title_add9}</th>
+                        <td><span id="{$join_confirm_field_add9}"></span></td>
+                    </tr>
+                    <tr class="{$display_add10|display}">
+                        <th scope="row">{$title_add10}</th>
+                        <td><span id="{$join_confirm_field_add10}"></span></td>
+                    </tr>
+                    <tr class="{$display_add11|display}">
+                        <th scope="row">{$title_add11}</th>
+                        <td><span id="{$join_confirm_field_add11}"></span></td>
+                    </tr>
+                    <tr class="{$display_add12|display}">
+                        <th scope="row">{$title_add12}</th>
+                        <td><span id="{$join_confirm_field_add12}"></span></td>
+                    </tr>
+                    <tr class="{$display_add13|display}">
+                        <th scope="row">{$title_add13}</th>
+                        <td><span id="{$join_confirm_field_add13}"></span></td>
+                    </tr>
+                    <tr class="{$display_add14|display}">
+                        <th scope="row">{$title_add14}</th>
+                        <td><span id="{$join_confirm_field_add14}"></span></td>
+                    </tr>
+                    <tr class="{$display_add15|display}">
+                        <th scope="row">{$title_add15}</th>
+                        <td><span id="{$join_confirm_field_add15}"></span></td>
+                    </tr>
+                    <tr class="{$display_reco_id|display}">
+                        <th scope="row">紹介者ID</th>
+                        <td><span id="{$join_confirm_field_reco_id}"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS" id="{$btn_layer_join_id}">登録する</a>
+        <a href="#none" class="btnNormalFix sizeS" onclick="{$join_confirm_layer_off}">閉じる</a>
+    </div>
+    <a href="#none" class="close"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" onclick="{$join_confirm_layer_off}" /></a>
+</div>

@@ -1,0 +1,591 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>カート</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>カート</h2>
+</div>
+
+<div module="Order_BasketPackage">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/order/basketPackage.css)-->
+
+    <p class="orderStep"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/order/img_order_step1.gif" alt="01 カート" /></p>
+
+    <div module="Order_DcInfo" class="ec-base-box typeMember {$dc_info_display|display}">
+        <!--@css(/css/module/order/dcInfo.css)-->
+        <div class="information">
+            <h3 class="title">お得な情報</h3>
+            <div class="description">
+                <div class="member {$display_benefit|display}">
+                    <p><strong>{$user_name}</strong>様の会員ランクは [{$group_name}] です。</p>
+                    <ul class="{$dc_summary_display|display}">
+                        <li class="{$dc_display|display}"><span class="{$dc_min_display|display}">注文金額が{$dc_min_value}</span>以上<span class="{$dc_paymethod_display|display}">{$dc_paymethod}</span>の場合、<span>{$dc_value}</span>を追加割引します。<span class="{$dc_max_display|display}">(最大 {$dc_max_value})</span></li>
+                        <li class="{$dc_mileage_display|display}"><span class="{$dc_mileage_min_display|display}">注文金額が{$dc_mileage_min_value}</span>以上<span class="{$dc_mileage_paymethod_display|display}">{$dc_mileage_paymethod}</span>の場合、<span>{$dc_mileage_value}</span>が追加積立てられます。<span class="{$dc_mileage_max_display|display}">(最大 {$dc_mileage_max_value})</span></li>
+                    </ul>
+                </div>
+                <ul class="mileage">
+                    <li><a href="/myshop/mileage/historyList.html">使用可能{$mileage_name} : <strong>{$avail_mileage}</strong></a></li>
+                    <li class="{$deposit_display|display}"><a href="/myshop/deposits/historyList.html">{$deposit_name} : <strong>{$total_deposit}{$deposit_unit}</strong></a></li>
+                    <li><a href="/myshop/coupon/coupon.html">クーポン : <strong>{$coupon_cnt}枚</strong></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div module="Order_Empty">
+        <p>カートに商品が入っていません。</p>
+    </div>
+
+    <div module="Order_BasketOption">
+        <!-- Do not delete this code
+            $product_weight_display=F
+            $checked_product_calc=T
+        -->
+    </div>
+
+    <div class="orderListArea ec-base-table typeList gBorder">
+        <div class="title" module="Order_NormOverseaTitle">
+            <h3>ご注文内容 ({$item_total})</h3>
+        </div>
+        <table border="1" summary="" module="Order_NormOversea">
+            <caption>ご注文内容</caption>
+            <colgroup>
+                <col style="width:27px" class="{$use_basket_multiple_selection|display}" />
+                <col style="width:92px" />
+                <col style="width:auto" />
+                <col style="width:75px" />
+                <col style="width:120px" />
+                <col style="width:88px" />
+                <col style="width:110px" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" class="{$use_basket_multiple_selection|display}"><input type="checkbox" onclick='{$chk_basketlist}' /></th>
+                    <th scope="col">画像</th>
+                    <th scope="col">商品名</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">商品購入金額</th>
+                    <th scope="col">割引金額</th>
+                    <th scope="col">設定</th>
+                </tr>
+            </thead>
+            <tbody module="Order_list" class="center">
+                <tr>
+                    <td class="{$use_basket_multiple_selection|display}"><input type="checkbox" id="{$chk_id}" name="{$chk_name}" /></td>
+                    <td class="thumb gClearLine"><a href="/product/detail.html{$param}"><img src="{$img}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="{$name_alt}" /></a></td>
+                    <td class="left gClearLine">
+                        <strong class="name" id="{$prod_id}">{$product_name_link}</strong> {$icon} {$pickup_icon} {$benefit_icons}<span class="{$eng_name_display|display} engName">(英文商品名 : {$eng_name})</span>
+                        <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 単独購入商品</p>
+                        <ul class="option" module="Order_optionAll">
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                        </ul>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送周期</strong> <span class="txtEm">{$subscription_option_str}</span></p>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送回数</strong> <span class="txtEm">{$max_expected_pay_seq_str}</span></p>
+                        <p class="gBlank5 {$product_weight_display|display}"><strong>重量</strong> : <span>{$product_weight}kg * {$quantity}点 = {$total_product_weight}kg</span></p>
+                    </td>
+                    <td>
+                        <span class="{$nplusevent_hide_display|display}">
+                            <span class="ec-base-qty">{$form.quantity}<a href="javascript:;" class="up" onclick="{$add_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="数量＋" /></a><a href="javascript:;"  class="down" onclick="{$out_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="数量-" /></a></span>
+                            <a href="javascript:;" class="btnNormal gBlank5" onclick="{$action_modify}">変更</a>
+                        </span>
+                        <span class="{$nplusevent_show_display|display}">{$quantity}</span>
+                    </td>
+                    <td>
+                        <div id="{$product_purchase_price_div_id}" ><strong>{$product_purchase_price_front_head}{$product_purchase_price_front}{$product_purchase_price_front_tail}</strong><p class="{$product_purchase_price_display|display}">{$product_purchase_price_back_head}{$product_purchase_price_back}{$product_purchase_price_back_tail}</p></div>
+                    </td>
+                    <td rowspan="{$product_discount_cnt}" class="{$product_discount_cnt_display|display}">
+                        <span>{$product_discount_price_empty_text}</span>
+                        <div id="{$product_discount_price_id}" class="{$use_basket_sale_price_display|display}"><strong>-{$product_discount_price_front_head}<span id="{$product_discount_price_front_id}">{$product_discount_price_front}</span>{$product_discount_price_front_tail}</strong><p class="{$product_discount_price_ref_display|display}">{$product_discount_price_back_head}{$product_discount_price_back}{$product_discount_price_back_tail}</p></div>
+                    </td>
+                    <td class="button">
+                        <a href="javascript:;" class="btnSubmit {$subscription_hide_display|display}" onclick="{$action_buy_item}">注文する</a>
+                        <a href="javascript:;" class="btnSubmit {$subscription_show_display|display}" onclick="{$action_buy_item}">定期購入の申込</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_wish_item}">お気に入り</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_move_item}"><i class="icoDelete"></i> 削除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="{$use_basket_multiple_selection|display}"><input type="checkbox" id="{$chk_id}" name="{$chk_name}" /></td>
+                    <td class="thumb gClearLine"><a href="/product/detail.html{$param}"><img src="{$img}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="{$name_alt}" /></a></td>
+                    <td class="left gClearLine">
+                        <strong class="name" id="{$prod_id}">{$product_name_link}</strong> {$icon} {$pickup_icon} {$benefit_icons}<span class="{$eng_name_display|display} engName">(英文商品名 : {$eng_name})</span>
+                        <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 単独購入商品</p>
+                        <ul class="option" module="Order_optionAll">
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                        </ul>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送周期</strong> <span class="txtEm">{$subscription_option_str}</span></p>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送回数</strong> <span class="txtEm">{$max_expected_pay_seq_str}</span></p>
+                        <p class="gBlank5 {$product_weight_display|display}"><strong>重量</strong> : <span>{$product_weight}kg * {$quantity}点 = {$total_product_weight}kg</span></p>
+                    </td>
+                    <td>
+                        <span class="{$nplusevent_hide_display|display}">
+                            <span class="ec-base-qty">{$form.quantity}<a href="javascript:;" class="up" onclick="{$add_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="数量＋" /></a><a href="javascript:;"  class="down" onclick="{$out_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="数量-" /></a></span>
+                            <a href="javascript:;" class="btnNormal gBlank5" onclick="{$action_modify}">変更</a>
+                        </span>
+                        <span class="{$nplusevent_show_display|display}">{$quantity}</span>
+                    </td>
+                    <td>
+                        <div id="{$product_purchase_price_div_id}" ><strong>{$product_purchase_price_front_head}{$product_purchase_price_front}{$product_purchase_price_front_tail}</strong><p class="{$product_purchase_price_display|display}">{$product_purchase_price_back_head}{$product_purchase_price_back}{$product_purchase_price_back_tail}</p></div>
+                    </td>
+                    <td rowspan="{$product_discount_cnt}" class="{$product_discount_cnt_display|display}">
+                        <span>{$product_discount_price_empty_text}</span>
+                        <div id="{$product_discount_price_id}" class="{$use_basket_sale_price_display|display}"><strong>-{$product_discount_price_front_head}<span id="{$product_discount_price_front_id}">{$product_discount_price_front}</span>{$product_discount_price_front_tail}</strong><p class="{$product_discount_price_ref_display|display}">{$product_discount_price_back_head}{$product_discount_price_back}{$product_discount_price_back_tail}</p></div>
+                    </td>
+                    <td class="button">
+                        <a href="javascript:;" class="btnSubmit {$subscription_hide_display|display}" onclick="{$action_buy_item}">注文する</a>
+                        <a href="javascript:;" class="btnSubmit {$subscription_show_display|display}" onclick="{$action_buy_item}">定期購入の申込</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_wish_item}">お気に入り</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_move_item}"><i class="icoDelete"></i> 削除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1" summary="" module="Order_NormIndividual">
+            <caption>ご注文内容</caption>
+            <colgroup>
+                <col style="width:27px" class="{$use_basket_multiple_selection|display}" />
+                <col style="width:92px" />
+                <col style="width:auto" />
+                <col style="width:75px" />
+                <col style="width:120px" />
+                <col style="width:88px" />
+                <col style="width:110px" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" class="{$use_basket_multiple_selection|display}"><input type="checkbox" onclick='{$chk_basketlist}' /></th>
+                    <th scope="col">画像</th>
+                    <th scope="col">商品名</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">商品購入金額</th>
+                    <th scope="col">割引金額</th>
+                    <th scope="col">設定</th>
+                </tr>
+            </thead>
+            <tbody module="Order_list" class="center">
+                <tr>
+                    <td class="{$use_basket_multiple_selection|display}"><input type="checkbox" id="{$chk_id}" name="{$chk_name}" /></td>
+                    <td class="thumb gClearLine"><a href="/product/detail.html{$param}"><img src="{$img}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="{$name_alt}" /></a></td>
+                    <td class="left gClearLine">
+                        <strong class="name" id="{$prod_id}">{$product_name_link}</strong> {$icon} {$pickup_icon} {$benefit_icons}<span class="{$eng_name_display|display} engName">(英文商品名 : {$eng_name})</span>
+                        <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 単独購入商品</p>
+                        <ul class="option" module="Order_optionAll">
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                        </ul>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送周期</strong> <span class="txtEm">{$subscription_option_str}</span></p>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送回数</strong> <span class="txtEm">{$max_expected_pay_seq_str}</span></p>
+                        <p class="gBlank5 {$product_weight_display|display}"><strong>重量</strong> : <span>{$product_weight}kg * {$quantity}点 = {$total_product_weight}kg</span></p>
+                    </td>
+                    <td>
+                        <span class="{$nplusevent_hide_display|display}">
+                            <span class="ec-base-qty">{$form.quantity}<a href="javascript:;" class="up" onclick="{$add_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="数量＋" /></a><a href="javascript:;"  class="down" onclick="{$out_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="数量-" /></a></span>
+                            <a href="javascript:;" class="btnNormal gBlank5" onclick="{$action_modify}">変更</a>
+                        </span>
+                        <span class="{$nplusevent_show_display|display}">{$quantity}</span>
+                    </td>
+                    <td>
+                        <div id="{$product_purchase_price_div_id}" ><strong>{$product_purchase_price_front_head}{$product_purchase_price_front}{$product_purchase_price_front_tail}</strong><p class="{$product_purchase_price_display|display}">{$product_purchase_price_back_head}{$product_purchase_price_back}{$product_purchase_price_back_tail}</p></div>
+                    </td>
+                    <td rowspan="{$product_discount_cnt}" class="{$product_discount_cnt_display|display}">
+                        <span>{$product_discount_price_empty_text}</span>
+                        <div id="{$product_discount_price_id}" class="{$use_basket_sale_price_display|display}"><strong>-{$product_discount_price_front_head}<span id="{$product_discount_price_front_id}">{$product_discount_price_front}</span>{$product_discount_price_front_tail}</strong><p class="{$product_discount_price_ref_display|display}">{$product_discount_price_back_head}{$product_discount_price_back}{$product_discount_price_back_tail}</p></div>
+                    </td>
+                    <td class="button">
+                        <a href="javascript:;" class="btnSubmit {$subscription_hide_display|display}" onclick="{$action_buy_item}">注文する</a>
+                        <a href="javascript:;" class="btnSubmit {$subscription_show_display|display}" onclick="{$action_buy_item}">定期購入の申込</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_wish_item}">お気に入り</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_move_item}"><i class="icoDelete"></i> 削除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="{$use_basket_multiple_selection|display}"><input type="checkbox" id="{$chk_id}" name="{$chk_name}" /></td>
+                    <td class="thumb gClearLine"><a href="/product/detail.html{$param}"><img src="{$img}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="{$name_alt}" /></a></td>
+                    <td class="left gClearLine">
+                        <strong class="name" id="{$prod_id}">{$product_name_link}</strong> {$icon} {$pickup_icon} {$benefit_icons}<span class="{$eng_name_display|display} engName">(英文商品名 : {$eng_name})</span>
+                        <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 単独購入商品</p>
+                        <ul class="option" module="Order_optionAll">
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                            <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br />
+                                <span class="{$nplusevent_hide_display|display}"><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a></span>
+                            </li>
+                        </ul>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送周期</strong> <span class="txtEm">{$subscription_option_str}</span></p>
+                        <p class="gBlank5 {$subscription_show_display|display}"><strong>配送回数</strong> <span class="txtEm">{$max_expected_pay_seq_str}</span></p>
+                        <p class="gBlank5 {$product_weight_display|display}"><strong>重量</strong> : <span>{$product_weight}kg * {$quantity}点 = {$total_product_weight}kg</span></p>
+                    </td>
+                    <td>
+                        <span class="{$nplusevent_hide_display|display}">
+                            <span class="ec-base-qty">{$form.quantity}<a href="javascript:;" class="up" onclick="{$add_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="数量＋" /></a><a href="javascript:;"  class="down" onclick="{$out_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="数量-" /></a></span>
+                            <a href="javascript:;" class="btnNormal gBlank5" onclick="{$action_modify}">変更</a>
+                        </span>
+                        <span class="{$nplusevent_show_display|display}">{$quantity}</span>
+                    </td>
+                    <td>
+                        <div id="{$product_purchase_price_div_id}" ><strong>{$product_purchase_price_front_head}{$product_purchase_price_front}{$product_purchase_price_front_tail}</strong><p class="{$product_purchase_price_display|display}">{$product_purchase_price_back_head}{$product_purchase_price_back}{$product_purchase_price_back_tail}</p></div>
+                    </td>
+                    <td rowspan="{$product_discount_cnt}" class="{$product_discount_cnt_display|display}">
+                        <span>{$product_discount_price_empty_text}</span>
+                        <div id="{$product_discount_price_id}" class="{$use_basket_sale_price_display|display}"><strong>-{$product_discount_price_front_head}<span id="{$product_discount_price_front_id}">{$product_discount_price_front}</span>{$product_discount_price_front_tail}</strong><p class="{$product_discount_price_ref_display|display}">{$product_discount_price_back_head}{$product_discount_price_back}{$product_discount_price_back_tail}</p></div>
+                    </td>
+                    <td class="button">
+                        <a href="javascript:;" class="btnSubmit {$subscription_hide_display|display}" onclick="{$action_buy_item}">注文する</a>
+                        <a href="javascript:;" class="btnSubmit {$subscription_show_display|display}" onclick="{$action_buy_item}">定期購入の申込</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_wish_item}">お気に入り</a>
+                        <a href="javascript:;" class="btnNormal" onclick="{$action_move_item}"><i class="icoDelete"></i> 削除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div module="Order_BasketPriceInfoGuide" class="{$basket_price_info_guide_display|display}">
+       <p class="info {$basket_price_sale_guide_display|display}">割引適用金額は注文書作成時、決済予定金額でご確認できます。</p>
+       <p class="info {$basket_price_basic_guide_display|display}"> 送料は注文書を作成する際にご確認いただけます。</p>
+       <p class="info {$basket_nplusevent_guid_display|display}">追加でプレゼントするイベント商品のオプション及び数量の変更などは、商品詳細ページにて可能です。</p>
+       <p class="info {$basket_price_tax_guide_display|display}">税込みの決済金額は注文書作成ページにて確認できます。</p>
+    </div>
+
+    <div module="Order_Weight" class="{$total_weight_display|display}">
+        <div class="totalWeight">重量の合計 : <span>{$total_weight}kg</span></div>
+    </div>
+    <div module="Order_SelectOrder" class="ec-base-button">
+        <span class="gLeft {$use_basket_multiple_selection|display}">
+            <strong class="text">選択した商品を</strong>
+            <a href="#none" class="btnEm" onclick="{$action_delete}"><i class="icoDelete"></i> 削除</a>
+            <a href="#none" class="btnNormal {$wishlist_display|display}" onclick="{$action_wishlist}">お気に入り</a>
+            <a href="#none" class="btnNormal {$hope_display|display}" onclick="{$action_hope}">おねだりメール</a>
+        </span>
+        <span class="gRight">
+            <span class="{$use_basket_multiple_selection|display}"><a href="#none" onclick="{$action_order_store_pickup_select}" class="btnNormal {$action_order_store_pickup_select_display|display}" link-order="/order/orderform.html{$param}" link-login="/member/login.html">店舗で受取る商品を選択</a></span>
+            <a href="#none" class="btnNormal" onclick="{$action_estimate}" link="/estimate/userform.html">見積書発行</a>
+        </span>
+    </div>
+
+    <div module="Order_TotalOversea" class="ec-base-table typeList gBorder total {$oversea_delv_info_display|display}" unroll="1">
+        <table border="1" summary="">
+            <caption>注文金額合計</caption>
+            <colgroup>
+                <col style="width:23%;" />
+                <col style="width:21%;" class="{$vat_total_display|display}" />
+                <col style="width:21%;" class="{$total_benefit_layer_display|display}" />
+                <col style="width:auto" />
+                <col style="width:21%;" class="{$total_mileage_price_area_id} {$total_mileage_price_display|display}" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col"><span>商品金額合計</span></th>
+                    <th scope="col" class="{$vat_total_display|display}"><strong>消費税</strong></th>
+                    <th scope="col" id="{$oversea_total_benefit_price_title_area_id}" class="{$total_benefit_layer_display|display}">割引総額 <a href="#none" class="btnNormal" onclick="{$total_benefit_layer_on}">詳細を見る</a></th>
+                    <th scope="col">総合計</th>
+                    <th scope="col" class="{$total_mileage_price_area_id} {$total_mileage_price_display|display}"><strong>付与予定金額</strong> <a href="#none" class="btnNormal" onclick="{$total_mileage_layer_on}">内訳確認</a></th>
+                </tr>
+            </thead>
+            <tbody class="center">
+                <tr>
+                    <td><div class="box txt16"><strong>{$total_product_price_display_front_head}<span class="txt23">{$total_product_price_display_front}</span>{$total_product_price_display_front_tail}</strong> <span class="txt14 {$total_product_price_ref_display|display}">{$total_product_price_display_back_head}{$total_product_price_display_back}{$total_product_price_display_back_tail}</span></div></td>
+                    <td class="{$vat_total_display|display}"><div class="box txt16"><strong>{$total_product_vat_price_front_head}<span class="txt23">{$total_product_vat_price_front}</span>{$total_product_vat_price_front_tail}</strong> <span class="txt14 {$total_product_vat_price_ref_display|display}">{$total_product_vat_price_back_head}{$total_product_vat_price_back}{$total_product_vat_price_back_tail}</span></div></td>
+                    <td id="{$oversea_total_benefit_price_area_id}" class="{$total_benefit_layer_display|display}"><div class="box txt16"><strong>- {$total_product_discount_price_front_head}<span id="{$oversea_total_product_discount_price_front_id}" class="txt23">{$total_product_discount_price_front}</span>{$total_product_discount_price_front_tail}</strong> <span class="txt14 {$total_product_discount_price_ref_display|display}">{$total_product_discount_price_back_head}<span id="{$oversea_total_product_discount_price_back_id}">{$total_product_discount_price_back}</span>{$total_product_discount_price_back_tail}</span></div></td>
+                    <td><div class="box txtEm txt16"><strong class="txt23">= </strong><strong>{$total_order_price_front_head}<span id="{$oversea_total_order_price_front_id}" class="txt23">{$total_order_price_front}</span>{$total_order_price_front_tail}</strong> <span class="txt14 {$total_order_price_ref_display|display}">{$total_order_price_back_head}<span id="{$oversea_total_order_price_back_id}">{$total_order_price_back}</span>{$total_order_price_back_tail}</span></div></td>
+                    <td class="{$total_mileage_price_area_id} {$total_mileage_price_display|display}"><div class="box txt16">
+                        <strong>最大 <span id="{$total_mileage_price_id}" class="txt23">{$mileage_unit_head}{$total_mileage_price}{$mileage_unit_tail}</span></strong>
+                    </div></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="{$oversea_total_benefit_layer}" class="totalDetail ec-base-layer">
+            <div class="header">
+                <h3>総割引金額の詳細内訳</h3>
+            </div>
+            <div class="content">
+                <p id="{$oversea_total_benefit_price_layer_id}" class="txtEm txt16"><strong>{$price_unit_head}{$total_benefit_price}{$price_unit_tail}</strong></p>
+                <ul id="{$oversea_total_benefit_list_id}" class="ec-base-desc typeDot gLarge rightDD">
+                    <li class="{$total_subscriptionpayseqsale_price_display|display}"><strong class="term">定期購入割引</strong><span id="{$total_subscriptionpayseq_price_id}" class="desc">{$price_unit_head}{$total_subscriptionpayseqsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_periodsale_price_display|display}"><strong class="term">期間割引</strong><span id="{$total_periodsale_price_id}" class="desc">{$price_unit_head}{$total_periodsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_membersale_price_display|display}"><strong class="term">会員割引</strong><span id="{$total_membersale_price_id}" class="desc">{$price_unit_head}{$total_membersale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_rebuysale_price_display|display}"><strong class="term">{$rebuysale_head}リピーター割引</strong><span id="{$total_rebuysale_price_id}" class="desc">{$price_unit_head}{$total_rebuysale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_bulksale_price_display|display}"><strong class="term">大量購入割引</strong><span id="{$total_bulksale_price_id}" class="desc">{$price_unit_head}{$total_bulksale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_pbpsale_price_display|display}"><strong class="term">アバウトpbp割引</strong><span id="{$total_pbpsale_price_id}" class="desc">{$price_unit_head}{$total_pbpsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_newproductsale_price_display|display}"><strong class="term">新着商品割引</strong><span id="{$total_newproductsale_price_id}" class="desc">{$price_unit_head}{$total_newproductsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_setproductsale_price|display}"><strong class="term">セット割引</strong><span id="{$total_setproductsale_price_id}" class="desc">{$price_unit_head}{$total_setproductsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_paymethodsale_price_display|display}"><strong class="term">支払手段割引</strong><span id="{$total_paymethodsale_price_id}" class="desc">{$price_unit_head}{$total_paymethodsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_membergroupsale_price_display|display}"><strong class="term">会員ランク割引</strong><span id="{$oversea_total_membergroupsale_price_id}" class="desc">{$price_unit_head}{$total_membergroupsale_price}{$price_unit_tail}</span></li>
+                    <li class="{$total_shipfeesale_price_display|display}"><strong class="term">送料割引</strong><span id="{$total_shipfeesale_price_id}" class="desc">{$price_unit_head}{$total_shipfeesale_price}{$price_unit_tail}</span></li>
+                </ul>
+            </div>
+            <a href="#none" class="close" onclick="{$total_benefit_layer_off}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+        </div>
+        <div id="{$total_mileage_layer}" class="totalDetail ec-base-layer">
+            <div class="header">
+                <h3>付与予定金額の詳細</h3>
+            </div>
+            <div class="content">
+                <p class="txtEm txt16"><strong>最大 <span id="{$total_mileage_price_layer_id}">{$mileage_unit_head}{$total_mileage_price}{$mileage_unit_tail}</span></strong></p>
+                <ul  class="ec-base-desc typeDot gLarge rightDD">
+                    <li id="{$total_product_mileage_area}" class="{$total_product_mileage_price_display|display}">
+                    <strong class="term">商品別{$mileage_name}</strong><span id="{$total_product_mileage_price_id}" class="desc">{$mileage_unit_head}{$total_product_mileage_price}{$mileage_unit_tail}</span>
+                    </li>
+                    <li id="{$total_member_mileage_area}" class="{$total_member_mileage_price_display|display}">
+                    <strong class="term">会員{$mileage_name}</strong><span id="{$total_member_mileage_price_id}" class="desc">{$mileage_unit_head}{$total_member_mileage_price}{$mileage_unit_tail}</span>
+                    </li>
+                </ul>
+            </div>
+            <a href="#none" class="close" onclick="{$total_mileage_layer_off}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+        </div>
+    </div>
+
+    <div module="Order_TotalOrder" class="ec-base-button justify">
+        <a href="#none" onclick="{$action_order_all}" class="btnSubmitFix sizeM {$buy_display|display}" link-order="/order/orderform.html{$param}" link-login="/member/login.html">注文手続きへ</a>
+        <a href="#none" onclick="{$action_order_select}" class="btnEmFix sizeM {$use_basket_multiple_selection|display}" link-order="/order/orderform.html{$param}" link-login="/member/login.html" >選択商品注文</a>
+        <span class="gRight">
+            <a href="/" class="btnNormalFix sizeM">買い物を続ける</a>
+        </span>
+
+        <div id="{$app_payment_button_box_id}"></div>
+    </div>
+
+</div>
+
+<div module="myshop_wishlist" class="ec-base-table typeList {$list_display|display}">
+    <!--@css(/css/module/myshop/wishlist.css)-->
+    <!--
+        $login_page = /member/login.html
+        $count = 5
+        $mode = basket
+        $use_per_add_option = yes
+    -->
+    <div class="title">
+        <h3>お気に入り商品</h3>
+    </div>
+
+    <table border="1" summary="">
+        <caption>お気に入り商品一覧</caption>
+        <colgroup>
+            <col style="width:92px" />
+            <col style="width:auto" />
+            <col style="width:120px" />
+            <col style="width:120px" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">画像</th>
+                <th scope="col">商品情報</th>
+                <th scope="col">販売価格</th>
+                <th scope="col">選択</th>
+            </tr>
+        </thead>
+        <tbody module="myshop_wishlistitem" class="center">
+            <tr>
+                <td class="thumb"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></td>
+                <td class="left">
+                    <strong class="name">{$product_name_link}</strong>
+                    <ul class="option" module="Myshop_optionAll">
+                        <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br /><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a>
+
+                            <div class="optionModify ec-base-layer" id="{$option_modify_layer_id}">
+                                <div class="header">
+                                    <h3>オプション変更</h3>
+                                </div>
+                                <div class="content">
+                                    <ul class="prdInfo">
+                                        <li>{$product_name}</li>
+                                        <li class="option">{$layer_option_str}</li>
+                                    </ul>
+                                    <div class="prdModify">
+                                        <h4>商品オプション</h4>
+                                        <ul module="Myshop_optionList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                        <ul module="Myshop_optionAddList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ec-base-button">
+                                    <a href="#none" class="btnNormalFix sizeS" onclick="{$action_option_modify}">変更</a>
+                                </div>
+                                <a href="#none" class="close" onclick="$('.optionModify').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+                            </div>
+                        </li>
+                        <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br /><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a>
+
+                            <div class="optionModify ec-base-layer" id="{$option_modify_layer_id}">
+                                <div class="header">
+                                    <h3>オプション変更</h3>
+                                </div>
+                                <div class="content">
+                                    <ul class="prdInfo">
+                                        <li>{$product_name}</li>
+                                        <li class="option">{$layer_option_str}</li>
+                                    </ul>
+                                    <div class="prdModify">
+                                        <h4>商品オプション</h4>
+                                        <ul module="Myshop_optionList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                        <ul module="Myshop_optionAddList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ec-base-button">
+                                    <a href="#none" class="btnNormalFix sizeS" onclick="{$action_option_modify}">変更</a>
+                                </div>
+                                <a href="#none" class="close" onclick="$('.optionModify').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+                <td class="price right"><strong>{$product_price}</strong></td>
+                <td class="button">
+                    <a href="#none" onclick="{$act_order}" class="btnSubmit {$disp_order|display}">注文する</a>
+                    <a href="#none" onclick="{$act_basket}" class="btnNormal {$disp_basket|display}">カートに入れる</a>
+                    <a href="#none" class="btnNormal {$class_del}" rel="{$rel_del}"><i class="icoDelete"></i> 削除</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="thumb"><a href="/product/detail.html{$param}"><img src="{$image_medium}" alt="" /></a></td>
+                <td class="left">
+                    <strong class="name">{$product_name_link}</strong>
+                    <ul class="option" module="Myshop_optionAll">
+                        <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br /><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a>
+
+                            <div class="optionModify ec-base-layer" id="{$option_modify_layer_id}">
+                                <div class="header">
+                                    <h3>オプション変更</h3>
+                                </div>
+                                <div class="content">
+                                    <ul class="prdInfo">
+                                        <li>{$product_name}</li>
+                                        <li class="option">{$layer_option_str}</li>
+                                    </ul>
+                                    <div class="prdModify">
+                                        <h4>商品オプション</h4>
+                                        <ul module="Myshop_optionList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                        <ul module="Myshop_optionAddList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ec-base-button">
+                                    <a href="#none" class="btnNormalFix sizeS" onclick="{$action_option_modify}">変更</a>
+                                </div>
+                                <a href="#none" class="close" onclick="$('.optionModify').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+                            </div>
+                        </li>
+                        <li><strong class="{$product_name_display|display}">{$product_name}</strong>{$option_str} <span class="{$qty_display|display}">({$qty}点)</span><br /><a href="#none" onclick="{$action_option_change}" class="btnNormal gBlank5 {$option_change_display|display}">オプション変更</a>
+
+                            <div class="optionModify ec-base-layer" id="{$option_modify_layer_id}">
+                                <div class="header">
+                                    <h3>オプション変更</h3>
+                                </div>
+                                <div class="content">
+                                    <ul class="prdInfo">
+                                        <li>{$product_name}</li>
+                                        <li class="option">{$layer_option_str}</li>
+                                    </ul>
+                                    <div class="prdModify">
+                                        <h4>商品オプション</h4>
+                                        <ul module="Myshop_optionList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                        <ul module="Myshop_optionAddList">
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                            <li><span>{$option_name}</span> {$form.option_value}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ec-base-button">
+                                    <a href="#none" class="btnNormalFix sizeS" onclick="{$action_option_modify}">変更</a>
+                                </div>
+                                <a href="#none" class="close" onclick="$('.optionModify').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+                <td class="price right"><strong>{$product_price}</strong></td>
+                <td class="button">
+                    <a href="#none" onclick="{$act_order}" class="btnSubmit {$disp_order|display}">注文する</a>
+                    <a href="#none" onclick="{$act_basket}" class="btnNormal {$disp_basket|display}">カートに入れる</a>
+                    <a href="#none" class="btnNormal {$class_del}" rel="{$rel_del}"><i class="icoDelete"></i> 削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="message {$empty_display|display}">登録されたお気に入り商品がありません。</p>
+</div>
+
+<div module="myshop_wishlistpaging" class="ec-base-paginate">
+    <!--
+        $mode = basket
+    -->
+    <a href="{$param_first}" class="first"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_first.gif" alt="最初ページ" /></a>
+    <a href="{$param_before}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ" /></a>
+    <ol>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ" /></a>
+    <a href="{$param_last}" class="last"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_last.gif" alt="最後ページ" /></a>
+</div>
+
+
+<div id="ec-basketOptionModifyLayer" class="optionModify ec-base-layer" style="display:none;">
+    <div class="header">
+        <h3>オプション変更</h3>
+    </div>
+    <div class="content">
+        <ul class="prdInfo">
+            <li class="ec-basketOptionModifyLayer-productName">{$product_name}</li>
+            <li class="ec-basketOptionModifyLayer-optionStr" class="option">{$layer_option_str}</li>
+        </ul>
+        <div class="prdModify">
+            <h4>商品オプション</h4>
+            <ul>
+                <li class="ec-basketOptionModifyLayer-options" style="display:none;"><span>{$option_name}</span> {$form.option_value}</li>
+                <li class="ec-basketOptionModifyLayer-addOptions" style="display:none;"><span>{$option_name}</span> {$form.option_value}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS ec-basketOptionModifyLayer-add">追加</a>
+        <a href="#none" class="btnNormalFix sizeS ec-basketOptionModifyLayer-modify">変更</a>
+    </div>
+    <a href="#none" class="close" onclick="$('#ec-basketOptionModifyLayer').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+</div>

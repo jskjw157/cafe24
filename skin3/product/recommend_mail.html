@@ -1,0 +1,56 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Product_RecommMail" class="ec-base-layer">
+    <!--@css(/css/module/product/recommend_mail.css)-->
+    <div class="header">
+        <h1>おすすめ情報の紹介メールを送る</h1>
+    </div>
+
+    <div class="content">
+        <div class="ec-base-box typeProduct">
+            <div class="thumbnail"><img src="{$product_image}" alt="" class="img" /></div>
+            <div class="infomation">
+                <div class="icon">{$img_soldout} {$img_recomm} {$img_new} {$pickup_icon} {$img_user}</div>
+                <h2>{$product_name}</h2>
+                <span class="price">{$product_price}</span> {$product_tax_type_text}
+            </div>
+        </div>
+
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>メール作成フォーム</caption>
+                <colgroup>
+                    <col style="width:20%" />
+                    <col style="width:30%" />
+                    <col style="width:20%" />
+                    <col style="width:30%" />
+                </colgroup>
+                <tr>
+                    <th scope="row">送信者</th>
+                    <td><span class="fWidthFull">{$from_name}</span></td>
+                    <th scope="row">メールアドレス</th>
+                    <td><span class="fWidthFull">{$from_email}</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">受信者</th>
+                    <td><span class="fWidthFull">{$form.to_name}</span></td>
+                    <th scope="row">メールアドレス</th>
+                    <td><span class="fWidthFull">{$form.to_email}</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">内容</th>
+                    <td colspan="3"><span class="fWidthFull">{$form.content}</span> <p class="gBlank5">{$form.is_html}</p></td>
+                </tr>
+                <tr>
+                    <th scope="row">自動送信禁止<br />セキュリティ文字</th>
+                    <td colspan="3">
+                        {$captcha_image} {$captcha_refresh}
+                        <p class="captcha">{$form.tmp_image_name_str} <span class="ec-base-help txtInfo">半角英数字で入力ください。（大小文字を区別する）</span></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS" onClick="{$action_check}">送信</a>
+    </div>
+</div>

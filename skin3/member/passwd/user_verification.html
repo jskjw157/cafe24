@@ -1,0 +1,40 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>パスワードをお忘れの方</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>パスワードをお忘れの方</h2>
+</div>
+
+<div module="member_passwordverification" class="ec-base-box typeThin">
+    <!--@css(/css/module/member/user_verification.css)-->
+    <div class="inner">
+        <h3 class="boxTitle">本人確認</h3>
+        <fieldset>
+            <legend>本人確認</legend>
+            <ul class="ec-base-desc">
+                <li><strong class="term">本人確認</strong><span class="desc">{$form.user_verification_method_type}</span></li>
+                <li id="{$user_verification_email_info}"><strong class="term">メールアドレス</strong><span class="desc"><strong class="txtEm">{$user_verification_email}</strong> <a href="#none" class="btnNormal" onclick="{$action_func_user_verification}">送信</a></span></li>
+                <li id="{$user_verification_mobile_info}"><strong class="term">携帯電話番号</strong><span class="desc"><strong class="txtEm number">{$user_verification_mobile}</strong> <a href="#none" class="btnNormal" onclick="{$action_func_user_verification}">送信</a></span></li>
+                <li>
+                    <strong class="term">認証番号</strong>
+                    <div class="desc">{$form.verification_code}
+                        <div class="txtInfo">
+                            <p id="{$user_verification_email_desc}" class="{$display_user_verification_email_desc|display}">認証番号の有効期限は60分です。<br />再送は、一度送信してから30秒後に行うことができます。</p>
+                            <p id="{$user_verification_mobile_desc}" class="{$display_user_verification_mobile_desc|display}">認証番号の有効期限は3分です。<br />再送は、一度送信してから30秒後に行うことができます。</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+             <div class="ec-base-button gColumn">
+                <a href="#none" class="btnSubmit sizeM" onclick="{$action_func_user_verification_submit}">確認</a>
+                <a href="#none" class="btnNormal sizeM" onclick="{$action_func_user_verification_cancel}">キャンセル</a>
+            </div>
+        </fieldset>
+    </div>
+</div>

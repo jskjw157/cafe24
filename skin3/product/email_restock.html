@@ -1,0 +1,41 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Product_RestockEmail" class="ec-base-layer">
+    <!--@css(/css/module/product/restock_email.css)-->
+    <div class="header">
+        <h1>再入荷お知らせ受信申込み</h1>
+    </div>
+    <div class="content">
+        <div class="ec-base-box typeProduct">
+            <p class="thumbnail"><img src="{$product_image}" alt="" onerror="this.src='//img.echosting.cafe24.com/thumb/75x75.gif'" /></p>
+            <div class="information">
+                <h2>{$product_name}</h2>
+                <p>オプション情報</p>
+                <p>{$restock_option_name}</p>
+
+                <div class="optionWrap">
+                    <ul module="Product_optionstock">
+                        <li>
+                            <span class="name">{$option_name}</span>
+                            <div class="option">{$form.option}<p class="value">{$option_desc}</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="emailArea">
+            <div class="contact">
+                <p><strong>{$member_id}</strong>様のメールアドレス<br /><span>- 商品再入荷の際にお知らせを受け取るメールアドレスを入力してください。</span></p>
+
+                <p>{$form.email}</p>
+            </div>
+            <ul class="info">
+                <li>再入荷お知らせの設定は申込日から<strong>{$restock_month}ヶ月</strong>間有効で、期間が過ぎると在庫入荷時に通知が送信されません。</li>
+                <li>お知らせの受信を申し込んだ商品の価格・オプションなどが再入荷の際に変更されることがありますので、ご購入の際は必ず商品の情報をもう一度確認してください。</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <button type="button" class="btnSubmitFix sizeS" onclick="{$action_write}">確認</button>
+        <button type="button" class="btnNormalFix sizeS" onclick="window.close();">キャンセル</button>
+    </div>
+</div>

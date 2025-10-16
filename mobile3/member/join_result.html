@@ -1,0 +1,67 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>会員登録完了</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div class="progress">
+    <ol>
+        <li class="done">利用規約</li>
+        <li class="done">登録フォーム</li>
+        <li class="done"><strong title="登録完了">登録完了</strong></li>
+    </ol>
+</div>
+
+<div module="member_joinComplete">
+    <!--@css(/css/module/member/joinComplete.css)-->
+    <div class="welcome">
+        <p class="complete">会員登録が完了しました。</p>
+        <p><strong>{$member_name}</strong>様の会員ランクは <strong>[{$group_name}]</strong>です。</p>
+        <div module="member_BenefitJoin" class="memberSpecial">
+            <ul class="ec-base-help">
+                <li class="{$display_no_benefit|display}">
+                    注文金額が<strong>{$dc_pay} {$dc_min_price}</strong>の場合、<strong>{$dc_price}{$dc_type}</strong>を{$use_dc}します。
+                    {$dc_max_percent}<br>
+                    <span class="{$display_mobile_use_dc|display}">(モバイル注文金額が{$dc_pay} {$mobile_dc_min_price}の場合、{$mobile_dc_price}{$mobile_dc_price_type}を{$mobile_use_dc}します。{$mobile_dc_max_percent})</span>
+                </li>
+                <li class="{$display_with_all|display}">
+                    注文金額が<strong>{$dc_pay} {$dc_min_price_mileage}</strong>の場合、<strong>{$dc_price_mileage}{$dc_type_mileage}</strong>が{$use_dc_mileage}てられます。
+                    {$dc_max_mileage_percent}<br>
+                    <span class="{$display_mobile_use_mileage|display}">(モバイル注文金額が{$dc_pay} {$mobile_dc_mileage_min_buy_amount}の場合、{$mobile_dc_mileage_price_o_percent}{$mobile_dc_mileage_unit}が{$mobile_use_dc_mileage}てられます。{$mobile_dc_mileage_max_percent_buy_amount})</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="ec-base-table gClearCell">
+        <table border="1">
+            <caption>会員登録完了</caption>
+            <colgroup>
+                <col style="width:110px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td>{$member_id}</td>
+                </tr>
+                <tr class="{$display_member_name|display}">
+                    <th scope="row">お名前</th>
+                    <td>{$member_name}</td>
+                </tr>
+                <tr>
+                    <th scope="row">メールアドレス</th>
+                    <td>{$member_email}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="{$under_fourteen_display|display}">
+        <strong>{$member_name}</strong>様は、14歳未満の会員のため、管理者の認証後IDの使用が可能です。
+    </p>
+    <div class="ec-base-button gColumn">
+        <a href="/member/login.html" class="btnSubmit {$display_login_chk|display}">ログイン</a>
+        <a href="{$redirect_function}" class="btnEm">完了</a>
+    </div>
+</div>

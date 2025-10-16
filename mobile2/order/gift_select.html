@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title>Pick a gift</title>
+    <!--@js(/js/common.js)-->
+    <!--@js(/layout/basic/js/popup.js)-->
+    <!--@css(/css/module/order/ec_orderform/form_onetouch_layer.css)-->
+</head>
+
+<body id="layer" class="v2">
+<div class="dimmed"></div>
+<div module="gift_select" class="ec-base-layer">
+    <div class="header">
+        <h1>Pick a gift</h1>
+    </div>
+    <div class="wrap">
+        <p class="infoBox">You can freely select the gift from the gift list below.<br />However, the gift price cannot exceed the current purchase amount.</p>
+        <div module="gift_point" class="pointDetail">
+            <dl class="gridSet">
+                <dt><strong class="txtEm">Total points available</strong></dt>
+                <dd><strong class="txtEm">{$total_point} points</strong></dd>
+            </dl>
+            <dl class="gridSet">
+                <dt>Points to use</dt>
+                <dd>{$use_point} points</dd>
+            </dl>
+            <dl class="gridSet">
+                <dt>Remaining points</dt>
+                <dd>{$able_point} points <span class="{$display_selected_count|display}">(Number of selected gifts : <span id="{$selected_count_id}">0</span>)</span></dd>
+            </dl>
+        </div>
+
+        <div class="giftList">
+
+            <div class="ec-base-prdInfo">
+                {$product_choice}
+                <div class="prdBox">
+                    <div class="thumbnail"><img src="{$gift_image}" alt="" width="71" /></div>
+                    <div class="description">
+                        <strong class="prdName" title="Product">{$soldout_icon}{$product_name}</strong>
+                        <ul class="info">
+                            <li><span class="txtEm">Points <strong>{$gift_price} points</strong></span></li>
+                            <li>{$option1}</li>
+                            <li>{$option2}</li>
+                            <li>{$option3}</li>
+                            <li>{$option4}</li>
+                            <li>{$option5}</li>
+                            <li>
+                                <div class="{$display_amount|display} qtyBox">
+                                    <span class="ec-base-qty">
+                                        {$product_amount}
+                                        <a href="#none" class="up" onclick="{$action_change_amount_up}"><img src="//img.echosting.cafe24.com/skin/mobile_en_US/order/ico_quantity_up.jpg" alt="Increase"></a>
+                                        <a href="#none" class="down" onclick="{$action_change_amount_down}"><img src="//img.echosting.cafe24.com/skin/mobile_en_US/order/ico_quantity_down.jpg" alt="Decrease"></a>
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{$display_choice_single_btn|display}">
+                                    <a href="#none" onclick="{$action_choice_single}" class="btnNormal {$display_choice_btn|display}">Select</a>
+                                    <span class="txtWarn {$display_soldout_msg|display}">Out of stock</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ec-base-prdInfo">
+                {$product_choice}
+                <div class="prdBox">
+                    <div class="thumbnail"><img src="{$gift_image}" alt="" width="71" /></div>
+                    <div class="description">
+                        <strong class="prdName" title="Product">{$soldout_icon}{$product_name}</strong>
+                        <ul class="info">
+                            <li><span class="txtEm">Points <strong>{$gift_price} points</strong></span></li>
+                            <li>{$option1}</li>
+                            <li>{$option2}</li>
+                            <li>{$option3}</li>
+                            <li>{$option4}</li>
+                            <li>{$option5}</li>
+                            <li>
+                                <div class="{$display_amount|display} qtyBox">
+                                    <span class="ec-base-qty">
+                                        {$product_amount}
+                                        <a href="#none" class="up" onclick="{$action_change_amount_up}"><img src="//img.echosting.cafe24.com/skin/mobile_en_US/order/ico_quantity_up.jpg" alt="Increase"></a>
+                                        <a href="#none" class="down" onclick="{$action_change_amount_down}"><img src="//img.echosting.cafe24.com/skin/mobile_en_US/order/ico_quantity_down.jpg" alt="Decrease"></a>
+                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="{$display_choice_single_btn|display}">
+                                    <a href="#none" onclick="{$action_choice_single}" class="btnNormal {$display_choice_btn|display}">Select</a>
+                                    <span class="txtWarn {$display_soldout_msg|display}">Out of stock</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="ec-base-help typeDot {$display_order_result_only|display}">
+            <li>Make sure to select a free gift before moving onto the next step.</li>
+            <li>Please note that you won't be able to make any changes to your choice once you have moved onto the next step.</li>
+        </ul>
+    
+        <ul class="ec-base-help typeDot {$display_order_detail|display}">
+            <li>You can change your choice of free gift until your order is shipped.</li>
+            <li>Please note that you won't be able to make any changes to your choice once your order is shipped.</li>
+        </ul>
+    </div>
+
+    <div class="ec-base-button">
+        <button type="button" class="btnEm sizeS" onclick="{$action_gift_cancel}">Cancel</button>
+        <button type="button" class="btnSubmit sizeS {$display_choice_multi_btn|display}" onclick="{$action_gift_select}">Select</button>
+    </div>
+    <a href="#none" class="btnClose" onclick="{$action_gift_close}">Close</a>
+</div>
+</body>
+</html>

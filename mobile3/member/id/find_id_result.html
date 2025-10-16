@@ -1,0 +1,39 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>IDをお忘れの方</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="member_findidresult">
+    <!--@css(/css/module/member/findidresult.css)-->
+    <div class="info">
+        <p class="message">ID検索が完了しました。</p>
+        登録されたIDが、 <strong class="txtEm">{$idCnt}つ</strong>あります。
+    </div>
+    <div class="ec-base-table gClearCell">
+        <table border="1">
+            <caption>ID検索結果</caption>
+            <colgroup>
+                <col style="width:120px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr class="{$display_name|display}">
+                    <th scope="row">お名前</th>
+                    <td>{$name}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{$searchType}</th>
+                    <td>{$searchInfo}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="list">{$searchIds}</p>
+    <div class="ec-base-button gColumn">
+        <a href="javascript:go_findlogin('{$id}');" class="btnSubmit">ログイン</a>
+        <a href="javascript:go_findpwd('{$id}','{$mtype}');" class="btnEm">パスワード再設定</a>
+    </div>
+</div>

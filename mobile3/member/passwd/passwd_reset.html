@@ -1,0 +1,44 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>パスワードをお忘れの方</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="member_passwordreset">
+    <!--@css(/css/module/member/passwd_reset.css)-->
+     <div class="ec-base-table typeWrite">
+        <table border="1">
+            <caption>パスワード再設定</caption>
+            <colgroup>
+                <col style="width:120px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td class="middle"><strong class="txtEm">{$member_id}</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">新しいパスワード</th>
+                    <td>{$form.new_passwd}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="ec-base-help">
+                            {$passwd_type_desc}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">新しいパスワードの確認</th>
+                    <td>{$form.new_passwd_confirm}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ec-base-button gFull">
+        <a href="#none" class="btnSubmit" onclick="{$action_func_password_reset_submit}">認証</a>
+    </div>
+</div>

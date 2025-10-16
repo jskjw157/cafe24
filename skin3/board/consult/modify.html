@@ -1,0 +1,117 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ModifyPackage_9">
+    <!--@css(/css/module/board/modifyPackage_9.css)-->
+    <div module="board_title_9">
+        <div class="path">
+            <span>ロケーション</span>
+            <ol>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/myshop/index.html">マイページ</a></li>
+                <li title="ロケーション"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="board_modify_9">
+        <!--
+            $modify_success_url = /board/consult/read.html
+        -->
+        <div class="ec-base-table gLayoutFixed {$display_parent_form|display}">
+            <table border="1" summary="">
+            <caption>1:1掲示板内容表示</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td colspan="3">{$parent_subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">作成者</th>
+                    <td>{$parent_writer}</td>
+                    <th scope="row">回答結果表示</th>
+                    <td>{$parent_consult}</td>
+                </tr>
+                <tr class="{$config.use_date|display}">
+                    <th scope="row">作成日</th>
+                    <td colspan="3">{$parent_write_date}</td>
+                </tr>
+                <tr class="view">
+                    <td colspan="4">
+                        <div class="detail">{$parent_content}</div>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+            <caption>1:1掲示板返信フォーム</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td>{$form.subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">メールアドレス</th>
+                    <td>{$form.email} <span class="gBlank5">回答内容をメールで受信しますか？ {$form.cons_re}</span></td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <td colspan="2" class="clear">
+                        {$form.content}
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">添付ファイル1</th>
+                    <td>{$form.attach_file} {$attached_file1}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル2</th>
+                    <td>{$form.attach_file} {$attached_file2}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル3</th>
+                    <td>{$form.attach_file} {$attached_file3}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル4</th>
+                    <td>{$form.attach_file} {$attached_file4}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル5</th>
+                    <td>{$form.attach_file} {$attached_file5}</td>
+                </tr>
+            </tbody>
+
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft"><a href="{$link_board_list}" class="btnNormalFix sizeS">一覧へ戻る</a></span>
+            <span class="gRight">
+                <a href="#none" class="btnEmFix sizeS" onclick="{$action_modify}">修正</a>
+                <a href="{$link_board_list}" class="btnBasicFix sizeS">キャンセル</a>
+            </span>
+        </div>
+    </div>
+</div>

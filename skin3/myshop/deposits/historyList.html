@@ -1,0 +1,110 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path" module="Myshop_DepositHead">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>{$deposit_name}</strong></li>
+    </ol>
+</div>
+
+<div module="Myshop_depositHistoryPackage">
+    <!--@css(/css/module/myshop/depositHistoryPackage.css)-->
+    <div class="titleArea" module="Myshop_DepositHead">
+        <h2>{$deposit_name}</h2>
+        <p>{$deposit_name}の詳細は、以下の通りです。</p>
+    </div>
+
+    <div module="Myshop_DepositSummary" class="ec-base-box gHalf">
+        <ul>
+            <li><strong class="title">累積{$deposit_name}</strong> <span class="data">{$all_deposit}</span></li>
+            <li><strong class="title">使用済みの{$deposit_name}</strong> <span class="data">{$used_deposit}</span></li>
+            <li><strong class="title">使用可能な{$deposit_name}</strong> <span class="data">{$total_deposit}</span></li>
+            <li><strong class="title">返金申込{$deposit_name}</strong> <span class="data">{$deposit_refund_wait}</span></li>
+        </ul>
+    </div>
+
+    <div module="Myshop_DepositHistoryList">
+        <!--
+            $count = 10
+            $only_html = no
+            $login_page = /member/login.html
+        -->
+        <div class="ec-base-button {$display_deposit|display}">
+            <span class="gRight">
+                <a href="#none" id="{$btn_deposit_refund_id}" class="btnNormal">現金返金申込</a>
+            </span>
+        </div>
+
+        <div class="ec-base-table typeList">
+            <table border="1" summary="">
+                <caption>{$deposit_name}の履歴</caption>
+                <colgroup>
+                    <col style="width:20%" />
+                    <col style="width:15%" />
+                    <col style="width:20%" />
+                    <col style="width:auto" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">注文日</th>
+                        <th scope="col">{$deposit_name}</th>
+                        <th scope="col">注文内容</th>
+                        <th scope="col">内容</th>
+                    </tr>
+                </thead>
+                <tbody class="{$display_history|display} center">
+                    <tr>
+                        <td>{$deposit_date}</td>
+                        <td class="right">{$deposit_money}</td>
+                        <td>{$deposit_order_id}</td>
+                        <td class="left">{$deposit_detail}{$deposit_memo}</td>
+                    </tr>
+                    <tr>
+                        <td>{$deposit_date}</td>
+                        <td class="right">{$deposit_money}</td>
+                        <td>{$deposit_order_id}</td>
+                        <td class="left">{$deposit_detail}{$deposit_memo}</td>
+                    </tr>
+                    <tr>
+                        <td>{$deposit_date}</td>
+                        <td class="right">{$deposit_money}</td>
+                        <td>{$deposit_order_id}</td>
+                        <td class="left">{$deposit_detail}{$deposit_memo}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="message {$display_history_none|display}">{$deposit_name} 使用履歴がありません。</p>
+        </div>
+    </div>
+
+    <div module="myshop_DepositHistoryPaging" class="ec-base-paginate">
+        <a href="{$first_url}" class="first"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_first.gif" alt="最初ページ" /></a>
+        <a href="{$prev_url}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ" /></a>
+        <ol>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+            <li><a href="{$url_query}" class="{$param_class}">{$n}</a></li>
+        </ol>
+        <a href="{$next_url}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ" /></a>
+        <a href="{$last_url}" class="last"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_last.gif" alt="最後ページ" /></a>
+    </div>
+</div>
+
+<div class="ec-base-help" module="Myshop_DepositHead">
+    <h3>{$deposit_name}のご案内</h3>
+    <div class="inner">
+        <ol>
+            <li class="item1">{$deposit_name}は、注文のキャンセルによって発生した決済代金の返金や入金の差額になります。</li>
+            <li class="item2">使用可能{$deposit_name}(累積{$deposit_name}-使用済み{$deposit_name}-返金申込{$deposit_name})は、商品購入時現金と同様にご利用頂けます。</li>
+            <li class="item3">現金への返金をご希望の場合、ご本人名義の銀行口座への払返金を申し込むことができます。</li>
+        </ol>
+    </div>
+</div>

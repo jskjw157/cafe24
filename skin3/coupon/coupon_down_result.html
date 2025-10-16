@@ -1,0 +1,20 @@
+<div module="Coupon_Downlayer">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/coupon/couponDownResult.css)-->
+    <div class="couponDownResult ec-base-layer" id="couponDownLayer">
+        <div class="header">
+            <h3>クーポンダウンロード完了</h3>
+        </div>
+        <div class="content">
+            <p class="total"><strong>合計 {$total}件</strong> [成功 <strong class="point">{$success_cnt}</strong>件 / 失敗 <strong>{$fail_cnt}</strong>件]</p>
+            <p class="desc">内容を確認してください。</p>
+            <div class="couponList">
+                {$content}
+            </div>
+        </div>
+        <div class="ec-base-button">
+            <a href="/myshop/coupon/coupon.html" class="btnNormal sizeS">マイクーポン確認</a>
+        </div>
+        <a href="#none" class="close" onclick="location.reload();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="閉じる" /></a>
+    </div>
+</div>

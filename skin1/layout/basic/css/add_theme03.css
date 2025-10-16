@@ -1,0 +1,80 @@
+/** subpage_theme04 (button_color - Peach Blush),(Webfont - 수트) **/
+
+.theme04,
+.theme04 input,
+.theme04 select,
+.theme04 textarea,
+.theme04 code,
+.theme04 button {font-family:"SUIT", sans-serif !important;}
+
+/* 버튼 */
+.theme04 .xans-product-action .action_button .sub_sold,
+.theme04 [class^='btnSubmit']:not(.disabled) {background:#FFC8C0;color:#1c1c1c;}
+.theme04 .xans-product-action .action_button .sub_sold:hover,
+.theme04 [class^='btnSubmit']:not(.disabled):hover {background-color:#FFC8C0B3;}
+.theme04 [class^='btnNormal']:not(.disabled),
+.theme04 .main_image_text_gallery_more .main_image_text_gallery_more_btn,
+.theme04 .more .btnMore {border:1px solid #ccc; color:#1c1c1c;text-decoration:none;}
+.theme04 [class^='btnNormal']:not(.disabled):hover,
+.theme04 [class^='btnNormal']:not(.disabled).selected,
+.theme04 .main_image_text_gallery_more .main_image_text_gallery_more_btn:hover,
+.theme04 .more .btnMore:hover{border-color:#FFC8C0;}
+
+/* 최상단 배너 */
+.theme04 .main_top_banner {background-color:#FFC8C0;}
+.theme04 .main_top_banner .top_banner_box_inner .top_banner_text a,
+.theme04 .main_top_banner .top_banner_box_inner .top_banner_close {color:#1c1c1c;}
+.theme04 .main_top_banner .top_banner_box_inner .top_banner_close .icon:before, 
+.theme04 .main_top_banner .top_banner_box_inner .top_banner_close .icon:after {background:#1c1c1c;}
+
+/* 상단 메뉴 */
+.theme04 #header {background-color:#fff !important;border-bottom:0;}
+.theme04 #header .inner .top_nav_box .top_logo a {line-height:initial;}
+.theme04 #header .inner .top_nav_box .top_category .sub_cate01 li:hover > a,
+.theme04 #header .inner .top_nav_box .top_category .sub-category li:hover > a {background-color:#FDF5F5;}
+
+/* 상품 진열 할인율 */
+.theme04 .xans-product-detail .infoArea table .sale_box,
+.theme04 .ec-base-product .prdList .thumbnail .sale_box {background-color:#FFC8C0;color:#333;}
+
+/* 슬라이드바 */
+.theme04 .swiper-container .swiper-scrollbar {background:#FDF5F5;}
+.theme04 .swiper-container .swiper-scrollbar .swiper-scrollbar-drag {background:#FFC8C0;}
+.theme04 .swiper-pagination-bullet {background:#FDF5F5;opacity:1;}
+.theme04 .swiper-pagination-bullet-active {background:#FFC8C0;}
+
+/* 메인 탭상품 상품진열 */
+.theme04 .main_tab_product .main_product_inner .main_product_tab li.active {background:#FFC8C0;}
+
+/* 메인 비디오배너 */
+.theme04 .main_video .main_video_box:before {background-color: #FFC8C0;}
+
+/* 메인 지도 */
+.theme04 .main_map {background-color: #FDF5F5;}
+
+/* 하단 */
+.theme04 #footer {background:#fff;}
+
+/* 캐러셀 */
+.theme04 .smart-banner-bx-wrapper .bx-pager.bx-default-pager a {background:#FDF5F5 !important;}
+.theme04 .smart-banner-bx-wrapper .bx-pager.bx-default-pager a:hover, .theme04 .smart-banner-bx-wrapper .bx-pager.bx-default-pager a.active {background:#FFC8C0 !important;} 
+.theme04 .ec-base-paginate.typeSwipe [id*='swipe-button'] button {background:#FDF5F5 !important; opacity:1;}
+.theme04 .ec-base-paginate.typeSwipe [id*='swipe-button'] button.selected {background:#FFC8C0 !important;}
+
+/* 메인 텍스트 박스 */
+.theme04 .main_text {background:#fafafa;}
+.theme04 .main_text .main_text_txt .main_text_txt01,
+.theme04 .main_text .main_text_txt .main_text_txt02 {color:#1c1c1c;}
+
+/* 로고 - 디자인 폰트 (사이드바는 디자인에따라서 class 다르기때문에)*/
+.theme04  #header .inner .top_nav_box .top_logo a,
+.theme04  #footer .inner .bt_logo a,
+.theme04  #aside .navigation_member .side_logo a {
+  font-family: "Cafe24Oneprettynight";
+}
+.theme04  #aside .navigation-menu .slide_logo a {
+  font-family: "Cafe24Oneprettynight";
+}
+.theme04  #aside .navigation-menu .top_logo a {
+  font-family: "Cafe24Oneprettynight";
+}

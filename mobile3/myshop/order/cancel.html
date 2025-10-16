@@ -1,0 +1,414 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>キャンセル申込</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+<div module="Myshop_OrderHistoryApplyCancel">
+    <!--@css(/css/module/myshop/orderHistoryApplyCancel.css)-->
+    <div class="ec-base-fold theme1 selected eToggle">
+        <div class="title">
+            <h2>
+                <strong class="date" title="注文日">{$order_date_ymd}</strong>
+                <span class="number" title="注文番号">({$order_id})</span>
+            </h2>
+        </div>
+        <div class="contents">
+            <div class="{$product_no_receiver_display|display}">
+                <div module="Myshop_products">
+                    <div class="orderList">
+                        <div class="product">
+                            <span class="chk">{$form.checkbox}</span>
+                            <div class="description">
+                                <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                                <strong class="name">{$product_name_link}</strong>
+                                <ul class="info">
+                                    <li>
+                                        <span class="price" title="販売価格">{$item_price_raw_front_head}<strong>{$item_price_raw_front}</strong>{$item_price_raw_front_tail}<span class="{$item_price_ref_display|display}"> {$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</span></span>
+                                        <span class="quantity" title="数量"><strong>{$quantity}</strong>点</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="option {$option_display|display}">
+                            <div>{$option_str}</div>
+                            <ul module="Myshop_optionSet">
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            </ul>
+                        </div>
+                        <div class="quantity">
+                            <span class="gLeft">数量</span>
+                            <span class="gRight">
+                                <img class="QuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" width="33" height="29" onclick="{$out_shortcut}">
+                                {$form.quantity}
+                                <img class="QuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" width="33" height="29" onclick="{$add_shortcut}">
+                                <a class="btnBasic" href="javascript:;" onclick="{$action_modify}">変更</a>
+                            </span>
+                        </div>
+                        <div class="status">{$cur_state}</div>
+                    </div>
+                    <div class="orderList">
+                        <div class="product">
+                            <span class="chk">{$form.checkbox}</span>
+                            <div class="description">
+                                <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                                <strong class="name">{$product_name_link}</strong>
+                                <ul class="info">
+                                    <li>
+                                        <span class="price" title="販売価格">{$item_price_raw_front_head}<strong>{$item_price_raw_front}</strong>{$item_price_raw_front_tail}<span class="{$item_price_ref_display|display}"> {$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</span></span>
+                                        <span class="quantity" title="数量"><strong>{$quantity}</strong>点</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="option {$option_display|display}">
+                            <div>{$option_str}</div>
+                            <ul module="Myshop_optionSet">
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            </ul>
+                        </div>
+                        <div class="quantity">
+                            <span class="gLeft">数量</span>
+                            <span class="gRight">
+                                <img class="QuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" width="33" height="29" onclick="{$out_shortcut}">
+                                {$form.quantity}
+                                <img class="QuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" width="33" height="29" onclick="{$add_shortcut}">
+                                <a class="btnBasic" href="javascript:;" onclick="{$action_modify}">変更</a>
+                            </span>
+                        </div>
+                        <div class="status">{$cur_state}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="{$product_receiver_display|display}">
+                <div module="Myshop_productsMobile">
+                    <div class="{$display_receiver_column|display} ec-base-fold theme2 eToggle selected">
+                        <div class="title">
+                            <h3>お届け先 {$no}</h3>
+                        </div>
+                        <div class="contents">
+                            <div class="ec-base-table">
+                                <table border="1">
+                                    <caption>お届け情報</caption>
+                                    <colgroup>
+                                        <col style="width:100px;">
+                                        <col style="width:auto;">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="2">
+                                            <strong>{$r_name}</strong>
+                                            <div><span class="{$r_zipcode_display|display}">[{$r_zipcode}]</span> <span data-class="{$raddr_display|display}">{$r_addr}</span></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="{$receive_info_display|display}">
+                                        <th scope="row">受取り店舗</th>
+                                        <td>{$store_name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">電話番号</th>
+                                        <td>{$r_phone1}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">携帯電話番号</th>
+                                        <td>{$r_phone2}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">配送番号</th>
+                                        <td>{$delivery_code}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div module="Myshop_ReceiverProductList">
+                                <div class="orderList">
+                                    <div class="product">
+                                        <span class="chk">{$form.checkbox}</span>
+                                        <div class="description">
+                                            <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                                            <strong class="name">{$product_name_link}</strong>
+                                            <ul class="info">
+                                                <li>
+                                                    <span class="price" title="販売価格">{$item_price_raw_front_head}<strong>{$item_price_raw_front}</strong>{$item_price_raw_front_tail}<span class="{$item_price_ref_display|display}"> {$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</span></span>
+                                                    <span class="quantity" title="数量"><strong>{$quantity}</strong>点</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="option {$option_display|display}">
+                                        <div>{$option_str}</div>
+                                        <ul module="Myshop_optionSet">
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="quantity">
+                                        <span class="gLeft">数量</span>
+                                        <span class="gRight">
+                                            <img class="QuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" width="33" height="29" onclick="{$out_shortcut}">
+                                            {$form.quantity}
+                                            <img class="QuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" width="33" height="29" onclick="{$add_shortcut}">
+                                            <a class="btnBasic" href="javascript:;" onclick="{$action_modify}">変更</a>
+                                        </span>
+                                    </div>
+                                    <div class="status">{$cur_state}</div>
+                                </div>
+                                <div class="orderList">
+                                    <div class="product">
+                                        <span class="chk">{$form.checkbox}</span>
+                                        <div class="description">
+                                            <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                                            <strong class="name">{$product_name_link}</strong>
+                                            <ul class="info">
+                                                <li>
+                                                    <span class="price" title="販売価格">{$item_price_raw_front_head}<strong>{$item_price_raw_front}</strong>{$item_price_raw_front_tail}<span class="{$item_price_ref_display|display}"> {$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</span></span>
+                                                    <span class="quantity" title="数量"><strong>{$quantity}</strong>点</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="option {$option_display|display}">
+                                        <div>{$option_str}</div>
+                                        <ul module="Myshop_optionSet">
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="quantity">
+                                        <span class="gLeft">数量</span>
+                                        <span class="gRight">
+                                            <img class="QuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" width="33" height="29" onclick="{$out_shortcut}">
+                                            {$form.quantity}
+                                            <img class="QuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" width="33" height="29" onclick="{$add_shortcut}">
+                                            <a class="btnBasic" href="javascript:;" onclick="{$action_modify}">変更</a>
+                                        </span>
+                                    </div>
+                                    <div class="status">{$cur_state}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{$display_receiver_column|display} ec-base-fold theme2 eToggle">
+                        <div class="title">
+                            <h3>お届け先 {$no}</h3>
+                        </div>
+                        <div class="contents">
+                            <div class="ec-base-table">
+                                <table border="1">
+                                    <caption>お届け情報</caption>
+                                    <colgroup>
+                                        <col style="width:100px;">
+                                        <col style="width:auto;">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="2">
+                                            <strong>{$r_name}</strong>
+                                            <div><span class="{$r_zipcode_display|display}">[{$r_zipcode}]</span> <span data-class="{$raddr_display|display}">{$r_addr}</span></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="{$receive_info_display|display}">
+                                        <th scope="row">受取り店舗</th>
+                                        <td>{$store_name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">電話番号</th>
+                                        <td>{$r_phone1}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">携帯電話番号</th>
+                                        <td>{$r_phone2}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">配送番号</th>
+                                        <td>{$delivery_code}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div module="Myshop_ReceiverProductList">
+                                <div class="orderList">
+                                    <div class="product">
+                                        <span class="chk">{$form.checkbox}</span>
+                                        <div class="description">
+                                            <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                                            <strong class="name">{$product_name_link}</strong>
+                                            <ul class="info">
+                                                <li>
+                                                    <span class="price" title="販売価格">{$item_price_raw_front_head}<strong>{$item_price_raw_front}</strong>{$item_price_raw_front_tail}<span class="{$item_price_ref_display|display}"> {$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</span></span>
+                                                    <span class="quantity" title="数量"><strong>{$quantity}</strong>点</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="option {$option_display|display}">
+                                        <div>{$option_str}</div>
+                                        <ul module="Myshop_optionSet">
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="quantity">
+                                        <span class="gLeft">数量</span>
+                                        <span class="gRight">
+                                            <img class="QuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" width="33" height="29" onclick="{$out_shortcut}">
+                                            {$form.quantity}
+                                            <img class="QuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" width="33" height="29" onclick="{$add_shortcut}">
+                                            <a class="btnBasic" href="javascript:;" onclick="{$action_modify}">変更</a>
+                                        </span>
+                                    </div>
+                                    <div class="status">{$cur_state}</div>
+                                </div>
+                                <div class="orderList">
+                                    <div class="product">
+                                        <span class="chk">{$form.checkbox}</span>
+                                        <div class="description">
+                                            <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                                            <strong class="name">{$product_name_link}</strong>
+                                            <ul class="info">
+                                                <li>
+                                                    <span class="price" title="販売価格">{$item_price_raw_front_head}<strong>{$item_price_raw_front}</strong>{$item_price_raw_front_tail}<span class="{$item_price_ref_display|display}"> {$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</span></span>
+                                                    <span class="quantity" title="数量"><strong>{$quantity}</strong>点</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="option {$option_display|display}">
+                                        <div>{$option_str}</div>
+                                        <ul module="Myshop_optionSet">
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="quantity">
+                                        <span class="gLeft">数量</span>
+                                        <span class="gRight">
+                                            <img class="QuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_down.jpg" width="33" height="29" onclick="{$out_shortcut}">
+                                            {$form.quantity}
+                                            <img class="QuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ja_JP/order/ico_quantity_up.jpg" width="33" height="29" onclick="{$add_shortcut}">
+                                            <a class="btnBasic" href="javascript:;" onclick="{$action_modify}">変更</a>
+                                        </span>
+                                    </div>
+                                    <div class="status">{$cur_state}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <p class="ec-base-help">キャンセル・返品によりノベルティの獲得条件を満たすことが不可になった場合、自動でノベルティのキャンセル申込みが行われます。</p>
+    <div>
+        <div class="boardViewCS">
+            <div class="title">
+                <h3>キャンセル理由</h3>
+            </div>
+            <div class="ec-base-table typeWrite gClearBorderTop">
+                <table border="1">
+                    <caption>キャンセル理由</caption>
+                    <colgroup>
+                        <col style="width:100px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">理由選択</th>
+                            <td>
+                                <div class="ec-base-radio typeCS">
+                                {$form.reason_radio}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">詳細な理由</th>
+                            <td>{$form.reason_detail}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="boardViewCS {$cs_add_item_display|display}">
+            <div class="title">
+                <h3>追加情報</h3>
+            </div>
+            <div class="ec-base-table typeWrite gClearBorderTop">
+                <table border="1">
+                    <caption>追加情報</caption>
+                    <colgroup>
+                        <col style="width:100px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody module="Myshop_Csadd">
+                        <tr>
+                            <th scope="row">{$item_title}</th>
+                            <td>
+                                {$item_value}
+                                <p class="gBlank5">{$guide_content}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{$item_title}</th>
+                            <td>
+                                {$item_value}
+                                <p class="gBlank5">{$guide_content}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="boardViewCS {$refund_info_display|display}">
+            <div class="title">
+                <h3>返金情報</h3>
+            </div>
+            <div class="ec-base-table typeWrite gClearBorderTop">
+                <table border="1">
+                    <caption>返金情報</caption>
+                    <colgroup>
+                        <col style="width:100px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody class="{$refund_notice_display|display}">
+                        <tr>
+                            <th scope="row">返金予定金額</th>
+                            <td>返金予定金額は、販売者が受付処理完了した後「注文詳細内訳」にてご確認頂けます。</td>
+                        </tr>
+                        <tr id="{$delivery_fee_notice_id}" class="{$delivery_fee_notice_display|display}">
+                            <th scope="row">送料案内</th>
+                            <td>{$cs_info_desc}</td>
+                        </tr>
+                    </tbody>
+                    <tbody class="{$refund_account_display|display}">
+                        <tr>
+                            <th scope="row">返金口座</th>
+                            <td>
+                                <span id="{$id_acc_full_str}" class="{$acc_full_str_display|display}">{$acc_full_str}</span>
+                                <span id="{$id_acc_reg_disp}" class="{$acc_reg_display|display}"><a href="#none" class="btnBasic" onclick="OrderApply.popupAccount('./account.html');">返金口座情報登録</a></span>
+                                <span id="{$id_acc_mod_disp}" class="{$acc_mod_display|display}"><a href="#none" class="btnBasic" onclick="OrderApply.popupAccount('./account.html');">返金口座情報の変更</a></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody class="{$product_notice_display|display}">
+                        <tr>
+                            <th scope="row">キャンセル手数料</th>
+                            <td id="{$product_notice_id}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="ec-base-help">現金で返金される場合は、登録された返金口座へ払い戻しされます。</p>
+        </div>
+    </div>
+    {$form.is_new_cs_form}
+    <div class="ec-base-button gColumn">
+        <a href="#none" onclick="OrderApply.apply(); return false;" class="btnSubmit">キャンセル申込</a>
+        <a href="/myshop/order/list.html{$back_page_param}" class="btnEm">前へ</a>
+    </div>
+</div>

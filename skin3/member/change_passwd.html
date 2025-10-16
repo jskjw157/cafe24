@@ -1,0 +1,39 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>パスワード変更</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>パスワード変更</h2>
+</div>
+
+<div module="member_changepasswd" class="ec-base-box typeThin">
+    <!--@css(/css/module/member/change_passwd.css)-->
+    {$form.enc_password}
+    {$form.returnUrl}
+
+    <div class="change_pw">
+        <h3 class="boxTitle">パスワード変更</h3>
+        <p class="info {$display_change_password|display}">
+            会員様の個人情報を安全に保護し、個人情報盜用による被害を予防するため<br />
+            {$check_period}日以上パスワードを変更しない場合、パスワードの変更を勧めております。
+        </p>
+        <fieldset>
+            <legend>パスワード変更</legend>
+            <dl class="ec-base-desc">
+                <dt>ID</dt><dd><strong class="txtEm">{$member_id}</strong></dd>
+                <dt>現在のパスワード</dt><dd>{$form.passwd}</dd>
+                <dt>新しいパスワード</dt><dd>{$form.new_passwd}<span class="txtInfo gBlank5">{$passwd_type_desc}</span></dd>
+                <dt>新しいパスワード確認</dt><dd>{$form.new_passwd_confirm}</dd>
+            </dl>
+            <div class="ec-base-button gColumn">
+                <a href="#none" class="btnSubmit sizeM" onclick="{$change_password_action}">パスワードを変更</a>
+                <a href="#none" class="btnNormal sizeM {$display_change_password|display}" onclick="{$after_action}">次回変更する</a>
+            </div>
+        </fieldset>
+    </div>
+</div>

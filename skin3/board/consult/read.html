@@ -1,0 +1,106 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReadPackage_9">
+    <!--@css(/css/module/board/readPackage_9.css)-->
+    <div module="board_title_9">
+        <div class="path">
+            <span>ロケーション</span>
+            <ol>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/myshop/index.html">マイページ</a></li>
+                <li title="ロケーション"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="Board_Read_9">
+        <!--
+            $login_page_url = /member/login.html
+            $delete_success_url = /board/consult/list.html
+        -->
+        <div class="ec-base-table gLayoutFixed">
+            <table border="1" summary="">
+            <caption>1:1掲示板内容表示</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td colspan="3">{$subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">作成者</th>
+                    <td>{$writer} <span class="{$config.display_ip|display}">(ip:{$ip})</span></td>
+                    <th scope="row">回答結果表示</th>
+                    <td>{$consult}</td>
+                </tr>
+                <tr class="{$config.use_date|display}">
+                    <th scope="row">作成日</th>
+                    <td colspan="3">{$write_date}</td>
+                </tr>
+                <tr class="view">
+                    <td colspan="4">
+                        <div class="detail">{$content}{$content_image}</div>
+                    </td>
+                </tr>
+                <tr class="attach {$config.use_attach|display}" >
+                    <th scope="row">添付ファイル</th>
+                    <td colspan="3">{$attach_file}</td>
+                </tr>
+                <tr class="{$delete_button_auth|display} {$config.use_password|display}">
+                    <th scope="row">パスワード</th>
+                    <td colspan="3">{$form.password} <span class="ec-base-help txtInfo">削除するにはパスワードを入力してください。</span></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="{$display_consult_reply}">
+            <div class="ec-base-table">
+                <table border="1" summary="">
+                <caption>1:1掲示板回答</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">回答者</th>
+                        <td>{$reply_name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">回答日</th>
+                        <td>{$reply_date}</td>
+                    </tr>
+                    <tr class="view">
+                        <td colspan="2">
+                            <div class="detail">{$reply_content}</div>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ec-base-box typeThinBg gBlank30 {$display_consult_noreply}">
+            <p>迅速に回答致します。しばらくお待ちください。</p>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft"><a href="{$link_board_list}" class="btnNormalFix sizeS">一覧へ戻る</a></span>
+            <span class="gRight">
+                <span class="{$delete_button_auth|display}"><a href="#none" onclick="{$action_delete}" class="btnNormalFix sizeS">削除</a></span>
+                <span class="{$modify_button_auth|display}"><a href="#none" onclick="{$action_modify}" class="btnEmFix sizeS">修正</a></span>
+                <span class="{$config.is_admin|display}"><a href="/board/consult/reply.html{$param_reply}" class="btnSubmitFix sizeS {$reply_button_auth|display}">回答</a></span>
+            </span>
+        </div>
+    </div>
+</div>

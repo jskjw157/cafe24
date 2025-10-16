@@ -1,0 +1,123 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ModifyPackage_9">
+    <!--@css(/css/module/board/modifyPackage.css)-->
+    <div id="titleArea" module="board_title_9">
+        <h2>{$board_name}</h2>
+        <span module="Layout_MobileAction">
+            <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る" /></a>
+        </span>
+    </div>
+
+    <div module="board_modify_9">
+        <!--
+            $modify_success_url = /board/consult/read.html
+        -->
+        <div class="boardModifyArea">
+            <div class="ec-base-table typeWrite {$display_parent_form|display}">
+                <table border="1">
+                    <caption>1:1 掲示板内容表示</caption>
+                    <colgroup>
+                        <col style="width:80px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">タイトル</th>
+                            <td>{$parent_subject}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">作成者</th>
+                            <td>{$parent_writer}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul>
+                                    <li class="comment">
+                                        <strong>回答結果</strong> <span>{$parent_consult}</span>
+                                    </li>
+                                    <li class="date {$config.use_date|display}">
+                                        <strong>作成日</strong> <span>{$parent_write_date}</span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{$parent_content}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="ec-base-table typeWrite">
+                <table border="1" summary="">
+                    <caption>1:1 掲示板回答フォーム</caption>
+                    <colgroup>
+                        <col style="width:75px">
+                        <col style="width:auto">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">タイトル</th>
+                            <td>{$form.subject}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">メールアドレス</th>
+                            <td class="grid">
+                                {$form.email}
+                                <p>回答結果をメールで受信しますか？</p>
+                                <p>{$form.cons_re}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                {$form.content}
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody class="{$config.use_attach|display}">
+                        <tr>
+                            <th scope="row">添付ファイル1</th>
+                            <td>
+                                {$form.attach_file}
+                                <p class="line">{$attached_file1}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル2</th>
+                            <td>
+                                {$form.attach_file}
+                                <p class="line">{$attached_file2}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル3</th>
+                            <td>
+                                {$form.attach_file}
+                                <p class="line">{$attached_file3}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル4</th>
+                            <td>
+                                {$form.attach_file}
+                                <p class="line">{$attached_file4}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル5</th>
+                            <td>
+                                {$form.attach_file}
+                                <p class="line">{$attached_file5}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="ec-base-button gColumn">
+                <button type="button" class="btnSubmit" onclick="{$action_modify}">修正</button>
+                <a href="{$link_board_list}"  class="btnEm">キャンセル</a>
+            </div>
+        </div>
+    </div>
+</div>

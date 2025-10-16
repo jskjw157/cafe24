@@ -1,0 +1,294 @@
+<!--@layout(/layout/basic/layer.html)-->
+
+<div module="Product_OptionSelectLayer" class="ec-base-layer typeModal">
+    <!--@css(/css/module/product/optionSelectLayer.css)-->
+    <h1>オプション選択</h1>
+    <div class="wrap">
+        <div module="product_detail" class="inner">
+            <h3 class="name">{$name}</h3>
+            <div class="ec-base-table typeWrite gClearCell gClearBorder regularDelivery {$regular_delivery_display|display}">
+                <table border="1">
+                    <colgroup>
+                        <col style="width:100px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">購入方法</th>
+                        <td>
+                            <label class="{$one_time_purchase_display|display}">{$regular_deliveryF}一般購入</label>
+                            <label><span class="{$one_time_purchase_display|display}">{$regular_deliveryT}</span>定期購入 <span class="badge {$regular_delivery_discount_display|display}">{$max_discount_value} <i class="icoDown">割引</i></span></label>
+                        </td>
+                    </tr>
+                    <tr class="{$regular_cycle_period|display}" id="{$regular_cycle_period_id}">
+                        <td colspan="2" class="shippingCycle">
+                            <strong class="title">定期購入周期</strong>
+                            {$regularPeriod}
+                        </td>
+                    </tr>
+                    <tr class="{$regular_count_display|display}" id="{$regular_count_id}">
+                        <td colspan="2" class="shippingNum">
+                           <strong class="title">定期購入(配送)回数</strong>
+                            {$regularCount}
+                       </td>
+                    </tr>
+                    <tr id="{$regular_info_id}">
+                        <td colspan="2" class="shippingGuide">
+                            <div class="info {$regular_delivery_discount_display|display}" id="{$regular_delivery_discount_id}">
+                                <strong class="title">定期購入割引 <span class="icoSave">save</span></strong>
+                                <ul class="info" module="product_regularDiscount">
+                                    <li>{$discount_count}目以上購入する場合 : {$discount_value} <span class="icoDown">割引</span></li>
+                                    <li>{$discount_count}目以上購入する場合 : {$discount_value} <span class="icoDown">割引</span></li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <ul class="ec-base-help typeDash">
+                                    <li>定期購入(配送)周期および回数はすべての商品に対して同様に適用されます。</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="productNormal">
+                <div class="ec-base-table typeWrite gClearCell gClearBorder">
+                    <table border="1" module="product_option">
+                        <!--
+                        $use_per_add_option = yes
+                        $default_option = yes
+                        -->
+                        <caption>商品オプション</caption>
+                        <colgroup>
+                            <col width="78px;">
+                            <col width="auto;">
+                        </colgroup>
+                        <tbody module="product_option">
+                            <tr>
+                                <th scope="row">{$option_name}</th>
+                                <td>{$form.option}<p class="value">{$option_desc}</p></td>
+                            </tr>
+                            <tr module="product_quantity" class="quantity">
+                                <th scope="row">数量</th>
+                                <td>
+                                    <a href="javascript:;" class="qtyDown eClearDown"><img id="{$quantity_down_id}" class="{$quantity_down_class}" alt="数量-" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_down.jpg" width="33" height="29"></a>
+                                    {$form.quantity}
+                                    <a href="javascript:;" class="qtyUp eClearUp"><img id="{$quantity_up_id}" class="{$quantity_up_class}" alt="数量＋" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_up.jpg" width="33" height="29"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr module="product_addoption">
+                                <th scope="row">{$add_option_name}</th>
+                                <td>
+                                    <span class="inputWrap">{$form.add_option}</span>
+                                    <span class="txtByte" title="現在文字数/最大文字数">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr module="product_fileoption">
+                                <th scope="row">{$file_option_name}</th>
+                                <td class="fileInfo">
+                                    {$form.file_option}
+                                    <ul class="ec-base-help typeDash">
+                                        <li>ファイルは最大5個まで{$file_option_limit}M 以下で個別アップロードできます。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div module="product_setproduct" class="productSet normal">
+                <!--
+                $use_per_add_option = yes
+                -->
+                <div class="product">
+                    <div class="seperate">
+                        <p><strong>{$product_name}</strong> ({$set_quantity}点まとめ買い商品)</p>
+                    </div>
+                    <div class="ec-base-table typeWrite gClearCell gClearBorder">
+                        <table border="1">
+                            <caption>オプション情報</caption>
+                            <colgroup>
+                                <col width="78px;">
+                                <col width="auto;">
+                            </colgroup>
+                            <tbody module="product_option">
+                                <tr>
+                                    <th>{$option_name}</th>
+                                    <td>{$form.option}<p class="value">{$option_desc}</p></td>
+                                </tr>
+                                <tr module="product_quantity" class="quantity">
+                                    <th scope="row">数量</th>
+                                    <td>
+                                        <a href="javascript:;" class="qtyDown eClearDown"><img id="{$quantity_down_id}" class="{$quantity_down_class}" alt="数量-" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_down.jpg" width="33" height="29"></a>
+                                        {$form.quantity}
+                                        <a href="javascript:;" class="qtyUp eClearUp"><img id="{$quantity_up_id}" class="{$quantity_up_class}" alt="数量＋" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_up.jpg" width="33" height="29"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody module="product_noneoption">
+                                <tr>
+                                    <th>商品選択</th>
+                                    <td>{$form.noneoption}</td>
+                                </tr>
+                                <tr module="product_quantity" class="quantity">
+                                    <th scope="row">数量</th>
+                                    <td>
+                                        <a href="javascript:;" class="qtyDown eClearDown"><img id="{$quantity_down_id}" class="{$quantity_down_class}" alt="数量-" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_down.jpg" width="33" height="29"></a>
+                                        {$form.quantity}
+                                        <a href="javascript:;" class="qtyUp eClearUp"><img id="{$quantity_up_id}" class="{$quantity_up_class}" alt="数量＋" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_up.jpg" width="33" height="29"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody module="product_addoption">
+                                <tr>
+                                    <th>{$add_option_name}</th>
+                                    <td>
+                                        <span class="inputWrap">{$form.add_option}</span>
+                                        <span class="txtByte" title="現在文字数/最大文字数">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="seperate">
+                        <p><strong>{$product_name}</strong> ({$set_quantity}点まとめ買い商品)</p>
+                    </div>
+                    <div class="ec-base-table typeWrite gClearCell gClearBorder">
+                        <!--
+                        $use_per_add_option = yes
+                        $default_option = yes
+                        -->
+                        <table border="1">
+                            <caption>オプション情報</caption>
+                            <colgroup>
+                                <col width="78px;">
+                                <col width="auto;">
+                            </colgroup>
+                            <tbody module="product_option">
+                                <tr>
+                                    <th>{$option_name}</th>
+                                    <td>{$form.option}<p class="value">{$option_desc}</p></td>
+                                </tr>
+                                <tr module="product_quantity" class="quantity">
+                                    <th scope="row">数量</th>
+                                    <td>
+                                        <a href="javascript:;" class="qtyDown eClearDown"><img id="{$quantity_down_id}" class="{$quantity_down_class}" alt="数量-" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_down.jpg" width="33" height="29"></a>
+                                        {$form.quantity}
+                                        <a href="javascript:;" class="qtyUp eClearUp"><img id="{$quantity_up_id}" class="{$quantity_up_class}" alt="数量＋" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_up.jpg" width="33" height="29"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody module="product_noneoption">
+                                <tr>
+                                    <th>商品選択</th>
+                                    <td>{$form.noneoption}</td>
+                                </tr>
+                                <tr module="product_quantity" class="quantity">
+                                    <th scope="row">数量</th>
+                                    <td>
+                                        <a href="javascript:;" class="qtyDown eClearDown"><img id="{$quantity_down_id}" class="{$quantity_down_class}" alt="数量-" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_down.jpg" width="33" height="29"></a>
+                                        {$form.quantity}
+                                        <a href="javascript:;" class="qtyUp eClearUp"><img id="{$quantity_up_id}" class="{$quantity_up_class}" alt="数量＋" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_up.jpg" width="33" height="29"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody module="product_addoption">
+                                <tr>
+                                    <th>{$add_option_name}</th>
+                                    <td>
+                                        <span class="inputWrap">{$form.add_option}</span>
+                                        <span class="txtByte" title="現在文字数/最大文字数">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <dl module="product_quantity" class="quantity set">
+                    <dt>数量</dt>
+                    <dd>
+                        <a href="javascript:;" class="qtyDown eClearDown"><img id="{$quantity_down_id}" class="{$quantity_down_class}" alt="数量-" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_down.jpg" width="33" height="29"></a>
+                        {$form.quantity}
+                        <a href="javascript:;" class="qtyUp eClearUp"><img id="{$quantity_up_id}" class="{$quantity_up_class}" alt="数量＋" src="//img.echosting.cafe24.com/skin/mobile/common/ico_quantity_up.jpg" width="33" height="29"></a>
+                    </dd>
+                </dl>
+            </div>
+
+            <div id="{$total.total_id}" class="{$total.total_display|display}">
+                <p class="ec-base-help"><span class="txtWarn">数量を選択してください。</span></p>
+                <p class="ec-base-help"><span class="txtWarn">オプションを選択すると商品が追加されます。</span></p>
+                <table border="1" summary="">
+                    <caption>商品一覧</caption>
+                    <colgroup>
+                        <col style="width:auto;">
+                        <col style="width:90px;">
+                        <col style="width:30px;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">商品名</th>
+                            <th scope="col">商品数</th>
+                            <th scope="col">価格</th>
+                        </tr>
+                    </thead>
+                    <tbody class="{$quantity_display|display}">
+                        <tr>
+                            <td>
+                                {$name}
+                                <p>
+                                    {$quantity}
+                                    <a href="#none" class="{$quantity_up_class} up"><img width="30" height="27" src="//img.echosting.cafe24.com/mobileWeb/common/btn_quantity_up.png" id="option_box1_up" alt="数量＋"></a> &nbsp;
+                                    <a href="#none" class="{$quantity_down_class} down"><img width="30" height="27" src="//img.echosting.cafe24.com/mobileWeb/common/btn_quantity_down.png" id="option_box1_down" alt="数量-"></a>
+                                </p>
+                            </td>
+                            <td class="right">
+                                <span class="{$total.quantity_price}">{$product_price}</span> <span class="mileage {$mileage_display|display}">(<img src="{$mileage_mileage_icon}"> &nbsp;<span class="{$total.mileage_price}">{$mileage_value}</span>)</span>
+                            </td>
+                            <td class="center"></td>
+                        </tr>
+                    </tbody>
+                    <!-- Do not delete. -->
+                    <tbody>
+                        <!-- tr>
+                            <td>
+                                <p class="product">
+                                    <strong>$상품명</strong><br>
+                                    - <span>$옵션</span>
+                                </p>
+                                <p>
+                                    <input type="number" class="quantity_opt">
+                                    <a href="#none" class="{$quantity_up_class} up"><img width="30" height="27" src="//img.echosting.cafe24.com/mobileWeb/common/btn_quantity_up.png" alt="数量＋"></a> &nbsp;
+                                    <a href="#none" class="{$quantity_down_class} down"><img width="30" height="27" src="//img.echosting.cafe24.com/mobileWeb/common/btn_quantity_down.png" alt="数量-"></a>
+                                </p>
+                            </td>
+                            <td class="right">
+                                <strong class="price"><span>$가격</span></strong>
+                                <span class="mileage">(<img src="//img.echosting.cafe24.com/design/skin/admin/ja_JP/ico_product_point.gif"> <span>$적립금</span>)</span>
+                            </td>
+                            <td class="center"><a href="#none" class="delete"><img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif" alt="削除" class="option_box_del"></a></td>
+                        </tr -->
+                    </tbody>
+                    <!-- // Do not delete. -->
+                </table>
+            </div>
+            <div id="{$total.total_price_id}" class="totalPrice">
+                <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 単独購入商品</p>
+                <strong>商品金額合計</strong>(数量) :  <span class="{$total.total_cnt}"><strong class="price">0</strong> (0点)</span>
+            </div>
+        </div>
+    </div>
+    <div module="product_action" class="ec-base-button gColumn">
+        <a href="#none" class="btnSubmit {$buy_display|display}" onclick="{$action_buy}">
+            <span id="{$btn_buy_id}">注文する</span>
+            <span id="{$btn_regular_delivery_id}" class="{$btn_regular_delivery|display}">定期購入お申し込み</span>
+        </a>
+        <a href="#none" class="btnEm {$basket_display|display}" onclick="{$action_basket}">カートに入れる</a>
+    </div>
+    <a href="#none" class="btnClose close">閉じる</a>
+</div>

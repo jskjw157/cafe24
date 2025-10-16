@@ -1,0 +1,51 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Myshop_OrderHistoryAccount" class="ec-base-layer">
+    <!--@css(/css/module/myshop/orderHistoryAccount.css)-->
+    <h1>返金口座 <span class="{$acc_reg_display|display}">登録</span><span class="{$acc_mod_display|display}">変更</span></h1>
+    <div class="wrap">
+        <div id="accountTerms">
+            <div class="ec-base-table typeWrite">
+                <table border="1">
+                    <caption>返金口座 <span class="{$acc_reg_display|display}">登録</span><span class="{$acc_mod_display|display}">変更</span></caption>
+                    <colgroup>
+                        <col style="width:110px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">口座名義</th>
+                            <td>
+                                {$form.acc_depositor}
+                                <p class="ec-base-help typeDash">口座名義は必ず注文者様と同じ名前を入力してください。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">金融機関名</th>
+                            <td>
+                                {$form.acc_bank}
+                                <p class="ec-base-help typeDash {$refund_bank_name_msg_display|display}">返金の際の金融機関名・支店名・口座種別を入力してください。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">口座番号</th>
+                            <td>{$form.acc_no}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">パスワード確認</th>
+                            <td>
+                                {$form.check_password}
+                                <p class="ec-base-help typeDash">登録されたパスワードを入力してください。</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="ec-base-button gColumn">
+        <a href="#none" class="btnSubmit {$acc_reg_display|display}" onclick="RefundAccount.register(); return false;">登録</a>
+        <a href="#none" class="btnSubmit {$acc_mod_display|display}" onclick="RefundAccount.modify(); return false;">変更</a>
+        <a href="#none" class="btnEm" onclick="RefundAccount.cancel(); return false;">キャンセル</a>
+    </div>
+    <button type="button" class="btnClose" onclick="window.close()">閉じる</button>
+</div>

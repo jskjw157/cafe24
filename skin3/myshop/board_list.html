@@ -1,0 +1,87 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>投稿履歴</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>投稿履歴</h2>
+</div>
+
+<div module="myshop_BoardPackage">
+    <!--@css(/css/module/myshop/boardPackage.css)-->
+    <div module="myshop_boardListHead">
+        <p>カテゴリー選択 {$board_sort}</p>
+    </div>
+
+    <div class="ec-base-table typeList gBorder gBlank10" module="myshop_boardList">
+        <!--
+            $count = 10
+            $relation_post = yes
+        -->
+        <table border="1" summary="">
+        <caption>管理一覧</caption>
+        <colgroup module="board_listheader_1002">
+            <col style="width:70px;" />
+            <col style="width:135px;" />
+            <col style="width:auto;" />
+            <col style="width:84px;" />
+            <col style="width:80px;" />
+            <col style="width:55px;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">番号</th>
+                <th scope="col">カテゴリー</th>
+                <th scope="col">タイトル</th>
+                <th scope="col">作成者</th>
+                <th scope="col">作成日</th>
+                <th scope="col">閲覧数</th>
+            </tr>
+        </thead>
+        <tbody class="{$list_display|display} center">
+            <tr>
+                <td>{$no}</td>
+                <td><a href="{$link_board_list}" class="txtEm">{$board_category}</a></td>
+                <td class="left subject">{$icon_re}{$icon_lock} <a href="{$board_read_url}">{$subject}</a> {$icon_new}{$icon_file}{$comment_count}</td>
+                <td>{$writer}</td>
+                <td><span class="txtNum">{$write_date}</span></td>
+                <td><span class="txtNum">{$hit_count}</span></td>
+            </tr>
+            <tr>
+                <td>{$no}</td>
+                <td><a href="{$link_board_list}" class="txtEm">{$board_category}</a></td>
+                <td class="left subject">{$icon_re}{$icon_lock} <a href="{$board_read_url}">{$subject}</a> {$icon_new}{$icon_file}{$comment_count}</td>
+                <td>{$writer}</td>
+                <td><span class="txtNum">{$write_date}</span></td>
+                <td><span class="txtNum">{$hit_count}</span></td>
+            </tr>
+        </tbody>
+        </table>
+        <p class="message {$nodata_display|display}">まだ投稿はありません。</p>
+    </div>
+</div>
+
+<div module="myshop_boardlistPaging" class="ec-base-paginate">
+    <!--
+        $relation_post = yes
+    -->
+    <a href="{$param_prev}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ" /></a>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ" /></a>
+</div>
+
+<div module="myshop_boardlistSearch">
+    <!--@css(/css/module/myshop/boardlistSearch.css)-->
+    <fieldset class="boardSearch">
+        <legend>検索</legend>
+        <p>{$form.search_key} {$form.search} <a href="#none" class="btnEmFix" onclick="{$action_search}">検索</a></p>
+    </fieldset>
+</div>

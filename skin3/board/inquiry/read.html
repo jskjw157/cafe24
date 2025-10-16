@@ -1,0 +1,136 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>大量一括購入のお問い合わせ管理</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>大量一括購入のお問い合わせ管理</h2>
+    <p>大量一括購入のお問い合わせや関連情報の要請ができます。</p>
+</div>
+
+<div module="board_InquiryHead" class="ec-base-box typeProduct">
+    <p class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_img}" alt="" onerror="this.src='//img.echosting.cafe24.com/thumb/75x75.gif'" /></a></p>
+    <div class="information">
+       {$user_icon}{$new_icon}{$recommend_icon}{$soldout_icon}{$mileage_icon}
+        <h3><a href="/product/detail.html{$param_product}">{$product_name}</a></h3>
+        <p class="price">{$product_price} {$product_tax_type_text}</p>
+        <p class="button"><a href="/product/detail.html{$param_product}" class="btnEm" title="別のウィンドウで開く">商品詳細ページへ</a></p>
+    </div>
+</div>
+
+<div module="board_InquiryView">
+    <!--@css(/css/module/board/inquiryView.css)-->
+    <!--
+        $login_page = /member/login.html
+        $isRuleBasedAddrForm = T
+    -->
+    <div class="ec-base-table gLayoutFixed">
+        <table border="1" summary="">
+        <caption>大量一括購入のお問い合わせ管理</caption>
+        <colgroup>
+            <col style="width:130px;" />
+            <col style="width:auto;" />
+            <col style="width:130px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">タイトル</th>
+                <td colspan="3">{$title}</td>
+            </tr>
+            <tr>
+                <th scope="row">投稿者</th>
+                <td>{$name}</td>
+                <th scope="row">数量</th>
+                <td>{$product_cnt}</td>
+            </tr>
+            <tr>
+                <th scope="row">会社名</th>
+                <td>{$company_name}</td>
+                <th scope="row">連絡先</th>
+                <td>{$phone}</td>
+            </tr>
+            <tr>
+                <th scope="row">メールアドレス</th>
+                <td>{$email}</td>
+                <th scope="row">カタログ申請</th>
+                <td>{$is_catalog}</td>
+            </tr>
+            <tr>
+                <th scope="row">回答状態</th>
+                <td>{$is_answer}</td>
+                <th scope="row">投稿日</th>
+                <td>{$inquiry_date}</td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td colspan="3">
+                    <div>{$country_name} [{$postcode}]</div>
+                    <div>{$full_address}</div>
+                </td>
+            </tr>
+            <tr class="view">
+                <td colspan="4" class="detail">{$inquiry_content}{$content_image}</td>
+            </tr>
+            <tr module="board_inquiryViewFile_1" class="attach">
+                <th>添付ファイル</th>
+                <td colspan="3">
+                    <p><a href="{$inquery_file_path}">{$inquiry_file}</a></p>
+                    <p><a href="{$inquery_file_path}">{$inquiry_file}</a></p>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="{$display_answer|display}">
+        <div class="ec-base-table">
+            <table border="1" summary="">
+            <caption></caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">回答者</th>
+                    <td>{$answer_name}</td>
+                </tr>
+                <tr>
+                    <th scope="row">回答日</th>
+                    <td>{$answer_date}</td>
+                </tr>
+                <tr class="view">
+                    <td colspan="2" class="detail">{$answer_content}</td>
+                </tr>
+                <tr module="myshop_inquiryViewFile_2" class="attach">
+                    <th>添付ファイル</th>
+                    <td>
+                        <p><a href="{$answer_file_path}">{$inquiry_file}</a></p>
+                        <p><a href="{$answer_file_path}">{$inquiry_file}</a></p>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="{$display_answer_none|display}">
+        <div class="ec-base-box typeThinBg gBlank30">
+            <p class="txt11">速い時間以内に回答させていただきます。しばらくお待ちください！</p>
+        </div>
+    </div>
+
+    <div module="myshop_inquiryButton" class="ec-base-button">
+        <span class="gLeft"><a href="/board/inquiry/list.html{$list_param}" class="btnNormalFix sizeS">一覧へ戻る</a></span>
+        <span class="gRight">
+            <a href="#none" onclick="{$action_delete}" class="btnNormalFix sizeS">削除</a>
+            <a href="#none" onclick="{$action_modify}" class="btnEmFix sizeS">修正</a>
+        </span>
+    </div>
+</div>

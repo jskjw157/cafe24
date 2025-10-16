@@ -1,0 +1,391 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+
+<!--@css(/css/module/myshop/regularDeliveryDetail.css)-->
+<div module="myshop_OrderRegularManageDetailRegister">
+    <div id="titleArea">
+        <h2>{$invoice_type_text} 詳細</h2>
+        <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ko_KR/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+    </div>
+
+    <div class="ec-base-fold theme1 eToggle">
+        <div class="title">
+            <h2>お申込み情報</h2>
+        </div>
+        <div class="contents">
+            <div class="ec-base-table">
+                <table border="1">
+                    <caption>お申込み情報</caption>
+                    <colgroup>
+                        <col style="width:115px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">申込番号</th>
+                        <td>{$invoice_no}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">申込日</th>
+                        <td>{$ins_timestamp}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">定期購入開始日</th>
+                        <td>{$delivery_timestamp}</td>
+                    </tr>
+                    <tr class="{$payInfo_display|display}">
+                        <th scope="row">決済方法</th>
+                        <td class="status">
+                            <div class="payMethod">{$subscriptionPaymethod}</div>
+                            <span id="{$registedCardNumberId}"></span> <span class="cardName" id="{$registedCardNameId}"></span>
+                            <a href="#" id="{$registModifyCardId}" class="btnNormal modify {$modifyCard_display|display}">変更</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="deliveryInfo" module="myshop_OrderRegularManageDetailList">
+    <div class="ec-base-fold theme1 selected eToggle">
+        <div class="title">
+            <h2>{$invoice_type_text} 情報 (全 {$subscription_item_cnt}件)</h2>
+        </div>
+        <div class="contents">
+            {$form.invoice_no}
+            {$form.has_temp_ord}
+            {$form.return_url}
+            <div module="">
+                <div class="ec-base-prdInfo">
+                    <div class="prdBox">
+                        <div class="thumbnail"><a href="/product/detail.html{$param}"><img src="{$product_image}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" width="71" height="71" /></a></div>
+                        <div class="description">
+                            <strong class="prdName" title="商品名">{$product_name_link}</strong>
+                            <ul class="info">
+                                <li>{$option_str}</li>
+                                <li class="{$shipping_company_display|display}"><a href="{$shipping_company_link}" target="{$shipping_company_target}">{$shipping_company}</a></li>
+                                <li class="{$invoice_no_display|display}"><a href="#none" class="line" onclick="{$shipping_trace_popup}">[{$invoice_no}]</a></li>
+                                <li>配送 : {$type_all} <span class="{$oversea_able_display|display}">(海外配送可能)</span></li>
+                                <li class="{$card_installment_display|display}">無利子分割払い商品</li>
+                                <li class="price">
+                                    <span id="{$productpriceId}" class="{$discount}" title="販売価格">
+                                        <span class="txtDel">{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</span>
+                                    </span>
+                                    <span class="{$product_sale_info_display|display}" title="割引販売価格">
+                                        <strong>{$product_sale_price_front_head}{$product_sale_price_front}{$product_sale_price_front_tail}</strong><span class="badge">{$product_sale_info}<i class="icoDown">割引</i></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ec-base-table typeWrite">
+                        <table border="1">
+                            <caption>定期購入情報修正</caption>
+                            <colgroup>
+                                <col style="width:80px;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th scope="row">数量</th>
+                                <td>
+                                    <div class="ec-base-qty">
+                                        <a href="javascript:;" class="QuantityDown qtyDown" onclick="{$out_shortcut}"><img alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"></a>
+                                        {$form.product_cnt}
+                                        <a href="javascript:;" class="QuantityUp qtyUp" onclick="{$add_shortcut}"><img alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29" ></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">定期購入開始日</th>
+                                <td>
+                                    <div class="datepicker">
+                                        {$form.expected_delivery_date}
+                                    </div>
+                                    <p class="txtLess">[{$expected_pay_seq}回目] {$expected_pay_date_info}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">定期購入周期</th>
+                                <td>
+                                    {$form.subscription_cycle}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">配送回数</th>
+                                <td>
+                                    {$form.max_expected_pay_seq}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="prdFoot">
+                        <div class="gRight">
+                            <a href="#none" class="btnNormal mini {$pauseScriptionItemClass}" data-pause_action_json="{$pause_action_json}" data-has_temporder="{$temp_order}">{$pause_button_text}</a>
+                            <a href="#none" class="btnNormal mini {$cancelScriptionItemClass}" data-cancel_action_json="{$cancel_action_json}" data-has_temporder="{$temp_order}">{$cancel_button_text}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contents">
+            <div mocule="">
+                <div class="ec-base-prdInfo">
+                    <div class="prdBox">
+                        <div class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" alt="{$product_name_alt}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" width="71" height="71" /></a></div>
+                        <div class="description">
+                            <strong class="prdName" title="商品名">{$product_name_link}</strong>
+                            <ul class="info">
+                                <li>{$option_str}</li>
+                                <li class="{$shipping_company_display|display}"><a href="{$shipping_company_link}" target="{$shipping_company_target}">{$shipping_company}</a></li>
+                                <li class="{$invoice_no_display|display}"><a href="#none" class="line" onclick="{$shipping_trace_popup}">[{$invoice_no}]</a></li>
+                                <li>配送 : {$type_all} <span class="{$oversea_able_display|display}">(海外配送可能)</span></li>
+                                <li class="{$card_installment_display|display}">無利子分割払い商品</li>
+                                <li class="price">
+                                    <span id="{$productpriceId}" class="{$discount}" title="販売価格">
+                                        <span class="txtDel">{$product_price_front_head}{$product_price_front}{$product_price_front_tail}</span>
+                                    </span>
+                                    <span class="{$product_sale_info_display|display}" title="割引販売価格">
+                                        <strong>{$product_sale_price_front_head}{$product_sale_price_front}{$product_sale_price_front_tail}</strong><span class="badge">{$product_sale_info}<i class="icoDown">割引</i></span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ec-base-table typeWrite">
+                        <table border="1">
+                            <caption>定期購入情報修正</caption>
+                            <colgroup>
+                                <col style="width:80px;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th scope="row">数量</th>
+                                <td>
+                                    <div class="ec-base-qty">
+                                        <a href="javascript:;" class="QuantityDown qtyDown" onclick="{$out_shortcut}"><img alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"></a>
+                                        {$form.product_cnt}
+                                        <a href="javascript:;" class="QuantityUp qtyUp" onclick="{$add_shortcut}"><img alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29" ></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">定期購入開始日</th>
+                                <td>
+                                    <div class="datepicker">
+                                        {$form.expected_delivery_date}
+                                    </div>
+                                    <p class="txtLess">[{$expected_pay_seq}回目] {$expected_pay_date_info}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">定期購入周期</th>
+                                <td>
+                                    {$form.subscription_cycle}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">配送回数</th>
+                                <td>
+                                    {$form.max_expected_pay_seq}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="prdFoot">
+                        <div class="gRight">
+                            <a href="#none" class="btnNormal mini {$pauseScriptionItemClass}" data-pause_action_json="{$pause_action_json}" data-has_temporder="{$temp_order}">{$pause_button_text}</a>
+                            <a href="#none" class="btnNormal mini {$cancelScriptionItemClass}" data-cancel_action_json="{$cancel_action_json}" data-has_temporder="{$temp_order}">{$cancel_button_text}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="userInfo" module="myshop_OrderRegularManageDetailReceiver">
+        <div class="ec-base-fold theme1 eToggle">
+            <div class="title">
+                <h2>受取人情報</h2>
+            </div>
+            <div class="contents">
+                <!-- 基本情報 -->
+                <div class="ec-base-prdInfo">
+                    <h3 class="hasBtn">
+                        <span>基本情報</span>
+                        <div class="gRight">
+                             <a id="{$receiverUpdateId}" href="#none" class="btnNormal mini {$receiver_update_button_display|display}" title="新しいウィンドウで開く"><span>変更</span></a>
+                             <a href="#none" class="btnNormal mini {$not_receiver_update_button_display|display}" title="新しいウィンドウで開く" onclick="{$action_receiver_update_button}"><span class="txtWarn">変更不可</span></a>
+                        </div>
+                    </h3>
+                    <br>
+                    <div>
+                        <p>
+                            <span>{$expected_delivery_datetime} <span class="{$display_expected_delivery_datetime|display}">配送開始時から</span></span>
+                        </p>
+                    </div>
+                    <br>
+                    <div class="ec-base-table typeWrite">
+                        <br>
+                        <div>
+                            <p>{$receiver_name} </p>
+                            <p class="{$oversea_delv_display|display}">受取人名(ローマ字): {$receiver_name_en}</p>
+                            <p class="{$oversea_delv_display|display}">受取人名(フリガナ): {$receiver_name_phonetic}</p>
+                            <p class="{$oversea_delv_display|display}">国: {$country_name}</p>
+                            <p class="{$display_addr|display}">[{$receiver_zipcode}]{$receiver_address}</p>
+                            <p>{$receiver_phone}/{$receiver_cell} </p>
+                            <p class="{$display_store_pickup_info|display}"><strong>{$store_pickup.receive_place_name}</strong></p>
+                            <p class="{$display_store_pickup_info|display}">- 住所 : {$store_pickup.receiver_address}</p>
+                            <p class="{$display_store_pickup_info|display}">- 電話番号 : {$store_pickup.main_phone}</p>
+                            <p class="{$display_store_pickup_info|display}">- 営業時間 : {$store_pickup.office_hour}</p>
+                            <p class="{$display_store_pickup_info|display}">- 受取可能日 : {$store_pickup.receive_period}</p>
+                            <p class="{$display_store_pickup_info|display}">- アクセス案内 : {$store_pickup.receive_info}</p>
+                            <p class="{$oversea_delv_display|display}">都市: {$receiver_city}</p>
+                            <p class="{$oversea_delv_display|display}">都道府県: {$receiver_state}</p>
+                        </div>
+                        <br>
+                        <div>
+                            <p>配送メッセージ : {$delivery_msg}</p>
+                            <p class="{$hope_shipping_time_display|display}">配達希望時間: {$hope_shipping_time}</p>
+                            <p class="{$hope_shipping_company_name_display|display}">希望配送会社・方式: {$hope_shipping_company_name}</p>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="prdFoot"></div>
+                </div>
+
+                <!-- 배송전 주문 있음-->
+                <div module="myshop_SubscriptionShippingList">
+                    <div class="ec-base-prdInfo">
+                        <h3 class="hasBtn">
+                            <span>配送予定の注文情報</span>
+                            <div class="gRight">
+                                 <a href="#none" class="btnNormal mini {$receiver_update_button_display|display}" title="新しいウィンドウで開く" onclick="{$action_receiver_update_button}"><span>変更</span></a>
+                                 <a href="#none" class="btnNormal mini {$not_receiver_update_button_display|display}" title="新しいウィンドウで開く" onclick="{$action_receiver_update_button}"><span class="txtWarn">変更不可</span></a>
+                            </div>
+                        </h3>
+                        <br>
+                        <div>
+                            <p>{$product_name}</p>
+                            <p>
+                                <span>適用タイミング : </span> <span>[{$subscription_pay_seq}回目] </span> <span>{$expected_delivery_datetime} <span class="{$display_expected_delivery_datetime|display}">配送開始</span></span>
+                            </p>
+                        </div>
+                        <br>
+                        <div class="ec-base-table typeWrite">
+                            <br>
+                            <div>
+                                <p>{$receiver_name} </p>
+                                <p class="{$oversea_delv_display|display}">受取人名(ローマ字): {$receiver_name_en}</p>
+                                <p class="{$oversea_delv_display|display}">受取人名(フリガナ): {$receiver_name_phonetic}</p>
+                                <p class="{$oversea_delv_display|display}">国: {$country_name}</p>
+                                <p class="{$display_addr|display}">[{$receiver_zipcode}]{$receiver_address}</p>
+                                <p>{$receiver_phone}/{$receiver_cell} </p>
+                                <p class="{$display_store_pickup_info|display}"><strong>{$store_pickup.receive_place_name}</strong></p>
+                                <p class="{$display_store_pickup_info|display}">- 住所 : {$store_pickup.receiver_address}</p>
+                                <p class="{$display_store_pickup_info|display}">- 電話番号 : {$store_pickup.main_phone}</p>
+                                <p class="{$display_store_pickup_info|display}">- 営業時間 : {$store_pickup.office_hour}</p>
+                                <p class="{$display_store_pickup_info|display}">- 受取可能日 : {$store_pickup.receive_period}</p>
+                                <p class="{$display_store_pickup_info|display}">- アクセス案内 : {$store_pickup.receive_info}</p>
+                                <p class="{$oversea_delv_display|display}">都市: {$receiver_city}</p>
+                                <p class="{$oversea_delv_display|display}">都道府県: {$receiver_state}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <p>配送メッセージ : {$delivery_msg}</p>
+                                <p class="{$hope_shipping_time_display|display}">配達希望時間: {$hope_shipping_time}</p>
+                                <p class="{$hope_shipping_company_name_display|display}">希望配送会社・方式: {$hope_shipping_company_name}</p>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="prdFoot {$is_not_last|display}"></div>
+                    </div>
+                    <div class="ec-base-prdInfo">
+                        <h3 class="hasBtn">
+                            <span>配送予定の注文情報</span>
+                            <div class="gRight">
+                                <a href="#none" class="btnNormal mini {$receiver_update_button_display|display}" title="新しいウィンドウで開く" onclick="{$action_receiver_update_button}"><span>変更</span></a>
+                                <a href="#none" class="btnNormal mini {$not_receiver_update_button_display|display}" title="新しいウィンドウで開く" onclick="{$action_receiver_update_button}"><span class="txtWarn">変更不可</span></a>
+                            </div>
+                        </h3>
+                        <br>
+                        <div>
+                            <p>{$product_name}</p>
+                            <p>
+                                <span>適用タイミング : </span> <span>[{$subscription_pay_seq}回目] </span> <span>{$expected_delivery_datetime} <span class="{$display_expected_delivery_datetime|display}">配送開始</span></span>
+                            </p>
+                        </div>
+                        <br>
+                        <div class="ec-base-table typeWrite">
+                            <br>
+                            <div>
+                                <p>{$receiver_name} </p>
+                                <p class="{$oversea_delv_display|display}">受取人名(ローマ字): {$receiver_name_en}</p>
+                                <p class="{$oversea_delv_display|display}">受取人名(フリガナ): {$receiver_name_phonetic}</p>
+                                <p class="{$oversea_delv_display|display}">国: {$country_name}</p>
+                                <p class="{$display_addr|display}">[{$receiver_zipcode}]{$receiver_address}</p>
+                                <p>{$receiver_phone}/{$receiver_cell} </p>
+                                <p class="{$display_store_pickup_info|display}"><strong>{$store_pickup.receive_place_name}</strong></p>
+                                <p class="{$display_store_pickup_info|display}">- 住所 : {$store_pickup.receiver_address}</p>
+                                <p class="{$display_store_pickup_info|display}">- 電話番号 : {$store_pickup.main_phone}</p>
+                                <p class="{$display_store_pickup_info|display}">- 営業時間 : {$store_pickup.office_hour}</p>
+                                <p class="{$display_store_pickup_info|display}">- 受取可能日 : {$store_pickup.receive_period}</p>
+                                <p class="{$display_store_pickup_info|display}">- アクセス案内 : {$store_pickup.receive_info}</p>
+                                <p class="{$oversea_delv_display|display}">都市: {$receiver_city}</p>
+                                <p class="{$oversea_delv_display|display}">都道府県: {$receiver_state}</p>
+                            </div>
+                            <br>
+                            <div>
+                                <p>配送メッセージ : {$delivery_msg}</p>
+                                <p class="{$hope_shipping_time_display|display}">配達希望時間: {$hope_shipping_time}</p>
+                                <p class="{$hope_shipping_company_name_display|display}">希望配送会社・方式: {$hope_shipping_company_name}</p>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="prdFoot {$is_not_last|display}"></div>
+                    </div>
+                </div>
+
+                <!-- 배송전 주문 없음-->
+                <div class="ec-base-prdInfo {$subscription_shipping_list_empty_display|display}">
+                    <h3 class="hasBtn"><span>配送予定の注文情報</span></h3>
+                    <br>
+                    <div class="ec-base-table typeWrite">
+                        <table>
+                            <caption>受取人情報</caption>
+                            <br>
+                            <tbody>
+                            配送予定の注文情報は配送開始日の2日前から確認できます。
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                    <div class="prdFoot hasBtn">
+                        <br>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ec-base-button gColumn">
+        <a href="regular_delivery.html" class="btnEm">一覧</a>
+        <a href="#none" class="btnSubmit" onclick="{$action_check}">保存</a>
+    </div>
+    <ul class="ec-base-help">
+        <li>決済金額は各周期の定期購入開始日2日前(決済日前日)にメールまたはSMSを通して案内されます。
+            <span class="txtEm">上記の販売価格に決済案内時点の割引・送料基準が自動適用された確定価格が案内されますのでご参照ください。</span>
+            (定期購入開始日が申込日の翌日になる場合、お申込み当日に決済金額に関する案内および決済が行われます。)</li>
+        <li>定期購入周期が異なる複数の商品をまとめて(同じ申込番号で)定期購入をお申込みになった場合、定期購入開始日が同じ商品別にまとめられ、各グループごとに注文・決済が行われます。</li>
+        <li><span class="txtWarn">定期購入周期や定期購入開始日の変更、一部商品の定期購入解約などによって決済予定注文の構成が変更される場合、割引特典および送料の変更が発生することがあります。</span></li>
+        <li>定期購入周期を変更する場合、変更した時点で迫っている定期購入開始日ではなく、次回の配送(決済)から適用されます。</li>
+    </ul>
+</div>

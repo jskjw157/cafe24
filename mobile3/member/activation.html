@@ -1,0 +1,79 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<div id="titleArea">
+    <h2>アカウントを有効にする</h2>
+</div>
+
+<div module="member_activation" class="activationArea">
+    <!--@css(/css/module/member/activation.css)-->
+    <!--
+        $returnUrl = /member/join_result.html
+     -->
+    <div class="titleArea">
+        <h3>基本情報 <span><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須">必須項目</span></h3>
+    </div>
+    <div class="ec-base-table typeWrite gClearBorderTop">
+        <table border="1" summary="">
+            <caption>基本情報</caption>
+            <colgroup>
+                <col style="width:100px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">パスワード <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須"></th>
+                    <td>
+                        <div class="ec-base-tooltip-area">
+                            <span class="eTip">{$form.passwd}</span>
+                            <div class="ec-base-tooltip typeUpper">
+                                <div class="content">
+                                    <strong class="txtWarn">※ {$passwd_terms}</strong>
+                                    <ul class="ec-base-help typeDash txtWarn">
+                                        {$passwd_chk_info}
+                                    </ul>
+                                   <button type="button" class="btnClose eClose">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">パスワード(確認) <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須"></th>
+                    <td>{$form.user_passwd_confirm}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mAgreement">
+        <div class="desc"><a href="agreement/agreement1.html" class="txtLink" target="_blank">利用規約</a>、<a href="agreement/agreement2.html" class="txtLink" target="_blank">個人情報の収集および利用</a>(必須)に関する内容にすべて同意します。</div>
+        <div class="{$display_privacy_optional|display} box">
+            <label class="gLabel">{$form.agree_privacy_optional_check} 個人情報の収集および利用目的(任意)</label>
+            <a href="agreement/agreement6.html" class="btnDetail" target="_blank">詳細を見る</a>
+        </div>
+        <div class="{$display_information|display} box">
+            <label class="gLabel">{$form.agree_information_check} 個人情報の第三者提供 (任意)</label>
+            <a href="agreement/agreement3.html" class="btnDetail" target="_blank">詳細を見る</a>
+        </div>
+        <div class="{$display_consignment|display} box">
+            <label class="gLabel">{$form.agree_consignment_check} 個人情報取扱の委託 (任意)</label>
+            <a href="agreement/agreement4.html" class="btnDetail" target="_blank">詳細を見る</a>
+        </div>
+        <div class="{$display_marketing|display} box">
+            <label class="gLabel">{$sMarketingAgreeAllChecked} お得な情報の受信(任意)</label>
+            <ul class="check">
+                <li class="{$display_is_sms|display}">
+                    <span>SMSを受信しますか?</span><br>{$form.is_sms}
+                </li>
+                <li class="{$display_is_news_mail|display}">
+                    <span>メールマガジンを受信しますか?</span><br>{$form.is_news_mail}
+                </li>
+            </ul>
+            <a href="agreement/agreement5.html" class="btnDetail" target="_blank">詳細を見る</a>
+        </div>
+    </div>
+
+    <div class="ec-base-button gFull">
+        <button type="button" class="btnSubmit" onclick="{$action_func_join}">アカウントを有効にする</button>
+    </div>
+</div>

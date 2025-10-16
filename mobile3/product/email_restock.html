@@ -1,0 +1,41 @@
+<!--@layout(/layout/basic/layer.html)-->
+<div module="Product_RestockEmail" class="ec-base-layer">
+    <!--@css(/css/module/product/restock_email.css)-->
+    <h1>再入荷お知らせ受信申込み</h1>
+    <div class="wrap">
+        <div class="product">
+            <p class="prdImg"><img src="{$product_image}" alt="" /></p>
+            <div class="info">
+                <h2>{$product_name}</h2>
+                <p>オプション情報</p>
+                <p>{$restock_option_name}</p>
+
+                <div class="optionWrap">
+                    <ul module="Product_optionstock">
+                         <li>
+                             <span class="name">{$option_name}</span>
+                             <div class="option">{$form.option}<p class="value">{$option_desc}</p></div>
+                         </li>
+                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="emailArea">
+            <p><strong>商品再入荷の際にお知らせを受け取るメールアドレスを入力してください。</strong></p>
+            <div class="contact">
+                <p><strong>{$member_id}</strong> 様のメールアドレス</p>
+                <p>{$form.email}</p>
+            </div>
+            <ul class="info">
+                <li>再入荷お知らせの設定は申込日から<strong>{$restock_month}ヶ月</strong>間有効で、期間が過ぎると在庫入荷時に通知が送信されません。</li>
+                <li>お知らせの受信を申し込んだ商品の価格・オプションなどが再入荷の際に変更されることがありますので、ご購入の際は必ず商品の情報をもう一度確認してください。</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ec-base-button gColumn">
+        <button type="button" onclick="{$action_write}" class="btnSubmit">確認</button>
+        <button type="button" onclick="self.close();" class="btnEm">キャンセル</button>
+    </div>
+    <button type="button" class="btnClose" onclick="self.close();">閉じる</button>
+</div>

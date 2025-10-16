@@ -1,0 +1,77 @@
+<div module="Mall_UrgencycallOrdLogout" class="ec-base-table typeWrite {$displayLogout|display}">
+    <table border="1" summary="">
+        <caption>注文番号で検索</caption>
+        <colgroup>
+            <col style="width:100px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">注文番号</th>
+                <td>
+                    <input type="text" id="{$order_id1}" class="inputOrdNum" /> - <input type="text" id="{$order_id2}" class="inputOrdNum" /> <a href="#none" class="btnEmFix" onclick="{$insertfn}">登録</a>
+                    <span class="gBlank5">ex) 00000000 - 0000000</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="ec-base-table typeList">
+    <table border="1" summary="" module="Mall_UrgencycallOrdHeader" class="{$displayLogin|display}">
+        <caption>Results</caption>
+        <colgroup>
+            <col style="width:auto;" />
+            <col style="width:130px;" />
+            <col style="width:100px;" />
+        </colgroup>
+        <tbody class="head">
+            <tr>
+                <td scope="col">注文商品</td>
+                <td scope="col">注文番号</td>
+                <td scope="col">{$form.ordPagenum}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div module="Mall_UrgencycallOrdResult" class="scroll {$displayLogin|display}">
+        <table border="1" summary="">
+            <caption>Results</caption>
+            <colgroup>
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:85px;" />
+            </colgroup>
+            <tbody class="{$displayPrdlist|display} center">
+                <tr>
+                    <td class="product left">
+                        <span class="thumb"><img src="{$image_tiny}" alt="" /></span>
+                        <p>{$product_name}</p>
+                    </td>
+                    <td>{$order_id}</td>
+                    <td><a href="#none" class="btnNormal" onClick="{$selectfn}">選択</a></td>
+                </tr>
+                <tr>
+                    <td class="product left">
+                        <span class="thumb"><img src="{$image_tiny}" alt="" /></span>
+                        <p>{$product_name}</p>
+                    </td>
+                    <td>{$order_id}</td>
+                    <td><a href="#none" class="btnNormal" onClick="{$selectfn}">選択</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="message {$displayEmpty | display}">一致する情報は見つかりません。</p>
+    </div>
+</div>
+
+<div module="Mall_UrgencycallOrdPage" class="ec-base-paginate typeSub {$displayLogin|display}">
+    <a href="#none" onClick="{$prev}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev2.gif" alt="前へ" /></a>
+    <ol>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}">{$num}</a></li>
+    </ol>
+    <a href="#none" onClick="{$next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next2.gif" alt="次へ" /></a>
+</div>

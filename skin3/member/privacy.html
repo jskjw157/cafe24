@@ -1,0 +1,27 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>プライバシーポリシー</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>プライバシーポリシー</h2>
+</div>
+
+<div module="mall_privacy">
+    <!--@css(/css/module/mall/privacy.css)-->
+    <div class="ec-base-box typeThinBg">
+        <strong class="date {$displayEnforce|display}">{$enforce_date}</strong>
+        <div class="agree">
+            {$privacy_agreement}
+        </div>
+    </div>
+    <div class="ec-base-button {$displayBeforeEnforce|display}">
+        <span class="gRight">
+        	<a href="{$before_enforce_link}" class="btnLink" target="_blank">{$before_enforce_date}</a>
+        </span>
+    </div>
+</div>

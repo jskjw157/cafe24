@@ -1,0 +1,58 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Calendar_View" class="ec-base-layer">
+    <!--@css(/css/module/calendar/view.css)-->
+    <!--
+        $calendar_modify_url = calendar_modify.html
+     -->
+    <div class="header">
+        <h1>[{$view_date}] 作成内容詳細 </h1>
+    </div>
+    <div class="content">
+        <table border="1" summary="">
+            <caption>１日作成内容詳細一覧</caption>
+            <colgroup>
+                <col style="width:60px" />
+                <col style="width:auto" />
+                <col style="width:80px" />
+                <col style="width:40px" />
+                <col style="width:40px" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">日時</th>
+                    <th scope="col">内容</th>
+                    <th scope="col">作成者</th>
+                    <th scope="col">確認</th>
+                    <th scope="col">修正</th>
+                </tr>
+            </thead>
+            <tbody class="{$list_display|display}">
+                <tr class="{$list_no}">
+                    <td>{$list_hour}:{$list_minute}</td>
+                    <td class="left">
+                        [追加情報] {$list_add_info}
+                        <p><a href="#none" onclick="{$action_view_content}">{$list_title}</a></p>
+                    </td>
+                    <td>{$list_writer}</td>
+                    <td><p class="{$list_confirm}"></p></td>
+                    <td><a href="#none" class="btnNormal {$action_modify_display|display}" onclick="{$action_modify}">修正</a></td>
+                </tr>
+                <tr class="{$list_no}">
+                    <td>{$list_hour}:{$list_minute}</td>
+                    <td class="left">
+                        [追加情報] {$list_add_info}
+                        <p><a href="#none" onclick="{$action_view_content}">{$list_title}</a></p>
+                    </td>
+                    <td>{$list_writer}</td>
+                    <td><p class="{$list_confirm}"></p></td>
+                    <td><a href="#none" class="btnNormal {$action_modify_display|display}" onclick="{$action_modify}">修正</a></td>
+                </tr>
+            </tbody>
+            <tbody class="{$list_none_display|display}">
+                <tr>
+                    <td colspan="5">まだ投稿はありません。</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Myshop_OrderHistoryAccount" class="ec-base-layer">
+    <!--@css(/css/module/myshop/orderHistoryAccount.css)-->
+    <div class="header">
+        <h1>銀行口座情報 <span class="{$acc_reg_display|display}">登録</span><span class="{$acc_mod_display|display}">変更</span></h1>
+    </div>
+
+    <div class="content">
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>銀行口座情報 <span class="{$acc_reg_display|display}">登録</span><span class="{$acc_mod_display|display}">変更</span></caption>
+                <colgroup>
+                    <col style="width:140px" />
+                    <col style="width:auto" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">口座名義</th>
+                        <td>
+                            {$form.acc_depositor}
+                            <p class="txtInfo gBlank10">ご注文者様と同一名義の名前を入力してください。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">金融機関名</th>
+                        <td>
+                            {$form.acc_bank}
+                            <p class="txtInfo gBlank10 {$refund_bank_name_msg_display|display}">返金の際の金融機関名・支店名・口座種別を入力してください。</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">口座番号</th>
+                        <td>{$form.acc_no}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">パスワード確認</th>
+                        <td>
+                            {$form.check_password}
+                            <p class="txtInfo gBlank10">登録されたパスワードを入力してください。</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ec-base-button">
+            <a href="#none" class="btnSubmitFix sizeS {$acc_reg_display|display}" onclick="RefundAccount.register(); return false;">登録</a>
+            <a href="#none" class="btnSubmitFix sizeS {$acc_mod_display|display}" onclick="RefundAccount.modify(); return false;">変更</a>
+            <a href="#none" class="btnNormalFix sizeS" onclick="RefundAccount.cancel(); return false;">キャンセル</a>
+        </div>
+    </div>
+</div>

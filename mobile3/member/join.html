@@ -1,0 +1,229 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>会員登録</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div class="progress">
+    <ol><li class="done">利用規約</li>
+        <li class="done"><strong title="登録フォーム">登録フォーム</strong></li>
+        <li>登録完了</li>
+    </ol>
+</div>
+
+<div module="member_join">
+    <!--@css(/css/module/member/join.css)-->
+    <!--@js(/js/module/member/join.js)-->
+    <!--
+
+        $returnUrl = /member/join_result.html
+        $personalName = お名前
+        $companyName = 法人名
+        $companySsn = 法人番号
+        $foreignerSsn1 = 外国人登録証明番号
+        $foreignerSsn2 = パスワード番号
+        $foreignerSsn3 = 国際運転免許証番号
+        $isRuleBasedAddrForm = T
+     -->
+    <div class="titleArea">
+        <h3>基本情報 <span><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須">必須項目</span></h3>
+    </div>
+    <div class="ec-base-table typeWrite gClearBorderTop">
+        <table border="1">
+            <caption>会員基本情報</caption>
+            <colgroup>
+                <col style="width:110px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr class="emailCheck">
+                    <th scope="row">メール<br>アドレス <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須"></th>
+                    <td>{$form.email} <button type="button" class="btnBasic" onclick="{$action_check_email}">重複チェック</button>
+                        <p id="{$emailMsg_id}"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">パスワード <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須"></th>
+                    <td>
+                        <div class="ec-base-tooltip-area">
+                            <span class="eTip">{$form.passwd}</span>
+                            <div class="ec-base-tooltip typeUpper">
+                                <div class="content">
+                                    <strong class="txtWarn">※ {$passwd_terms}</strong>
+                                    <ul class="ec-base-help typeDash txtWarn">
+                                        {$passwd_chk_info}
+                                    </ul>
+                                   <button type="button" class="btnClose eClose">閉じる</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="pwConfirm">パスワード<br>(確認) <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須"></th>
+                    <td>{$form.user_passwd_confirm}</td>
+                </tr>
+                <tr class="idCheck {$display_use_id|display}">
+                    <th scope="row">ID <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" width="5" height="5" alt="必須"></th>
+                    <td>{$form.member_id} <button type="button" class="btnBasic" onclick="{$action_check_id}">重複チェック</button>
+                        <p id="{$idMsg_id}"></p>
+                    </td>
+                </tr>
+                <tr class="{$display_name|display}">
+                    <th scope="row" id="{$name_title}">お名前 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_name|display}" width="5" height="5" alt="必須"></th>
+                    <td>
+                        <div class="ec-base-tooltip-area">
+                            <span id="{$name_contents}" class="eTip">{$form.name}</span>{$form.last_name}
+                            <div class="ec-base-tooltip typeUpper">
+                                <div class="content">
+                                    <span class="txtWarn">お名前は、必ずフルネームで入力してください。<br>
+                                    フルネームで入力されていないと、配達遅延となる場合がございます。</span>
+                                    <button type="button" class="btnClose eClose">閉じる</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="under14Msg" class="displaynone ec-base-help typeDash">14歳未満の使用者は法定代理人の同意が必要です。</p>
+                    </td>
+                </tr>
+                <tr class="{$display_eng_name|display}">
+                    <th scope="row">お名前<br>(ローマ字) <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_name_en|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.name_en}{$form.last_name_en}</td>
+                </tr>
+                <tr class="{$display_pron_name|display}">
+                    <th scope="row">フリガナ <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_name_phonetic|display}" width="5" height="5" alt="必須"></th>
+                    <td>
+                        <div class="ec-base-tooltip-area">
+                            <span class="eTip">{$form.name_phonetic}</span>{$form.last_name_phonetic}
+                            <div class="ec-base-tooltip typeUpper">
+                                <div class="content">
+                                    <span class="txtWarn">フリガナ は、必ずフルネームで入力してください。<br>
+                                    フルネームで入力されていないと、配達遅延となる場合がございます。</span>
+                                    <button type="button" class="btnClose eClose">閉じる</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="{$display_addr|display}">
+                    <th scope="row">住所 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_address|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.address}</td>
+                </tr>
+                <tr class="{$display_phone|display}">
+                    <th scope="row">電話番号 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_phone|display}" width="5" height="5" alt="必須"></th>
+                    <td>
+                        {$form.phone}
+                        <p class="ec-base-help typeDash">ハイフンなしの半角数字で入力してください。 例）0312345678</p>
+                    </td>
+                </tr>
+                <tr class="{$display_mobile|display}">
+                    <th scope="row">携帯電話番号 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_cell|display}" width="5" height="5" alt="必須"></th>
+                    <td>
+                        {$form.mobile}
+                        <p class="ec-base-help typeDash">ハイフンなしの半角数字で入力してください。 例）09012345678</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="titleArea {$display_add_title|display}">
+        <h3>追加情報</h3>
+    </div>
+    <div class="ec-base-table typeWrite gClearBorderTop {$display_add_title|display}">
+        <table border="1">
+            <caption>会員追加情報</caption>
+            <colgroup>
+                <col style="width:110px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr class="{$display_nick|display}">
+                    <th scope="row">ニックネーム <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_nick_name_flag|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.nick_name} <p id="{$nick_msg}"></p></td>
+                </tr>
+                <tr class="{$display_is_sex|display}">
+                    <th scope="row">性別 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_sex|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.is_sex}</td>
+                </tr>
+                <tr class="{$display_birthday|display}">
+                    <th scope="row">生年月日 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_is_birthday|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.birth_year} 年 {$form.birth_month} 月 {$form.birth_day} 日</td>
+                </tr>
+                <tr class="{$display_marry|display}">
+                    <th scope="row">結婚記念日 <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_is_wedding_anniversary|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.marry_year} 年 {$form.marry_month} 月 {$form.marry_day} 日</td>
+                </tr>
+                <tr class="{$display_add1|display}">
+                    <th scope="row">{$title_add1} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add1|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add1}</td>
+                </tr>
+                <tr class="{$display_add2|display}">
+                    <th scope="row">{$title_add2} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add2|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add2}</td>
+                </tr>
+                <tr class="{$display_add3|display}">
+                    <th scope="row">{$title_add3} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add3|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add3}</td>
+                </tr>
+                <tr class="{$display_add4|display}">
+                    <th scope="row">{$title_add4} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add4|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add4}</td>
+                </tr>
+                <tr class="{$display_add5|display}">
+                    <th scope="row">{$title_add5} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add5|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add5}</td>
+                </tr>
+                <tr class="{$display_add6|display}">
+                    <th scope="row">{$title_add6} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add6|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add6}</td>
+                </tr>
+                <tr class="{$display_add7|display}">
+                    <th scope="row">{$title_add7} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add7|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add7}</td>
+                </tr>
+                <tr class="{$display_add8|display}">
+                    <th scope="row">{$title_add8} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add8|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add8}</td>
+                </tr>
+                <tr class="{$display_add9|display}">
+                    <th scope="row">{$title_add9} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add9|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add9}</td>
+                </tr>
+                <tr class="{$display_add10|display}">
+                    <th scope="row">{$title_add10} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add10|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add10}</td>
+                </tr>
+                <tr class="{$display_add11|display}">
+                    <th scope="row">{$title_add11} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add11|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add11}</td>
+                </tr>
+                <tr class="{$display_add12|display}">
+                    <th scope="row">{$title_add12} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add12|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add12}</td>
+                </tr>
+                <tr class="{$display_add13|display}">
+                    <th scope="row">{$title_add13} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add13|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add13}</td>
+                </tr>
+                <tr class="{$display_add14|display}">
+                    <th scope="row">{$title_add14} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add14|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add14}</td>
+                </tr>
+                <tr class="{$display_add15|display}">
+                    <th scope="row">{$title_add15} <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_add15|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.add15}</td>
+                </tr>
+                <tr class="{$display_reco_id|display}">
+                    <th scope="row">紹介者ID <img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/member/ico_required.png" class="{$display_required_reco_id|display}" width="5" height="5" alt="必須"></th>
+                    <td>{$form.reco_id}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ec-base-button gFull">
+        <button type="button" class="btnSubmit" onclick="{$action_func_join}">会員登録する</button>
+    </div>
+
+    <!--@import(/member/join_confirm.html)-->
+</div>

@@ -1,0 +1,349 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>会員登録</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>会員登録</h2>
+</div>
+
+<div module="member_join">
+    <!--@css(/css/module/member/join.css)-->
+    <!--@js(/js/module/member/join.js)-->
+    <!--
+        $returnUrl = /member/join_result.html
+        $personalName = お名前
+        $companyName = 法人名
+        $companySsn = 法人番号
+        $foreignerSsn1 = 外国人登録証明番号
+        $foreignerSsn2 = パスワード番号
+        $foreignerSsn3 = 国際運転免許証番号
+        $isRuleBasedAddrForm = T
+     -->
+    <h3>基本情報</h3>
+    <p class="required"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /> 必須項目</p>
+    <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+        <caption>基本情報</caption>
+        <colgroup>
+            <col style="width:150px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">メールアドレス <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.email} <span id="{$emailMsg_id}"></span></td>
+            </tr>
+            <tr>
+                <th scope="row">パスワード <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>
+                    <div class="eTooltip">
+                        {$form.passwd}
+                        <div class="ec-base-tooltip typeUpper">
+                            <div class="content">
+                                <strong class="txtWarn">※ {$passwd_terms}</strong>
+                                <ul class="ec-base-help typeDash gBlank10 txtWarn">
+                                    {$passwd_chk_info}
+                                </ul>
+                            </div>
+                            <a href="#none" class="btnClose"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif" alt="閉じる" /></a>
+                            <span class="edge"></span>
+                        </div>
+                    </div>
+                    {$passwd_type_desc}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">パスワード(確認) <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.user_passwd_confirm} <span id="{$pwConfirmMsg_id}"></span></td>
+            </tr>
+            <tr class="{$display_use_id|display}">
+                <th scope="row">ID <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                <td>{$form.member_id} <span id="{$idMsg_id}"></span></td>
+            </tr>
+            <tr class="{$display_name|display}">
+                <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_name|display}" alt="必須" /></th>
+                <td>
+                    <div class="eTooltip">
+                        {$form.name}
+                        <div class="ec-base-tooltip typeUpper">
+                            <div class="content">
+                                <span class="txtWarn">お名前は、必ずフルネームで入力してください。<br />
+                                フルネームで入力されていないと、配達遅延となる場合がございます。</span>
+                            </div>
+                            <a href="#none" class="btnClose"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif" alt="閉じる" /></a>
+                            <span class="edge"></span>
+                        </div>
+                    </div>
+                    {$form.last_name}
+                </td>
+            </tr>
+            <tr class="{$display_eng_name|display}">
+                <th scope="row">お名前(ローマ字) <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_name_en|display}" alt="必須" /></th>
+                <td>{$form.name_en} {$form.last_name_en}</td>
+            </tr>
+            <tr class="{$display_pron_name|display}">
+                <th scope="row">フリガナ <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_name_phonetic|display}" alt="必須" /></th>
+                <td>
+                    <div class="eTooltip">
+                        {$form.name_phonetic}
+                        <div class="ec-base-tooltip typeUpper">
+                            <div class="content">
+                                <span class="txtWarn">フリガナ は、必ずフルネームで入力してください。<br />
+                                フルネームで入力されていないと、配達遅延となる場合がございます。</span>
+                            </div>
+                            <a href="#none" class="btnClose"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif" alt="閉じる" /></a>
+                            <span class="edge"></span>
+                        </div>
+                    </div>
+                    {$form.last_name_phonetic}
+                </td>
+            </tr>
+            <tr class="{$display_addr|display}">
+                <th scope="row">住所 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_address|display}" alt="必須" /></th>
+                <td>{$form.address}</td>
+            </tr>
+            <tr class="{$display_phone|display}">
+                <th scope="row">電話番号 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_phone|display}" alt="必須" /></th>
+                <td>
+                    {$form.nation_phone} {$form.phone}
+                    <p class="gBlank5">ハイフンなしの半角数字で入力してください。 例）0312345678</p>
+                </td>
+            </tr>
+            <tr class="{$display_mobile|display}">
+                <th scope="row">携帯電話番号 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_cell|display}" alt="必須" /></th>
+                <td>
+                    {$form.mobile}
+                    <p class="gBlank5">ハイフンなしの半角数字で入力してください。 例）09012345678</p>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <h3 class="{$display_add_title|display}">追加情報</h3>
+    <div class="ec-base-table typeWrite {$display_add_title|display}">
+        <table border="1" summary="">
+        <caption>追加情報</caption>
+        <colgroup>
+            <col style="width:150px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr class="{$display_nick|display}">
+                <th scope="row">ニックネーム <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_nick_name_flag|display}" alt="必須" /></th>
+                <td>{$form.nick_name} <p id="{$nick_msg}"></p></td>
+            </tr>
+            <tr class="{$display_is_sex|display}">
+                <th scope="row">性別 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_sex|display}" alt="必須" /></th>
+                <td>{$form.is_sex}</td>
+            </tr>
+            <tr class="{$display_birthday|display}">
+                <th scope="row">生年月日 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_is_birthday|display}" alt="必須" /></th>
+                <td>{$form.birth_year} 年 {$form.birth_month} 月 {$form.birth_day} 日</td>
+            </tr>
+            <tr class="{$display_marry|display}">
+                <th scope="row">結婚記念日 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_is_wedding_anniversary|display}" alt="必須" /></th>
+                <td>{$form.marry_year} 年 {$form.marry_month} 月 {$form.marry_day} 日</td>
+            </tr>
+            <tr class="{$display_add1|display}">
+                <th scope="row">{$title_add1} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add1|display}" alt="必須" /></th>
+                <td>{$form.add1}</td>
+            </tr>
+            <tr class="{$display_add2|display}">
+                <th scope="row">{$title_add2} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add2|display}" alt="必須" /></th>
+                <td>{$form.add2}</td>
+            </tr>
+            <tr class="{$display_add3|display}">
+                <th scope="row">{$title_add3} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add3|display}" alt="必須" /></th>
+                <td>{$form.add3}</td>
+            </tr>
+            <tr class="{$display_add4|display}">
+                <th scope="row">{$title_add4} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add4|display}" alt="必須" /></th>
+                <td>{$form.add4}</td>
+            </tr>
+            <tr class="{$display_add5|display}">
+                <th scope="row">{$title_add5} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add5|display}" alt="必須" /></th>
+                <td>{$form.add5}</td>
+            </tr>
+            <tr class="{$display_add6|display}">
+                <th scope="row">{$title_add6} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add6|display}" alt="必須" /></th>
+                <td>{$form.add6}</td>
+            </tr>
+            <tr class="{$display_add7|display}">
+                <th scope="row">{$title_add7} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add7|display}" alt="必須" /></th>
+                <td>{$form.add7}</td>
+            </tr>
+            <tr class="{$display_add8|display}">
+                <th scope="row">{$title_add8} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add8|display}" alt="必須" /></th>
+                <td>{$form.add8}</td>
+            </tr>
+            <tr class="{$display_add9|display}">
+                <th scope="row">{$title_add9} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add9|display}" alt="必須" /></th>
+                <td>{$form.add9}</td>
+            </tr>
+            <tr class="{$display_add10|display}">
+                <th scope="row">{$title_add10} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add10|display}" alt="必須" /></th>
+                <td>{$form.add10}</td>
+            </tr>
+            <tr class="{$display_add11|display}">
+                <th scope="row">{$title_add11} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add11|display}" alt="必須" /></th>
+                <td>{$form.add11}</td>
+            </tr>
+            <tr class="{$display_add12|display}">
+                <th scope="row">{$title_add12} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add12|display}" alt="必須" /></th>
+                <td>{$form.add12}</td>
+            </tr>
+            <tr class="{$display_add13|display}">
+                <th scope="row">{$title_add13} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add13|display}" alt="必須" /></th>
+                <td>{$form.add13}</td>
+            </tr>
+            <tr class="{$display_add14|display}">
+                <th scope="row">{$title_add14} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add14|display}" alt="必須" /></th>
+                <td>{$form.add14}</td>
+            </tr>
+            <tr class="{$display_add15|display}">
+                <th scope="row">{$title_add15} <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_add15|display}" alt="必須" /></th>
+                <td>{$form.add15}</td>
+            </tr>
+            <tr class="{$display_reco_id|display}">
+                <th scope="row">紹介者ID <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" class="{$display_required_reco_id|display}" alt="必須" /></th>
+                <td>{$form.reco_id}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <h3>全て同意する</h3>
+    <div class="ec-base-box typeThinBg gStrong">
+        <p>{$sAgreeAllChecked}<label for="sAgreeAllChecked"><strong>{$sAgreeAllMsgTitle}</strong></label><p class="desc">{$sAgreeAllMsgSubTitle}</p></p>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea">
+        <h3>{$form.agree_service_check}<label class="check" for="agree_service_check0">利用規約(必須)</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+         <div class="content">
+             {$service_desc}
+         </div>
+     </div>
+
+     <div class="ec-base-box typeThinBg agreeArea {$display_privacy_agreement|display}">
+        <h3>{$form.agree_privacy_check}<label class="check" for="agree_privacy_check0">個人情報の収集および利用目的(必須)</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+         <div class="content">
+             {$privacy_desc}
+         </div>
+    </div>
+
+    <div class="ec-base-box typeThinBg agreeArea {$display_privacy_optional|display}">
+        <h3>{$form.agree_privacy_optional_check}<label class="check" for="agree_privacy_optional_check0">個人情報の収集および利用目的(任意)</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            {$privacy_optional_desc}
+        </div>
+    </div>
+
+    <div class="ec-base-box typeThinBg agreeArea {$display_information|display}">
+        <h3>{$form.agree_information_check}<label class="check" for="agree_information_check0">個人情報の第三者提供 (任意)</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+         <div class="content">
+             {$information_desc}
+         </div>
+    </div>
+
+    <div class="ec-base-box typeThinBg agreeArea {$display_consignment|display}">
+        <h3>{$form.agree_consignment_check}<label class="check" for="agree_consignment_check0">個人情報取扱の委託 (任意)</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+         <div class="content">
+             {$consignment_desc}
+         </div>
+    </div>
+
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_1|display}">
+        <h3>{$form.check_user_defined_1}<label class="check" for="{$name_user_defined_1}" class="check">{$title_user_defined_1}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_1}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_2|display}">
+        <h3>{$form.check_user_defined_2}<label class="check" for="{$name_user_defined_2}" class="check">{$title_user_defined_2}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_2}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_3|display}">
+        <h3>{$form.check_user_defined_3}<label class="check" for="{$name_user_defined_3}" class="check">{$title_user_defined_3}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_3}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_4|display}">
+        <h3>{$form.check_user_defined_4}<label class="check" for="{$name_user_defined_4}" class="check">{$title_user_defined_4}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_4}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_5|display}">
+        <h3>{$form.check_user_defined_5}<label class="check" for="{$name_user_defined_5}" class="check">{$title_user_defined_5}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_5}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_6|display}">
+        <h3>{$form.check_user_defined_6}<label class="check" for="{$name_user_defined_6}" class="check">{$title_user_defined_6}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_6}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_7|display}">
+        <h3>{$form.check_user_defined_7}<label class="check" for="{$name_user_defined_7}" class="check">{$title_user_defined_7}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_7}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_8|display}">
+        <h3>{$form.check_user_defined_8}<label class="check" for="{$name_user_defined_8}" class="check">{$title_user_defined_8}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_8}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_9|display}">
+        <h3>{$form.check_user_defined_9}<label class="check" for="{$name_user_defined_9}" class="check">{$title_user_defined_9}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_9}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_user_defined_10|display}">
+        <h3>{$form.check_user_defined_10}<label class="check" for="{$name_user_defined_10}" class="check">{$title_user_defined_10}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_user_defined_10}</div>
+        </div>
+    </div>
+    <div class="ec-base-box typeThinBg agreeArea {$display_marketing_consent|display}">
+        <h3>{$form.marketing_consent_check}<label for="marketing_consent_check0" class="check">{$title_marketing_consent}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="content">
+            <div class="fr-view fr-view-privacy-optional">{$desc_marketing_consent}</div>
+        </div>
+    </div>
+    
+    <div class="ec-base-box typeThinBg agreeArea {$display_marketing|display}">
+        <h3>{$sMarketingAgreeAllChecked}<label for="sMarketingAgreeAllChecked" class="check">お得な情報の受信(任意)</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+        <div class="check">
+            <span class="{$display_is_sms|display}">
+                {$form.is_sms}<label class="check" for="is_sms0">SMSを受信しますか?</label>
+            </span>
+            <span class="{$display_is_news_mail|display}">
+                {$form.is_news_mail}<label class="check" for="is_news_mail0">メールマガジンを受信しますか?</label>
+            </span>
+        </div>
+        <div class="content">
+            <p>割引クーポンや特典・イベント・新着アイテムのお知らせなどのお得な情報をSMSやメールで受け取ることができます。</p>
+            <p>但し、注文・お支払い情報および当サイトからの重要なお知らせは、受信同意の有無に関わらず送信されます。</p>
+            <p>任意項目は同意しなくても会員登録いただけます。また、会員登録後、いつでも会員情報修正ページにて受信設定を変更することができます。</p>
+        </div>
+    </div>
+
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_func_join}">会員登録する</a>
+    </div>
+
+    <!--@import(/member/join_confirm.html)-->
+</div>

@@ -1,0 +1,182 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション">マイページ</li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>マイページ</h2>
+</div>
+
+<div module="layout_logincheck">
+<!--
+    $url = /member/login.html
+-->
+</div>
+
+<div module="myshop_asyncbenefit">
+    <!--@css(/css/module/myshop/benefit.css)-->
+    <div class="ec-base-box typeMember gMessage {$display_benefit|display}">
+        <div class="information">
+            <p class="thumbnail"><img src="{$group_image}" alt="" onerror="this.src='//img.echosting.cafe24.com/skin/base/member/img_member_default.gif';" class="{$group_image_tag_class}" /></p>
+            <div class="description">
+                <span>当サイトをご利用いただき、誠にありがとうございます。 <strong class="txtEm">{$member_name}</strong>様の会員ランクは <strong>[<span class="{$displayGroupIcon|display}"><img src="{$group_icon}" alt="" class="{$group_icon_tag_class}" /></span>{$group_name}]</strong> です。</span>
+                <p class="{$display_no_benefit|display} {$display_no_benefit_class}">注文金額が<strong class="txtEm">{$dc_pay} {$dc_min_price}</strong>の場合、<strong class="txtEm">{$dc_price}{$dc_type}</strong>を{$use_dc}します。{$dc_max_percent}</p>
+                <p class="{$display_with_all|display} {$display_with_all_class}">注文金額が<strong class="txtEm">{$dc_pay} {$dc_min_price_mileage}</strong>の場合、<strong class="txtEm">{$dc_price_mileage}{$dc_type_mileage}</strong>が{$use_dc_mileage}てられます。{$dc_max_mileage_percent}</p>
+                <p class="{$display_member_group_dc_limit|display} {$display_member_group_dc_limit_class}"><strong class="txtEm">{$dc_limit_end_date}</strong>まで、あと<strong class="txtEm">{$dc_limit_remain}</strong>の割引特典をご利用いただけます。</p>
+                <div class="{$bGradeAutoDisplay|display} gBlank5" id="{$sGradeAutoDisplayId}">
+                    <p class="{$bChangeTypePrice|display} {$sAutoGradeDisplay}">あと<strong>{$sGradeIncreasePrice}</strong>で<strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>にランクアップ！({$sApplyPeriod}{$sGradePeriod} {$sLanguagePrice}：{$sPeriodOrderPrice})</p>
+                    <p class="{$bChangeTypeCount|display} {$sAutoGradeDisplay}">あと<strong>{$sGradeIncreaseCount}</strong>購入で<strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>にランクアップ！({$sApplyPeriod}{$sGradePeriod} {$sLanguageCount}：{$sPeriodOrderCount})</p>
+                    <p class="{$bChangeTypePriceAndCount|display} {$sAutoGradeDisplay}">あと<strong>{$sGradeIncreasePrice}</strong>、<strong>{$sGradeIncreaseCount}</strong>購入で<strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>にランクアップ！({$sApplyPeriod}{$sGradePeriod} {$sLanguagePrice}：{$sPeriodOrderPrice}｜{$sLanguageCount}：{$sPeriodOrderCount})</p>
+                    <p class="{$bChangeTypePriceOrCount|display} {$sAutoGradeDisplay}">あと<strong>{$sGradeIncreasePrice}</strong>もしくは<strong>{$sGradeIncreaseCount}</strong>購入で<strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>にランクアップ！({$sApplyPeriod}{$sGradePeriod} {$sLanguagePrice}：{$sPeriodOrderPrice}｜{$sLanguageCount}：{$sPeriodOrderCount})</p>
+                    <p class="{$bChangeMaxTypePrice|display}" id="{$sChangeMaxTypePriceId}"><strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>ランクを維持するためには、あと<strong>{$sGradeIncreasePrice}</strong>の購入金額が必要です。({$sApplyPeriod}{$sGradePeriod}の購入金額：{$sPeriodOrderPrice})</p>
+                    <p class="{$bChangeMaxTypeCount|display}" id="{$sChangeMaxTypeCountId}"><strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>ランクを維持するためには、あと<strong>{$sGradeIncreaseCount}</strong>の購入件数が必要です。({$sApplyPeriod}{$sGradePeriod}の購入件数：{$sPeriodOrderCount})</p>
+                    <p class="{$bChangeMaxTypePriceAndCount|display}" id="{$sChangeMaxTypePriceAndCountId}"><strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>ランクを維持するためには、あと<strong>{$sGradeIncreasePrice}</strong>の購入金額と<strong>{$sGradeIncreaseCount}</strong>の購入件数が必要です。({$sApplyPeriod}{$sGradePeriod}の購入金額：{$sPeriodOrderPrice}｜購入件数：{$sPeriodOrderCount})</p>
+                    <p class="{$bChangeMaxTypePriceOrCount|display}" id="{$sChangeMaxTypePriceOrCountId}"><strong>[<span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}]</strong>ランクを維持するためには、あと<strong>{$sGradeIncreasePrice}</strong>の購入金額または<strong>{$sGradeIncreaseCount}</strong>の購入件数が必要です。({$sApplyPeriod}{$sGradePeriod}の購入金額：{$sPeriodOrderPrice}｜購入件数：{$sPeriodOrderCount})</p>
+                    <p class="txtInfo txt11">ランクアップに必要な予想金額は、累計購入金額と異なる場合がございます。</p>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="invite ec-base-box typeThinBg gMerge {$display_reco|display}">
+        <strong class="txtEm">お友達招待ＵＲＬをシェアしてお友達をショップに招待してみてください。</strong>
+        <p class="copy">
+            <input type="text" id="{$reco_url}" value="//{$shop_domain}/?reco_id={$member_id}" readonly="readonly" />
+            <a href="#none" onclick="{$copy_func}" class="btnSubmit">コピー</a>
+        </p>
+        <ul>
+            <li>- 招待されたお友達が会員登録すると、お友達に{$reco_mileage2}の{$mileage_name}がすぐに付与されます。</li>
+            <li>- {$reco_mileage}</li>
+        </ul>
+    </div>
+</div>
+
+<div module="myshop_asyncbankbook" class="ec-base-box gHalf">
+    <!--@css(/css/module/myshop/bankbook.css)-->
+    <ul>
+        <li class="{$display_mileage|display}">
+            <strong class="title">使用可能な{$mileage_name}</strong>
+            <strong class="data use">&nbsp;{$avail_mileage}</strong>
+            <a href="/myshop/mileage/historyList.html" class="btnNormal">詳細</a>
+        </li>
+        <li>
+            <strong class="title">{$mileage_name}合計</strong>
+            <strong class="data">{$total_mileage}</strong>
+        </li>
+        <li>
+            <strong class="title">使用済みの{$mileage_name}</strong>
+            <strong class="data">{$used_mileage}</strong>
+        </li>
+        <li class="{$display_deposit|display}">
+           <strong class="title">{$deposit_name}</strong>
+           <strong class="data use">&nbsp;{$total_deposit}</strong>
+           <a href="/myshop/deposits/historyList.html" class="btnNormal">詳細</a>
+        </li>
+        <li>
+            <strong class="title">注文履歴</strong>
+            <strong class="data">{$total_order_price}({$total_order_count}回)</strong>
+        </li>
+        <li class="{$display_coupon|display}">
+            <strong class="title">クーポン</strong>
+            <strong class="data">{$coupon_cnt}<span>枚</span></strong>
+            <a href="/myshop/coupon/coupon.html" class="btnNormal">詳細</a>
+        </li>
+    </ul>
+</div>
+
+<div module="myshop_orderstate">
+    <!--@css(/css/module/myshop/orderState.css)-->
+    <div class="title">
+        <h3>注文状況 <span class="desc">(直近<em>３ヵ月</em>)</span></h3>
+    </div>
+    <div class="state">
+        <ul class="order">
+            <li>
+                <strong>入金待ち</strong>
+                <a href="{$shppiedBeforeUrl}" class="count">{$shppiedBeforeCount}</a>
+            </li>
+            <li>
+                <strong>発送準備中</strong>
+                <a href="{$shppiedStandbyUrl}" class="count">{$shppiedStandbyCount}</a>
+            </li>
+            <li>
+                <strong>配送中</strong>
+                <a href="{$shppiedBeginUrl}" class="count">{$shppiedBeginCount}</a>
+            </li>
+            <li>
+                <strong>配送完了</strong>
+                <a href="{$shppiedComplateUrl}" class="count">{$shppiedComplateCount}</a>
+            </li>
+        </ul>
+        <ul class="cs">
+            <li>
+                <span class="icoDot"></span>
+                <strong>キャンセル : </strong>
+                <a href="{$orderCancelUrl}" class="count">{$orderCancelCount}</a>
+            </li>
+            <li>
+                <span class="icoDot"></span>
+                <strong>交換 : </strong>
+                <a href="{$orderExchangeUrl}" class="count">{$orderExchangeCount}</a>
+            </li>
+            <li>
+                <span class="icoDot"></span>
+                <strong>返品 : </strong>
+                <a href="{$orderReturnUrl}" class="count">{$orderReturnCount}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="myshopMain" module="myshop_main">
+    <!--@css(/css/module/myshop/main.css)-->
+    <ul>
+        <li class="shopMain order">
+            <h3><a href="/myshop/order/list.html"><strong>Order</strong><span>注文履歴</span></a></h3>
+            <p><a href="/myshop/order/list.html">ご注文いただいた履歴が確認できます。</a></p>
+        </li>
+        <li class="shopMain profile">
+            <h3><a href="/member/modify.html"><strong>Profile</strong><span>登録情報の変更・確認</span></a></h3>
+            <p><a href="/member/modify.html">ご登録いただいたお客様の情報が確認できます。</a></p>
+        </li>
+        <li class="shopMain wishlist">
+            <h3><a href="/myshop/wish_list.html"><strong>Wishlist</strong><span>お気に入り</span></a></h3>
+            <p><a href="/myshop/wish_list.html">お気に入りに登録していただいた商品の確認・削除ができます。</a></p>
+        </li>
+        <li class="shopMain mileage">
+            <h3><a href="/myshop/mileage/historyList.html"><strong>Mileage</strong><span>{$mileage_name}</span></a></h3>
+            <p><a href="/myshop/mileage/historyList.html">{$mileage_name}は、ご注文の際にご利用頂けます。</a></p>
+        </li>
+        <li class="shopMain deposits {$deposit_display|display}">
+           <h3><a href="/myshop/deposits/historyList.html"><strong>Deposits</strong><span>{$deposit_name}</span></a></h3>
+           <p><a href="/myshop/deposits/historyList.html">{$deposit_name}は、注文時に現金と同様に使用することができます。</a></p>
+        </li>
+        <li class="shopMain consult {$consult_display|display}">
+            <h3><a href="/board/consult/list.html"><strong>Consult</strong><span>My質問</span></a></h3>
+             <p><a href="/board/consult/list.html">ご質問やご要望などのお問い合わせの内容を確認できます。</a></p>
+        </li>
+        <li class="shopMain coupon {$coupon_display|display}">
+            <h3><a href="/myshop/coupon/coupon.html"><strong>Coupon</strong><span>クーポン</span></a></h3>
+            <p><a href="/myshop/coupon/coupon.html">付与されたクーポンの<br />内容が確認できます。</a></p>
+        </li>
+        <li class="shopMain board {$board_display|display}">
+            <h3><a href="/myshop/board_list.html"><strong>Board</strong><span>投稿履歴</span></a></h3>
+            <p><a href="/myshop/board_list.html">お客様の<br />投稿履歴を確認できます。<br /></a></p>
+        </li>
+        <li class="shopMain address">
+            <h3><a href="/myshop/addr/list.html"><strong>Address</strong><span>お届け先の追加・変更</span></a></h3>
+            <p><a href="/myshop/addr/list.html">よく使用するお届け先の登録及び管理できます。</a></p>
+        </li>
+        <li module="Myshop_InquiryDash" class="shopMain inquiry">
+            <h3><a href="/board/inquiry/list.html"><strong>Inquiry</strong><span>大量購入のお問い合わせ</span></a></h3>
+            <p><a href="/board/inquiry/list.html">大量一括購入のお問い合わせ履歴のご確認・管理ができます。</a></p>
+        </li>
+        <li class="shopMain regularDelivery {$regular_delivery_display|display}">
+            <h3><a href="/myshop/regular_delivery.html"><strong>Subscription</strong><span>定期購入管理</span></a></h3>
+            <p><a href="/myshop/regular_delivery.html">お申し込みの定期購入商品に関する情報を確認できます。</a></p>
+        </li>
+    </ul>
+</div>

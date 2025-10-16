@@ -1,0 +1,132 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="MyShop_OrderHistoryStorepickup" class="ec-base-layer">
+    <!--@css(/css/module/myshop/orderStorePickup.css)-->
+    <div class="header">
+        <h1>ストアピックアップの受取り店舗情報</h1>
+    </div>
+    <div class="content">
+        <p class="ec-base-box">
+            <strong>{$delivery.mall_name}({$delivery.mall_domain}) でストアピックアップを選択しご注文された内訳です。</strong><br />以下の受取り店舗情報を参考し、ご訪問ください。
+        </p>
+
+        <h3>注文情報</h3>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+                <caption>注文情報</caption>
+                <colgroup>
+                    <col style="width:140px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">注文番号</th>
+                        <td>{$order.order_id}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">注文日</th>
+                        <td>{$order.date}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">注文者</th>
+                        <td>{$order.name}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>商品情報</h3>
+        <div class="ec-base-table typeList">
+            <table border="1" summary="">
+                <caption>商品情報</caption>
+                <colgroup>
+                    <col style="width:auto;" />
+                    <col style="width:10%;" />
+                    <col style="width:10%;" />
+                    <col style="width:20%;" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="row">商品名</th>
+                        <th scope="row">オプション</th>
+                        <th scope="row">数量</th>
+                        <th scope="row">注文金額</th>
+                    </tr>
+                </thead>
+                <tbody class="center">
+                    <tr>
+                        <td class="left"><strong>{$product_title.product_name}</strong></td>
+                        <td>{$product_title.option_str}</td>
+                        <td>{$product_title.quantity}</td>
+                        <td><strong class="txtEm">{$product_title.total_product_price}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>受取人の情報</h3>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+                <caption>受取人の情報</caption>
+                <colgroup>
+                    <col style="width:120px;" />
+                    <col style="width:252px;" />
+                    <col style="width:120px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">受取人</th>
+                        <td colspan="3">{$delivery.name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">電話番号</th>
+                        <td>{$delivery.rphone_1}</td>
+                        <th scope="row">携帯電話</th>
+                        <td>{$delivery.rphone_2}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">配送メッセージ</th>
+                        <td colspan="3">{$delivery.message}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>受取り店舗の情報</h3>
+        <div class="ec-base-table">
+            <table border="1" summary="">
+                <caption>受取り店舗の情報</caption>
+                <colgroup>
+                    <col style="width:120px;" />
+                    <col style="width:252px;" />
+                    <col style="width:120px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">受取り店舗</th>
+                        <td colspan="3">{$delivery.store_name} : {$delivery.store_receive_addr}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">電話番号</th>
+                        <td>{$delivery.store_main_phone}</td>
+                        <th scope="row">営業時間</th>
+                        <td>{$delivery.store_office_hour}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">受取り可能日</th>
+                        <td colspan="3">{$delivery.store_receive_period}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">受取り店舗案内</th>
+                        <td colspan="3">{$delivery.store_receive_info}</td>
+                    </tr>
+                    <tr class="{delivery.store_receive_map_display|display}">
+                        <th scope="row">地図</th>
+                        <td colspan="3">{$delivery.store_receive_map}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

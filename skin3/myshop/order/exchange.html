@@ -1,0 +1,298 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/myshop/index.html">マイページ</a></li>
+        <li title="ロケーション"><strong>交換申込</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>交換申込</h2>
+</div>
+<div module="Myshop_OrderHistoryApplyExchange">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/myshop/orderHistoryApplyExchange.css)-->
+    <div class="title">
+        <h3>注文商品情報</h3>
+    </div>
+    <div class="ec-base-table typeList">
+        <table border="1" summary="">
+            <caption>注文商品情報</caption>
+            <colgroup>
+                <col style="width:150px;" />
+                <col style="width:27px" />
+                <col style="width:auto;" />
+                <col style="width:80px;" />
+                <col style="width:80px;" />
+                <col style="width:110px;" />
+                <col style="width:110px;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">注文日<br />[注文番号]</th>
+                    <th scope="col" colspan="2">商品情報</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">商品購入金額</th>
+                    <th scope="col">注文状態</th>
+                </tr>
+            </thead>
+            <tbody module="Myshop_products" class="center">
+                <tr>
+                    <td {$rowspan} class="{$display_column|display}">
+                        {$order_date_ymd}
+                        <p><a href="detail.html{$param_detail}" class="line">[{$order_id}]</a></p>
+                    </td>
+                    <td class="{$display_product_column|display}">{$form.checkbox}</td>
+                    <td class="{$display_product_column|display} product left top">
+                        <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                        <p><strong class="name">{$product_name_link}</strong></p>
+                        <div class="option {$option_display|display}">{$option_str}</div>
+                        <ul class="option" module="Myshop_optionSet">
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                        </ul>
+                    </td>
+                    <td class="{$display_product_column|display}">{$quantity}</td>
+                    <td class="{$display_product_column|display}">
+                        <span class="ec-base-qty">{$form.quantity}<a href="javascript:;" onclick="{$add_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="数量増加" class="up" /></a><a href="javascript:;" onclick="{$out_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="数量減少" class="down" /></a></span>
+                        <a href="javascript:;" class="btnNormal gBlank5" onclick="{$action_modify}">変更</a>
+                    </td>
+                    <td class="{$display_product_column|display}">
+                        <strong>{$item_price_raw_front_head}{$item_price_raw_front}{$item_price_raw_front_tail}</strong>
+                        <p class="{$item_price_ref_display|display}">{$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</p>
+                    </td>
+                    <td class="{$display_product_column|display} txtEm">{$cur_state}</td>
+                    <td colspan="6" class="{$display_receiver_column|display} left multiDelivery {$lastMultiDelivery}">
+                        <div class="inner">
+                            <span class="address">
+                                <strong>{$r_name}</strong>
+                                <ul class="{$r_addr_display|display}">
+                                    <li><span class="{$r_zipcode_display|display}">[{$r_zipcode}]</span><span>{$r_addr}</span></li>
+                                    <li>{$r_phone1}/{$r_phone2}</li>
+                                </ul>
+                                <ul class="{$pickup_info_display|display}">
+                                    <li>受取り店舗({$store_name})</li>
+                                </ul>
+                            </span>
+                            <span class="waybill">(配送番号 : {$delivery_code})</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td {$rowspan} class="{$display_column|display}">
+                        {$order_date_ymd}
+                        <p><a href="detail.html{$param_detail}" class="line">[{$order_id}]</a></p>
+                    </td>
+                    <td class="{$display_product_column|display}">{$form.checkbox}</td>
+                    <td class="{$display_product_column|display} product left top">
+                        <span class="thumbnail"><a href="/product/detail.html{$param_product}"><img src="{$product_image}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="" /></a></span>
+                        <p><strong class="name">{$product_name_link}</strong></p>
+                        <div class="option {$option_display|display}">{$option_str}</div>
+                        <ul class="option" module="Myshop_optionSet">
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                            <li><strong>{$product_name}</strong>{$option_str} ({$qty}点)</li>
+                        </ul>
+                    </td>
+                    <td class="{$display_product_column|display}">{$quantity}</td>
+                    <td class="{$display_product_column|display}">
+                        <span class="ec-base-qty">{$form.quantity}<a href="javascript:;" onclick="{$add_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="数量増加" class="up" /></a><a href="javascript:;" onclick="{$out_shortcut}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="数量減少" class="down" /></a></span>
+                        <a href="javascript:;" class="btnNormal gBlank5" onclick="{$action_modify}">変更</a>
+                    </td>
+                    <td class="{$display_product_column|display}">
+                        <strong>{$item_price_raw_front_head}{$item_price_raw_front}{$item_price_raw_front_tail}</strong>
+                        <p class="{$item_price_ref_display|display}">{$item_price_raw_back_head}{$item_price_raw_back}{$item_price_raw_back_tail}</p>
+                    </td>
+                    <td class="{$display_product_column|display} txtEm">{$cur_state}</td>
+                    <td colspan="6" class="{$display_receiver_column|display} left multiDelivery {$lastMultiDelivery}">
+                        <div class="inner">
+                            <span class="address">
+                                <strong>{$r_name}</strong>
+                                <ul class="{$r_addr_display|display}">
+                                    <li><span class="{$r_zipcode_display|display}">[{$r_zipcode}]</span><span>{$r_addr}</span></li>
+                                    <li>{$r_phone1}/{$r_phone2}</li>
+                                </ul>
+                                <ul class="{$pickup_info_display|display}">
+                                    <li>受取り店舗({$store_name})</li>
+                                </ul>
+                            </span>
+                            <span class="waybill">(配送番号 : {$delivery_code})</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul class="ec-base-help controlInfo typeBtm">
+            <li class="txtWarn txt11">交換によりノベルティの獲得条件を満たすことが不可になった場合、ノベルティのキャンセル・交換・返品有無は以降の交換処理過程において確定されます。</li>
+        </ul>
+    </div>
+    <div class="ec-base-button {$select_button_display|display}">
+        <span class="gLeft">
+            <strong class="text">選択された商品を</strong>
+            <a href="#none" id="{$same_product_button_id}" class="btnNormal">同じ商品に交換</a>
+            <a href="#none" class="btnNormal" onclick="{$open_search_layer}">別の商品に交換</a>
+        </span>
+    </div>
+
+    <!-- This module is visible the first time the screen is loaded. After selecting a product, load the code for "exchange_product.html". -->
+    <div id="{$exchange_product_list_id}">
+        <div class="ec-base-table typeList {$exchange_product_list_display|display}" >
+            <div class="title">
+                <h3>交換商品</h3>
+            </div>
+            <table border="1" summary="">
+                <caption>商品情報</caption>
+                <colgroup>
+                    <col style="width:auto;" />
+                    <col style="width:120px;" />
+                    <col style="width:80px;" />
+                    <col style="width:120px;" />
+                    <col style="width:110px;" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">商品情報</th>
+                        <th scope="col">販売価格</th>
+                        <th scope="col">数量</th>
+                        <th scope="col">合計</th>
+                        <th scope="col">削除</th>
+                    </tr>
+                </thead>
+                <tbody class="message">
+                   <tr>
+                       <td colspan="5">選択された交換商品がありません。<br />交換する商品を選択しなくても交換申請は可能です。</td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="title">
+        <h3>交換理由</h3>
+    </div>
+    <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+            <caption>交換理由</caption>
+            <colgroup>
+                <col style="width:150px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">理由選択</th>
+                    <td>
+                        {$form.reason_select}
+                        <span id="{$cs_shipfee_paid_by_id}" class="{$cs_shipfee_paid_by_display|display}">[交換送料 <span id="{$cs_shipfee_paid_by_who_id}" class="txtEm"></span> 負担]</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">詳細な理由</th>
+                    <td>{$form.reason_detail}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="{$cs_add_item_display|display}">
+        <div class="title">
+            <h3>追加情報</h3>
+        </div>
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>追加情報</caption>
+                <colgroup>
+                    <col style="width:150px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody module="Myshop_Csadd">
+                    <tr>
+                        <th scope="row">{$item_title}</th>
+                        <td>
+                            {$item_value}
+                            <p class="gBlank5">{$guide_content}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{$item_title}</th>
+                        <td>
+                            {$item_value}
+                            <p class="gBlank5">{$guide_content}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="{$cs_shipfee_payment_id}" class="ec-base-table typeWrite {$cs_shipfee_payment_display|display}">
+        <div class="title">
+            <h3>交換送料決済</h3>
+        </div>
+        <table border="1" summary="">
+            <caption>交換送料の決済情報</caption>
+            <colgroup>
+                <col style="width:150px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+            <tr>
+                <th scope="row">交換送料</th>
+                <td >
+                <span id="{$cs_shipfee_paid_by_select_id}">交換の理由を選択してください。</span>
+                <span id="{$cs_shipfee_paid_by_customer_id}" class="displaynone"><span class="txtEm">お客様都合</span>による交換のため、交換送料<span class="txtEm">{$price_front_head}<span id="{$cs_shipfee_price_slot_id}">{$shipfee_exchange}</span>{$price_front_tail}</span>はお客様負担となります。</span>
+                <span id="{$cs_shipfee_paid_by_store_id}" class="displaynone"><span class="txtEm">販売者責任</span>による交換のため、交換送料はショップ負担となります。</span>
+                </td>
+            </tr>
+            <tr id="{$cs_shipfee_paymethod_id}" class="displaynone">
+                <th scope="row">交換送料の決済方法</th>
+                <td>
+                    <div class="ec-base-radio typeDelivery">
+                    {$form.shipfee_paymethod}
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {$form.is_new_cs_form}
+    <div class="ec-base-table typeWrite {$refund_info_display|display}">
+        <div class="title">
+            <h3>返金情報</h3>
+        </div>
+        <table border="1" summary="">
+            <caption>返金口座</caption>
+            <colgroup>
+                <col style="width:150px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody class="{$refund_notice_display|display}">
+                <tr>
+                    <th scope="row">返金予定金額</th>
+                    <td>返金予定金額は、販売者が受付処理完了した後「注文詳細内訳」にてご確認頂けます。<br />交換商品によって追加決済金額が発生する場合がございます。</td>
+                </tr>
+                <tr>
+                    <th scope="row">送料案内</th>
+                    <td>{$cs_info_desc}</td>
+                </tr>
+            </tbody>
+            <tbody class="{$refund_account_display|display}">
+                <tr>
+                    <th scope="row">返金口座</th>
+                    <td>
+                        <span id="{$id_acc_full_str}" class="{$acc_full_str_display|display}">{$acc_full_str}</span>
+                        <span id="{$id_acc_reg_disp}" class="{$acc_reg_display|display}"><a href="#none" class="btnNormal" onclick="OrderApply.popupAccount('./account.html');">口座情報の登録</a></span>
+                        <span id="{$id_acc_mod_disp}" class="{$acc_mod_display|display}"><a href="#none" class="btnNormal" onclick="OrderApply.popupAccount('./account.html');">口座情報の変更</a></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="ec-base-help txtWarn">現金で返金される場合は、登録された返金口座へ払い戻しされます。</p>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeM" onclick="OrderApply.apply(); return false;">交換申込</a>
+        <a href="/myshop/order/list.html{$back_page_param}" class="btnNormalFix sizeM">戻る</a>
+    </div>
+</div>

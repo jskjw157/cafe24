@@ -1,0 +1,35 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>利用案内</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="mall_faq">
+    <!--@css(/css/module/mall/faq.css)-->
+    <dl class="ec-base-fold theme4 eToggle">
+        <dt>会員登録について</dt>
+        <dd>{$member_info}</dd>
+        <dt>ご注文について</dt>
+        <dd>{$order_info}</dd>
+        <dt class="{$payment_info_display|display}">お支払いについて</dt>
+        <dd class="{$payment_info_display|display}">{$payment_info}</dd>
+        <dt class="{$shipping_info_display|display}">配送について</dt>
+        <dd class="{$shipping_info_display|display}">
+            <ul>
+                <li>配送方法 : {$shipping_method}</li>
+                <li>配送地域 : {$shipping_area}</li>
+                <li>送料 : {$shipping_fee}</li>
+                <li>配送期間 : {$shipping_period}</li>
+                <li>配送案内 : {$shipping_agreement}</li>
+            </ul>
+        </dd>
+        <dt class="{$product_change_info_display|display}">交換・返品について</dt>
+        <dd class="{$product_change_info_display|display}">{$product_change_info}</dd>
+        <dt>返金について</dt>
+        <dd>{$refund_info}</dd>
+        <dt>その他</dt>
+        <dd>{$etc_info}</dd>
+    </dl>
+</div>

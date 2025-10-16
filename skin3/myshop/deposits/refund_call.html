@@ -1,0 +1,79 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Myshop_depositRefundPackage" class="ec-base-layer">
+    <!--@css(/css/module/myshop/depositHistoryCallPackage.css)-->
+    <div  module="Myshop_DepositRefundForm">
+        <!--
+            $login_page = /member/login.html
+            $deposit_page = /myshop/deposits/historyList.html
+        -->
+        <div class="header">
+            <h1>{$deposit_name}の現金返金申込</h1>
+        </div>
+
+        <div class="content">
+            <div class="ec-base-help">
+                <h2>ヘルプ</h2>
+                <div class="inner">
+                    <ul>
+                        <li>{$deposit_name}の現金への返金は、本ページにてお申し込みください。</li>
+                        <li>{$deposit_name}の内訳を確認のうえ、会員様の銀行口座へ振り込ませて頂きます。<br/>多少、時間がかかる場合がありますので、ご了承ください。</li>
+                        <li>個人情報保護や決済取引の安全のため、必ず会員様名義の銀行口座を正しく入力してください。</li>
+                        <li>その他、ご不明な点などございましたら、お問い合わせください。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ec-base-tab">
+                <ul class="menu">
+                    <li class="selected"><a href="refund_call.html">現金返金申込</a></li>
+                    <li><a href="refund_cancel.html">現金返金取消</a></li>
+                </ul>
+            </div>
+
+            <div class="ec-base-table typeWrite">
+                <table border="1" summary="">
+                    <caption>現金返金申込</caption>
+                    <colgroup>
+                        <col style="width:180px" />
+                        <col style="width:160px;" />
+                        <col style="width:auto;" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">返金可能な預かり金</th>
+                            <td><strong class="price1">{$deposit_can_dissaving}</strong></td>
+                            <td>返金待ち金額は、含まれておりません。</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">返金待ちの金額</th>
+                            <td><strong class="price2">{$deposit_refund_wait}</strong></td>
+                            <td>返金申請後、処理待ちの金額です。</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">返金額</th>
+                            <td>{$form.request_deposit_amt} {$deposit_unit}</td>
+                            <td>返金可能な{$deposit_name}を超えないようにご注意ください。</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">口座名義人</th>
+                            <td>{$form.request_account_name}</td>
+                            <td>振込先のお名前を入力してください。</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">銀行名</th>
+                            <td colspan="2">{$form.request_bank_code} <span class="gIndent20 {$display_bank_name_chk|display}">銀行名・支店・口座種別を入力してください。</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">口座番号</th>
+                            <td colspan="2">{$form.request_account_no} <span class="gIndent20">(数字のみで入力してください。)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ec-base-button">
+            <a href="#none" id="{$btn_refund_id}" class="btnSubmitFix sizeS">申し込む</a>
+        </div>
+    </div>
+</div>

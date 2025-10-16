@@ -1,0 +1,43 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="calendar_Modify" class="ec-base-layer">
+    <!--@css(/css/module/calendar/modify.css)-->
+    <div class="header">
+        <h1>修正 / 削除</h1>
+    </div>
+    <div class="content">
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>カレンダー修正 / 削除</caption>
+                <colgroup>
+                    <col style="width:110px;" />
+                    <col style="width:auto; ">
+                </colgroup>
+                <tr>
+                    <th scope="row">日時</th>
+                    <td>{$form.date} {$form.start_hour} {$form.start_minute} ~ {$form.end_hour} {$form.end_minute}</td>
+                </tr>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td>{$form.title}</td>
+                </tr>
+                <tr>
+                    <th scope="row">内容</th>
+                    <td>{$form.contents}</td>
+                </tr>
+                <tr>
+                    <th scope="row">選択</th>
+                    <td>{$form.field}<br />{$field_info}</td>
+                </tr>
+                <tr>
+                    <th scope="row">管理者確認</th>
+                    <td>{$form.confirm} 管理者が記事を確認するとYESで表示されます。</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnEmFix sizeS" onclick="{$action_modify}">修正</a>
+        <a href="#none" class="btnBasicFix sizeS" onclick="{$action_delete}">削除</a>
+        <a href="#none" class="btnNormalFix sizeS" onclick="window.close()">キャンセル</a>
+    </div>
+</div>

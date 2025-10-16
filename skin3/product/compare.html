@@ -1,0 +1,141 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>商品比較</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>商品比較</h2>
+</div>
+
+<div module="Product_ListCompare" class="ec-base-table gBorder">
+    <!--@css(/css/module/product/compare.css)-->
+    <!--
+        $max_count = auto
+            ※ Option
+                - auto: Number of products searched
+                - number: This option can be used from 1 to 4.
+            ※ Repeat more than once to <td>
+    -->
+    <table border="1" summary="">
+    <tbody>
+        <tr module='Product_Productimagetiny'>
+            <th scope="row">商品画像</th>
+            <td class="center">
+                <span class="thumb"><a href="{$link_product_detail}"><img src="{$Productimagetiny}" alt="" /></a></span>
+                <input type="checkbox" class="{$product_select_class}" />
+            </td>
+            <td class="center">
+                <span class="thumb"><a href="{$link_product_detail}"><img src="{$Productimagetiny}" alt="" /></a></span>
+                <input type="checkbox" class="{$product_select_class}" />
+            </td>
+        </tr>
+        <tr module='Product_Productname'>
+            <th scope="row">商品名</th>
+            <td>
+                <strong class="prdName">{$Productname}</strong>
+
+                <ul class="item" module='Product_CompareSetList' class="{$is_new_product|display}">
+                    <li>{$product_name}({$product_count})</li>
+                    <li>{$product_name}({$product_count})</li>
+                </ul>
+            </td>
+            <td>
+                <strong class="prdName">{$Productname}</strong>
+
+                <ul class="item" module='Product_CompareSetList' class="{$is_new_product|display}">
+                    <li>{$product_name}({$product_count})</li>
+                    <li>{$product_name}({$product_count})</li>
+                </ul>
+            </td>
+        </tr>
+        <tr module='Product_Productcustom'>
+            <th scope="row">金額</th>
+            <td><em id="product_price_nf{$product_no}">{$Productcustom}</em></td>
+            <td><em id="product_price_nf{$product_no}">{$Productcustom}</em></td>
+        </tr>
+        <tr module='Product_Productprice'>
+            <th scope="row">販売価格</th>
+            <td><span class="txtEm"><strong id="product_price_nf{$product_no}">{$Productprice}</strong></span>{$product_tax_type_text}</td>
+            <td><span class="txtEm"><strong id="product_price_nf{$product_no}">{$Productprice}</strong></span>{$product_tax_type_text}</td>
+        </tr>
+
+        <tr module='Product_Productsaleprice'>
+            <th scope="row">割引金額</th>
+            <td><span class="txtEm"><strong id="product_price_nf{$product_no}">{$Productsaleprice}</strong></span></td>
+            <td><span class="txtEm"><strong id="product_price_nf{$product_no}">{$Productsaleprice}</strong></span></td>
+        </tr>
+        <tr module='Product_Quantity'>
+            <th scope="row">数量</th>
+            <td><span class="quantity">{$form.quantity}</span></td>
+            <td><span class="quantity">{$form.quantity}</span></td>
+        </tr>
+        <tr>
+            <th scope="row">オプション</th>
+
+            <td module='Product_CompareOptionList'>
+                <ul>
+                    <li module="Product_CompareAddOption"><span class="optionName">{$add_option_name}</span> <span class="fWidthFull">{$form.add_option}</span></li>
+                </ul>
+                <ul>
+                    <li module="Product_CompareOption"><span class="optionName">{$option_name}</span> <span class="fWidthFull">{$form.option}</span></li>
+                </ul>
+            </td>
+        </tr>
+        <tr module='Product_Model'>
+            <th scope="row">モデル</th>
+            <td>{$Model}</td>
+            <td>{$Model}</td>
+        </tr>
+        <tr module='Product_Madein'>
+            <th scope="row">原産国</th>
+            <td>{$Madein}</td>
+            <td>{$Madein}</td>
+        </tr>
+        <tr module='Product_Manuname'>
+            <th scope="row">製造社</th>
+            <td>{$Manuname}</td>
+            <td>{$Manuname}</td>
+        </tr>
+        <tr module='Product_Brand'>
+            <th scope="row">ブランド</th>
+            <td>{$Brand}</td>
+            <td>{$Brand}</td>
+        </tr>
+        <tr module='Product_Allotperiod'>
+            <th scope="row">無利息</th>
+            <td>{$Allotperiod} {$Allotcard}</td>
+            <td>{$Allotperiod} {$Allotcard}</td>
+        </tr>
+        <tr>
+            <th scope="row">{$mileage_name}</th>
+            <td module='Product_Mileage'>{$Mileage}</td>
+        </tr>
+        <tr module='Product_Selfproductcode'>
+            <th scope="row">独自商品コード</th>
+            <td>{$Selfproductcode}</td>
+            <td>{$Selfproductcode}</td>
+        </tr>
+        <tr module='Product_Description'>
+            <th scope="row">商品簡単説明</th>
+            <td>{$Description}</td>
+            <td>{$Description}</td>
+        </tr>
+    </tbody>
+    </table>
+    <p class="description {$description_display|display}">セット商品は商品比較はできますが、カートに入れたり、注文したりすることはできません。</p>
+
+
+    <div class="ec-base-button">
+        <span class="gLeft">
+            <span class="{$basket_display|display}"><a href="#none" class="btnNormal sizeS {$basket_class}">カートに入れる</a></span>
+            <span class="{$wishlist_display|display}"><a href="#none" class="btnNormal sizeS {$wishlist_class}">お気に入りに追加</a></span>
+        </span>
+        <span class="gRight">
+            <span class="{$buy_display|display}"><a href="#none" class="btnSubmitFix sizeM {$buy_class}">今すぐ購入</a></span>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,409 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReadPackage_4">
+    <!--@css(/css/module/board/readPackage.css)-->
+    <div module="board_title_4">
+        <div class="path">
+            <span>ロケーション</span>
+            <ol>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/board/index.html">掲示板</a></li>
+                <li title="ロケーション"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title} {$board_adult_icon}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="board_Product_4" class="ec-base-box typeProduct">
+        <p class="thumbnail"><a href="{$link_product_detail}"><img src="{$product_img}" alt="" onerror="this.src='//img.echosting.cafe24.com/thumb/75x75.gif'" /></a></p>
+        <div class="information">
+            {$user_icon}{$new_icon}{$recommend_icon}{$soldout_icon}{$mileage_icon}
+            <h3><a href="{$link_product_detail}">{$product_name}</a></h3>
+            <p class="price">{$product_price} {$product_tax_type_text}</p>
+            <p class="button"><a href="/product/detail.html{$param_product}" class="btnEm" title="別のウィンドウで開く">商品詳細ページへ</a></p>
+        </div>
+    </div>
+
+    <div module="board_read_4" class="{$block_target_class}" {$block_data_attr}>
+        <!--
+            $login_page_url = /member/login.html
+            $deny_access_url = /board/product/list.html
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+            <caption>商品Q&amp;A内容表示</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td class="{$block_content_class}">{$subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">作成者</th>
+                    <td>{$member_icon} {$writer} <span class="{$config.display_ip|display}">(ip:{$ip})</span> {$admin_mileage}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ul class="etcArea">
+                            <li class="{$config.is_use_point|display}">
+                                <strong>評点</strong> <img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}点">
+                            </li>
+                            <li class="date {$config.use_date|display}">
+                                <strong>作成日</strong> <span class="txtNum">{$write_date}</span>
+                            </li>
+                            <li class="recom {$config.is_use_recom|display}">
+                                <strong>おすすめ</strong> <span class="txtNum">{$vote_count}<a href="#none" class="btnNormal" onclick="{$action_vote}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_recommend.gif" alt="" /> いいね</a></span>
+                            </li>
+                            <li class="hit {$config.use_cnt|display}">
+                                <strong>閲覧数</strong> <span class="txtNum">{$hit_count}</span>
+                            </li>
+                        </ul>
+                        <div class="detail {$block_content_class}">{$content_image}{$content}</div>
+                        <div class="ec-base-button report-button">
+                            <span class="gRight">
+                                <a href="#none" class="btnNormalFix sizeS {$is_report_display|display}" onclick="{$board_report_display}">報告</a>
+                                <a href="#none" class="btnNormalFix sizeS {$block_request_btn}" onclick="{$block_action}">ブロック</a>
+                                <a href="#none" class="btnNormalFix sizeS {$unblock_request_btn}" onclick="{$unblock_action}">ブロック 解除</a>
+                            </span>
+                        </div>
+                        <!--@import(/board/report_popup.html)-->
+                    </td>
+                </tr>
+                <tr class="attach {$config.use_attach|display}">
+                    <th scope="row">添付ファイル</th>
+                    <td>{$attach_file}</td>
+                </tr>
+                <tr class="{$delete_button_auth|display} {$config.use_password|display}">
+                    <th scope="row">パスワード</th>
+                    <td>{$form.password} <span class="ec-base-help txtInfo">削除するにはパスワードを入力してください。</span></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft">
+                <span class="{$config.is_admin|display}">
+                    <a href="#none" onclick="{$action_post}" class="btnNormalFix sizeS admin {$config.is_post|display}">{$admin_publish_message}</a>
+                    <a href="#none" onclick="{$action_post}" class="btnNormalFix sizeS admin {$config.not_post|display}">{$not_publish_message}</a>
+                    <a href="#none" onclick="{$action_spam}" class="btnNormalFix sizeS {$is_global_display|display}">スパム登録</a>
+                    <a href="#none" onclick="{$action_spam_cancle}" class="btnNormalFix sizeS {$is_global_display|display}">スパム解除</a>
+                </span>
+                <a href="{$link_board_list}" class="btnNormalFix sizeS">一覧へ戻る</a>
+            </span>
+            <span class="gRight">
+                <a href="#none" onclick="{$action_delete}" class="btnNormalFix sizeS {$delete_button_auth|display}">削除</a>
+                <a href="#none" onclick="{$action_modify}" class="btnEmFix sizeS {$modify_button_auth|display}">修正</a>
+                <a href="/board/product/reply.html{$param_reply}" class="btnSubmitFix sizeS {$reply_button_auth|display}">回答</a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div module="board_CommentPackage_4">
+    <!--@css(/css/module/board/commentPackage.css)-->
+
+    <div module="board_commentlist_4">
+        <!--
+            $delete_page_url = /board/product/comment_del.html
+            $delete_success_url = /board/product/read.html
+        -->
+        <ul class="boardComment">
+            <li class="first {$comment_reply_css}">
+                <div class="commentTop">
+                    <strong class="name">{$checkbox} {$member_icon} {$comment_name}</strong>
+                    <span class="date">{$comment_write_date}</span>
+                    <span class="grade {$config.is_use_point|display}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/board/ico_point{$comment_point_count}.gif" alt="{$comment_point_count}点" /></span>
+                </div>
+                <span class="button">
+                    <a href="javascript:;" class="btnNormal {$comment_modify_display|display}" onclick="{$action_comment_update}">修正</a>
+                    <a href="javascript:;" class="btnNormal {$comment_delete_display|display}" onclick="{$action_comment_delete}"><i class="icoDelete"></i> 削除</a>
+                    <a href="javascript:;" onclick="{$action_comment_reply}" class="btnNormal {$comment_reply_display|display}">コメント <img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_reply.gif" alt="" /></a>
+                </span>
+                <div class="comment">
+                    <span class="{$is_spam_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_spam.gif" alt="スパムコメント" /></span>
+                    {$comment_icon_lock} {$comment_content}
+                    <div module="board_commentimagelist_4">
+                        <ul class="thumbnail">
+                            <li><a href="#none" onclick="{$action_comment_image}">{$comment_image}</a></li>
+                            <li><a href="#none" onclick="{$action_comment_image}">{$comment_image}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="{$comment_reply_css}">
+                <div class="commentTop">
+                    <strong class="name">{$checkbox} {$member_icon} {$comment_name}</strong>
+                    <span class="date">{$comment_write_date}</span>
+                    <span class="grade {$config.is_use_point|display}"><img src="//img.echosting.cafe24.com/skin/base_ja_JP/board/ico_point{$comment_point_count}.gif" alt="{$comment_point_count}点" /></span>
+                </div>
+                <span class="button">
+                    <a href="javascript:;" class="btnNormal {$comment_modify_display|display}" onclick="{$action_comment_update}">修正</a>
+                    <a href="javascript:;" class="btnNormal {$comment_delete_display|display}" onclick="{$action_comment_delete}"><i class="icoDelete"></i> 削除</a>
+                    <a href="javascript:;" onclick="{$action_comment_reply}" class="btnNormal {$comment_reply_display|display}">コメント <img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_reply.gif" alt="" /></a>
+                </span>
+                <div class="comment">
+                    <span class="{$is_spam_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_spam.gif" alt="スパムコメント" /></span>
+                    {$comment_icon_lock} {$comment_content}
+                    <div module="board_commentimagelist_4">
+                        <ul class="thumbnail">
+                            <li><a href="#none" onclick="{$action_comment_image}">{$comment_image}</a></li>
+                            <li><a href="#none" onclick="{$action_comment_image}">{$comment_image}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <!--@import(/board/image_popup.html)-->
+
+        <div class="ec-base-button typeBG spam {$config.is_admin|display}">
+            <span class="gLeft">
+                <a href="#none" onclick="{$action_spam}" class="btnNormalFix sizeS {$is_global_display|display}">スパム登録</a>
+                <a href="#none" onclick="{$action_spam_cancle}" class="btnNormalFix sizeS {$is_global_display|display}">スパム解除</a>
+            </span>
+        </div>
+    </div>
+
+
+    <div module="board_commentpaging_4" class="ec-base-paginate typeSub">
+        <a href="{$param_prev}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev2.gif" alt="前へ" /></a>
+        <ol>
+            <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+            <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        </ol>
+        <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next2.gif" alt="次へ" /></a>
+    </div>
+
+
+    <div module="board_commentform_4">
+        <fieldset>
+            <legend>修正</legend>
+            <p><span class="{$comment_modify_password_display|display}">パスワード : {$form.comment_password}</span> <span class="secret {$comment_secret_display|display}"><label>{$form.secure}秘密コメント</label></span></p>
+            <div class="view">
+                {$form.comment_modify}
+                <div class="ec-base-table typeWrite">
+                    <table border="1">
+                        <colgroup>
+                            <col style="width:130px;">
+                            <col style="width:auto;">
+                        </colgroup>
+                        <tbody class="{$config.use_comment_attach|display}">
+                        <tr>
+                            <th scope="row">添付ファイル1</th>
+                            <td>{$form.attach_file} <span class="ecActionCommentDelFile"></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル2</th>
+                            <td>{$form.attach_file} <span class="ecActionCommentDelFile"></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル3</th>
+                            <td>{$form.attach_file} <span class="ecActionCommentDelFile"></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル4</th>
+                            <td>{$form.attach_file} <span class="ecActionCommentDelFile"></span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">添付ファイル5</th>
+                            <td>{$form.attach_file} <span class="ecActionCommentDelFile"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <span class="submit">
+                    <a href="#none" class="btnNormalFix sizeS" onclick="{$action_comment_cancel}" >キャンセル</a>
+                    <a href="#none" class="btnEmFix sizeS" onclick="{$action_comment_update}" >修正</a>
+                </span>
+            </div>
+            <p class="{$config.comment_size|display}">{$comment_byte} / {$comment_size} byte</p>
+        </fieldset>
+    </div>
+
+
+    <div module="board_commentformsecret_1002">
+        <p>パスワード : {$form.secure_password}
+            <a href="#none" class="btnNormal" onclick="{$action_secret_submit}">確認</a>
+            <a href="#none" class="btnNormal" onclick="{$action_secret_cancel}">キャンセル</a>
+        </p>
+    </div>
+
+
+    <div module="board_commentwrite_4">
+
+        <div class="{$comment_write_display|display}">
+            <fieldset>
+                <legend>コメント入力</legend>
+                <div class="input">
+                    <strong>コメント入力</strong>
+                    <span class="{$comment_input_name|display}">名前 : {$form.comment_name}</span><span class="{$comment_input_password_display|display}">パスワード : {$form.comment_password}</span><span class="secret {$comment_secret_display|display}"><label>{$form.secure}秘密コメント</label></span><a href="#none" onclick="{$action_comment_admin}" class="btnNormal {$config.pre_comment|display}">管理者回答表示</a>
+                    <p class="ec-base-help {$password_rule_help_display|display}">半角英字(大文字・小文字)/数字/特殊文字のうち、２種類以上の組み合わせで10～16文字</p>
+                </div>
+                <div class="view">
+                    {$form.comment}
+                    <div class="ec-base-table typeWrite">
+                        <table border="1">
+                            <colgroup>
+                                <col style="width:130px;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <tbody class="{$config.use_comment_attach|display}">
+                            <tr>
+                                <th scope="row">添付ファイル1</th>
+                                <td>{$form.attach_file}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">添付ファイル2</th>
+                                <td>{$form.attach_file}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">添付ファイル3</th>
+                                <td>{$form.attach_file}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">添付ファイル4</th>
+                                <td>{$form.attach_file}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">添付ファイル5</th>
+                                <td>{$form.attach_file}</td>
+                            </tr>
+                            </tbody>
+                            <p class="grade {$config.is_use_point|display}">{$form.comment_point}</p>
+                        </table>
+                    </div>
+                    <div class="ec-base-button">
+                    	<span class="gRight">
+                        	<a href="#none" class="btnNormalFix sizeS {$comment_button|display}" onclick="{$action_comment_write_cancel}">取消</a>
+                    		<a href="#none" class="btnSubmitFix sizeS {$comment_button|display}" onclick="{$action_comment_insert}">確認</a>
+                    	</span>
+                    </div>
+                </div>
+                <p class="{$config.comment_size|display}">{$comment_byte} / {$comment_size} byte</p>
+                <p class="captcha {$config.use_captcha_comment|display}">
+                    {$captcha_image} {$captcha_refresh}
+                    {$form.captcha}
+                    <span class="ec-base-help txtInfo">スペースを空けずに入力してください。(大小文字を区別)</span>
+                </p>
+            </fieldset>
+        </div>
+
+        <div class="{$comment_write_display_none|display}">
+            <p>{$comment_auth_name}のみ、コメントの作成権限があります。</p>
+        </div>
+    </div>
+
+
+    <div module="board_commentreply_4">
+
+        <div class="{$comment_write_display|display}">
+            <fieldset>
+                <legend>コメント入力</legend>
+                <div class="input">
+                    <strong>コメント入力</strong>
+                    <span class="{$comment_input_name|display}">名前 : {$form.comment_name}</span><span class="{$comment_input_password_display|display}">パスワード : {$form.comment_password}</span><span class="secret {$comment_secret_display|display}"><label>{$form.secure}秘密コメント</label></span>
+                    <p class="ec-base-help {$password_rule_help_display|display}">半角英字(大文字・小文字)/数字/特殊文字のうち、２種類以上の組み合わせで10～16文字</p>
+                </div>
+                <div class="view">
+                    {$form.comment}
+                    <a href="#none" onclick="{$action_comment_insert}" class="btnEm sizeL {$comment_button|display}">確認</a>
+                </div>
+                <p class="{$config.comment_size|display}">{$comment_byte} / {$comment_size} byte</p>
+                <p class="captcha {$config.use_captcha_comment|display}">
+                    {$captcha_image} {$captcha_refresh}
+                    {$form.captcha}
+                    <span class="ec-base-help txtInfo">スペースを空けずに入力してください。(大小文字を区別)</span>
+                </p>
+            </fieldset>
+        </div>
+
+        <div class="{$comment_write_display_none|display}">
+            <p>{$comment_auth_name}のみ、コメントの作成権限があります。</p>
+        </div>
+    </div>
+</div>
+
+<div module="board_movement_4">
+    <!--@css(/css/module/board/movement.css)-->
+    <ul>
+        <li class="prev {$prev_display|display}"><strong>前へ</strong><a href="{$link_board_detail_prev}">{$prev_subject}</a></li>
+        <li class="next {$next_display|display}"><strong>次へ</strong><a href="{$link_board_detail_next}">{$next_subject}</a></li>
+    </ul>
+</div>
+
+<div module="board_listsgroup_4">
+    <h3>関連コメント表示</h3>
+    <!--@css(/css/module/board/listsgroup.css)-->
+    <!--
+        $count = 5
+        $product_name_cut = 30
+    -->
+    <div class="ec-base-table typeList gBorder">
+        <table border="1" summary="">
+            <caption>関連コメントサマリー</caption>
+            <colgroup>
+                    <col style="width:70px;" />
+                    <col style="width:134px;" />
+                    <col style="width:auto;" />
+                    <col style="width:84px;" />
+                    <col style="width:77px;" class="{$config.use_date|display}" />
+                    <col style="width:55px;" class="{$config.use_cnt|display}" />
+                </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">番号</th>
+                    <th scope="col">商品名</th>
+                    <th scope="col">タイトル</th>
+                    <th scope="col">作成者</th>
+                    <th scope="col" class="{$config.use_date|display}">作成日</th>
+                    <th scope="col" class="{$config.use_cnt|display}">閲覧数</th>
+                </tr>
+            </thead>
+            <tbody class="center">
+                <tr>
+                    <td>{$idx}</td>
+                    <td><span>{$product_name}</span></td>
+                    <td class="subject left txtBreak">
+                        {$icon_re}{$icon_lock} <a href="{$link_board_detail}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}
+                    </td>
+                    <td>{$member_icon}{$writer}</td>
+                    <td class="{$date_display|display}"><span class="txtNum">{$write_date}</span></td>
+                    <td class="{$hit_display|display}"><span class="txtNum">{$hit_count}</span></td>
+                </tr>
+                <tr>
+                    <td>{$idx}</td>
+                    <td><span>{$product_name}</span></td>
+                    <td class="subject left txtBreak">
+                        {$icon_re}{$icon_lock} <a href="{$link_board_detail}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}
+                    </td>
+                    <td>{$member_icon}{$writer}</td>
+                    <td class="{$date_display|display}"><span class="txtNum">{$write_date}</span></td>
+                    <td class="{$hit_display|display}"><span class="txtNum">{$hit_count}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Admin only -->
+<div module="board_function_4">
+    <!--@css(/css/module/board/function.css)-->
+    <!--
+        $success_return_url = /board/product/list.html
+     -->
+    <p>
+        {$board_function_selectbox}
+        <a href="#none" class="btnNormal" onclick="{$action_article_move}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_move.gif" alt="" /> {$article_move}</a>
+        <a href="#none" class="btnNormal" onclick="{$action_article_copy}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_copy.gif" alt="" /> {$article_copy}</a>
+        {$board_function_help}
+    </p>
+</div>
+<!-- // Admin only -->
+<!--@define(cmc_log)-->

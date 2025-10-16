@@ -1,0 +1,135 @@
+<!--@layout(/layout/basic/popup.html)-->
+<!--@css(/css/module/myshop/receiverUpdate.css)-->
+
+<div class="ec-base-layer" module="myshop_OrderReceiverUpdate">
+    <!--
+        $isRuleBasedAddrForm = T
+    -->
+    <div class="header">
+        <h1>お届け先変更</h1>
+    </div>
+
+    <div class="content">
+        <div class="ec-base-table typeWrite">
+            <table summary="" border="1">
+                <caption>お届け先変更</caption>
+                <colgroup>
+                    <col style="width:150px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+
+                <tbody class="{$r_info_display|display}">
+                <tr>
+                    <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.r_name}
+                    </td>
+                </tr>
+                <tr id="ec-receiverUpdate-address">
+                    <th scope="row">アドレス <img class="{$is_receiverUpdate_address_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>{$form.address}</td>
+                </tr>
+                <tr class="{$use_delivery_tel_display|display}">
+                    <th scope="row">電話番号 <img class="{$is_delivery_tel_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.r_phone}
+                        <p class="gBlank5">ハイフン(‐)を除いて数字のみ入力してください。</p>
+                    </td>
+                </tr>
+                <tr class="{$use_delivery_cell_display|display}">
+                    <th scope="row">携帯電話番号 <img class="{$is_delivery_cell_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.r_mobile}
+                        <p class="gBlank5">ハイフン(‐)を除いて数字のみ入力してください。</p>
+                    </td>
+                </tr>
+                <tr class="{$use_delivery_message_display|display}">
+                    <th scope="row">配送メッセージ <img class="{$is_delivery_message_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>{$form.r_message}</td>
+                </tr>
+                </tbody>
+
+                <tbody class="{$f_info_display|display}">
+                <tr class="{$use_connected_name_input_display|display}">
+                    <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_name}
+                    </td>
+                </tr>
+                <tr class="{$use_seperate_name_input_display|display}">
+                    <th scope="row">お名前 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_name_1}
+                        {$form.f_name_2}
+                    </td>
+                </tr>
+                <tr class="{$use_orders_english_name_display|display} {$use_connected_name_input_display|display}">
+                    <th scope="row">お名前(ローマ字) <img class="{$is_orders_english_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_name_en}
+                    </td>
+                </tr>
+                <tr class="{$use_orders_english_name_display|display} {$use_seperate_name_input_display|display}">
+                    <th scope="row">お名前(ローマ字) <img class="{$is_orders_english_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_name_en_1}
+                        {$form.f_name_en_2}
+                    </td>
+                </tr>
+                <tr class="{$use_orders_pronounce_name_display|display} {$use_connected_name_input_display|display}">
+                    <th scope="row">フリガナ <img class="{$is_orders_pronounce_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_name_phonetic}
+                    </td>
+                </tr>
+                <tr class="{$use_orders_pronounce_name_display|display} {$use_seperate_name_input_display|display}">
+                    <th scope="row">フリガナ <img class="{$is_orders_pronounce_name_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_name_phonetic_1}
+                        {$form.f_name_phonetic_2}
+                    </td>
+                </tr>
+                <tr id="ec-freceiverUpdate-address">
+                    <th scope="row">アドレス <img class="{$is_freceiverUpdate_address_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.faddress}
+                    </td>
+                </tr>
+                <tr class="{$use_delivery_tel_display|display}">
+                    <th scope="row">電話番号 <img class="{$is_delivery_tel_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_phone}
+                        <p class="gBlank5">ハイフン(‐)を除いて数字のみ入力してください。</p>
+                    </td>
+                </tr>
+                <tr class="{$use_delivery_cell_display|display}">
+                    <th scope="row">携帯電話番号 <img class="{$is_delivery_cell_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_mobile}
+                        <p class="gBlank5">ハイフン(‐)を除いて数字のみ入力してください。</p>
+                    </td>
+                </tr>
+                <tr class="{$use_receiver_id_card_key_display|display}">
+                    <th scope="row">通関情報 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_receiver_id_card_type}
+                        {$form.f_receiver_id_card_key}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">配送メッセージ <img class="{$is_delivery_message_required_display|display}" src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" alt="必須" /></th>
+                    <td>
+                        {$form.f_message}
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="ec-base-button">
+        <button id="{$receiver_update_submit_id}" type="button" class="btnSubmitFix sizeS">変更する</button>
+        <a href="#none" id="{$receiver_update_popup_close_id}" class="btnNormalFix sizeS">閉じる</a>
+    </div>
+</div>

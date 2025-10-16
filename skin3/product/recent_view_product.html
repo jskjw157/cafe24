@@ -1,0 +1,99 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path">
+    <span>ロケーション</span>
+    <ol>
+        <li><a href="/">ホーム</a></li>
+        <li title="ロケーション"><strong>最近チェックした商品</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>最近チェックした商品</h2>
+</div>
+
+<div module="product_recentlist" class="ec-base-table typeList">
+    <!--@css(/css/module/product/recentlist.css)-->
+    <!--
+        $count = 10
+    -->
+    <table border="1" summary="" class="{$list_display|display}">
+        <caption>最近チェックした商品</caption>
+        <colgroup>
+            <col style="width:92px">
+            <col style="width:auto">
+            <col style="width:120px">
+            <col style="width:130px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col">画像</th>
+                <th scope="col">商品情報</th>
+                <th scope="col">販売価格</th>
+                <th scope="col">選択</th>
+            </tr>
+        </thead>
+        <tbody module="product_listitem">
+            <tr>
+                <td class="image"><a href="{$link_product_detail}"><img src="{$image_medium}" alt="" /></a></td>
+                <td class="product">
+                    <a href="{$link_product_detail}">{$product_name}</a>
+                     {$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$pickup_icon} {$regular_delivery_icon}
+
+
+                    <ul module="product_setproduct">
+                        <li>{$product_name}</li>
+                        <li>{$product_name}</li>
+                    </ul>
+                </td>
+                <td class="price right">
+                    <p class="{$strike_custom_price} {$custom_price_display|display}"><strong>{$product_custom}</strong></p>
+                    <p class="{$discount}"><strong class="txtEm">{$price}</strong>{$product_tax_type_text}</p>
+                    <p class="{$product_sale_price_display|display} txtEm"><strong>{$product_sale_price}</strong></p>
+                </td>
+                <td class="button center">
+                    <a href="#none" onclick="{$act_order}" class="btnSubmit {$disp_order|display}">注文する</a>
+                    <a href="#none" onclick="{$act_basket}" class="btnNormal {$disp_basket|display}">カートに入れる</a>
+                    <a href="#none" class="btnNormal {$class_del}" rel="{$rel_del}"><i class="icoDelete"></i> 削除</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="image"><a href="{$link_product_detail}"><img src="{$image_medium}" alt="" /></a></td>
+                <td class="product">
+                    <a href="{$link_product_detail}">{$product_name}</a>
+                     {$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$pickup_icon} {$regular_delivery_icon}
+
+
+                    <ul module="product_setproduct">
+                        <li>{$product_name}</li>
+                        <li>{$product_name}</li>
+                    </ul>
+                </td>
+                <td class="price right">
+                    <p class="{$strike_custom_price} {$custom_price_display|display}"><strong>{$product_custom}</strong></p>
+                    <p class="{$discount}"><strong class="txtEm">{$price}</strong>{$product_tax_type_text}</p>
+                    <p class="{$product_sale_price_display|display} txtEm"><strong>{$product_sale_price}</strong></p>
+                </td>
+                <td class="button center">
+                    <a href="#none" onclick="{$act_order}" class="btnSubmit {$disp_order|display}">注文する</a>
+                    <a href="#none" onclick="{$act_basket}" class="btnNormal {$disp_basket|display}">カートに入れる</a>
+                    <a href="#none" class="btnNormal {$class_del}" rel="{$rel_del}"><i class="icoDelete"></i> 削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="message {$empty_display|display}">最近チェックした商品がありません。</p>
+</div>
+
+<div module="product_recentlistpaging" class="ec-base-paginate">
+    <a href="{$param_first}" class="first"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_first.gif" alt="最初ページ" /></a>
+    <a href="{$param_before}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_prev.gif" alt="前へ" /></a>
+    <ol>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+    </ol>
+    <a href="{$param_next}"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_next.gif" alt="次へ" /></a>
+    <a href="{$param_last}" class="last"><img src="//img.echosting.cafe24.com/skin/base/common/btn_page_last.gif" alt="最終ページ" /></a>
+</div>

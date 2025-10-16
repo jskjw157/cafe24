@@ -1,0 +1,15 @@
+#ec-order-gmo-error-layer { display:none; }
+.gmoErrorLayer { position:fixed; top:180px; left:50%; z-index:1000; width:450px; margin:0 0 0 -225px; }
+.gmoErrorLayer h1 { height:35px; padding:0 35px 0 19px; color:#fff; font-size:14px; line-height:35px; background:#495164; }
+.gmoErrorLayer .content { padding:20px; border-right:1px solid #757575; border-left:1px solid #757575; line-height:18px; background:#fff; }
+.gmoErrorLayer .content p { padding:32px 0 55px 167px; color:#2e2e2e; background:url("//img.echosting.cafe24.com/skin/base/order/bg_checkout_fail.png") no-repeat 25px 10px; }
+.gmoErrorLayer .content table { table-layout:fixed; border:1px solid #d7d5d5; }
+.gmoErrorLayer .content table th { padding:14px 0 14px 19px; border-top:1px solid #e8e8e8; border-right:1px solid #e8e8e8; font-weight:normal; text-align:left; background:#fbfafa; }
+.gmoErrorLayer .content table td { border-top:1px solid #e8e8e8; vertical-align:middle; }
+.gmoErrorLayer .content table tr:first-child th,
+.gmoErrorLayer .content table tr:first-child td { border-top:0; }
+.gmoErrorLayer .content .causeFail { overflow:hidden; overflow-y:auto; height:100px; padding:14px 0 14px 10px; }
+.gmoErrorLayer .close { position:absolute; right:20px; top:10px; }
+.gmoErrorLayer .close img { cursor:pointer; }
+.gmoErrorLayer .btnArea { padding:9px 0; border:1px solid #757575; border-top:1px solid #d7d5d5; text-align:center; background:#fbfafa; }
+.gmoErrorLayer .btnArea img:first-child { margin:0 1px 0 0; }

@@ -1,0 +1,16 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="link_shortcut" class="ec-base-layer">
+    <!--@css(/css/module/link/shortcut.css)-->
+    <div class="header">
+        <h1>{$shortcut_name}</h1>
+    </div>
+    <div class="content">
+        <p class="info">
+            デスクトップ上に<strong>ショートカットアイコン</strong>を作成します。 <br />作成しますか？
+        </p>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_create_shortcut}">作成する</a>
+        <a href="#none" class="btnNormalFix sizeS" onclick="{$action_close}">キャンセル</a>
+    </div>
+</div>

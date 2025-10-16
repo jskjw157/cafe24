@@ -1,0 +1,134 @@
+﻿<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ModifyPackage_4">
+    <!--@css(/css/module/board/modifyPackage.css)-->
+    <div module="board_title_4">
+        <div class="path">
+            <span>ロケーション</span>
+            <ol>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/board/index.html">掲示板</a></li>
+                <li title="ロケーション"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="board_modify_4">
+        <!--
+            $write_success_url = /board/product/list.html
+            $product_select_url = /product/search_board_list.html
+            $order_select_url = /order/search_board_list.html
+         -->
+
+        <div class="ec-base-box typeProduct {$display_product|display}">
+            <p class="thumbnail"><a href="{$link_product_detail}"><img id="{$product_img_id}" src="{$url_product_img}" onerror="this.src='//img.echosting.cafe24.com/thumb/75x75.gif'" alt="" /></a></p>
+            <div class="information">
+                {$product_icon}
+                <h3><a href="/product/detail.html{$param_product}" id="{$product_name_link_id}">{$product_name}</a></h3>
+                <p class="price">{$product_price} {$product_tax_type_text}</p>
+                <p class="button">
+                    <span id="{$product_view_id}" class="{$display_product_info|display}"><a href="/product/detail.html{$param_product}" id="{$product_link_id}" class="btnEm" target="_blank" >商品詳細ページへ</a></span>
+                    <span class="{$display_product_select|display}"><a href="#none" class="btnNormal" onclick="{$action_product_select}">商品情報選択</a></span>
+                    <span class="{$display_order_select|display}"><a href="#none" class="btnNormal" onclick="{$action_order_select}">注文商品選択</a></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+            <caption>修正フォーム</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">タイトル</th>
+                    <td>{$form.board_category} {$form.subject} {$form.notice} {$form.is_post}</td>
+                </tr>
+                <tr class="{$config.is_login|display}">
+                    <th scope="row">作成者</th>
+                    <td>{$form.writer}</td>
+                </tr>
+                <tr class="{$config.use_write_email|display}">
+                    <th scope="row">メールアドレス</th>
+                    <td>{$form.email}</td>
+                </tr>
+                <tr class="{$config.is_use_point|display}">
+                    <th scope="row">評点</th>
+                    <td>{$form.point}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="clear">
+                        {$form.content}
+                    </td>
+                </tr>
+                <tr class="ucc">
+                    <th scope="row">動画URL</th>
+                    <td>{$form.ucc}</td>
+                </tr>
+            </tbody>
+
+            <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">添付ファイル1</th>
+                    <td>{$form.attach_file} {$attached_file1}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル2</th>
+                    <td>{$form.attach_file} {$attached_file2}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル3</th>
+                    <td>{$form.attach_file} {$attached_file3}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル4</th>
+                    <td>{$form.attach_file} {$attached_file4}</td>
+                </tr>
+                <tr>
+                    <th scope="row">添付ファイル5</th>
+                    <td>{$form.attach_file} {$attached_file5}</td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr class="{$config.use_password|display}">
+                    <th scope="row">パスワード</th>
+                    <td>{$form.password}</td>
+                </tr>
+                <tr class="{$config.use_secret|display}">
+                    <th scope="row">秘密コメント設定</th>
+                    <td>{$form.secure}</td>
+                </tr>
+                <tr class="captcha {$config.use_captcha_write|display}">
+                    <th scope="row">文字認証</th>
+                    <td>
+                        {$captcha_image} {$captcha_refresh}
+                        <p class="gBlank5">{$form.captcha} <span class="ec-base-help txtInfo">スペースを空けずに入力してください。(大小文字を区別)</span></p>
+                    </td>
+                </tr>
+                <tr class="agree {$config.is_login|display} {$display_privacy_agreement|display}">
+                    <th scope="row">個人情報の収集及び<br />利用規約同意</th>
+                    <td>
+                        {$form.privacy_agreement}<br />
+                        個人情報の収集及び利用規約に同意しますか。 {$form.privacy_agreement_radio}
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft"><a href="{$link_board_list}" class="btnNormalFix sizeS">一覧へ戻る</a></span>
+            <span class="gRight">
+                <a href="#none" class="btnEmFix sizeS" onclick="{$action_modify}">修正</a>
+                <a href="{$link_board_list}" class="btnBasicFix sizeS">キャンセル</a>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div id="titleArea">
+    <h2>パスワードをお忘れの方</h2>
+    <span module="Layout_MobileAction">
+        <a href="#none" onclick="{$go_back}"><img src="//img.echosting.cafe24.com/skin/mobile_ja_JP/layout/btn_back.gif" width="33" alt="戻る"></a>
+    </span>
+</div>
+
+<div module="member_passwordverification">
+    <!--@css(/css/module/member/user_verification.css)-->
+    <div class="ec-base-table typeWrite">
+        <table border="1">
+            <caption>本人確認</caption>
+            <colgroup>
+                <col style="width:110px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">本人確認</th>
+                    <td>{$form.user_verification_method_type}</td>
+                </tr>
+                <tr id="{$user_verification_email_info}" class="email">
+                    <th scope="row">メールアドレス</th>
+                    <td class="middle">
+                        <strong class="txtEm">{$user_verification_email}</strong>
+                        <a href="#none" class="btnNormal" onclick="{$action_func_user_verification}">送信</a>
+                    </td>
+                </tr>
+                <tr id="{$user_verification_mobile_info}" class="mobile">
+                    <th scope="row">携帯電話番号</th>
+                    <td class="middle">
+                        <strong class="txtEm">{$user_verification_mobile}</strong>
+                        <a href="#none" class="btnNormal" onclick="{$action_func_user_verification}">送信</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">認証番号</th>
+                    <td>{$form.verification_code}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="ec-base-help {$display_user_verification_email_desc|display}" id="{$user_verification_email_desc}">認証番号の有効期限は60分です。再送は、一度送信してから30秒後に行うことができます。</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ec-base-button gFull">
+        <a href="#none" class="btnSubmit" onclick="{$action_func_user_verification_submit}">認証</a>
+    </div>
+</div>
