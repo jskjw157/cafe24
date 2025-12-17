@@ -1,0 +1,24 @@
+---
+description: When implementing UI, replicate reference HTML structure & CSS tokens first. Prefer minimal diffs and scoped CSS.
+globs:
+    - 'base/**/*.{html,css}'
+    - 'skin4/**/*.{html,css}'
+alwaysApply: false
+---
+
+# Clone-first implementation rules
+
+1. 먼저 reference에서:
+
+-   색상/폰트/사이즈/라인하이트/spacing scale(예: 4/8/12/16/24/32)
+-   grid(최대폭/컬럼/갭), breakpoint
+-   버튼/카드/인풋 기본 스타일을 "토큰"으로 추출한다.
+
+2. 구현 순서:
+
+-   레이아웃(컨테이너/그리드/섹션 간격) → 타이포 → 컴포넌트(버튼/카드) → 디테일(hover/transition)
+
+3. CSS 작성 원칙:
+
+-   전역 리셋/무작정 body 강제는 피하고, 섹션 래퍼 아래로 스코프를 잡는다.
+-   reference가 CSS 변수(—color, —radius 등)를 쓰면 동일하게 도입한다.

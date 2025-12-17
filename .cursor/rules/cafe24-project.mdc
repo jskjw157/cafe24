@@ -1,0 +1,96 @@
+---
+alwaysApply: true
+---
+
+# Cafe24 Shopping Mall Skin Project Rules
+
+## Project Overview
+
+This is a Cafe24 e-commerce platform skin customization project. The goal is to maintain the Cafe24 system structure while replicating the layout, typography, spacing, colors, and component styles from the baseFront React reference as closely as possible.
+
+## Folder Structure
+
+-   `base/` - Main PC skin (primary working directory)
+-   `baseFront/` - React design reference (Vite + React + TypeScript + Tailwind)
+-   `mobile/`, `mobile2/`, `mobile3/` - Mobile skins
+-   `skin1/`, `skin2/`, `skin3/` - Additional PC skins
+-   `skin4/` - **Test shopping mall copy** (for testing before applying to production)
+-   `web/` - Web assets (product, upload)
+
+## Cafe24 System Requirements
+
+-   `module="..."` 속성 태그는 삭제/이동/병합/이름변경 금지.
+-   `{$...}` 형태 치환 변수는 삭제/형식 변경 금지.
+-   `<!--@layout(...)-->`, `<!--@css(...)-->`, `<!--@js(...)-->` 지시자 주석은 삭제 금지.
+-   레퍼런스 구조를 적용할 때는: 모듈을 "그대로 두고", 모듈 내부에 래퍼를 추가해서 레이아웃을 만든다.
+
+### Template Syntax - MUST PRESERVE
+
+-   `<!--@import(/path/file.html)-->` - File imports
+-   `<!--@css(/path/file.css)-->` - CSS imports
+-   `<!--@js(/path/file.js)-->` - JS imports
+-   `<!--@contents-->` - Content placeholder
+-   `module="module_name"` - Cafe24 module attributes
+-   `{$variable}` - Cafe24 template variables
+-   `data-ez-module` - EZ design editor attributes
+
+### EZ Module Compatibility
+
+-   Maintain `data-ez-*` attributes for admin design editor
+-   Keep `<ez-prop>`, `<ez-var>`, `<ez-item>` configurations
+-   Preserve theme switching functionality (theme01-04)
+
+## Design System - Atelier Popo Style
+
+### Responsive Breakpoints
+
+-   Desktop: > 1024px
+-   Tablet: 1024px (`@media all and (max-width: 1024px)`)
+-   Mobile: 767px (`@media all and (max-width: 767px)`)
+
+## Coding Standards
+
+### CSS
+
+-   Use CSS variables for colors and fonts
+-   Follow existing BEM-like naming (.className\_\_element)
+-   Maintain responsive class system: `.RW` (desktop), `.RTMB` (tablet/mobile block), `.RTMI` (tablet/mobile inline)
+-   Preserve vendor prefixes for cross-browser compatibility
+
+### HTML
+
+-   Keep semantic structure
+-   Maintain accessibility features (skipNavigation, alt tags)
+-   Preserve Cafe24 module wrapper classes (xans-\*)
+
+### JavaScript
+
+-   Use vanilla JS (no framework dependencies for skin files)
+-   Maintain Swiper.js for carousels
+-   Keep EZST (EZ Design) initialization scripts
+
+## File Modification Guidelines
+
+### Before Editing
+
+1. Understand the Cafe24 module context
+2. Check if EZ module editing is affected
+3. Verify responsive behavior requirements
+
+### After Editing
+
+1. Test on FTP upload to actual Cafe24 server
+2. Verify admin design editor still works
+3. Check all responsive breakpoints
+
+## Response Language
+
+-   Always respond in Korean
+
+## Key Files Reference
+
+-   `base/layout/basic/layout.html` - Main layout template
+-   `base/layout/basic/css/layout.css` - Main styles
+-   `base/layout/basic/header.html` - Header component
+-   `base/layout/basic/footer.html` - Footer component
+-   `cursor_.md` - Project history and context

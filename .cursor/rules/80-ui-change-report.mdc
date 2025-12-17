@@ -1,0 +1,13 @@
+---
+description: Use when editing UI. Produce a short change plan + checklist + what to verify in browser.
+alwaysApply: false
+---
+
+# UI change report format
+
+-   계획(3줄): 무엇을 reference 기준으로 맞추는지 / 어떤 파일을 바꾸는지 / 무엇은 건드리지 않는지
+-   변경 요약: 수정 파일 목록 + 핵심 diff 포인트 3개
+-   검증 체크리스트:
+    -   깨짐 위험(카페24 모듈/변수/지시자 보존)
+    -   반응형(모바일/태블릿/데스크탑)
+    -   hover/focus 상태
