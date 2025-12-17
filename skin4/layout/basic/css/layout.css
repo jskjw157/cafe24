@@ -32,7 +32,7 @@ body {
 }
 .cboth {
     clear: both;
-    *zoom: 1;
+    zoom: 1;
 }
 .cboth:after {
     content: ' ';
@@ -96,14 +96,14 @@ a:hover {
     visibility: visible;
 }
 
-/* 최상단 배너 - Atelier Popo Style */
+/* 최상단 배너 - EMMANUELLE Style */
 .main_top_banner {
     position: relative;
     z-index: 997;
-    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+    background: #722f37;
     overflow: hidden;
     width: 100%;
-    display: none;
+    display: block;
     padding: 12px 0;
 }
 .main_top_banner .top_banner_box_inner {
@@ -135,21 +135,26 @@ a:hover {
     bottom: 0;
 }
 .main_top_banner .top_banner_box_inner .top_banner_text a {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--gray-700);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--white) !important;
     line-height: 1.6;
-    font-family: var(--font-body);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+.main_top_banner .top_banner_box_inner .top_banner_text a:hover {
+    color: var(--brand-pink) !important;
 }
 .main_top_banner .top_banner_box_inner .top_banner_close {
     font-size: 12px;
     font-weight: 400;
-    color: var(--gray-600);
+    color: var(--gray-400);
     line-height: 1;
     display: flex;
     align-items: center;
     margin-left: 30px;
-    font-family: var(--font-body);
+    font-family: 'Montserrat', var(--font-body);
 }
 .main_top_banner .top_banner_box_inner .top_banner_close input[type='checkbox'] {
     width: 15px;
@@ -159,27 +164,32 @@ a:hover {
 .main_top_banner .top_banner_box_inner .top_banner_close label {
     margin-left: 5px;
     cursor: pointer;
+    color: var(--gray-400);
+}
+.main_top_banner .top_banner_box_inner .top_banner_close label:hover {
+    color: var(--white);
 }
 .main_top_banner .top_banner_box_inner .top_banner_close .icon {
     cursor: pointer;
+    color: var(--gray-400);
+}
+.main_top_banner .top_banner_box_inner .top_banner_close .icon:hover {
+    color: var(--white);
 }
 
-/* 상단 - Atelier Popo Style */
+/* 상단 - EMMANUELLE Black Style */
 #header {
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: #000;
     position: sticky;
     top: 0;
     z-index: 998;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    border-bottom: 1px solid var(--gray-100);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border-bottom: none;
 }
 #header .inner {
     max-width: 1760px;
@@ -192,14 +202,15 @@ a:hover {
 }
 #header .inner .toparea {
     width: 100%;
-    height: 50px;
-    margin-top: 10px;
+    height: 40px;
+    margin-top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transform: translateY(0);
     position: relative;
     z-index: 11;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 #header .inner .toparea .toparea_shoppinginfo {
     display: flex;
@@ -208,20 +219,21 @@ a:hover {
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-multishoplist {
     position: relative;
     z-index: 10;
-    height: 50px;
+    height: 40px;
     margin-right: 30px;
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-multishoplist .toggle {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 40px;
     padding: 0;
-    color: #666;
+    color: var(--gray-400);
     line-height: 1;
-    font-size: 13px;
+    font-size: 12px;
+    font-family: 'Montserrat', var(--font-body);
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-multishoplist .toggle .icon {
-    border-color: #666;
+    border-color: var(--gray-400);
     width: 5px;
     height: 5px;
     margin-left: 10px;
@@ -230,8 +242,8 @@ a:hover {
     visibility: hidden;
     height: 0;
     padding: 0 10px;
-    border: 1px solid #999;
-    background: #fff;
+    border: 1px solid var(--gray-700);
+    background: #000;
     margin-top: -5px;
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-multishoplist > ul li {
@@ -245,6 +257,11 @@ a:hover {
     white-space: nowrap;
     text-decoration: none;
     text-overflow: ellipsis;
+    color: var(--gray-300);
+    font-family: 'Montserrat', var(--font-body);
+}
+#header .inner .toparea .toparea_shoppinginfo .xans-layout-multishoplist > ul li a:hover {
+    color: var(--white);
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-multishoplist.show > ul {
     visibility: visible;
@@ -258,45 +275,57 @@ a:hover {
     margin: 0 10px 0 0;
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li a {
-    color: #6a6a6a;
-    font-size: 12px;
+    color: var(--gray-400);
+    font-size: 10px;
     font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li,
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li strong {
-    color: #6a6a6a;
-    font-size: 12px;
+    color: var(--gray-400);
+    font-size: 10px;
     font-weight: 400;
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li a strong {
-    color: #6a6a6a;
-    font-size: 12px;
-    font-weight: 400;
+    color: var(--gray-300);
+    font-size: 10px;
+    font-weight: 500;
 }
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li a:hover,
 #header .inner .toparea .toparea_shoppinginfo .xans-layout-shoppinginfo li a:hover strong {
-    color: var(--brand-pink);
+    color: var(--white);
 }
 #header .inner .toparea .toparea_state {
     display: flex;
 }
 #header .inner .toparea .toparea_state a {
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1;
-    color: var(--gray-700);
+    color: var(--gray-400);
     display: flex;
     align-items: center;
     margin: 0 0 0 9px;
     padding: 0 0 0 10px;
-    background: url('//img.echosting.cafe24.com/skin/base/common/ico_bar.gif') no-repeat 0 center;
-    font-family: var(--font-body);
-    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.2s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-#header .inner .toparea .toparea_state a:first-child {
-    background: none;
+#header .inner .toparea .toparea_state a::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: var(--gray-600);
+    margin-right: 10px;
+}
+#header .inner .toparea .toparea_state a:first-child::before {
+    display: none;
 }
 #header .inner .toparea .toparea_state a:hover {
-    color: var(--brand-pink);
+    color: var(--white);
 }
 #header .inner .toparea .toparea_state .toparea_state_board {
     position: relative;
@@ -304,23 +333,24 @@ a:hover {
 #header .inner .toparea .toparea_state .toparea_state_board > a {
     display: flex;
     align-items: center;
-    background: url('//img.echosting.cafe24.com/skin/base/common/ico_bar.gif') no-repeat 0 center;
 }
 #header .inner .toparea .toparea_state .toparea_state_board > a .icon {
     width: 5px;
     height: 5px;
     margin-left: 10px;
     margin-top: -4px;
+    border-color: var(--gray-400);
 }
 #header .inner .toparea .toparea_state .toparea_state_board > ul {
     display: none;
     position: absolute;
-    top: 25px;
+    top: 30px;
     right: -10px;
     z-index: 1;
-    padding: 5px 10px;
-    border: 1px solid #999;
-    background: #fff;
+    padding: 8px 12px;
+    border: 1px solid var(--gray-700);
+    background: #000;
+    border-radius: 4px;
 }
 #header .inner .toparea .toparea_state .toparea_state_board.on > ul {
     display: block;
@@ -334,18 +364,22 @@ a:hover {
     overflow: hidden;
     font-size: 12px;
     line-height: 1;
-    color: #666;
+    color: var(--gray-300);
     white-space: nowrap;
     text-decoration: none;
     text-overflow: ellipsis;
     padding: 0;
     margin: 0;
+    font-family: 'Montserrat', var(--font-body);
+}
+#header .inner .toparea .toparea_state .toparea_state_board > ul li a::before {
+    display: none;
 }
 #header .inner .toparea .toparea_state .toparea_state_board > ul li a:hover {
-    color: #000;
+    color: var(--white);
 }
 
-/* 상단 메뉴 - Atelier Popo Style */
+/* 상단 메뉴 - Reference Dark Style */
 #header .inner .top_nav_box {
     width: 100%;
     display: flex;
@@ -356,7 +390,7 @@ a:hover {
 }
 #header .inner .top_nav_box .top_logo {
     margin: 0 auto;
-    height: 70px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -365,18 +399,23 @@ a:hover {
     order: 1;
 }
 #header .inner .top_nav_box .top_logo img {
-    max-width: 400px;
-    max-height: 60px;
+    display: none !important;
 }
 #header .inner .top_nav_box .top_logo a {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
+    font-size: 0;
     line-height: 1;
-    font-family: var(--font-brand);
-    color: var(--gray-800);
-    font-weight: 700;
+}
+#header .inner .top_nav_box .top_logo a::after {
+    content: 'Atelier Popo';
+    font-size: 28px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: 8px;
+    text-transform: uppercase;
 }
 #header .inner .top_nav_box .top_nav {
     display: none;
@@ -390,6 +429,10 @@ a:hover {
     height: 80px;
     display: flex;
     align-items: center;
+    color: var(--white);
+}
+#header .inner .top_nav_box .top_nav .eNavFold i {
+    color: var(--white) !important;
 }
 #header .inner .top_nav_box .top_nav .eNavFold .icon.icoNav {
     width: 25px;
@@ -432,24 +475,26 @@ div[data-ez-module='menu-main/1'] .top_category {
     padding: 0 !important;
 }
 #header .inner .top_nav_box .top_category > ul > li {
-    height: 80px;
+    height: 50px;
     display: inline-block !important;
     float: none !important;
     width: auto !important;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 20px;
     position: relative;
     vertical-align: middle;
 }
 #header .inner .top_nav_box .top_category > ul > li > a {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     display: inline-block !important;
-    line-height: 78px;
-    color: var(--gray-700);
+    line-height: 50px;
+    color: var(--white);
     white-space: nowrap;
-    font-family: var(--font-body);
-    transition: color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.2s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 #header .inner .top_nav_box .top_category > ul > li > a:hover {
     color: var(--brand-pink);
@@ -487,21 +532,21 @@ div[data-ez-module='menu-main/1'] .top_category {
 }
 #header .inner .top_nav_box .top_category .sub_cate01 {
     position: absolute;
-    top: 80px;
+    top: 50px;
     left: 0;
     z-index: 10;
     margin: 0;
     width: auto;
     min-width: 180px;
-    padding: 12px 0;
-    background-color: var(--white);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 10px 0;
+    background-color: #000;
+    border: 1px solid var(--gray-700);
+    border-radius: 4px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     display: none;
     opacity: 0;
     transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 #header .inner .top_nav_box .top_category li.on .sub_cate01 {
     display: block;
@@ -510,17 +555,17 @@ div[data-ez-module='menu-main/1'] .top_category {
 }
 #header .inner .top_nav_box .top_category .sub-category {
     position: absolute;
-    top: 80px;
+    top: 50px;
     left: 0;
     z-index: 10;
     margin: 0;
     width: auto;
     min-width: 180px;
-    padding: 12px 0;
-    background-color: var(--white);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 10px 0;
+    background-color: #000;
+    border: 1px solid var(--gray-700);
+    border-radius: 4px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 #header .inner .top_nav_box .top_category .sub_cate01 ul,
 #header .inner .top_nav_box .top_category .sub-category ul {
@@ -533,8 +578,9 @@ div[data-ez-module='menu-main/1'] .top_category {
     width: auto;
     min-width: 120px;
     padding: 10px 0;
-    background-color: #fff;
-    border: 1px solid #e8e8e8;
+    background-color: #000;
+    border: 1px solid var(--gray-700);
+    border-radius: 4px;
 }
 #header .inner .top_nav_box .top_category .sub_cate01 li.on > ul,
 #header .inner .top_nav_box .top_category .sub-category li.on > ul {
@@ -543,7 +589,7 @@ div[data-ez-module='menu-main/1'] .top_category {
 #header .inner .top_nav_box .top_category .sub_cate01 li,
 #header .inner .top_nav_box .top_category .sub-category li {
     position: relative;
-    padding: 0 10px 0 10px;
+    padding: 0 6px;
 }
 #header .inner .top_nav_box .top_category .sub_cate01 li:after,
 #header .inner .top_nav_box .top_category .sub-category li:after {
@@ -552,10 +598,13 @@ div[data-ez-module='menu-main/1'] .top_category {
     top: 50%;
     right: 15px;
     margin-top: -3px;
-    background: url('/SkinImg/img/arrow.png') no-repeat;
+    border: solid var(--gray-400);
+    border-width: 0 1px 1px 0;
+    padding: 2px;
+    transform: rotate(-45deg);
     z-index: 10;
-    width: 4px;
-    height: 7px;
+    width: 0;
+    height: 0;
 }
 #header .inner .top_nav_box .top_category .sub_cate01 li.noChild:after,
 #header .inner .top_nav_box .top_category .sub-category li.noChild:after {
@@ -563,42 +612,42 @@ div[data-ez-module='menu-main/1'] .top_category {
 }
 #header .inner .top_nav_box .top_category .sub_cate01 li a,
 #header .inner .top_nav_box .top_category .sub-category li a {
-    font-size: 14px;
-    font-family: var(--font-body);
-    font-weight: 500;
-    color: var(--gray-700);
+    font-size: 13px;
+    font-family: 'Montserrat', var(--font-body);
+    font-weight: 400;
+    color: var(--gray-300);
     line-height: 1;
     display: block;
-    padding: 12px 45px 12px 24px;
+    padding: 10px 35px 10px 16px;
     white-space: nowrap;
     text-align: left;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-    margin: 0 8px;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    margin: 0;
 }
 #header .inner .top_nav_box .top_category .sub_cate01 li:hover > a,
 #header .inner .top_nav_box .top_category .sub-category li:hover > a {
-    background-color: var(--gray-50);
-    color: var(--brand-pink);
+    background-color: var(--gray-700);
+    color: var(--white);
 }
 #header .inner .top_nav_box .top_mypage {
     display: flex;
     flex-shrink: 0;
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 0;
-    height: 80px;
+    height: 50px;
     order: 3;
 }
 #header .inner .top_nav_box .top_mypage a {
     line-height: 1;
-    color: var(--gray-700);
-    margin-left: 26px;
+    color: var(--white);
+    margin-left: 20px;
     padding: 0;
     border: 0;
     display: flex;
     align-items: center;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 #header .inner .top_nav_box .top_mypage a:hover {
     color: var(--brand-pink);
@@ -608,16 +657,16 @@ div[data-ez-module='menu-main/1'] .top_category {
 }
 #header .inner .top_nav_box .top_mypage a.xans-layout-orderbasketcount .count {
     position: absolute;
-    top: 40px;
+    top: 30px;
     right: -10px;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background-color: var(--brand-pink);
     color: #fff;
     text-align: center;
     line-height: 1;
-    font-size: 11px;
+    font-size: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -631,7 +680,8 @@ div[data-ez-module='menu-main/1'] .top_category {
     right: 0;
     z-index: 998;
     margin: 0 auto;
-    border-bottom: 1px solid #e8e8e8 !important;
+    background: #000;
+    border-bottom: none !important;
     -webkist-transform: translateY(-60px);
     -ms-transform: translateY(-60px);
     transform: translateY(-60px);
@@ -1337,19 +1387,29 @@ div[data-ez-module='menu-main/1'] .top_category {
         height: auto;
         flex-basis: 80%;
         order: 2;
-        overflow: hidden;
+        overflow: visible;
+        padding-left: 10px;
     }
     #header .inner .top_nav_box .top_logo img {
-        max-width: 200px;
-        max-height: 30px;
+        display: none !important;
     }
     #header .inner .top_nav_box .top_logo a {
-        font-size: 25px;
+        font-size: 20px;
         white-space: nowrap;
         text-overflow: ellipsis;
         width: auto;
-        overflow: hidden;
-        text-align: center;
+        overflow: visible;
+        text-align: left;
+        padding: 0;
+    }
+    #header .inner .top_nav_box .top_logo a::after {
+        content: 'Atelier Popo';
+        font-size: 20px;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        color: var(--white);
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
     }
     #header .inner .top_nav_box div[data-ez-module='menu-main/1'] {
         display: none !important;

@@ -313,11 +313,15 @@ body.expand {
     text-align: center;
     margin: 0 auto;
 }
+#aside .navigation_member .side_logo img {
+    display: none !important;
+}
 #aside .navigation_member .side_logo a {
     font-family: var(--font-brand);
     font-size: 32px;
     color: var(--gray-800);
     font-weight: 400;
+    display: block;
 }
 #aside .navigation_member .navigation_state {
     display: flex;
