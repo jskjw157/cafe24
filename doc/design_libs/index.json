@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-01-04T19:53:48.650479",
+  "libraries": {
+    "tailwind": {
+      "total_sections": 9,
+      "total_code_blocks": 140,
+      "categories": [
+        "theme",
+        "responsive-design",
+        "installation",
+        "customizing-colors",
+        "colors",
+        "configuration",
+        "utility-first",
+        "dark-mode",
+        "hover-focus-and-other-states"
+      ]
+    },
+    "iconify": {
+      "total_sections": 4,
+      "total_code_blocks": 0,
+      "categories": [
+        "icon-components",
+        "iconify-icon",
+        "icons",
+        "api"
+      ]
+    },
+    "framer-motion": {
+      "total_sections": 8,
+      "total_code_blocks": 8,
+      "categories": [
+        "react-quick-start",
+        "react-scroll-animations",
+        "react-animation",
+        "react-gestures",
+        "github",
+        "react-layout-animations",
+        "react-transitions"
+      ]
+    },
+    "radix-colors": {
+      "total_sections": 4,
+      "total_code_blocks": 8,
+      "categories": [
+        "docs"
+      ]
+    }
+  },
+  "paths": {
+    "tailwind": "tailwind/ai-summary.json",
+    "iconify": "iconify/ai-summary.json",
+    "framer-motion": "framer-motion/ai-summary.json",
+    "radix-colors": "radix-colors/ai-summary.json"
+  }
+}

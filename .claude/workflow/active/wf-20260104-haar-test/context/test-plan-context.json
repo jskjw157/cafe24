@@ -1,0 +1,62 @@
+{
+  "type": "TestPlanContext",
+  "generatedBy": "playwright-test-planner",
+  "generatedAt": "2026-01-04T10:15:00Z",
+  "target": {
+    "project": "haar",
+    "url": "http://localhost:3000",
+    "technology": ["React 19", "Vite", "TypeScript", "Framer Motion"]
+  },
+  "summary": {
+    "totalScenarios": 120,
+    "categories": 15,
+    "criticalPriority": 30,
+    "highPriority": 50,
+    "mediumPriority": 30,
+    "lowPriority": 10
+  },
+  "knownIssues": [
+    { "id": "MENU-003", "description": "메뉴 닫기 버튼 작동 안함", "priority": "critical" },
+    { "id": "CART-010", "description": "체크아웃 버튼 홈으로 리다이렉트", "priority": "critical" },
+    { "id": "ACCOUNT-010", "description": "로그인 상태 유지 안됨", "priority": "high" }
+  ],
+  "categories": [
+    { "name": "HOME VIEW", "scenarios": 3 },
+    { "name": "MENU NAVIGATION", "scenarios": 8 },
+    { "name": "COLLECTION VIEW", "scenarios": 12 },
+    { "name": "PRODUCT DETAIL", "scenarios": 14 },
+    { "name": "CART VIEW", "scenarios": 14 },
+    { "name": "ACCOUNT VIEW", "scenarios": 13 },
+    { "name": "NAVIGATION FLOW", "scenarios": 5 },
+    { "name": "ERROR HANDLING", "scenarios": 6 },
+    { "name": "ACCESSIBILITY", "scenarios": 5 },
+    { "name": "PERFORMANCE", "scenarios": 5 },
+    { "name": "RESPONSIVE DESIGN", "scenarios": 5 },
+    { "name": "CROSS-BROWSER", "scenarios": 4 },
+    { "name": "INTEGRATION", "scenarios": 3 },
+    { "name": "DATA VALIDATION", "scenarios": 3 },
+    { "name": "SECURITY", "scenarios": 3 }
+  ],
+  "criticalPath": [
+    "HOME-001",
+    "MENU-001",
+    "COLLECTION-001",
+    "PRODUCT-001",
+    "CART-001",
+    "ACCOUNT-001"
+  ],
+  "animationSpecs": {
+    "menuOpenClose": { "type": "spring", "stiffness": 300, "damping": 30 },
+    "menuItemsStagger": { "delay": "i * 0.1 + 0.2s" },
+    "productGridInView": { "duration": "0.4s", "delay": "idx * 0.05s" }
+  },
+  "recommendedStructure": {
+    "pagesDir": "e2e/pages/",
+    "testsDir": "e2e/tests/",
+    "fixturesDir": "e2e/fixtures/"
+  },
+  "estimatedEffort": {
+    "manualExecution": "15-20 hours",
+    "automationDevelopment": "40-60 hours"
+  }
+}

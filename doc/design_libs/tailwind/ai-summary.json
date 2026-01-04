@@ -1,0 +1,72 @@
+{
+  "library": "Tailwind CSS",
+  "crawled_at": "2026-01-04T19:53:33.764271",
+  "quick_reference": {
+    "sections": [
+      "Get started with Tailwind CSS",
+      "Styling with utility classes",
+      "Hover, focus, and other states",
+      "Responsive design",
+      "Dark mode",
+      "Theme variables",
+      "Colors",
+      "Colors",
+      "Theme variables"
+    ],
+    "key_topics": [
+      "Installation",
+      "Using Vite",
+      "Using PostCSS",
+      "Tailwind CLI",
+      "Framework Guides",
+      "Play CDN",
+      "Installing Tailwind CSS as a Vite plugin",
+      "Overview",
+      "Why not just use inline styles?",
+      "Thinking in utility classes",
+      "Styling hover and focus states",
+      "Media queries and breakpoints",
+      "Targeting dark mode",
+      "Using class composition",
+      "Using arbitrary values",
+      "Complex selectors",
+      "When to use inline styles",
+      "Managing duplication",
+      "Using loops",
+      "Using multi-cursor editing",
+      "Using components",
+      "Using custom CSS",
+      "Pseudo-classes",
+      ":hover, :focus, and :active",
+      ":first, :last, :odd, and :even",
+      ":required and :disabled",
+      ":has()",
+      ":not()",
+      "Styling based on parent state",
+      "Styling based on sibling state"
+    ],
+    "code_languages": [
+      "text"
+    ]
+  },
+  "code_snippets": {
+    "text": [
+      "npmcreatevite@latestmy-projectcdmy-project",
+      "npminstalltailwindcss@tailwindcss/vite",
+      "import{defineConfig}from'vite'importtailwindcssfrom'@tailwindcss/vite'exportdefaultdefineConfig({plugins:[tailwindcss(),],})",
+      "@import\"tailwindcss\";",
+      "npmrundev"
+    ]
+  },
+  "urls": [
+    "https://tailwindcss.com/docs/installation/using-vite",
+    "https://tailwindcss.com/docs/utility-first",
+    "https://tailwindcss.com/docs/hover-focus-and-other-states",
+    "https://tailwindcss.com/docs/responsive-design",
+    "https://tailwindcss.com/docs/dark-mode",
+    "https://tailwindcss.com/docs/theme",
+    "https://tailwindcss.com/docs/colors",
+    "https://tailwindcss.com/docs/customizing-colors",
+    "https://tailwindcss.com/docs/configuration"
+  ]
+}

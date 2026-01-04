@@ -1,0 +1,29 @@
+{
+  "id": "wf-20260104-haar-test",
+  "type": "test-automation",
+  "name": "haar E2E 테스트 자동화",
+  "status": "running",
+  "startedAt": "2026-01-04T10:00:00Z",
+  "currentPhase": "test-generation",
+  "target": {
+    "project": "haar",
+    "path": "/Users/ohchaeeun/source/cafe24/haar",
+    "url": "http://localhost:3000"
+  },
+  "progress": {
+    "completedPhases": ["test-planning"],
+    "currentPhase": "test-generation",
+    "pendingPhases": ["test-execution", "test-healing"],
+    "overallProgress": 25
+  },
+  "phases": {
+    "test-planning": { "status": "completed", "agent": "playwright-test-planner", "completedAt": "2026-01-04T10:15:00Z" },
+    "test-generation": { "status": "in_progress", "agent": "playwright-test-generator" },
+    "test-execution": { "status": "pending", "agent": "testsprite-orchestrator" },
+    "test-healing": { "status": "pending", "agent": "playwright-test-healer", "conditional": true }
+  },
+  "metadata": {
+    "estimatedDuration": "30-60 minutes",
+    "estimatedCost": "$2-4"
+  }
+}

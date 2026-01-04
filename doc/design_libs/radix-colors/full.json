@@ -1,0 +1,103 @@
+{
+  "source": "Radix UI Colors",
+  "crawled_at": "2026-01-04T19:53:48.648863",
+  "version": null,
+  "sections": [
+    {
+      "title": "Installation",
+      "url": "https://www.radix-ui.com/colors/docs/overview/installation",
+      "content": "Radix Homepage\nMade by WorkOS\nRadix Homepage\nMade by WorkOS\nThemes\nThemes\nPrimitives\nPrimitives\nIcons\nIcons\nColors\nColors\nDocumentation\nCustom palette\nBlog\nOverview\nInstallation\nUsage\nAliasing\nCustom palettes\nReleases\nPalette composition\nScales\nComposing a palette\nUnderstanding the scale\nInstallation\nHow to install Radix Colors.\nnpm\nInstall Radix Colors from your terminal via npm, yarn or pnpm. Current version is\n3.0.0\n# with npm\nnpm\ninstall\n@radix-ui/colors\n# with yarn\nyarn\nadd\n@radix-ui/colors\n# with pnpm\npnpm\nadd\n@radix-ui/colors\nCDN\nTo get started quickly, you can use the CDN files.\nNote: Importing from the CDN in production is not recommended. It's intended\nfor prototyping only.\n<!-- Load whichever light and dark scales you need -->\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray-dark.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue-dark.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green-dark.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red-dark.css\n\"\n/>\nThe example above uses the\n@latest\ntag to point to the latest version of the scales. You can pin your scales to a specific version.\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue.css\n\"\n/>\n<\nlink\nrel\n=\n\"\nstylesheet\n\"\nhref\n=\n\"\nhttps://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue-dark.css\n\"\n/>\nNext\nUsage\nEdit this page on GitHub.",
+      "code_blocks": [
+        {
+          "language": "bash",
+          "code": "# with npmnpminstall@radix-ui/colors# with yarnyarnadd@radix-ui/colors# with pnpmpnpmadd@radix-ui/colors"
+        },
+        {
+          "language": "html",
+          "code": "<!-- Load whichever light and dark scales you need --><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray-dark.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/blue-dark.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/green-dark.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/red-dark.css\"/>"
+        },
+        {
+          "language": "html",
+          "code": "<linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue.css\"/><linkrel=\"stylesheet\"href=\"https://cdn.jsdelivr.net/npm/@radix-ui/colors@3.0.0/blue-dark.css\"/>"
+        }
+      ],
+      "subsections": [
+        "npm",
+        "CDN"
+      ],
+      "category": "docs"
+    },
+    {
+      "title": "Usage",
+      "url": "https://www.radix-ui.com/colors/docs/overview/usage",
+      "content": "Radix Homepage\nMade by WorkOS\nRadix Homepage\nMade by WorkOS\nThemes\nThemes\nPrimitives\nPrimitives\nIcons\nIcons\nColors\nColors\nDocumentation\nCustom palette\nBlog\nOverview\nInstallation\nUsage\nAliasing\nCustom palettes\nReleases\nPalette composition\nScales\nComposing a palette\nUnderstanding the scale\nUsage\nHow to use Radix Colors with various styling solutions.\nRadix Colors scales are just simple JavaScript objects, so you can use them with your preferred styling solution easily. Below you can find usage examples for popular styling solutions.\nVanilla CSS\nRadix Colors provides the colors bundled as raw CSS files. You can import them directly in your files when using a bundler, such as Parcel or Webpack.\n/* Import only the scales you need */\n@import\n\"@radix-ui/colors/gray.css\"\n;\n@import\n\"@radix-ui/colors/blue.css\"\n;\n@import\n\"@radix-ui/colors/green.css\"\n;\n@import\n\"@radix-ui/colors/red.css\"\n;\n@import\n\"@radix-ui/colors/gray-dark.css\"\n;\n@import\n\"@radix-ui/colors/blue-dark.css\"\n;\n@import\n\"@radix-ui/colors/green-dark.css\"\n;\n@import\n\"@radix-ui/colors/red-dark.css\"\n;\n/* Use the colors as CSS variables */\n.button\n{\nbackground-color\n:\nvar\n(\n--blue-4\n)\n;\ncolor\n:\nvar\n(\n--blue-11\n)\n;\nborder-color\n:\nvar\n(\n--blue-7\n)\n;\n}\n.button\n:hover\n{\nbackground-color\n:\nvar\n(\n--blue-5\n)\n;\nborder-color\n:\nvar\n(\n--blue-8\n)\n;\n}\n<!-- For dark mode, apply a `.dark` class to <body> or a parent. -->\n<\nbody\nclass\n=\n\"\ndark\n\"\n>\n<\nbutton\nclass\n=\n\"\nbutton\n\"\n>\nButton\n</\nbutton\n>\n</\nbody\n>\nLight scales apply their CSS variables to the\n:root\nelement and to the\n.light\nand\n.light-theme\nclasses. Dark scales apply their CSS variables to\nthe\n.dark\nand\n.dark-theme\nclasses.\nstyled-components\nimport\n{\ngray\n,\nblue\n,\nred\n,\ngreen\n,\ngrayDark\n,\nblueDark\n,\nredDark\n,\ngreenDark\n,\n}\nfrom\n\"@radix-ui/colors\"\n;\nimport\nstyled\n,\n{\nThemeProvider\n}\nfrom\n\"styled-components\"\n;\n// Create your theme\nconst\ntheme\n=\n{\ncolors\n:\n{\n...\ngray\n,\n...\nblue\n,\n...\nred\n,\n...\ngreen\n,\n}\n,\n}\n;\n// Create your dark theme\nconst\ndarkTheme\n=\n{\ncolors\n:\n{\n...\ngrayDark\n,\n...\nblueDark\n,\n...\nredDark\n,\n...\ngreenDark\n,\n}\n,\n}\n;\n// Use the colors in your styles\nconst\nButton\n=\nstyled\n.\nbutton\n`\nbackground-color\n:\n${\n(\nprops\n)\n=>\nprops\n.\ntheme\n.\ncolors\n.\nblue4\n}\n;\ncolor\n:\n${\n(\nprops\n)\n=>\nprops\n.\ntheme\n.\ncolors\n.\nblue11\n}\n;\nborder-color\n:\n${\n(\nprops\n)\n=>\nprops\n.\ntheme\n.\ncolors\n.\nblue7\n}\n;\n&\n:hover\n{\nbackground-color\n:\n${\n(\nprops\n)\n=>\nprops\n.\ntheme\n.\ncolors\n.\nblue5\n}\n;\nborder-color\n:\n${\n(\nprops\n)\n=>\nprops\n.\ntheme\n.\ncolors\n.\nblue8\n}\n;\n}\n`\n;\n// Wrap your app with the theme provider and apply your theme to it\nexport\ndefault\nfunction\nApp\n(\n)\n{\nreturn\n(\n<\nThemeProvider\ntheme\n=\n{\ntheme\n}\n>\n<\nButton\n>\nRadix\nColors\n<\n/\nButton\n>\n<\n/\nThemeProvider\n>\n)\n;\n}\nemotion\nUsage with emotion is almost identical to the styled-components docs above, aside from the different imports.\nimport\n{\ngray\n,\nblue\n,\nred\n,\ngreen\n,\ngrayDark\n,\nblueDark\n,\nredDark\n,\ngreenDark\n,\n}\nfrom\n\"@radix-ui/colors\"\n;\nimport\n{\nThemeProvider\n}\nfrom\n\"@emotion/react\"\n;\nimport\nstyled\nfrom\n\"@emotion/styled\"\n;\nvanilla-extract\nimport\n{\ngray\n,\nblue\n,\nred\n,\ngreen\n,\ngrayDark\n,\nblueDark\n,\nredDark\n,\ngreenDark\n,\n}\nfrom\n\"@radix-ui/colors\"\n;\nimport\n{\ncreateTheme\n}\nfrom\n\"@vanilla-extract/css\"\n;\nexport\nconst\n[\ntheme\n,\nvars\n]\n=\ncreateTheme\n(\n{\ncolors\n:\n{\n...\ngray\n,\n...\nblue\n,\n...\nred\n,\n...\ngreen\n,\n}\n,\n}\n)\n;\nexport\nconst\ndarkTheme\n=\ncreateTheme\n(\nvars\n,\n{\ncolors\n:\n{\n...\ngrayDark\n,\n...\nblueDark\n,\n...\nredDark\n,\n...\ngreenDark\n,\n}\n,\n}\n)\n;\n// Use the colors in your styles\nexport\nconst\nstyles\n=\n{\nbutton\n:\nstyle\n(\n{\nbackgroundColor\n:\nvars\n.\ncolors\n.\nblue4\n,\ncolor\n:\nvars\n.\ncolors\n.\nblue11\n,\nborderColor\n:\nvars\n.\ncolors\n.\nblue7\n,\n\":hover\"\n:\n{\nbackgroundColor\n:\nvars\n.\ncolors\n.\nblue5\n,\nborderColor\n:\nvars\n.\ncolors\n.\nblue8\n,\n}\n,\n}\n)\n,\n}\n;\n// Apply your theme to it\nexport\ndefault\nfunction\nApp\n(\n)\n{\nreturn\n(\n<\nbody className\n=\n{\ntheme\n}\n>\n<\nbutton className\n=\n{\nstyles\n.\nbutton\n}\n>\nRadix\nColors\n<\n/\nbutton\n>\n<\n/\nbody\n>\n)\n;\n}\nPrevious\nInstallation\nNext\nAliasing\nEdit this page on GitHub.",
+      "code_blocks": [
+        {
+          "language": "css",
+          "code": "/* Import only the scales you need */@import\"@radix-ui/colors/gray.css\";@import\"@radix-ui/colors/blue.css\";@import\"@radix-ui/colors/green.css\";@import\"@radix-ui/colors/red.css\";@import\"@radix-ui/colors/gray-dark.css\";@import\"@radix-ui/colors/blue-dark.css\";@import\"@radix-ui/colors/green-dark.css\";@import\"@radix-ui/colors/red-dark.css\";/* Use the colors as CSS variables */.button{background-color:var(--blue-4);color:var(--blue-11);border-color:var(--blue-7);}.button:hover{background-color:var(--blue-5);border-color:var(--blue-8);}"
+        },
+        {
+          "language": "html",
+          "code": "<!-- For dark mode, apply a `.dark` class to <body> or a parent. --><bodyclass=\"dark\"><buttonclass=\"button\">Button</button></body>"
+        },
+        {
+          "language": "js",
+          "code": "import{gray,blue,red,green,grayDark,blueDark,redDark,greenDark,}from\"@radix-ui/colors\";importstyled,{ThemeProvider}from\"styled-components\";// Create your themeconsttheme={colors:{...gray,...blue,...red,...green,},};// Create your dark themeconstdarkTheme={colors:{...grayDark,...blueDark,...redDark,...greenDark,},};// Use the colors in your stylesconstButton=styled.button`background-color:${(props)=>props.theme.colors.blue4};color:${(props)=>props.theme.colors.blue11};border-color:${(props)=>props.theme.colors.blue7};&:hover{background-color:${(props)=>props.theme.colors.blue5};border-color:${(props)=>props.theme.colors.blue8};}`;// Wrap your app with the theme provider and apply your theme to itexportdefaultfunctionApp(){return(<ThemeProvidertheme={theme}><Button>RadixColors</Button></ThemeProvider>);}"
+        },
+        {
+          "language": "js",
+          "code": "import{gray,blue,red,green,grayDark,blueDark,redDark,greenDark,}from\"@radix-ui/colors\";import{ThemeProvider}from\"@emotion/react\";importstyledfrom\"@emotion/styled\";"
+        },
+        {
+          "language": "js",
+          "code": "import{gray,blue,red,green,grayDark,blueDark,redDark,greenDark,}from\"@radix-ui/colors\";import{createTheme}from\"@vanilla-extract/css\";exportconst[theme,vars]=createTheme({colors:{...gray,...blue,...red,...green,},});exportconstdarkTheme=createTheme(vars,{colors:{...grayDark,...blueDark,...redDark,...greenDark,},});// Use the colors in your stylesexportconststyles={button:style({backgroundColor:vars.colors.blue4,color:vars.colors.blue11,borderColor:vars.colors.blue7,\":hover\":{backgroundColor:vars.colors.blue5,borderColor:vars.colors.blue8,},}),};// Apply your theme to itexportdefaultfunctionApp(){return(<body className={theme}><button className={styles.button}>RadixColors</button></body>);}"
+        }
+      ],
+      "subsections": [
+        "Vanilla CSS",
+        "styled-components",
+        "emotion",
+        "vanilla-extract"
+      ],
+      "category": "docs"
+    },
+    {
+      "title": "Understanding the scale",
+      "url": "https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale",
+      "content": "Radix Homepage\nMade by WorkOS\nRadix Homepage\nMade by WorkOS\nThemes\nThemes\nPrimitives\nPrimitives\nIcons\nIcons\nColors\nColors\nDocumentation\nCustom palette\nBlog\nOverview\nInstallation\nUsage\nAliasing\nCustom palettes\nReleases\nPalette composition\nScales\nComposing a palette\nUnderstanding the scale\nUnderstanding the scale\nLearn which scale step is the most appropriate for each use case.\nUse cases\nThere are 12 steps in each scale. Each step was designed for at least one specific use case.\nThis table is a simple overview of the most common use case for each step. However, there are many exceptions and caveats to factor in, which are covered in further detail below.\nStep\nUse Case\n1\nApp background\n2\nSubtle background\n3\nUI element background\n4\nHovered UI element background\n5\nActive / Selected UI element background\n6\nSubtle borders and separators\n7\nUI element border and focus rings\n8\nHovered UI element border\n9\nSolid backgrounds\n10\nHovered solid backgrounds\n11\nLow-contrast text\n12\nHigh-contrast text\nSteps 1–2: Backgrounds\n1\n2\nSteps\n1\nand\n2\nare designed for app backgrounds and subtle component backgrounds. You can use them interchangeably, depending on the vibe you're going for.\nAppropriate applications include:\nMain app background\nStriped table background\nCode block background\nCard background\nSidebar background\nCanvas area background\nYou may want to use white for your app background in light mode, and Step\n1\nor\n2\nfrom a gray or coloured scale in dark mode. In this case, set up a\nmutable alias\nfor\nAppBg\nand map it to a different color for each color mode.\nSteps 3–5: Component backgrounds\n3\n4\n5\nSteps\n3\n,\n4\n, and\n5\nare designed for UI component backgrounds.\nStep\n3\nis for normal states.\nStep\n4\nis for hover states.\nStep\n5\nis for pressed or selected states.\nMenu item\nSecond menu item\nThird menu item\nMenu item\nSecond menu item\nThird menu item\nIf your component has a transparent background in its default state, you can use Step\n3\nfor its hover state.\nSteps\n11\nand\n12\n—which are designed for text—are guaranteed to Lc 60 and Lc\n90 APCA contrast ratio on top of a step\n2\nbackground from the same scale.\nSteps 6–8: Borders\n6\n7\n8\nSteps\n6\n,\n7\n, and\n8\nare designed for borders.\nStep\n6\nis designed for subtle borders on components which are not interactive. For example sidebars, headers, cards, alerts, and separators.\nStep\n7\nis designed for subtle borders on interactive components.\nStep\n8\nis designed for stronger borders on interactive components and focus rings.\nGold\nBronze\nBrown\nYellow\nAmber\nOrange\nTomato\nRed\nRuby\nCrimson\nPink\nPlum\nPurple\nViolet\nIris\nIndigo\nBlue\nCyan\nTeal\nJade\nGreen\nGrass\nLime\nMint\nSky\nSteps 9–10: Solid backgrounds\n9\n10\nSteps\n9\nand\n10\nare designed for solid backgrounds.\nStep\n9\nhas the highest chroma of all steps in the scale. In other words, it's the purest step, the step mixed with the least amount of white or black. Because\n9\nis the purest step, it has a wide range of applications:\nWebsite/App backgrounds\nWebsite section backgrounds\nHeader backgrounds\nComponent backgrounds\nGraphics/Logos\nOverlays\nColoured shadows\nAccent borders\nStep\n10\nis designed for component hover states, where step\n9\nis the component's normal state background.\nMost step 9 colors are designed for white foreground text.\nSky\n,\nMint\n,\nLime\n,\nYellow\n, and\nAmber\nare designed for dark foreground text and steps\n9\nand\n10\n.\nGold\nBronze\nBrown\nYellow\nAmber\nOrange\nTomato\nRed\nRuby\nCrimson\nPink\nPlum\nPurple\nViolet\nIris\nIndigo\nBlue\nCyan\nTeal\nJade\nGreen\nGrass\nLime\nMint\nSky\nSteps 11–12: Text\n11\n12\nSteps\n11\nand\n12\nare designed for text.\nStep\n11\nis designed for low-contrast text.\nStep\n12\nis designed for high-contrast text.\nThis text is Pink 11\nThis text is Slate 11\nThis text is Gray 11\nThis text is Pink 12\nThis text is Slate 12\nThis text is Gray 12\nPrevious\nComposing a palette\nEdit this page on GitHub.",
+      "code_blocks": [],
+      "subsections": [
+        "Use cases",
+        "Steps 1–2: Backgrounds",
+        "Steps 3–5: Component backgrounds",
+        "Steps 6–8: Borders",
+        "Steps 9–10: Solid backgrounds",
+        "Steps 11–12: Text"
+      ],
+      "category": "docs"
+    },
+    {
+      "title": "Composing a color palette",
+      "url": "https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette",
+      "content": "Radix Homepage\nMade by WorkOS\nRadix Homepage\nMade by WorkOS\nThemes\nThemes\nPrimitives\nPrimitives\nIcons\nIcons\nColors\nColors\nDocumentation\nCustom palette\nBlog\nOverview\nInstallation\nUsage\nAliasing\nCustom palettes\nReleases\nPalette composition\nScales\nComposing a palette\nUnderstanding the scale\nComposing a color palette\nA guide to composing a color palette with Radix Colors.\nChoosing a brand scale\nRadix provides a number of scales you could use for your brand or accent color.\nScales designed for white foreground text:\nbronze\ngold\nbrown\norange\ntomato\nred\nruby\ncrimson\npink\nplum\npurple\nviolet\niris\nindigo\nblue\ncyan\nteal\njade\ngreen\ngrass\nScales designed for dark foreground text:\nsky\nmint\nlime\nyellow\namber\nCustom brand colors\nRadix Colors are not intended to be customised. They’re designed to be accessible, well-balanced, and harmonious. Any customisation would likely break these features.\nIf you need custom brand colors, we recommend adding custom scales alongside Radix scales.\nFor example, you could use Radix Colors for your gray scale and your semantic scales, then add custom brand/accent colors.\nChoosing a gray scale\nRadix Colors provides a pure gray and a few tinted gray scales.\ngray\nmauve\nslate\nsage\nolive\nsand\ngray\nis pure gray\nmauve\nis based on a purple hue\nslate\nis based on a blue hue\nsage\nis based on a green hue\nolive\nis based on a lime hue\nsand\nis based on a yellow hue\nNeutral pairing\nIf you want a neutral vibe, or you want to keep things simple,\ngray\nwill work well with any hue or palette.\nNatural pairing\nAlternatively, choose the gray scale which is saturated with the hue closest to your accent hue. The difference is subtle, but this will create a more colorful and harmonius vibe.\nmauve\ntomato\nred\nruby\ncrimson\npink\nplum\npurple\nviolet\nslate\niris\nindigo\nblue\nsky\ncyan\nsage\nmint\nteal\njade\ngreen\nolive\ngrass\nlime\nsand\nyellow\namber\norange\nbrown\nNote: If your project uses a lot of colorful UI components like Badge, be\ncareful when using saturated grays for your app background, especially in dark\nmode. Colorful UI components may clash with your saturated gray background\ncolor.\nChoosing semantic scales\nFor most projects, you will need colors to communicate semantic meaning. Here are some common pairings that work well in Western culture.\nError\n:\nred\n,\nruby\n,\ntomato\n,\ncrimson\nSuccess\n:\ngreen\n,\nteal\n,\njade\n,\ngrass\n,\nmint\nWarning\n:\nyellow\n,\namber\n,\norange\nInfo\n:\nblue\n,\nindigo\n,\nsky\n,\ncyan\nIn many cases, you might eventually need most of the scales, for one reason or another. Your app may support multiplayer mode, where you assign a color to each user. Your app may have a labelling feature, where your users assign a color to a task. Your app may use badges to communicate “pending” or “rejected” states.\nRadix Colors are well-balanced, and designed to work in harmony. So for product communication, most color pairings will work.\nChoosing text scales\nSteps 11 and 12 are designed for low-contrast text and high-contrast text respectively. Depending on the vibe you want, you can use your accent scale or your gray scale.\nUsing your accent scale will result in a more colorful vibe.\nThis text is Blue 12\nUsing your gray scale will result in a more functional vibe.\nThis text is Slate 12\nThe difference may seem subtle, but it can make a huge difference with a whole page of text.\nYou may want to experiment with using your accent scale for text in your marketing sites, and your gray scale for text in your apps.\nPrevious\nScales\nNext\nUnderstanding the scale\nEdit this page on GitHub.",
+      "code_blocks": [],
+      "subsections": [
+        "Choosing a brand scale",
+        "Custom brand colors",
+        "Choosing a gray scale",
+        "Neutral pairing",
+        "Natural pairing",
+        "Choosing semantic scales",
+        "Choosing text scales"
+      ],
+      "category": "docs"
+    }
+  ],
+  "summary": {
+    "total_sections": 4,
+    "total_code_blocks": 8,
+    "categories": [
+      "docs"
+    ]
+  }
+}

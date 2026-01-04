@@ -1,0 +1,783 @@
+{
+  "source": "Tailwind CSS",
+  "crawled_at": "2026-01-04T19:53:33.764271",
+  "version": null,
+  "sections": [
+    {
+      "title": "Get started with Tailwind CSS",
+      "url": "https://tailwindcss.com/docs/installation/using-vite",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nGetting Started\nUsing Vite\nInstallation\nGet started with Tailwind CSS\nTailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.\nIt's fast, flexible, and reliable — with zero-runtime.\nInstallation\nUsing Vite\nUsing PostCSS\nTailwind CLI\nFramework Guides\nPlay CDN\nInstalling Tailwind CSS as a Vite plugin\nInstalling Tailwind CSS as a Vite plugin is the most seamless way to integrate it with frameworks like Laravel, SvelteKit, React Router, Nuxt, and SolidJS.\n01\nCreate your project\nStart by creating a new Vite project if you don’t have one set up already. The most common approach is to use\nCreate Vite\n.\nTerminal\nnpm\ncreate\nvite@latest\nmy-project\ncd\nmy-project\n02\nInstall Tailwind CSS\nInstall\ntailwindcss\nand\n@tailwindcss/vite\nvia npm.\nTerminal\nnpm\ninstall\ntailwindcss\n@tailwindcss/vite\n03\nConfigure the Vite plugin\nAdd the\n@tailwindcss/vite\nplugin to your Vite configuration.\nvite.config.ts\nimport\n{\ndefineConfig\n}\nfrom\n'vite'\nimport\ntailwindcss\nfrom\n'@tailwindcss/vite'\nexport\ndefault\ndefineConfig\n(\n{\nplugins\n:\n[\ntailwindcss\n()\n,\n]\n,\n}\n)\n04\nImport Tailwind CSS\nAdd an\n@import\nto your CSS file that imports Tailwind CSS.\nCSS\n@import\n\"tailwindcss\"\n;\n05\nStart your build process\nRun your build process with\nnpm run dev\nor whatever command is configured in your\npackage.json\nfile.\nTerminal\nnpm\nrun\ndev\n06\nStart using Tailwind in your HTML\nMake sure your compiled CSS is included in the\n<head>\n(your framework might handle this for you)\n, then start using Tailwind’s utility classes to style your content.\nHTML\n<!\ndoctype\nhtml\n>\n<\nhtml\n>\n<\nhead\n>\n<\nmeta\ncharset\n=\n\"UTF-8\"\n>\n<\nmeta\nname\n=\n\"viewport\"\ncontent\n=\n\"width=device-width, initial-scale=1.0\"\n>\n<\nlink\nhref\n=\n\"/src/style.css\"\nrel\n=\n\"stylesheet\"\n>\n</\nhead\n>\n<\nbody\n>\n<\nh1\nclass\n=\n\"text-3xl font-bold underline\"\n>\nHello world!\n</\nh1\n>\n</\nbody\n>\n</\nhtml\n>\nAre you stuck?\nSetting up Tailwind with Vite can be a bit different across different build tools. Check our framework guides to see if we have more specific instructions for your particular setup.\nExplore our framework guides\nCopyright © 2025 Tailwind Labs Inc.\n·\nTrademark Policy",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "npmcreatevite@latestmy-projectcdmy-project"
+        },
+        {
+          "language": "",
+          "code": "npminstalltailwindcss@tailwindcss/vite"
+        },
+        {
+          "language": "",
+          "code": "import{defineConfig}from'vite'importtailwindcssfrom'@tailwindcss/vite'exportdefaultdefineConfig({plugins:[tailwindcss(),],})"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";"
+        },
+        {
+          "language": "",
+          "code": "npmrundev"
+        },
+        {
+          "language": "",
+          "code": "<!doctypehtml><html><head><metacharset=\"UTF-8\"><metaname=\"viewport\"content=\"width=device-width, initial-scale=1.0\"><linkhref=\"/src/style.css\"rel=\"stylesheet\"></head><body><h1class=\"text-3xl font-bold underline\">Hello world!</h1></body></html>"
+        }
+      ],
+      "subsections": [
+        "Installation",
+        "Using Vite",
+        "Using PostCSS",
+        "Tailwind CLI",
+        "Framework Guides",
+        "Play CDN",
+        "Installing Tailwind CSS as a Vite plugin"
+      ],
+      "category": "installation"
+    },
+    {
+      "title": "Styling with utility classes",
+      "url": "https://tailwindcss.com/docs/utility-first",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nStyling with utility classes\nCore concepts\nStyling with utility classes\nBuilding complex components from a constrained set of primitive utilities.\nOverview\nYou style things with Tailwind by combining many single-purpose presentational classes\n(utility classes)\ndirectly in your markup:\nChitChat\nYou have a new message!\n<\ndiv\nclass\n=\n\"mx-auto flex max-w-sm items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10\"\n>\n<\nimg\nclass\n=\n\"size-12 shrink-0\"\nsrc\n=\n\"/img/logo.svg\"\nalt\n=\n\"ChitChat Logo\"\n/>\n<\ndiv\n>\n<\ndiv\nclass\n=\n\"text-xl font-medium text-black dark:text-white\"\n>\nChitChat\n</\ndiv\n>\n<\np\nclass\n=\n\"text-gray-500 dark:text-gray-400\"\n>\nYou have a new message!\n</\np\n>\n</\ndiv\n>\n</\ndiv\n>\nFor example, in the UI above we've used:\nThe\ndisplay\nand\npadding\nutilities (\nflex\n,\nshrink-0\n, and\np-6\n) to control the overall layout\nThe\nmax-width\nand\nmargin\nutilities (\nmax-w-sm\nand\nmx-auto\n) to constrain the card width and center it horizontally\nThe\nbackground-color\n,\nborder-radius\n, and\nbox-shadow\nutilities (\nbg-white\n,\nrounded-xl\n, and\nshadow-lg\n) to style the card's appearance\nThe\nwidth\nand\nheight\nutilities (\nsize-12\n) to set the width and height of the logo image\nThe\ngap\nutilities (\ngap-x-4\n) to handle the spacing between the logo and the text\nThe\nfont-size\n,\ncolor\n, and\nfont-weight\nutilities (\ntext-xl\n,\ntext-black\n,\nfont-medium\n, etc.) to style the card text\nStyling things this way contradicts a lot of traditional best practices, but once you try it you'll quickly notice some really important benefits:\nYou get things done faster\n— you don't spend any time coming up with class names, making decisions about selectors, or switching between HTML and CSS files, so your designs come together very fast.\nMaking changes feels safer\n— adding or removing a utility class to an element only ever affects that element, so you never have to worry about accidentally breaking something another page that's using the same CSS.\nMaintaining old projects is easier\n— changing something just means finding that element in your project and changing the classes, not trying to remember how all of that custom CSS works that you haven't touched in six months.\nYour code is more portable\n— since both the structure and styling live in the same place, you can easily copy and paste entire chunks of UI around, even between different projects.\nYour CSS stops growing\n— since utility classes are so reusable, your CSS doesn't continue to grow linearly with every new feature you add to a project.\nThese benefits make a big difference on small projects, but they are even more valuable for teams working on long-running projects at scale.\nWhy not just use inline styles?\nA common reaction to this approach is wondering, “isn’t this just inline styles?” and in some ways it is — you’re applying styles directly to elements instead of assigning them a class name and then styling that class.\nBut using utility classes has many important advantages over inline styles, for example:\nDesigning with constraints\n— using inline styles, every value is a magic number. With utilities, you’re choosing styles from a\npredefined design system\n, which makes it much easier to build visually consistent UIs.\nHover, focus, and other states\n— inline styles can’t target states like hover or focus, but Tailwind’s\nstate variants\nmake it easy to style those states with utility classes.\nMedia queries\n— you can’t use media queries in inline styles, but you can use Tailwind’s\nresponsive variants\nto build fully responsive interfaces easily.\nThis component is fully responsive and includes a button with hover and active styles, and is built entirely with utility classes:\nErin Lindford\nProduct Engineer\nMessage\n<\ndiv\nclass\n=\n\"flex flex-col gap-2 p-8\nsm:flex-row\nsm:items-center\nsm:gap-6\nsm:py-4\n...\"\n>\n<\nimg\nclass\n=\n\"mx-auto block h-24 rounded-full\nsm:mx-0\nsm:shrink-0\n\"\nsrc\n=\n\"/img/erin-lindford.jpg\"\nalt\n=\n\"\"\n/>\n<\ndiv\nclass\n=\n\"space-y-2 text-center\nsm:text-left\n\"\n>\n<\ndiv\nclass\n=\n\"space-y-0.5\"\n>\n<\np\nclass\n=\n\"text-lg font-semibold text-black\"\n>\nErin Lindford\n</\np\n>\n<\np\nclass\n=\n\"font-medium text-gray-500\"\n>\nProduct Engineer\n</\np\n>\n</\ndiv\n>\n<\nbutton\nclass\n=\n\"border-purple-200 text-purple-600\nhover:border-transparent\nhover:bg-purple-600\nhover:text-white\nactive:bg-purple-700\n...\"\n>\nMessage\n</\nbutton\n>\n</\ndiv\n>\n</\ndiv\n>\nThinking in utility classes\nStyling hover and focus states\nTo style an element on states like hover or focus, prefix any utility with the state you want to target, for example\nhover:bg-sky-700\n:\nHover over this button to see the background color change\nSave changes\n<\nbutton\nclass\n=\n\"bg-sky-500\nhover:bg-sky-700\n...\"\n>\nSave changes\n</\nbutton\n>\nThese prefixes are called\nvariants\nin Tailwind, and they only apply the styles from a utility class when the condition for that variant matches.\nHere's what the generated CSS looks like for the\nhover:bg-sky",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "<divclass=\"mx-auto flex max-w-sm items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10\"><imgclass=\"size-12 shrink-0\"src=\"/img/logo.svg\"alt=\"ChitChat Logo\"/><div><divclass=\"text-xl font-medium text-black dark:text-white\">ChitChat</div><pclass=\"text-gray-500 dark:text-gray-400\">You have a new message!</p></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"flex flex-col gap-2 p-8sm:flex-rowsm:items-centersm:gap-6sm:py-4...\"><imgclass=\"mx-auto block h-24 rounded-fullsm:mx-0sm:shrink-0\"src=\"/img/erin-lindford.jpg\"alt=\"\"/><divclass=\"space-y-2 text-centersm:text-left\"><divclass=\"space-y-0.5\"><pclass=\"text-lg font-semibold text-black\">Erin Lindford</p><pclass=\"font-medium text-gray-500\">Product Engineer</p></div><buttonclass=\"border-purple-200 text-purple-600hover:border-transparenthover:bg-purple-600hover:text-whiteactive:bg-purple-700...\">Message</button></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"bg-sky-500hover:bg-sky-700...\">Save changes</button>"
+        },
+        {
+          "language": "",
+          "code": ".hover\\:bg-sky-700{&:hover {background-color:var(--color-sky-700);}}"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"btn\">Save changes</button><style>.btn{background-color:var(--color-sky-500);&:hover {background-color:var(--color-sky-700);}}</style>"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"bg-sky-500disabled:hover:bg-sky-500...\">Save changes</button>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"grid grid-cols-2sm:grid-cols-3\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": ".sm\\:grid-cols-3{@media(width>= 40rem) {grid-template-columns:repeat(3,minmax(0,1fr));}}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-whitedark:bg-gray-800rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"><div><spanclass=\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"><svgclass=\"h-6 w-6 text-white\"fill=\"none\"viewBox=\"0 0 24 24\"stroke=\"currentColor\"aria-hidden=\"true\"><!-- ... --></svg></span></div><h3class=\"text-gray-900dark:text-whitemt-5 text-base font-medium tracking-tight \">Writes upside-down</h3><pclass=\"text-gray-500dark:text-gray-400mt-2 text-sm \">The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.</p></div>"
+        },
+        {
+          "language": "",
+          "code": ".dark\\:bg-gray-800{@media(prefers-color-scheme:dark) {background-color:var(--color-gray-800);}}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"blur-smgrayscale\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": ".blur-sm{--tw-blur:blur(var(--blur-sm));filter:var(--tw-blur,)var(--tw-brightness,)var(--tw-grayscale,);}.grayscale{--tw-grayscale:grayscale(100%);filter:var(--tw-blur,)var(--tw-brightness,)var(--tw-grayscale,);}"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"bg-[#316ff6]...\">Sign in with Facebook</button>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"gridgrid-cols-[24rem_2.5rem_minmax(0,1fr)]\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"max-h-[calc(100dvh-(--spacing(6)))]\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"[--gutter-width:1rem]lg:[--gutter-width:2rem]\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "exportdefaultfunctionButton({size,children}){letsizeClasses={md:\"px-4py-2rounded-mdtext-base\",lg:\"px-5py-3rounded-lgtext-lg\",}[size];return(<buttontype=\"button\"className={`font-bold${sizeClasses}`}>{children}</button>);}"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"dark:lg:data-current:hover:bg-indigo-600...\"><!-- ... --></button>"
+        },
+        {
+          "language": "",
+          "code": "@media(prefers-color-scheme:dark)and(width>=64rem){button[data-current]:hover{background-color:var(--color-indigo-600);}}"
+        },
+        {
+          "language": "",
+          "code": "<ahref=\"#\"class=\"grouprounded-lg p-8\"><!-- ... --><spanclass=\"group-hover:underline\">Read more…</span></a>"
+        }
+      ],
+      "subsections": [
+        "Overview",
+        "Why not just use inline styles?",
+        "Thinking in utility classes",
+        "Styling hover and focus states",
+        "Media queries and breakpoints",
+        "Targeting dark mode",
+        "Using class composition",
+        "Using arbitrary values",
+        "Complex selectors",
+        "When to use inline styles",
+        "Managing duplication",
+        "Using loops",
+        "Using multi-cursor editing",
+        "Using components",
+        "Using custom CSS"
+      ],
+      "category": "utility-first"
+    },
+    {
+      "title": "Hover, focus, and other states",
+      "url": "https://tailwindcss.com/docs/hover-focus-and-other-states",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nHover, focus, and other states\nCore concepts\nHover, focus, and other states\nUsing utilities to style elements on hover, focus, and more.\nEvery utility class in Tailwind can be applied\nconditionally\nby adding a variant to the beginning of the class name that describes the condition you want to target.\nFor example, to apply the\nbg-sky-700\nclass on hover, use the\nhover:bg-sky-700\nclass:\nHover over this button to see the background color change\nSave changes\n<\nbutton\nclass\n=\n\"bg-sky-500\nhover:bg-sky-700\n...\"\n>\nSave changes\n</\nbutton\n>\nHow does this compare to traditional CSS?\nWhen writing CSS the traditional way, a single class name would do different things based on the current state:\nTraditionally the same class name applies different styles on hover\n.btn-primary\n{\nbackground-color\n:\n#0ea5e9\n;\n}\n.btn-primary:hover\n{\nbackground-color\n:\n#0369a1\n;\n}\nIn Tailwind, rather than adding the styles for a hover state to an existing class, you add another class to the element that\nonly\ndoes something on hover:\nIn Tailwind, separate classes are used for the default state and the hover state\n.bg-sky-500\n{\nbackground-color\n:\n#0ea5e9\n;\n}\n.hover\n\\:\nbg-sky-700:hover\n{\nbackground-color\n:\n#0369a1\n;\n}\nNotice how\nhover:bg-sky-700\nonly\ndefines styles for the\n:hover\nstate? It does nothing by default, but as soon as you hover over an element with that class, the background color will change to\nsky-700\n.\nThis is what we mean when we say a utility class can be applied\nconditionally\n— by using variants you can control exactly how your design behaves in different states, without ever leaving your HTML.\nTailwind includes variants for just about everything you'll ever need, including:\nPseudo-classes\n, like\n:hover\n,\n:focus\n,\n:first-child\n, and\n:required\nPseudo-elements\n, like\n::before\n,\n::after\n,\n::placeholder\n, and\n::selection\nMedia and feature queries\n, like responsive breakpoints, dark mode, and\nprefers-reduced-motion\nAttribute selectors\n, like\n[dir=\"rtl\"]\nand\n[open]\nChild selectors\n, like\n& > *\nand\n& *\nThese variants can even be stacked to target more specific situations, for example changing the background color in dark mode, at the medium breakpoint, on hover:\n<\nbutton\nclass\n=\n\"\ndark:md:hover:bg-fuchsia-600\n...\"\n>\nSave changes\n</\nbutton\n>\nIn this guide you'll learn about every variant available in the framework, how to use them with your own custom classes, and even how to create your own.\nPseudo-classes\n:hover, :focus, and :active\nStyle elements on hover, focus, and active using the\nhover\n,\nfocus\n, and\nactive\nvariants:\nTry interacting with this button to see the hover, focus, and active states\nSave changes\n<\nbutton\nclass\n=\n\"bg-violet-500\nhover:bg-violet-600\nfocus:outline-2\nfocus:outline-offset-2\nfocus:outline-violet-500\nactive:bg-violet-700\n...\"\n>\nSave changes\n</\nbutton\n>\nTailwind also includes variants for other interactive states like\n:visited\n,\n:focus-within\n,\n:focus-visible\n, and more.\nSee the\npseudo-class reference\nfor a complete list of available pseudo-class variants.\n:first, :last, :odd, and :even\nStyle an element when it is the first-child or last-child using the\nfirst\nand\nlast\nvariants:\nKristen Ramos\nkristen.ramos@example.com\nFloyd Miles\nfloyd.miles@example.com\nCourtney Henry\ncourtney.henry@example.com\nTed Fox\nted.fox@example.com\n<\nul\nrole\n=\n\"list\"\n>\n{#\neach\npeople\nas\nperson\n}\n<!-- Remove top/bottom padding when first/last child -->\n<\nli\nclass\n=\n\"flex py-4\nfirst:pt-0\nlast:pb-0\n\"\n>\n<\nimg\nclass\n=\n\"h-10 w-10 rounded-full\"\nsrc\n={\nperson\n.\nimageUrl\n}\nalt\n=\n\"\"\n/>\n<\ndiv\nclass\n=\n\"ml-3 overflow-hidden\"\n>\n<\np\nclass\n=\n\"text-sm font-medium text-gray-900 dark:text-white\"\n>{\nperson\n.\nname\n}</\np\n>\n<\np\nclass\n=\n\"truncate text-sm text-gray-500 dark:text-gray-400\"\n>{\nperson\n.\nemail\n}</\np\n>\n</\ndiv\n>\n</\nli\n>\n{/\neach\n}\n</\nul\n>\nYou can also style an element when it's an odd or even child using the\nodd\nand\neven\nvariants:\nName\nTitle\nEmail\nJane Cooper\nRegional Paradigm Technician\njane.cooper@example.com\nCody Fisher\nProduct Directives Officer\ncody.fisher@example.com\nLeonard Krasner\nSenior Designer\nleonard.krasner@example.com\nEmily Selman\nVP, Hardware Engineering\nemily.selman@example.com\nAnna Roberts\nChief Strategy Officer\nanna.roberts@example.com\n<\ntable\n>\n<!-- ... -->\n<\ntbody\n>\n{#\neach\npeople\nas\nperson\n}\n<!-- Use different background colors for odd and even rows -->\n<\ntr\nclass\n=\n\"\nodd:bg-white\neven:bg-gray-50\ndark:odd:bg-gray-900/50\ndark:even:bg-gray-950\n\"\n>\n<\ntd\n>{\nperson\n.\nname\n}</\ntd\n>\n<\ntd\n>{\nperson\n.\ntitle\n}</\ntd\n>\n<\ntd\n>{\nperson\n.\nemail\n}</\ntd\n>\n</\ntr\n>\n{/\neach\n}\n</\ntbody\n>\n</\ntable\n>\nUse the\nnth-*\nand\nnth-last-*\nvariants to style children based on their position in the list:\n<\ndiv\nclass\n=\n\"\nnth-3:underline\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n<\ndiv\nclass\n=\n\"\nnth-last-5:underline\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n<\ndiv\nclass\n=\n\"\nnth-of-type-4:underline\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n<\ndiv\nclass\n=\n\"\nnth-last-of-type-6:underline\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nYou can pass any number you want to these by default, an",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "<buttonclass=\"bg-sky-500hover:bg-sky-700...\">Save changes</button>"
+        },
+        {
+          "language": "",
+          "code": ".btn-primary{background-color:#0ea5e9;}.btn-primary:hover{background-color:#0369a1;}"
+        },
+        {
+          "language": "",
+          "code": ".bg-sky-500{background-color:#0ea5e9;}.hover\\:bg-sky-700:hover{background-color:#0369a1;}"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"dark:md:hover:bg-fuchsia-600...\">Save changes</button>"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"bg-violet-500hover:bg-violet-600focus:outline-2focus:outline-offset-2focus:outline-violet-500active:bg-violet-700...\">Save changes</button>"
+        },
+        {
+          "language": "",
+          "code": "<ulrole=\"list\">{#eachpeopleasperson}<!-- Remove top/bottom padding when first/last child --><liclass=\"flex py-4first:pt-0last:pb-0\"><imgclass=\"h-10 w-10 rounded-full\"src={person.imageUrl}alt=\"\"/><divclass=\"ml-3 overflow-hidden\"><pclass=\"text-sm font-medium text-gray-900 dark:text-white\">{person.name}</p><pclass=\"truncate text-sm text-gray-500 dark:text-gray-400\">{person.email}</p></div></li>{/each}</ul>"
+        },
+        {
+          "language": "",
+          "code": "<table><!-- ... --><tbody>{#eachpeopleasperson}<!-- Use different background colors for odd and even rows --><trclass=\"odd:bg-whiteeven:bg-gray-50dark:odd:bg-gray-900/50dark:even:bg-gray-950\"><td>{person.name}</td><td>{person.title}</td><td>{person.email}</td></tr>{/each}</tbody></table>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"nth-3:underline\"><!-- ... --></div><divclass=\"nth-last-5:underline\"><!-- ... --></div><divclass=\"nth-of-type-4:underline\"><!-- ... --></div><divclass=\"nth-last-of-type-6:underline\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<inputtype=\"text\"value=\"tbone\"disabledclass=\"invalid:border-pink-500invalid:text-pink-600focus:border-sky-500focus:outlinefocus:outline-sky-500focus:invalid:border-pink-500focus:invalid:outline-pink-500disabled:border-gray-200disabled:bg-gray-50disabled:text-gray-500disabled:shadow-nonedark:disabled:border-gray-700dark:disabled:bg-gray-800/20...\"/>"
+        },
+        {
+          "language": "",
+          "code": "<labelclass=\"has-checked:bg-indigo-50has-checked:text-indigo-900has-checked:ring-indigo-200dark:has-checked:bg-indigo-950dark:has-checked:text-indigo-200dark:has-checked:ring-indigo-900...\"><svgfill=\"currentColor\"><!-- ... --></svg>Google Pay<inputtype=\"radio\"class=\"checked:border-indigo-500 ...\"/></label>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"group...\"><imgsrc=\"...\"/><h4>Spencer Sharp</h4><svgclass=\"hiddengroup-has-[a]:block...\"><!-- ... --></svg><p>Product Designer at<ahref=\"...\">planeteria.tech</a></p></div>"
+        },
+        {
+          "language": "",
+          "code": "<div><labelclass=\"peer...\"><inputtype=\"checkbox\"name=\"todo[1]\"checked/>Create a to do list</label><svgclass=\"peer-has-checked:hidden...\"><!-- ... --></svg></div>"
+        },
+        {
+          "language": "",
+          "code": "<buttonclass=\"bg-indigo-600hover:not-focus:bg-indigo-700\"><!-- ... --></button>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"not-supports-[display:grid]:flex\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<ahref=\"#\"class=\"group...\"><div><svgclass=\"stroke-sky-500group-hover:stroke-white...\"fill=\"none\"viewBox=\"0 0 24 24\"><!-- ... --></svg><h3class=\"text-gray-900group-hover:text-white...\">New project</h3></div><pclass=\"text-gray-500group-hover:text-white...\">Create a new project from a variety of starting templates.</p></a>"
+        },
+        {
+          "language": "",
+          "code": "<ulrole=\"list\">{#eachpeopleasperson}<liclass=\"group/item...\"><!-- ... --><aclass=\"group/editinvisiblegroup-hover/item:visible...\"href=\"tel:{person.phone}\"><spanclass=\"group-hover/edit:text-gray-700...\">Call</span><svgclass=\"group-hover/edit:translate-x-0.5group-hover/edit:text-gray-500...\"><!-- ... --></svg></a></li>{/each}</ul>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"group is-published\"><divclass=\"hiddengroup-[.is-published]:block\">Published</div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"group\"><divclass=\"group-[:nth-of-type(3)_&]:block\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divtabindex=\"0\"class=\"group\"><divclass=\"opacity-50 group-focus:opacity-100\"><divtabindex=\"0\"><divclass=\"opacity-50in-focus:opacity-100\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<form><labelclass=\"block\"><spanclass=\"...\">Email</span><inputtype=\"email\"class=\"peer...\"/><pclass=\"invisiblepeer-invalid:visible...\">Please provide a valid email address.</p></label></form>"
+        }
+      ],
+      "subsections": [
+        "Pseudo-classes",
+        ":hover, :focus, and :active",
+        ":first, :last, :odd, and :even",
+        ":required and :disabled",
+        ":has()",
+        ":not()",
+        "Styling based on parent state",
+        "Styling based on sibling state",
+        "Pseudo-elements",
+        "::before and ::after",
+        "::placeholder",
+        "::file",
+        "::marker",
+        "Ingredients",
+        "::selection"
+      ],
+      "category": "hover-focus-and-other-states"
+    },
+    {
+      "title": "Responsive design",
+      "url": "https://tailwindcss.com/docs/responsive-design",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nResponsive design\nCore concepts\nResponsive design\nUsing responsive utility variants to build adaptive user interfaces.\nOverview\nEvery utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.\nFirst, make sure you've added the\nviewport meta tag\nto the\n<head>\nof your document:\nindex.html\n<\nmeta\nname\n=\n\"viewport\"\ncontent\n=\n\"width=device-width, initial-scale=1.0\"\n/>\nThen to add a utility but only have it take effect at a certain breakpoint, all you need to do is prefix the utility with the breakpoint name, followed by the\n:\ncharacter:\nHTML\n<!-- Width of 16 by default, 32 on medium screens, and 48 on large screens -->\n<\nimg\nclass\n=\n\"w-16\nmd:w-32\nlg:w-48\n\"\nsrc\n=\n\"...\"\n/>\nThere are five breakpoints by default, inspired by common device resolutions:\nBreakpoint prefix\nMinimum width\nCSS\nsm\n40rem\n(640px)\n@media (width >= 40rem) { ... }\nmd\n48rem\n(768px)\n@media (width >= 48rem) { ... }\nlg\n64rem\n(1024px)\n@media (width >= 64rem) { ... }\nxl\n80rem\n(1280px)\n@media (width >= 80rem) { ... }\n2xl\n96rem\n(1536px)\n@media (width >= 96rem) { ... }\nThis works for\nevery utility class in the framework\n, which means you can change literally anything at a given breakpoint — even things like letter spacing or cursor styles.\nHere's a simple example of a marketing page component that uses a stacked layout on small screens, and a side-by-side layout on larger screens:\n<\ndiv\nclass\n=\n\"mx-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md\nmd:max-w-2xl\n\"\n>\n<\ndiv\nclass\n=\n\"\nmd:flex\n\"\n>\n<\ndiv\nclass\n=\n\"\nmd:shrink-0\n\"\n>\n<\nimg\nclass\n=\n\"h-48 w-full object-cover\nmd:h-full\nmd:w-48\n\"\nsrc\n=\n\"/img/building.jpg\"\nalt\n=\n\"Modern building architecture\"\n/>\n</\ndiv\n>\n<\ndiv\nclass\n=\n\"p-8\"\n>\n<\ndiv\nclass\n=\n\"text-sm font-semibold tracking-wide text-indigo-500 uppercase\"\n>\nCompany retreats\n</\ndiv\n>\n<\na\nhref\n=\n\"#\"\nclass\n=\n\"mt-1 block text-lg leading-tight font-medium text-black hover:underline\"\n>\nIncredible accommodation for your team\n</\na\n>\n<\np\nclass\n=\n\"mt-2 text-gray-500\"\n>\nLooking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list of\nplaces to do just that.\n</\np\n>\n</\ndiv\n>\n</\ndiv\n>\n</\ndiv\n>\nHere's how the example above works:\nBy default, the outer\ndiv\nis\ndisplay: block\n, but by adding the\nmd:flex\nutility, it becomes\ndisplay: flex\non medium screens and larger.\nWhen the parent is a flex container, we want to make sure the image never shrinks, so we've added\nmd:shrink-0\nto prevent shrinking on medium screens and larger. Technically we could have just used\nshrink-0\nsince it would do nothing on smaller screens, but since it only matters on\nmd\nscreens, it's a good idea to make that clear in the class name.\nOn small screens the image is automatically full width by default. On medium screens and up, we've constrained the width to a fixed size and ensured the image is full height using\nmd:h-full md:w-48\n.\nWe've only used one breakpoint in this example, but you could easily customize this component at other sizes using the\nsm\n,\nlg\n,\nxl\n, or\n2xl\nresponsive prefixes as well.\nWorking mobile-first\nTailwind uses a mobile-first breakpoint system, similar to what you might be used to in other frameworks like Bootstrap.\nWhat this means is that unprefixed utilities (like\nuppercase\n) take effect on all screen sizes, while prefixed utilities (like\nmd:uppercase\n) only take effect at the specified breakpoint\nand above\n.\nTargeting mobile screens\nWhere this approach surprises people most often is that to style something for mobile, you need to use the unprefixed version of a utility, not the\nsm:\nprefixed version. Don't think of\nsm:\nas meaning \"on small screens\", think of it as \"at the small\nbreakpoint\n\".\nDon't use\nsm:\nto target mobile devices\nHTML\n<!-- This will only center text on screens 640px and wider, not on small screens -->\n<\ndiv\nclass\n=\n\"sm:text-center\"\n></\ndiv\n>\nUse unprefixed utilities to target mobile, and override them at larger breakpoints\nHTML\n<!-- This will center text on mobile, and left align it on screens 640px and wider -->\n<\ndiv\nclass\n=\n\"text-center sm:text-left\"\n></\ndiv\n>\nFor this reason, it's often a good idea to implement the mobile layout for a design first, then layer on any changes that make sense for\nsm\nscreens, followed by\nmd\nscreens, etc.\nTargeting a breakpoint range\nBy default, styles applied by rules like\nmd:flex\nwill apply at that breakpoint and stay applied at larger breakpoints.\nIf you'd like to apply a utility\nonly\nwhen a specific breakpoint range is active, stack a responsive variant like\nmd\nwith a\nmax-*\nvariant to limit that style to a specific range:\nHTML\n<\ndiv\nclass\n=\n\"md:max-xl:flex\"\n>\n<!-- ... -->\n</\ndiv\n>\nTailwind generates a corresponding\nmax-*\nvariant for each breakpoint, so out of the box the following variants are available:\nVariant\nMedia query\nmax-sm\n@media (width < 40rem) { ... }\nmax-md\n@media (width < 48rem",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "<metaname=\"viewport\"content=\"width=device-width, initial-scale=1.0\"/>"
+        },
+        {
+          "language": "",
+          "code": "<!-- Width of 16 by default, 32 on medium screens, and 48 on large screens --><imgclass=\"w-16md:w-32lg:w-48\"src=\"...\"/>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"mx-auto max-w-md overflow-hidden rounded-xl bg-white shadow-mdmd:max-w-2xl\"><divclass=\"md:flex\"><divclass=\"md:shrink-0\"><imgclass=\"h-48 w-full object-covermd:h-fullmd:w-48\"src=\"/img/building.jpg\"alt=\"Modern building architecture\"/></div><divclass=\"p-8\"><divclass=\"text-sm font-semibold tracking-wide text-indigo-500 uppercase\">Company retreats</div><ahref=\"#\"class=\"mt-1 block text-lg leading-tight font-medium text-black hover:underline\">Incredible accommodation for your team</a><pclass=\"mt-2 text-gray-500\">Looking to take your team away on a retreat to enjoy awesome food and take in some sunshine? We have a list ofplaces to do just that.</p></div></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<!-- This will only center text on screens 640px and wider, not on small screens --><divclass=\"sm:text-center\"></div>"
+        },
+        {
+          "language": "",
+          "code": "<!-- This will center text on mobile, and left align it on screens 640px and wider --><divclass=\"text-center sm:text-left\"></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"md:max-xl:flex\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"md:max-lg:flex\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-xs:30rem;--breakpoint-2xl:100rem;--breakpoint-3xl:120rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"gridxs:grid-cols-23xl:grid-cols-6\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-2xl:initial;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-*:initial;--breakpoint-tablet:40rem;--breakpoint-laptop:64rem;--breakpoint-desktop:80rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"max-[600px]:bg-sky-300min-[320px]:text-center\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container\"><divclass=\"flex flex-col@md:flex-row\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container\"><divclass=\"flex flex-row@max-md:flex-col\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container\"><divclass=\"flex flex-row@sm:@max-md:flex-col\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container/main\"><!-- ... --><divclass=\"flex flex-row@sm/main:flex-col\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--container-8xl:96rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container\"><divclass=\"flex flex-col@8xl:flex-row\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container\"><divclass=\"flex flex-col@min-[475px]:flex-row\"><!-- ... --></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"@container\"><divclass=\"w-[50cqw]\"><!-- ... --></div></div>"
+        }
+      ],
+      "subsections": [
+        "Overview",
+        "Working mobile-first",
+        "Targeting mobile screens",
+        "Targeting a breakpoint range",
+        "Targeting a single breakpoint",
+        "Using custom breakpoints",
+        "Customizing your theme",
+        "Removing default breakpoints",
+        "Using arbitrary values",
+        "Container queries",
+        "What are container queries?",
+        "Basic example",
+        "Max-width container queries",
+        "Container query ranges",
+        "Named containers"
+      ],
+      "category": "responsive-design"
+    },
+    {
+      "title": "Dark mode",
+      "url": "https://tailwindcss.com/docs/dark-mode",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nDark mode\nCore concepts\nDark mode\nUsing variants to style your site in dark mode.\nOverview\nNow that dark mode is a first-class feature of many operating systems, it's becoming more and more common to design a dark version of your website to go along with the default design.\nTo make this as easy as possible, Tailwind includes a\ndark\nvariant that lets you style your site differently when dark mode is enabled:\nLight mode\nWrites upside-down\nThe Zero Gravity Pen can be used to write in any orientation,\n        including upside-down. It even works in outer space.\nDark mode\nWrites upside-down\nThe Zero Gravity Pen can be used to write in any orientation,\n        including upside-down. It even works in outer space.\n<\ndiv\nclass\n=\n\"bg-white\ndark:bg-gray-800\nrounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"\n>\n<\ndiv\n>\n<\nspan\nclass\n=\n\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"\n>\n<\nsvg\nclass\n=\n\"h-6 w-6 stroke-white\"\n...\n>\n<!-- ... -->\n</\nsvg\n>\n</\nspan\n>\n</\ndiv\n>\n<\nh3\nclass\n=\n\"text-gray-900\ndark:text-white\nmt-5 text-base font-medium tracking-tight \"\n>\nWrites upside-down\n</\nh3\n>\n<\np\nclass\n=\n\"text-gray-500\ndark:text-gray-400\nmt-2 text-sm \"\n>\nThe Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.\n</\np\n>\n</\ndiv\n>\nBy default this uses the\nprefers-color-scheme\nCSS media feature, but you can also build sites that support\ntoggling dark mode manually\nby overriding the dark variant.\nToggling dark mode manually\nIf you want your dark theme to be driven by a CSS selector instead of the\nprefers-color-scheme\nmedia query, override the\ndark\nvariant to use your custom selector:\napp.css\n@import\n\"tailwindcss\"\n;\n@custom-variant\ndark (&:where(.dark, .dark *))\n;\nNow instead of\ndark:*\nutilities being applied based on\nprefers-color-scheme\n, they will be applied whenever the\ndark\nclass is present earlier in the HTML tree:\nHTML\n<\nhtml\nclass\n=\n\"\ndark\n\"\n>\n<\nbody\n>\n<\ndiv\nclass\n=\n\"bg-white\ndark\n:bg-black\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n</\nbody\n>\n</\nhtml\n>\nHow you add the\ndark\nclass to the\nhtml\nelement is up to you, but a common approach is to use a bit of JavaScript that updates the\nclass\nattribute and syncs that preference to somewhere like\nlocalStorage\n.\nUsing a data attribute\nTo use a data attribute instead of a class to activate dark mode, just override the\ndark\nvariant with an attribute selector instead:\napp.css\n@import\n\"tailwindcss\"\n;\n@custom-variant\ndark (&:where([data-theme=dark], [data-theme=dark] *))\n;\nNow dark mode utilities will be applied whenever the\ndata-theme\nattribute is set to\ndark\nsomewhere up the tree:\nHTML\n<\nhtml\ndata-theme\n=\n\"dark\"\n>\n<\nbody\n>\n<\ndiv\nclass\n=\n\"bg-white\ndark:bg-black\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n</\nbody\n>\n</\nhtml\n>\nWith system theme support\nTo build three-way theme toggles that support light mode, dark mode, and your system theme, use a custom dark mode selector and the\nwindow.matchMedia()\nAPI\nto detect the system theme and update the\nhtml\nelement when needed.\nHere's a simple example of how you can support light mode, dark mode, as well as respecting the operating system preference:\nspaghetti.js\n// On page load or when changing themes, best to add inline in `head` to avoid FOUC\ndocument\n.\ndocumentElement\n.\nclassList\n.\ntoggle\n(\n\"dark\"\n,\nlocalStorage\n.\ntheme\n===\n\"dark\"\n||\n(\n!\n(\n\"theme\"\nin\nlocalStorage\n)\n&&\nwindow\n.\nmatchMedia\n(\n\"(prefers-color-scheme: dark)\"\n)\n.\nmatches\n)\n,\n)\n;\n// Whenever the user explicitly chooses light mode\nlocalStorage\n.\ntheme\n=\n\"light\"\n;\n// Whenever the user explicitly chooses dark mode\nlocalStorage\n.\ntheme\n=\n\"dark\"\n;\n// Whenever the user explicitly chooses to respect the OS preference\nlocalStorage\n.\nremoveItem\n(\n\"theme\"\n)\n;\nAgain you can manage this however you like, even storing the preference server-side in a database and rendering the class on the server — it's totally up to you.\nOn this page\nOverview\nToggling dark mode manually\nUsing a data attribute\nWith system theme support\nCopyright © 2025 Tailwind Labs Inc.\n·\nTrademark Policy",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "<divclass=\"bg-whitedark:bg-gray-800rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"><div><spanclass=\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"><svgclass=\"h-6 w-6 stroke-white\"...><!-- ... --></svg></span></div><h3class=\"text-gray-900dark:text-whitemt-5 text-base font-medium tracking-tight \">Writes upside-down</h3><pclass=\"text-gray-500dark:text-gray-400mt-2 text-sm \">The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.</p></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@custom-variantdark (&:where(.dark, .dark *));"
+        },
+        {
+          "language": "",
+          "code": "<htmlclass=\"dark\"><body><divclass=\"bg-whitedark:bg-black\"><!-- ... --></div></body></html>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@custom-variantdark (&:where([data-theme=dark], [data-theme=dark] *));"
+        },
+        {
+          "language": "",
+          "code": "<htmldata-theme=\"dark\"><body><divclass=\"bg-whitedark:bg-black\"><!-- ... --></div></body></html>"
+        },
+        {
+          "language": "",
+          "code": "// On page load or when changing themes, best to add inline in `head` to avoid FOUCdocument.documentElement.classList.toggle(\"dark\",localStorage.theme===\"dark\"||(!(\"theme\"inlocalStorage)&&window.matchMedia(\"(prefers-color-scheme: dark)\").matches),);// Whenever the user explicitly chooses light modelocalStorage.theme=\"light\";// Whenever the user explicitly chooses dark modelocalStorage.theme=\"dark\";// Whenever the user explicitly chooses to respect the OS preferencelocalStorage.removeItem(\"theme\");"
+        }
+      ],
+      "subsections": [
+        "Overview",
+        "Toggling dark mode manually",
+        "Using a data attribute",
+        "With system theme support",
+        "On this page"
+      ],
+      "category": "dark-mode"
+    },
+    {
+      "title": "Theme variables",
+      "url": "https://tailwindcss.com/docs/theme",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nTheme variables\nCore concepts\nTheme variables\nUsing utility classes as an API for your design tokens.\nOverview\nTailwind is a framework for building custom designs, and different designs need different typography, colors, shadows, breakpoints, and more.\nThese low-level design decisions are often called\ndesign tokens\n, and in Tailwind projects you store those values in\ntheme variables\n.\nWhat are theme variables?\nTheme variables are special CSS variables defined using the\n@theme\ndirective that influence which utility classes exist in your project.\nFor example, you can add a new color to your project by defining a theme variable like\n--color-mint-500\n:\napp.css\n@import\n\"tailwindcss\"\n;\n@theme\n{\n--color-mint-500\n:\noklch\n(\n0.72 0.11 178\n);\n}\nNow you can use utility classes like\nbg-mint-500\n,\ntext-mint-500\n, or\nfill-mint-500\nin your HTML:\nHTML\n<\ndiv\nclass\n=\n\"\nbg-mint-500\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nTailwind also generates regular CSS variables for your theme variables so you can reference your design tokens in arbitrary values or inline styles:\nHTML\n<\ndiv\nstyle\n=\n\"background-color:\nvar(--color-mint-500)\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nLearn more about how theme variables map to different utility classes in the\ntheme variable namespaces\ndocumentation.\nWhy\n@theme\ninstead of\n:root\n?\nTheme variables aren't\njust\nCSS variables — they also instruct Tailwind to create new utility classes that you can use in your HTML.\nSince they do more than regular CSS variables, Tailwind uses special syntax so that defining theme variables is always explicit. Theme variables are also required to be defined top-level and not nested under other selectors or media queries, and using a special syntax makes it possible to enforce that.\nDefining regular CSS variables with\n:root\ncan still be useful in Tailwind projects when you want to define a variable that isn't meant to be connected to a utility class. Use\n@theme\nwhen you want a design token to map directly to a utility class, and use\n:root\nfor defining regular CSS variables that shouldn't have corresponding utility classes.\nRelationship to utility classes\nSome utility classes in Tailwind like\nflex\nand\nobject-cover\nare static, and are always the same from project to project. But many others are driven by theme variables, and only exist because of the theme variables you've defined.\nFor example, theme variables defined in the\n--font-*\nnamespace determine all of the\nfont-family\nutilities that exist in a project:\n./node_modules/tailwindcss/theme.css\n@theme\n{\n--font-sans\n:\nui-sans-serif\n,\nsystem-ui\n,\nsans-serif\n,\n\"Apple Color Emoji\"\n,\n\"Segoe UI Emoji\"\n,\n\"Segoe UI Symbol\"\n,\n\"Noto Color Emoji\"\n;\n--font-serif\n:\nui-serif\n,\nGeorgia\n,\nCambria\n,\n\"Times New Roman\"\n,\nTimes\n,\nserif\n;\n--font-mono\n:\nui-monospace\n,\nSFMono-Regular\n,\nMenlo\n,\nMonaco\n,\nConsolas\n,\n\"Liberation Mono\"\n,\n\"Courier New\"\n,\nmonospace\n;\n/* ... */\n}\nThe\nfont-sans\n,\nfont-serif\n, and\nfont-mono\nutilities only exist by default because Tailwind's default theme defines the\n--font-sans\n,\n--font-serif\n, and\n--font-mono\ntheme variables.\nIf another theme variable like\n--font-poppins\nwere defined, a\nfont-poppins\nutility class would become available to go with it:\napp.css\n@import\n\"tailwindcss\"\n;\n@theme\n{\n--font-poppins\n:\nPoppins\n,\nsans-serif\n;\n}\nHTML\n<\nh1\nclass\n=\n\"\nfont-poppins\n\"\n>\nThis headline will use Poppins.\n</\nh1\n>\nYou can name your theme variables whatever you want within these namespaces, and a corresponding utility with the same name will become available to use in your HTML.\nRelationship to variants\nSome theme variables are used to define variants rather than utilities. For example theme variables in the\n--breakpoint-*\nnamespace determine which responsive breakpoint variants exist in your project:\napp.css\n@import\n\"tailwindcss\"\n;\n@theme\n{\n--breakpoint-3xl\n:\n120\nrem\n;\n}\nNow you can use the\n3xl:*\nvariant to only trigger a utility when the viewport is 120rem or wider:\nHTML\n<\ndiv\nclass\n=\n\"\n3xl:grid-cols-6\ngrid grid-cols-2 md:grid-cols-4\"\n>\n<!-- ... -->\n</\ndiv\n>\nLearn more about how theme variables map to different utility classes and variants in the\ntheme variable namespaces\ndocumentation.\nTheme variable namespaces\nTheme variables are defined in\nnamespaces\nand each namespace corresponds to one or more utility class or variant APIs.\nDefining new theme variables in these namespaces will make new corresponding utilities and variants available in your project:\nNamespace\nUtility classes\n--color-*\nColor utilities like\nbg-red-500\n,\ntext-sky-300\n, and many more\n--font-*\nFont family utilities like\nfont-sans\n--text-*\nFont size utilities like\ntext-xl\n--font-weight-*\nFont weight utilities like\nfont-bold\n--tracking-*\nLetter spacing utilities like\ntracking-wide\n--leading-*\nLine height utilities like\nleading-tight\n--breakpoint-*\nResponsive breakpoint variants like\nsm:*\n--container-*\nContainer query variants like\n@sm:*\nand size utilities like\nmax-w-md\n--spacing-*\nSpacing and sizing utilities like\npx-4\n,\nmax-h-1",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-mint-500:oklch(0.72 0.11 178);}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-mint-500\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divstyle=\"background-color:var(--color-mint-500)\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@theme{--font-sans:ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\";--font-serif:ui-serif,Georgia,Cambria,\"Times New Roman\",Times,serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;/* ... */}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--font-poppins:Poppins,sans-serif;}"
+        },
+        {
+          "language": "",
+          "code": "<h1class=\"font-poppins\">This headline will use Poppins.</h1>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-3xl:120rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"3xl:grid-cols-6grid grid-cols-2 md:grid-cols-4\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@layertheme,base,components,utilities;@import\"./theme.css\"layer(theme);@import\"./preflight.css\"layer(base);@import\"./utilities.css\"layer(utilities);"
+        },
+        {
+          "language": "",
+          "code": "@theme{--font-sans:ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\";--font-serif:ui-serif,Georgia,Cambria,\"Times New Roman\",Times,serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;--color-red-50:oklch(0.971 0.013 17.38);--color-red-100:oklch(0.936 0.032 17.717);--color-red-200:oklch(0.885 0.062 18.334);/* ... */--shadow-2xs:0 1pxrgb(0 0 0 / 0.05);--shadow-xs:0 1px2px0rgb(0 0 0 / 0.05);--shadow-sm:0 1px3px0rgb(0 0 0 / 0.1),0 1px2px-1pxrgb(0 0 0 / 0.1);/* ... */}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--font-script:Great Vibes,cursive;}"
+        },
+        {
+          "language": "",
+          "code": "<pclass=\"font-script\">This will use the Great Vibes font family.</p>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-sm:30rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"grid grid-cols-1sm:grid-cols-3\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-*:initial;--color-white:#fff;--color-purple:#3f3cbb;--color-midnight:#121063;--color-tahiti:#3ab7bf;--color-bermuda:#78dcca;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--*:initial;--spacing:4px;--font-body:Inter,sans-serif;--color-lagoon:oklch(0.72 0.11 221.19);--color-coral:oklch(0.74 0.17 40.24);--color-driftwood:oklch(0.79 0.06 74.59);--color-tide:oklch(0.49 0.08 205.88);--color-dusk:oklch(0.82 0.15 72.09);}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--animate-fade-in-scale:fade-in-scale 0.3sease-out;@keyframesfade-in-scale{0% {opacity:0;transform:scale(0.95);}100%{opacity:1;transform:scale(1);}}}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@themeinline{--font-sans:var(--font-inter);}"
+        },
+        {
+          "language": "",
+          "code": ".font-sans{font-family:var(--font-inter);}"
+        },
+        {
+          "language": "",
+          "code": "<divid=\"parent\"style=\"--font-sans: var(--font-inter, sans-serif);\"><divid=\"child\"style=\"--font-inter: Inter; font-family: var(--font-sans);\">This text will use the sans-serif font, not Inter.</div></div>"
+        }
+      ],
+      "subsections": [
+        "Overview",
+        "What are theme variables?",
+        "Relationship to utility classes",
+        "Theme variable namespaces",
+        "Default theme variables",
+        "Customizing your theme",
+        "Extending the default theme",
+        "Overriding the default theme",
+        "Using a custom theme",
+        "Defining animation keyframes",
+        "Referencing other variables",
+        "Generating all CSS variables",
+        "Sharing across projects",
+        "Using your theme variables",
+        "With custom CSS"
+      ],
+      "category": "theme"
+    },
+    {
+      "title": "Colors",
+      "url": "https://tailwindcss.com/docs/colors",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nColors\nCore concepts\nColors\nUsing and customizing the color palette in Tailwind CSS projects.\nTailwind CSS includes a vast, beautiful color palette out of the box, carefully crafted by expert designers and suitable for a wide range of different design styles.\n50\n100\n200\n300\n400\n500\n600\n700\n800\n900\n950\nred\norange\namber\nyellow\nlime\ngreen\nemerald\nteal\ncyan\nsky\nblue\nindigo\nviolet\npurple\nfuchsia\npink\nrose\nslate\ngray\nzinc\nneutral\nstone\nClick to copy the OKLCH value or shift+click to copy the nearest hex value.\nEvery color in the default palette includes 11 steps, with 50 being the lightest, and 950 being the darkest:\n50\n100\n200\n300\n400\n500\n600\n700\n800\n900\n950\n<\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-50\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-100\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-200\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-300\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-400\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-500\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-600\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-700\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-800\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-900\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-950\n\"\n></\ndiv\n>\n</\ndiv\n>\nThe entire color palette is available across all color related utilities, including things like\nbackground color\n,\nborder color\n,\nfill\n,\ncaret color\n, and many more.\nWorking with colors\nUsing color utilities\nUse color utilities like\nbg-white\n,\nborder-pink-300\n, and\ntext-gray-950\nto set the different color properties of elements in your design:\nTom Watson\nmentioned you in\nLogo redesign\n9:37am\n<\ndiv\nclass\n=\n\"flex items-center gap-4 rounded-lg\nbg-white\np-6 shadow-md outline\noutline-black/5\ndark:bg-gray-800\n\"\n>\n<\nspan\nclass\n=\n\"inline-flex shrink-0 rounded-full border\nborder-pink-300\nbg-pink-100\np-2\ndark:border-pink-300/10\ndark:bg-pink-400/10\n\"\n>\n<\nsvg\nclass\n=\n\"size-6\nstroke-pink-700\ndark:stroke-pink-500\n\"\n>\n<!-- ... -->\n</\nsvg\n>\n</\nspan\n>\n<\ndiv\n>\n<\np\nclass\n=\n\"\ntext-gray-700\ndark:text-gray-400\n\"\n>\n<\nspan\nclass\n=\n\"font-medium\ntext-gray-950\ndark:text-white\n\"\n>\nTom Watson\n</\nspan\n>\nmentioned you in\n<\nspan\nclass\n=\n\"font-medium\ntext-gray-950\ndark:text-white\n\"\n>\nLogo redesign\n</\nspan\n>\n</\np\n>\n<\ntime\nclass\n=\n\"mt-1 block\ntext-gray-500\n\"\ndatetime\n=\n\"9:37\"\n>\n9:37am\n</\ntime\n>\n</\ndiv\n>\n</\ndiv\n>\nHere's a full list of utilities that use your color palette:\nUtility\nDescription\nbg-*\nSets the\nbackground color\nof an element\ntext-*\nSets the\ntext color\nof an element\ndecoration-*\nSets the\ntext decoration color\nof an element\nborder-*\nSets the\nborder color\nof an element\noutline-*\nSets the\noutline color\nof an element\nshadow-*\nSets the color of\nbox shadows\ninset-shadow-*\nSets the color of\ninset box shadows\nring-*\nSets the color of\nring shadows\ninset-ring-*\nSets the color of\ninset ring shadows\naccent-*\nSets the\naccent color\nof form controls\ncaret-*\nSets the\ncaret color\nin form controls\nfill-*\nSets the\nfill color\nof SVG elements\nstroke-*\nSets the\nstroke color\nof SVG elements\nAdjusting opacity\nYou can adjust the opacity of a color using syntax like\nbg-black/75\n, where\n75\nsets the alpha channel of the color to 75%:\n<\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/10\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/20\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/30\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/40\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/50\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/60\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/70\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/80\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/90\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/100\"\n></\ndiv\n>\n</\ndiv\n>\nThis syntax also supports arbitrary values and the CSS variable shorthand:\nHTML\n<\ndiv\nclass\n=\n\"\nbg-pink-500/[71.37%]\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-cyan-400/(--my-alpha-value)\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nTargeting dark mode\nUse the\ndark\nvariant to write classes like\ndark:bg-gray-800\nthat only apply a color when dark mode is active:\nLight mode\nWrites upside-down\nThe Zero Gravity Pen can be used to write in any orientation,\n        including upside-down. It even works in outer space.\nDark mode\nWrites upside-down\nThe Zero Gravity Pen can be used to write in any orientation,\n        including upside-down. It even works in outer space.\n<\ndiv\nclass\n=\n\"bg-white\ndark:bg-gray-800\nrounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"\n>\n<\ndiv\n>\n<\nspan\nclass\n=\n\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"\n>\n<\nsvg\nclass\n=\n\"h-6 w-6 stroke-white\"\n...\n>\n<!-- ... -->\n</\nsvg\n>\n</\nspan\n>\n</\ndiv\n>\n<\nh3\nclass\n=\n\"text-gray-900\ndark:text-white\nmt-5 text-base font-medium tracking-tight \"\n>\nWrites upside-down\n</\nh3\n>\n<\np\nclass\n=\n\"text-gray-500\ndark:text-gray-400\nmt-2 text-sm \"\n>\nThe Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.\n</\np\n>\n</\ndiv\n>\nLearn more about styling for dark mode in the\ndark mode documentation\n.\nReferencing in CSS\nColors are exposed as CSS variables in the\n--color-*\nnamespace, so you can reference them in CSS with variables like\n--color-blue-500\nand\n--color-pink-700\n:\nCSS",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "<div><divclass=\"bg-sky-50\"></div><divclass=\"bg-sky-100\"></div><divclass=\"bg-sky-200\"></div><divclass=\"bg-sky-300\"></div><divclass=\"bg-sky-400\"></div><divclass=\"bg-sky-500\"></div><divclass=\"bg-sky-600\"></div><divclass=\"bg-sky-700\"></div><divclass=\"bg-sky-800\"></div><divclass=\"bg-sky-900\"></div><divclass=\"bg-sky-950\"></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"flex items-center gap-4 rounded-lgbg-whitep-6 shadow-md outlineoutline-black/5dark:bg-gray-800\"><spanclass=\"inline-flex shrink-0 rounded-full borderborder-pink-300bg-pink-100p-2dark:border-pink-300/10dark:bg-pink-400/10\"><svgclass=\"size-6stroke-pink-700dark:stroke-pink-500\"><!-- ... --></svg></span><div><pclass=\"text-gray-700dark:text-gray-400\"><spanclass=\"font-mediumtext-gray-950dark:text-white\">Tom Watson</span>mentioned you in<spanclass=\"font-mediumtext-gray-950dark:text-white\">Logo redesign</span></p><timeclass=\"mt-1 blocktext-gray-500\"datetime=\"9:37\">9:37am</time></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<div><divclass=\"bg-sky-500/10\"></div><divclass=\"bg-sky-500/20\"></div><divclass=\"bg-sky-500/30\"></div><divclass=\"bg-sky-500/40\"></div><divclass=\"bg-sky-500/50\"></div><divclass=\"bg-sky-500/60\"></div><divclass=\"bg-sky-500/70\"></div><divclass=\"bg-sky-500/80\"></div><divclass=\"bg-sky-500/90\"></div><divclass=\"bg-sky-500/100\"></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-pink-500/[71.37%]\"><!-- ... --></div><divclass=\"bg-cyan-400/(--my-alpha-value)\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-whitedark:bg-gray-800rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"><div><spanclass=\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"><svgclass=\"h-6 w-6 stroke-white\"...><!-- ... --></svg></span></div><h3class=\"text-gray-900dark:text-whitemt-5 text-base font-medium tracking-tight \">Writes upside-down</h3><pclass=\"text-gray-500dark:text-gray-400mt-2 text-sm \">The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.</p></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@layercomponents{.typography{color:var(--color-gray-950);a{color:var(--color-blue-500);&:hover {color:var(--color-blue-800);}}}}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-[light-dark(var(--color-white),var(--color-gray-950))]\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@layercomponents{.DocSearch-Hit--Result{background-color:--alpha(var(--color-gray-950)/ 10%);}}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-midnight:#121063;--color-tahiti:#3ab7bf;--color-bermuda:#78dcca;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-gray-50:oklch(0.984 0.003 247.858);--color-gray-100:oklch(0.968 0.007 247.896);--color-gray-200:oklch(0.929 0.013 255.508);--color-gray-300:oklch(0.869 0.022 252.894);--color-gray-400:oklch(0.704 0.04 256.788);--color-gray-500:oklch(0.554 0.046 257.417);--color-gray-600:oklch(0.446 0.043 257.281);--color-gray-700:oklch(0.372 0.044 257.287);--color-gray-800:oklch(0.279 0.041 260.031);--color-gray-900:oklch(0.208 0.042 265.755);--color-gray-950:oklch(0.129 0.042 264.695);}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-lime-*:initial;--color-fuchsia-*:initial;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-*:initial;--color-white:#fff;--color-purple:#3f3cbb;--color-midnight:#121063;--color-tahiti:#3ab7bf;--color-bermuda:#78dcca;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";:root{--acme-canvas-color:oklch(0.967 0.003 264.542);}[data-theme=\"dark\"]{--acme-canvas-color:oklch(0.21 0.034 264.665);}@themeinline{--color-canvas:var(--acme-canvas-color);}"
+        },
+        {
+          "language": "",
+          "code": "@theme{--color-red-50:oklch(0.971 0.013 17.38);--color-red-100:oklch(0.936 0.032 17.717);--color-red-200:oklch(0.885 0.062 18.334);--color-red-300:oklch(0.808 0.114 19.571);--color-red-400:oklch(0.704 0.191 22.216);--color-red-500:oklch(0.637 0.237 25.331);--color-red-600:oklch(0.577 0.245 27.325);--color-red-700:oklch(0.505 0.213 27.518);--color-red-800:oklch(0.444 0.177 26.899);--color-red-900:oklch(0.396 0.141 25.723);--color-red-950:oklch(0.258 0.092 26.042);--color-orange-50:oklch(0.98 0.016 73.684);--color-orange-100:oklch(0.954 0.038 75.164);--color-orange-200:oklch(0.901 0.076 70.697);--color-orange-300:oklch(0.837 0.128 66.29);--color-orange-400:oklch(0.75 0.183 55.934);--color-orange-500:oklch(0.705 0.213 47.604);--color-orange-600:oklch(0.646 0.222 41.116);--color-orange-700:oklch(0.553 0.195 38.402);--color-orange-800:oklch(0.47 0.157 37.304);--color-orange-900:oklch(0.408 0.123 38.172);--color-orange-950:oklch(0.266 0.079 36.259);--color-amber-50:oklch(0.987 0.022 95.277);--color-amber-100:oklch(0.962 0.059 95.617);--color-amber-200:oklch(0.924 0.12 95.746);--color-amber-300:oklch(0.879 0.169 91.605);--color-amber-400:oklch(0.828 0.189 84.429);--color-amber-500:oklch(0.769 0.188 70.08);--color-amber-600:oklch(0.666 0.179 58.318);--color-amber-700:oklch(0.555 0.163 48.998);--color-amber-800:oklch(0.473 0.137 46.201);--color-amber-900:oklch(0.414 0.112 45.904);--color-amber-950:oklch(0.279 0.077 45.635);--color-yellow-50:oklch(0.987 0.026 102.212);--color-yellow-100:oklch(0.973 0.071 103.193);--color-yellow-200:oklch(0.945 0.129 101.54);--color-yellow-300:oklch(0.905 0.182 98.111);--color-yellow-400:oklch(0.852 0.199 91.936);--color-yellow-500:oklch(0.795 0.184 86.047);--color-yellow-600:oklch(0.681 0.162 75.834);--color-yellow-700:oklch(0.554 0.135 66.442);--color-yellow-800:oklch(0.476 0.114 61.907);--color-yellow-900:oklch(0.421 0.095 57.708);--color-yellow-950:oklch(0.286 0.066 53.813);--color-lime-50:oklch(0.986 0.031 120.757);--color-lime-100:oklch(0.967 0.067 122.328);--color-lime-200:oklch(0.938 0.127 124.321);--color-lime-300:oklch(0.897 0.196 126.665);--color-lime-400:oklch(0.841 0.238 128.85);--color-lime-500:oklch(0.768 0.233 130.85);--color-lime-600:oklch(0.648 0.2 131.684);--color-lime-700:oklch(0.532 0.157 131.589);--color-lime-800:oklch(0.453 0.124 130.933);--color-lime-900:oklch(0.405 0.101 131.063);--color-lime-950:oklch(0.274 0.072 132.109);--color-green-50:oklch(0.982 0.018 155.826);--color-green-100:oklch(0.962 0.044 156.743);--color-green-200:oklch(0.925 0.084 155.995);--color-green-300:oklch(0.871 0.15 154.449);--color-green-400:oklch(0.792 0.209 151.711);--color-green-500:oklch(0.723 0.219 149.579);--color-green-600:oklch(0.627 0.194 149.214);--color-green-700:oklch(0.527 0.154 150.069);--color-green-800:oklch(0.448 0.119 151.328);--color-green-900:oklch(0.393 0.095 152.535);--color-green-950:oklch(0.266 0.065 152.934);--color-emerald-50:oklch(0.979 0.021 166.113);--color-emerald-100:oklch(0.95 0.052 163.051);--color-emerald-200:oklch(0.905 0.093 164.15);--color-emerald-300:oklch(0.845 0.143 164.978);--color-emerald-400:oklch(0.765 0.177 163.223);--color-emerald-500:oklch(0.696 0.17 162.48);--color-emerald-600:oklch(0.596 0.145 163.225);--color-emerald-700:oklch(0.508 0.118 165.612);--color-emerald-800:oklch(0.432 0.095 166.913);--color-emerald-900:oklch(0.378 0.077 168.94);--color-emerald-950:oklch(0.262 0.051 172.552);--color-teal-50:oklch(0.984 0.014 180.72);--color-teal-100:oklch(0.953 0.051 180.801);--color-teal-200:oklch(0.91 0.096 180.426);--color-teal-300:oklch(0.855 0.138 181.071);--color-teal-400:oklch(0.777 0.152 181.912);--color-teal-500:oklch(0.704 0.14 182.503);--color-teal-600:oklch(0.6 0.118 184.704);--color-teal-700:oklch(0.511 0.096 186.391);--color-teal-800:oklch(0.437 0.078 188.216);--color-teal-900:oklch(0.386 0.063 188.416);--color-teal-950:oklch(0.277 0.046 192.524);--color-cyan-50:oklch(0.984 0.019 200.873);--color-cyan-100:oklch(0.956 0.045 203.388);--color-cyan-200:oklch(0.917 0.08 205.041);--color-cyan-300:oklch(0.865 0.127 207.078);--color-cyan-400:oklch(0.789 0.154 211.53);--color-cyan-500:oklch(0.715 0.143 215.221);--color-cyan-600:oklch(0.609 0.126 221.723);--color-cyan-700:oklch(0.52 0.105 223.128);--color-cyan-800:oklch(0.45 0.085 224.283);--color-cyan-900:oklch(0.398 0.07 227.392);--color-cyan-950:oklch(0.302 0.056 229.695);--color-sky-50:oklch(0.977 0.013 236.62);--color-sky-100:oklch(0.951 0.026 236.824);--color-sky-200:oklch(0.901 0.058 230.902);--color-sky-300:oklch(0.828 0.111 230.318);--color-sky-400:oklch(0.746 0.16 232.661);--color-sky-500:oklch(0.685 0.169 237.323);--color-sky-600:oklch(0.588 0.158 241.966);--color-sky-700:oklch(0.5 0.134 242.749);--color-sky-800:oklch(0.443 0.11 240.79);--color-sky-900:oklch(0.391 0.09 240.876);--color-sky-950:oklch(0.293 0.066 243.157);--color-blue-50:oklch(0.97 0.014 254.604);--color-blue-100:oklch(0.932 0.032 255.585);--color-blue-200:oklch(0.882 0.059 254.128);--color-blue-300:oklch(0.809 0.105 251.813);--color-blue-400:oklch(0.707 0.165 254.624);--color-blue-500:oklch(0.623 0.214 259.815);--color-blue-600:oklch(0.546 0.245 262.881);--color-blue-700:oklch(0.488 0.243 264.376);--color-blue-800:oklch(0.424 0.199 265.638);--color-blue-900:oklch(0.379 0.146 265.522);--color-blue-950:oklch(0.282 0.091 267.935);--color-indigo-50:oklch(0.962 0.018 272.314);--color-indigo-100:oklch(0.93 0.034 272.788);--color-indigo-200:oklch(0.87 0.065 274.039);--color-indigo-300:oklch(0.785 0.115 274.713);--color-indigo-400:oklch(0.673 0.182 276.935);--color-indigo-500:oklch(0.585 0.233 277.117);--color-indigo-600:oklch(0.511 0.262 276.966);--color-indigo-700:oklch(0.457 0.24 277.023);--color-indigo-800:oklch(0.398 0.195 277.366);--color-indigo-900:oklch(0.359 0.144 278.697);--color-indigo-950:oklch(0.257 0.09 281.288);--color-violet-50:oklch(0.969 0.016 293.756);--color-violet-100:oklch(0.943 0.029 294.588);--color-violet-200:oklch(0.894 0.057 293.283);--color-violet-300:oklch(0.811 0.111 293.571);--color-violet-400:oklch(0.702 0.183 293.541);--color-violet-500:oklch(0.606 0.25 292.717);--color-violet-600:oklch(0.541 0.281 293.009);--color-violet-700:oklch(0.491 0.27 292.581);--color-violet-800:oklch(0.432 0.232 292.759);--color-violet-900:oklch(0.38 0.189 293.745);--color-violet-950:oklch(0.283 0.141 291.089);--color-purple-50:oklch(0.977 0.014 308.299);--color-purple-100:oklch(0.946 0.033 307.174);--color-purple-200:oklch(0.902 0.063 306.703);--color-purple-300:oklch(0.827 0.119 306.383);--color-purple-400:oklch(0.714 0.203 305.504);--color-purple-500:oklch(0.627 0.265 303.9);--color-purple-600:oklch(0.558 0.288 302.321);--color-purple-700:oklch(0.496 0.265 301.924);--color-purple-800:oklch(0.438 0.218 303.724);--color-purple-900:oklch(0.381 0.176 304.987);--color-purple-950:oklch(0.291 0.149 302.717);--color-fuchsia-50:oklch(0.977 0.017 320.058);--color-fuchsia-100:oklch(0.952 0.037 318.852);--color-fuchsia-200:oklch(0.903 0.076 319.62);--color-fuchsia-300:oklch(0.833 0.145 321.434);--color-fuchsia-400:oklch(0.74 0.238 322.16);--color-fuchsia-500:oklch(0.667 0.295 322.15);--color-fuchsia-600:oklch(0.591 0.293 322.896);--color-fuchsia-700:oklch(0.518 0.253 323.949);--color-fuchsia-800:oklch(0.452 0.211 324.591);--color-fuchsia-900:oklch(0.401 0.17 325.612);--color-fuchsia-950:oklch(0.293 0.136 325.661);--color-pink-50:oklch(0.971 0.014 343.198);--color-pink-100:oklch(0.948 0.028 342.258);--color-pink-200:oklch(0.899 0.061 343.231);--color-pink-300:oklch(0.823 0.12 346.018);--color-pink-400:oklch(0.718 0.202 349.761);--color-pink-500:oklch(0.656 0.241 354.308);--color-pink-600:oklch(0.592 0.249 0.584);--color-pink-700:oklch(0.525 0.223 3.958);--color-pink-800:oklch(0.459 0.187 3.815);--color-pink-900:oklch(0.408 0.153 2.432);--color-pink-950:oklch(0.284 0.109 3.907);--color-rose-50:oklch(0.969 0.015 12.422);--color-rose-100:oklch(0.941 0.03 12.58);--color-rose-200:oklch(0.892 0.058 10.001);--color-rose-300:oklch(0.81 0.117 11.638);--color-rose-400:oklch(0.712 0.194 13.428);--color-rose-500:oklch(0.645 0.246 16.439);--color-rose-600:oklch(0.586 0.253 17.585);--color-rose-700:oklch(0.514 0.222 16.935);--color-rose-800:oklch(0.455 0.188 13.697);--color-rose-900:oklch(0.41 0.159 10.272);--color-rose-950:oklch(0.271 0.105 12.094);--color-slate-50:oklch(0.984 0.003 247.858);--color-slate-100:oklch(0.968 0.007 247.896);--color-slate-200:oklch(0.929 0.013 255.508);--color-slate-300:oklch(0.869 0.022 252.894);--color-slate-400:oklch(0.704 0.04 256.788);--color-slate-500:oklch(0.554 0.046 257.417);--color-slate-600:oklch(0.446 0.043 257.281);--color-slate-700:oklch(0.372 0.044 257.287);--color-slate-800:oklch(0.279 0.041 260.031);--color-slate-900:oklch(0.208 0.042 265.755);--color-slate-950:oklch(0.129 0.042 264.695);--color-gray-50:oklch(0.985 0.002 247.839);--color-gray-100:oklch(0.967 0.003 264.542);--color-gray-200:oklch(0.928 0.006 264.531);--color-gray-300:oklch(0.872 0.01 258.338);--color-gray-400:oklch(0.707 0.022 261.325);--color-gray-500:oklch(0.551 0.027 264.364);--color-gray-600:oklch(0.446 0.03 256.802);--color-gray-700:oklch(0.373 0.034 259.733);--color-gray-800:oklch(0.278 0.033 256.848);--color-gray-900:oklch(0.21 0.034 264.665);--color-gray-950:oklch(0.13 0.028 261.692);--color-zinc-50:oklch(0.985 0 0);--color-zinc-100:oklch(0.967 0.001 286.375);--color-zinc-200:oklch(0.92 0.004 286.32);--color-zinc-300:oklch(0.871 0.006 286.286);--color-zinc-400:oklch(0.705 0.015 286.067);--color-zinc-500:oklch(0.552 0.016 285.938);--color-zinc-600:oklch(0.442 0.017 285.786);--color-zinc-700:oklch(0.37 0.013 285.805);--color-zinc-800:oklch(0.274 0.006 286.033);--color-zinc-900:oklch(0.21 0.006 285.885);--color-zinc-950:oklch(0.141 0.005 285.823);--color-neutral-50:oklch(0.985 0 0);--color-neutral-100:oklch(0.97 0 0);--color-neutral-200:oklch(0.922 0 0);--color-neutral-300:oklch(0.87 0 0);--color-neutral-400:oklch(0.708 0 0);--color-neutral-500:oklch(0.556 0 0);--color-neutral-600:oklch(0.439 0 0);--color-neutral-700:oklch(0.371 0 0);--color-neutral-800:oklch(0.269 0 0);--color-neutral-900:oklch(0.205 0 0);--color-neutral-950:oklch(0.145 0 0);--color-stone-50:oklch(0.985 0.001 106.423);--color-stone-100:oklch(0.97 0.001 106.424);--color-stone-200:oklch(0.923 0.003 48.717);--color-stone-300:oklch(0.869 0.005 56.366);--color-stone-400:oklch(0.709 0.01 56.259);--color-stone-500:oklch(0.553 0.013 58.071);--color-stone-600:oklch(0.444 0.011 73.639);--color-stone-700:oklch(0.374 0.01 67.558);--color-stone-800:oklch(0.268 0.007 34.298);--color-stone-900:oklch(0.216 0.006 56.043);--color-stone-950:oklch(0.147 0.004 49.25);--color-black:#000;--color-white:#fff;}"
+        }
+      ],
+      "subsections": [
+        "Working with colors",
+        "Using color utilities",
+        "Adjusting opacity",
+        "Targeting dark mode",
+        "Referencing in CSS",
+        "Customizing your colors",
+        "Overriding default colors",
+        "Disabling default colors",
+        "Using a custom palette",
+        "Referencing other variables",
+        "Default color palette reference",
+        "On this page"
+      ],
+      "category": "colors"
+    },
+    {
+      "title": "Colors",
+      "url": "https://tailwindcss.com/docs/customizing-colors",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nColors\nCore concepts\nColors\nUsing and customizing the color palette in Tailwind CSS projects.\nTailwind CSS includes a vast, beautiful color palette out of the box, carefully crafted by expert designers and suitable for a wide range of different design styles.\n50\n100\n200\n300\n400\n500\n600\n700\n800\n900\n950\nred\norange\namber\nyellow\nlime\ngreen\nemerald\nteal\ncyan\nsky\nblue\nindigo\nviolet\npurple\nfuchsia\npink\nrose\nslate\ngray\nzinc\nneutral\nstone\nClick to copy the OKLCH value or shift+click to copy the nearest hex value.\nEvery color in the default palette includes 11 steps, with 50 being the lightest, and 950 being the darkest:\n50\n100\n200\n300\n400\n500\n600\n700\n800\n900\n950\n<\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-50\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-100\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-200\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-300\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-400\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-500\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-600\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-700\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-800\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-900\n\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-sky-950\n\"\n></\ndiv\n>\n</\ndiv\n>\nThe entire color palette is available across all color related utilities, including things like\nbackground color\n,\nborder color\n,\nfill\n,\ncaret color\n, and many more.\nWorking with colors\nUsing color utilities\nUse color utilities like\nbg-white\n,\nborder-pink-300\n, and\ntext-gray-950\nto set the different color properties of elements in your design:\nTom Watson\nmentioned you in\nLogo redesign\n9:37am\n<\ndiv\nclass\n=\n\"flex items-center gap-4 rounded-lg\nbg-white\np-6 shadow-md outline\noutline-black/5\ndark:bg-gray-800\n\"\n>\n<\nspan\nclass\n=\n\"inline-flex shrink-0 rounded-full border\nborder-pink-300\nbg-pink-100\np-2\ndark:border-pink-300/10\ndark:bg-pink-400/10\n\"\n>\n<\nsvg\nclass\n=\n\"size-6\nstroke-pink-700\ndark:stroke-pink-500\n\"\n>\n<!-- ... -->\n</\nsvg\n>\n</\nspan\n>\n<\ndiv\n>\n<\np\nclass\n=\n\"\ntext-gray-700\ndark:text-gray-400\n\"\n>\n<\nspan\nclass\n=\n\"font-medium\ntext-gray-950\ndark:text-white\n\"\n>\nTom Watson\n</\nspan\n>\nmentioned you in\n<\nspan\nclass\n=\n\"font-medium\ntext-gray-950\ndark:text-white\n\"\n>\nLogo redesign\n</\nspan\n>\n</\np\n>\n<\ntime\nclass\n=\n\"mt-1 block\ntext-gray-500\n\"\ndatetime\n=\n\"9:37\"\n>\n9:37am\n</\ntime\n>\n</\ndiv\n>\n</\ndiv\n>\nHere's a full list of utilities that use your color palette:\nUtility\nDescription\nbg-*\nSets the\nbackground color\nof an element\ntext-*\nSets the\ntext color\nof an element\ndecoration-*\nSets the\ntext decoration color\nof an element\nborder-*\nSets the\nborder color\nof an element\noutline-*\nSets the\noutline color\nof an element\nshadow-*\nSets the color of\nbox shadows\ninset-shadow-*\nSets the color of\ninset box shadows\nring-*\nSets the color of\nring shadows\ninset-ring-*\nSets the color of\ninset ring shadows\naccent-*\nSets the\naccent color\nof form controls\ncaret-*\nSets the\ncaret color\nin form controls\nfill-*\nSets the\nfill color\nof SVG elements\nstroke-*\nSets the\nstroke color\nof SVG elements\nAdjusting opacity\nYou can adjust the opacity of a color using syntax like\nbg-black/75\n, where\n75\nsets the alpha channel of the color to 75%:\n<\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/10\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/20\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/30\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/40\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/50\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/60\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/70\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/80\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/90\"\n></\ndiv\n>\n<\ndiv\nclass\n=\n\"bg-sky-500/100\"\n></\ndiv\n>\n</\ndiv\n>\nThis syntax also supports arbitrary values and the CSS variable shorthand:\nHTML\n<\ndiv\nclass\n=\n\"\nbg-pink-500/[71.37%]\n\"\n>\n<!-- ... -->\n</\ndiv\n>\n<\ndiv\nclass\n=\n\"\nbg-cyan-400/(--my-alpha-value)\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nTargeting dark mode\nUse the\ndark\nvariant to write classes like\ndark:bg-gray-800\nthat only apply a color when dark mode is active:\nLight mode\nWrites upside-down\nThe Zero Gravity Pen can be used to write in any orientation,\n        including upside-down. It even works in outer space.\nDark mode\nWrites upside-down\nThe Zero Gravity Pen can be used to write in any orientation,\n        including upside-down. It even works in outer space.\n<\ndiv\nclass\n=\n\"bg-white\ndark:bg-gray-800\nrounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"\n>\n<\ndiv\n>\n<\nspan\nclass\n=\n\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"\n>\n<\nsvg\nclass\n=\n\"h-6 w-6 stroke-white\"\n...\n>\n<!-- ... -->\n</\nsvg\n>\n</\nspan\n>\n</\ndiv\n>\n<\nh3\nclass\n=\n\"text-gray-900\ndark:text-white\nmt-5 text-base font-medium tracking-tight \"\n>\nWrites upside-down\n</\nh3\n>\n<\np\nclass\n=\n\"text-gray-500\ndark:text-gray-400\nmt-2 text-sm \"\n>\nThe Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.\n</\np\n>\n</\ndiv\n>\nLearn more about styling for dark mode in the\ndark mode documentation\n.\nReferencing in CSS\nColors are exposed as CSS variables in the\n--color-*\nnamespace, so you can reference them in CSS with variables like\n--color-blue-500\nand\n--color-pink-700\n:\nCSS",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "<div><divclass=\"bg-sky-50\"></div><divclass=\"bg-sky-100\"></div><divclass=\"bg-sky-200\"></div><divclass=\"bg-sky-300\"></div><divclass=\"bg-sky-400\"></div><divclass=\"bg-sky-500\"></div><divclass=\"bg-sky-600\"></div><divclass=\"bg-sky-700\"></div><divclass=\"bg-sky-800\"></div><divclass=\"bg-sky-900\"></div><divclass=\"bg-sky-950\"></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"flex items-center gap-4 rounded-lgbg-whitep-6 shadow-md outlineoutline-black/5dark:bg-gray-800\"><spanclass=\"inline-flex shrink-0 rounded-full borderborder-pink-300bg-pink-100p-2dark:border-pink-300/10dark:bg-pink-400/10\"><svgclass=\"size-6stroke-pink-700dark:stroke-pink-500\"><!-- ... --></svg></span><div><pclass=\"text-gray-700dark:text-gray-400\"><spanclass=\"font-mediumtext-gray-950dark:text-white\">Tom Watson</span>mentioned you in<spanclass=\"font-mediumtext-gray-950dark:text-white\">Logo redesign</span></p><timeclass=\"mt-1 blocktext-gray-500\"datetime=\"9:37\">9:37am</time></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<div><divclass=\"bg-sky-500/10\"></div><divclass=\"bg-sky-500/20\"></div><divclass=\"bg-sky-500/30\"></div><divclass=\"bg-sky-500/40\"></div><divclass=\"bg-sky-500/50\"></div><divclass=\"bg-sky-500/60\"></div><divclass=\"bg-sky-500/70\"></div><divclass=\"bg-sky-500/80\"></div><divclass=\"bg-sky-500/90\"></div><divclass=\"bg-sky-500/100\"></div></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-pink-500/[71.37%]\"><!-- ... --></div><divclass=\"bg-cyan-400/(--my-alpha-value)\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-whitedark:bg-gray-800rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5\"><div><spanclass=\"inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg\"><svgclass=\"h-6 w-6 stroke-white\"...><!-- ... --></svg></span></div><h3class=\"text-gray-900dark:text-whitemt-5 text-base font-medium tracking-tight \">Writes upside-down</h3><pclass=\"text-gray-500dark:text-gray-400mt-2 text-sm \">The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.</p></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@layercomponents{.typography{color:var(--color-gray-950);a{color:var(--color-blue-500);&:hover {color:var(--color-blue-800);}}}}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-[light-dark(var(--color-white),var(--color-gray-950))]\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@layercomponents{.DocSearch-Hit--Result{background-color:--alpha(var(--color-gray-950)/ 10%);}}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-midnight:#121063;--color-tahiti:#3ab7bf;--color-bermuda:#78dcca;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-gray-50:oklch(0.984 0.003 247.858);--color-gray-100:oklch(0.968 0.007 247.896);--color-gray-200:oklch(0.929 0.013 255.508);--color-gray-300:oklch(0.869 0.022 252.894);--color-gray-400:oklch(0.704 0.04 256.788);--color-gray-500:oklch(0.554 0.046 257.417);--color-gray-600:oklch(0.446 0.043 257.281);--color-gray-700:oklch(0.372 0.044 257.287);--color-gray-800:oklch(0.279 0.041 260.031);--color-gray-900:oklch(0.208 0.042 265.755);--color-gray-950:oklch(0.129 0.042 264.695);}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-lime-*:initial;--color-fuchsia-*:initial;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-*:initial;--color-white:#fff;--color-purple:#3f3cbb;--color-midnight:#121063;--color-tahiti:#3ab7bf;--color-bermuda:#78dcca;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";:root{--acme-canvas-color:oklch(0.967 0.003 264.542);}[data-theme=\"dark\"]{--acme-canvas-color:oklch(0.21 0.034 264.665);}@themeinline{--color-canvas:var(--acme-canvas-color);}"
+        },
+        {
+          "language": "",
+          "code": "@theme{--color-red-50:oklch(0.971 0.013 17.38);--color-red-100:oklch(0.936 0.032 17.717);--color-red-200:oklch(0.885 0.062 18.334);--color-red-300:oklch(0.808 0.114 19.571);--color-red-400:oklch(0.704 0.191 22.216);--color-red-500:oklch(0.637 0.237 25.331);--color-red-600:oklch(0.577 0.245 27.325);--color-red-700:oklch(0.505 0.213 27.518);--color-red-800:oklch(0.444 0.177 26.899);--color-red-900:oklch(0.396 0.141 25.723);--color-red-950:oklch(0.258 0.092 26.042);--color-orange-50:oklch(0.98 0.016 73.684);--color-orange-100:oklch(0.954 0.038 75.164);--color-orange-200:oklch(0.901 0.076 70.697);--color-orange-300:oklch(0.837 0.128 66.29);--color-orange-400:oklch(0.75 0.183 55.934);--color-orange-500:oklch(0.705 0.213 47.604);--color-orange-600:oklch(0.646 0.222 41.116);--color-orange-700:oklch(0.553 0.195 38.402);--color-orange-800:oklch(0.47 0.157 37.304);--color-orange-900:oklch(0.408 0.123 38.172);--color-orange-950:oklch(0.266 0.079 36.259);--color-amber-50:oklch(0.987 0.022 95.277);--color-amber-100:oklch(0.962 0.059 95.617);--color-amber-200:oklch(0.924 0.12 95.746);--color-amber-300:oklch(0.879 0.169 91.605);--color-amber-400:oklch(0.828 0.189 84.429);--color-amber-500:oklch(0.769 0.188 70.08);--color-amber-600:oklch(0.666 0.179 58.318);--color-amber-700:oklch(0.555 0.163 48.998);--color-amber-800:oklch(0.473 0.137 46.201);--color-amber-900:oklch(0.414 0.112 45.904);--color-amber-950:oklch(0.279 0.077 45.635);--color-yellow-50:oklch(0.987 0.026 102.212);--color-yellow-100:oklch(0.973 0.071 103.193);--color-yellow-200:oklch(0.945 0.129 101.54);--color-yellow-300:oklch(0.905 0.182 98.111);--color-yellow-400:oklch(0.852 0.199 91.936);--color-yellow-500:oklch(0.795 0.184 86.047);--color-yellow-600:oklch(0.681 0.162 75.834);--color-yellow-700:oklch(0.554 0.135 66.442);--color-yellow-800:oklch(0.476 0.114 61.907);--color-yellow-900:oklch(0.421 0.095 57.708);--color-yellow-950:oklch(0.286 0.066 53.813);--color-lime-50:oklch(0.986 0.031 120.757);--color-lime-100:oklch(0.967 0.067 122.328);--color-lime-200:oklch(0.938 0.127 124.321);--color-lime-300:oklch(0.897 0.196 126.665);--color-lime-400:oklch(0.841 0.238 128.85);--color-lime-500:oklch(0.768 0.233 130.85);--color-lime-600:oklch(0.648 0.2 131.684);--color-lime-700:oklch(0.532 0.157 131.589);--color-lime-800:oklch(0.453 0.124 130.933);--color-lime-900:oklch(0.405 0.101 131.063);--color-lime-950:oklch(0.274 0.072 132.109);--color-green-50:oklch(0.982 0.018 155.826);--color-green-100:oklch(0.962 0.044 156.743);--color-green-200:oklch(0.925 0.084 155.995);--color-green-300:oklch(0.871 0.15 154.449);--color-green-400:oklch(0.792 0.209 151.711);--color-green-500:oklch(0.723 0.219 149.579);--color-green-600:oklch(0.627 0.194 149.214);--color-green-700:oklch(0.527 0.154 150.069);--color-green-800:oklch(0.448 0.119 151.328);--color-green-900:oklch(0.393 0.095 152.535);--color-green-950:oklch(0.266 0.065 152.934);--color-emerald-50:oklch(0.979 0.021 166.113);--color-emerald-100:oklch(0.95 0.052 163.051);--color-emerald-200:oklch(0.905 0.093 164.15);--color-emerald-300:oklch(0.845 0.143 164.978);--color-emerald-400:oklch(0.765 0.177 163.223);--color-emerald-500:oklch(0.696 0.17 162.48);--color-emerald-600:oklch(0.596 0.145 163.225);--color-emerald-700:oklch(0.508 0.118 165.612);--color-emerald-800:oklch(0.432 0.095 166.913);--color-emerald-900:oklch(0.378 0.077 168.94);--color-emerald-950:oklch(0.262 0.051 172.552);--color-teal-50:oklch(0.984 0.014 180.72);--color-teal-100:oklch(0.953 0.051 180.801);--color-teal-200:oklch(0.91 0.096 180.426);--color-teal-300:oklch(0.855 0.138 181.071);--color-teal-400:oklch(0.777 0.152 181.912);--color-teal-500:oklch(0.704 0.14 182.503);--color-teal-600:oklch(0.6 0.118 184.704);--color-teal-700:oklch(0.511 0.096 186.391);--color-teal-800:oklch(0.437 0.078 188.216);--color-teal-900:oklch(0.386 0.063 188.416);--color-teal-950:oklch(0.277 0.046 192.524);--color-cyan-50:oklch(0.984 0.019 200.873);--color-cyan-100:oklch(0.956 0.045 203.388);--color-cyan-200:oklch(0.917 0.08 205.041);--color-cyan-300:oklch(0.865 0.127 207.078);--color-cyan-400:oklch(0.789 0.154 211.53);--color-cyan-500:oklch(0.715 0.143 215.221);--color-cyan-600:oklch(0.609 0.126 221.723);--color-cyan-700:oklch(0.52 0.105 223.128);--color-cyan-800:oklch(0.45 0.085 224.283);--color-cyan-900:oklch(0.398 0.07 227.392);--color-cyan-950:oklch(0.302 0.056 229.695);--color-sky-50:oklch(0.977 0.013 236.62);--color-sky-100:oklch(0.951 0.026 236.824);--color-sky-200:oklch(0.901 0.058 230.902);--color-sky-300:oklch(0.828 0.111 230.318);--color-sky-400:oklch(0.746 0.16 232.661);--color-sky-500:oklch(0.685 0.169 237.323);--color-sky-600:oklch(0.588 0.158 241.966);--color-sky-700:oklch(0.5 0.134 242.749);--color-sky-800:oklch(0.443 0.11 240.79);--color-sky-900:oklch(0.391 0.09 240.876);--color-sky-950:oklch(0.293 0.066 243.157);--color-blue-50:oklch(0.97 0.014 254.604);--color-blue-100:oklch(0.932 0.032 255.585);--color-blue-200:oklch(0.882 0.059 254.128);--color-blue-300:oklch(0.809 0.105 251.813);--color-blue-400:oklch(0.707 0.165 254.624);--color-blue-500:oklch(0.623 0.214 259.815);--color-blue-600:oklch(0.546 0.245 262.881);--color-blue-700:oklch(0.488 0.243 264.376);--color-blue-800:oklch(0.424 0.199 265.638);--color-blue-900:oklch(0.379 0.146 265.522);--color-blue-950:oklch(0.282 0.091 267.935);--color-indigo-50:oklch(0.962 0.018 272.314);--color-indigo-100:oklch(0.93 0.034 272.788);--color-indigo-200:oklch(0.87 0.065 274.039);--color-indigo-300:oklch(0.785 0.115 274.713);--color-indigo-400:oklch(0.673 0.182 276.935);--color-indigo-500:oklch(0.585 0.233 277.117);--color-indigo-600:oklch(0.511 0.262 276.966);--color-indigo-700:oklch(0.457 0.24 277.023);--color-indigo-800:oklch(0.398 0.195 277.366);--color-indigo-900:oklch(0.359 0.144 278.697);--color-indigo-950:oklch(0.257 0.09 281.288);--color-violet-50:oklch(0.969 0.016 293.756);--color-violet-100:oklch(0.943 0.029 294.588);--color-violet-200:oklch(0.894 0.057 293.283);--color-violet-300:oklch(0.811 0.111 293.571);--color-violet-400:oklch(0.702 0.183 293.541);--color-violet-500:oklch(0.606 0.25 292.717);--color-violet-600:oklch(0.541 0.281 293.009);--color-violet-700:oklch(0.491 0.27 292.581);--color-violet-800:oklch(0.432 0.232 292.759);--color-violet-900:oklch(0.38 0.189 293.745);--color-violet-950:oklch(0.283 0.141 291.089);--color-purple-50:oklch(0.977 0.014 308.299);--color-purple-100:oklch(0.946 0.033 307.174);--color-purple-200:oklch(0.902 0.063 306.703);--color-purple-300:oklch(0.827 0.119 306.383);--color-purple-400:oklch(0.714 0.203 305.504);--color-purple-500:oklch(0.627 0.265 303.9);--color-purple-600:oklch(0.558 0.288 302.321);--color-purple-700:oklch(0.496 0.265 301.924);--color-purple-800:oklch(0.438 0.218 303.724);--color-purple-900:oklch(0.381 0.176 304.987);--color-purple-950:oklch(0.291 0.149 302.717);--color-fuchsia-50:oklch(0.977 0.017 320.058);--color-fuchsia-100:oklch(0.952 0.037 318.852);--color-fuchsia-200:oklch(0.903 0.076 319.62);--color-fuchsia-300:oklch(0.833 0.145 321.434);--color-fuchsia-400:oklch(0.74 0.238 322.16);--color-fuchsia-500:oklch(0.667 0.295 322.15);--color-fuchsia-600:oklch(0.591 0.293 322.896);--color-fuchsia-700:oklch(0.518 0.253 323.949);--color-fuchsia-800:oklch(0.452 0.211 324.591);--color-fuchsia-900:oklch(0.401 0.17 325.612);--color-fuchsia-950:oklch(0.293 0.136 325.661);--color-pink-50:oklch(0.971 0.014 343.198);--color-pink-100:oklch(0.948 0.028 342.258);--color-pink-200:oklch(0.899 0.061 343.231);--color-pink-300:oklch(0.823 0.12 346.018);--color-pink-400:oklch(0.718 0.202 349.761);--color-pink-500:oklch(0.656 0.241 354.308);--color-pink-600:oklch(0.592 0.249 0.584);--color-pink-700:oklch(0.525 0.223 3.958);--color-pink-800:oklch(0.459 0.187 3.815);--color-pink-900:oklch(0.408 0.153 2.432);--color-pink-950:oklch(0.284 0.109 3.907);--color-rose-50:oklch(0.969 0.015 12.422);--color-rose-100:oklch(0.941 0.03 12.58);--color-rose-200:oklch(0.892 0.058 10.001);--color-rose-300:oklch(0.81 0.117 11.638);--color-rose-400:oklch(0.712 0.194 13.428);--color-rose-500:oklch(0.645 0.246 16.439);--color-rose-600:oklch(0.586 0.253 17.585);--color-rose-700:oklch(0.514 0.222 16.935);--color-rose-800:oklch(0.455 0.188 13.697);--color-rose-900:oklch(0.41 0.159 10.272);--color-rose-950:oklch(0.271 0.105 12.094);--color-slate-50:oklch(0.984 0.003 247.858);--color-slate-100:oklch(0.968 0.007 247.896);--color-slate-200:oklch(0.929 0.013 255.508);--color-slate-300:oklch(0.869 0.022 252.894);--color-slate-400:oklch(0.704 0.04 256.788);--color-slate-500:oklch(0.554 0.046 257.417);--color-slate-600:oklch(0.446 0.043 257.281);--color-slate-700:oklch(0.372 0.044 257.287);--color-slate-800:oklch(0.279 0.041 260.031);--color-slate-900:oklch(0.208 0.042 265.755);--color-slate-950:oklch(0.129 0.042 264.695);--color-gray-50:oklch(0.985 0.002 247.839);--color-gray-100:oklch(0.967 0.003 264.542);--color-gray-200:oklch(0.928 0.006 264.531);--color-gray-300:oklch(0.872 0.01 258.338);--color-gray-400:oklch(0.707 0.022 261.325);--color-gray-500:oklch(0.551 0.027 264.364);--color-gray-600:oklch(0.446 0.03 256.802);--color-gray-700:oklch(0.373 0.034 259.733);--color-gray-800:oklch(0.278 0.033 256.848);--color-gray-900:oklch(0.21 0.034 264.665);--color-gray-950:oklch(0.13 0.028 261.692);--color-zinc-50:oklch(0.985 0 0);--color-zinc-100:oklch(0.967 0.001 286.375);--color-zinc-200:oklch(0.92 0.004 286.32);--color-zinc-300:oklch(0.871 0.006 286.286);--color-zinc-400:oklch(0.705 0.015 286.067);--color-zinc-500:oklch(0.552 0.016 285.938);--color-zinc-600:oklch(0.442 0.017 285.786);--color-zinc-700:oklch(0.37 0.013 285.805);--color-zinc-800:oklch(0.274 0.006 286.033);--color-zinc-900:oklch(0.21 0.006 285.885);--color-zinc-950:oklch(0.141 0.005 285.823);--color-neutral-50:oklch(0.985 0 0);--color-neutral-100:oklch(0.97 0 0);--color-neutral-200:oklch(0.922 0 0);--color-neutral-300:oklch(0.87 0 0);--color-neutral-400:oklch(0.708 0 0);--color-neutral-500:oklch(0.556 0 0);--color-neutral-600:oklch(0.439 0 0);--color-neutral-700:oklch(0.371 0 0);--color-neutral-800:oklch(0.269 0 0);--color-neutral-900:oklch(0.205 0 0);--color-neutral-950:oklch(0.145 0 0);--color-stone-50:oklch(0.985 0.001 106.423);--color-stone-100:oklch(0.97 0.001 106.424);--color-stone-200:oklch(0.923 0.003 48.717);--color-stone-300:oklch(0.869 0.005 56.366);--color-stone-400:oklch(0.709 0.01 56.259);--color-stone-500:oklch(0.553 0.013 58.071);--color-stone-600:oklch(0.444 0.011 73.639);--color-stone-700:oklch(0.374 0.01 67.558);--color-stone-800:oklch(0.268 0.007 34.298);--color-stone-900:oklch(0.216 0.006 56.043);--color-stone-950:oklch(0.147 0.004 49.25);--color-black:#000;--color-white:#fff;}"
+        }
+      ],
+      "subsections": [
+        "Working with colors",
+        "Using color utilities",
+        "Adjusting opacity",
+        "Targeting dark mode",
+        "Referencing in CSS",
+        "Customizing your colors",
+        "Overriding default colors",
+        "Disabling default colors",
+        "Using a custom palette",
+        "Referencing other variables",
+        "Default color palette reference",
+        "On this page"
+      ],
+      "category": "customizing-colors"
+    },
+    {
+      "title": "Theme variables",
+      "url": "https://tailwindcss.com/docs/configuration",
+      "content": "v4.1\n⌘K\nCtrl K\nDocs\nBlog\nShowcase\nSponsor\nPlus\nCore concepts\nTheme variables\nCore concepts\nTheme variables\nUsing utility classes as an API for your design tokens.\nOverview\nTailwind is a framework for building custom designs, and different designs need different typography, colors, shadows, breakpoints, and more.\nThese low-level design decisions are often called\ndesign tokens\n, and in Tailwind projects you store those values in\ntheme variables\n.\nWhat are theme variables?\nTheme variables are special CSS variables defined using the\n@theme\ndirective that influence which utility classes exist in your project.\nFor example, you can add a new color to your project by defining a theme variable like\n--color-mint-500\n:\napp.css\n@import\n\"tailwindcss\"\n;\n@theme\n{\n--color-mint-500\n:\noklch\n(\n0.72 0.11 178\n);\n}\nNow you can use utility classes like\nbg-mint-500\n,\ntext-mint-500\n, or\nfill-mint-500\nin your HTML:\nHTML\n<\ndiv\nclass\n=\n\"\nbg-mint-500\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nTailwind also generates regular CSS variables for your theme variables so you can reference your design tokens in arbitrary values or inline styles:\nHTML\n<\ndiv\nstyle\n=\n\"background-color:\nvar(--color-mint-500)\n\"\n>\n<!-- ... -->\n</\ndiv\n>\nLearn more about how theme variables map to different utility classes in the\ntheme variable namespaces\ndocumentation.\nWhy\n@theme\ninstead of\n:root\n?\nTheme variables aren't\njust\nCSS variables — they also instruct Tailwind to create new utility classes that you can use in your HTML.\nSince they do more than regular CSS variables, Tailwind uses special syntax so that defining theme variables is always explicit. Theme variables are also required to be defined top-level and not nested under other selectors or media queries, and using a special syntax makes it possible to enforce that.\nDefining regular CSS variables with\n:root\ncan still be useful in Tailwind projects when you want to define a variable that isn't meant to be connected to a utility class. Use\n@theme\nwhen you want a design token to map directly to a utility class, and use\n:root\nfor defining regular CSS variables that shouldn't have corresponding utility classes.\nRelationship to utility classes\nSome utility classes in Tailwind like\nflex\nand\nobject-cover\nare static, and are always the same from project to project. But many others are driven by theme variables, and only exist because of the theme variables you've defined.\nFor example, theme variables defined in the\n--font-*\nnamespace determine all of the\nfont-family\nutilities that exist in a project:\n./node_modules/tailwindcss/theme.css\n@theme\n{\n--font-sans\n:\nui-sans-serif\n,\nsystem-ui\n,\nsans-serif\n,\n\"Apple Color Emoji\"\n,\n\"Segoe UI Emoji\"\n,\n\"Segoe UI Symbol\"\n,\n\"Noto Color Emoji\"\n;\n--font-serif\n:\nui-serif\n,\nGeorgia\n,\nCambria\n,\n\"Times New Roman\"\n,\nTimes\n,\nserif\n;\n--font-mono\n:\nui-monospace\n,\nSFMono-Regular\n,\nMenlo\n,\nMonaco\n,\nConsolas\n,\n\"Liberation Mono\"\n,\n\"Courier New\"\n,\nmonospace\n;\n/* ... */\n}\nThe\nfont-sans\n,\nfont-serif\n, and\nfont-mono\nutilities only exist by default because Tailwind's default theme defines the\n--font-sans\n,\n--font-serif\n, and\n--font-mono\ntheme variables.\nIf another theme variable like\n--font-poppins\nwere defined, a\nfont-poppins\nutility class would become available to go with it:\napp.css\n@import\n\"tailwindcss\"\n;\n@theme\n{\n--font-poppins\n:\nPoppins\n,\nsans-serif\n;\n}\nHTML\n<\nh1\nclass\n=\n\"\nfont-poppins\n\"\n>\nThis headline will use Poppins.\n</\nh1\n>\nYou can name your theme variables whatever you want within these namespaces, and a corresponding utility with the same name will become available to use in your HTML.\nRelationship to variants\nSome theme variables are used to define variants rather than utilities. For example theme variables in the\n--breakpoint-*\nnamespace determine which responsive breakpoint variants exist in your project:\napp.css\n@import\n\"tailwindcss\"\n;\n@theme\n{\n--breakpoint-3xl\n:\n120\nrem\n;\n}\nNow you can use the\n3xl:*\nvariant to only trigger a utility when the viewport is 120rem or wider:\nHTML\n<\ndiv\nclass\n=\n\"\n3xl:grid-cols-6\ngrid grid-cols-2 md:grid-cols-4\"\n>\n<!-- ... -->\n</\ndiv\n>\nLearn more about how theme variables map to different utility classes and variants in the\ntheme variable namespaces\ndocumentation.\nTheme variable namespaces\nTheme variables are defined in\nnamespaces\nand each namespace corresponds to one or more utility class or variant APIs.\nDefining new theme variables in these namespaces will make new corresponding utilities and variants available in your project:\nNamespace\nUtility classes\n--color-*\nColor utilities like\nbg-red-500\n,\ntext-sky-300\n, and many more\n--font-*\nFont family utilities like\nfont-sans\n--text-*\nFont size utilities like\ntext-xl\n--font-weight-*\nFont weight utilities like\nfont-bold\n--tracking-*\nLetter spacing utilities like\ntracking-wide\n--leading-*\nLine height utilities like\nleading-tight\n--breakpoint-*\nResponsive breakpoint variants like\nsm:*\n--container-*\nContainer query variants like\n@sm:*\nand size utilities like\nmax-w-md\n--spacing-*\nSpacing and sizing utilities like\npx-4\n,\nmax-h-1",
+      "code_blocks": [
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-mint-500:oklch(0.72 0.11 178);}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"bg-mint-500\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "<divstyle=\"background-color:var(--color-mint-500)\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@theme{--font-sans:ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\";--font-serif:ui-serif,Georgia,Cambria,\"Times New Roman\",Times,serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;/* ... */}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--font-poppins:Poppins,sans-serif;}"
+        },
+        {
+          "language": "",
+          "code": "<h1class=\"font-poppins\">This headline will use Poppins.</h1>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-3xl:120rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"3xl:grid-cols-6grid grid-cols-2 md:grid-cols-4\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@layertheme,base,components,utilities;@import\"./theme.css\"layer(theme);@import\"./preflight.css\"layer(base);@import\"./utilities.css\"layer(utilities);"
+        },
+        {
+          "language": "",
+          "code": "@theme{--font-sans:ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\";--font-serif:ui-serif,Georgia,Cambria,\"Times New Roman\",Times,serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,\"Liberation Mono\",\"Courier New\",monospace;--color-red-50:oklch(0.971 0.013 17.38);--color-red-100:oklch(0.936 0.032 17.717);--color-red-200:oklch(0.885 0.062 18.334);/* ... */--shadow-2xs:0 1pxrgb(0 0 0 / 0.05);--shadow-xs:0 1px2px0rgb(0 0 0 / 0.05);--shadow-sm:0 1px3px0rgb(0 0 0 / 0.1),0 1px2px-1pxrgb(0 0 0 / 0.1);/* ... */}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--font-script:Great Vibes,cursive;}"
+        },
+        {
+          "language": "",
+          "code": "<pclass=\"font-script\">This will use the Great Vibes font family.</p>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--breakpoint-sm:30rem;}"
+        },
+        {
+          "language": "",
+          "code": "<divclass=\"grid grid-cols-1sm:grid-cols-3\"><!-- ... --></div>"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--color-*:initial;--color-white:#fff;--color-purple:#3f3cbb;--color-midnight:#121063;--color-tahiti:#3ab7bf;--color-bermuda:#78dcca;}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--*:initial;--spacing:4px;--font-body:Inter,sans-serif;--color-lagoon:oklch(0.72 0.11 221.19);--color-coral:oklch(0.74 0.17 40.24);--color-driftwood:oklch(0.79 0.06 74.59);--color-tide:oklch(0.49 0.08 205.88);--color-dusk:oklch(0.82 0.15 72.09);}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@theme{--animate-fade-in-scale:fade-in-scale 0.3sease-out;@keyframesfade-in-scale{0% {opacity:0;transform:scale(0.95);}100%{opacity:1;transform:scale(1);}}}"
+        },
+        {
+          "language": "",
+          "code": "@import\"tailwindcss\";@themeinline{--font-sans:var(--font-inter);}"
+        },
+        {
+          "language": "",
+          "code": ".font-sans{font-family:var(--font-inter);}"
+        },
+        {
+          "language": "",
+          "code": "<divid=\"parent\"style=\"--font-sans: var(--font-inter, sans-serif);\"><divid=\"child\"style=\"--font-inter: Inter; font-family: var(--font-sans);\">This text will use the sans-serif font, not Inter.</div></div>"
+        }
+      ],
+      "subsections": [
+        "Overview",
+        "What are theme variables?",
+        "Relationship to utility classes",
+        "Theme variable namespaces",
+        "Default theme variables",
+        "Customizing your theme",
+        "Extending the default theme",
+        "Overriding the default theme",
+        "Using a custom theme",
+        "Defining animation keyframes",
+        "Referencing other variables",
+        "Generating all CSS variables",
+        "Sharing across projects",
+        "Using your theme variables",
+        "With custom CSS"
+      ],
+      "category": "configuration"
+    }
+  ],
+  "summary": {
+    "total_sections": 9,
+    "total_code_blocks": 140,
+    "categories": [
+      "theme",
+      "responsive-design",
+      "installation",
+      "customizing-colors",
+      "colors",
+      "configuration",
+      "utility-first",
+      "dark-mode",
+      "hover-focus-and-other-states"
+    ]
+  }
+}

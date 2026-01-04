@@ -172,6 +172,65 @@ bounded_contexts:
       - 알림 채널 설정
 ```
 
+## JSON Context Output (워크플로우용)
+
+워크플로우 내에서 호출될 경우, 작업 완료 후 다음 JSON 형식으로 컨텍스트를 출력하세요:
+
+```json
+{
+  "type": "DomainContext",
+  "generatedBy": "ddd-expert",
+  "generatedAt": "ISO8601 timestamp",
+  "projectName": "프로젝트명",
+  "ubiquitousLanguage": {
+    "terms": [
+      { "term": "Order", "definition": "고객의 상품 구매 요청", "context": "Order" }
+    ]
+  },
+  "boundedContexts": [
+    {
+      "name": "Order",
+      "type": "Core Domain",
+      "description": "주문 처리 컨텍스트",
+      "responsibilities": ["주문 생성", "결제 연동", "배송 추적"],
+      "aggregates": ["Order", "Payment"]
+    }
+  ],
+  "contextMap": {
+    "relationships": [
+      { "upstream": "Product", "downstream": "Order", "pattern": "OHS" }
+    ]
+  },
+  "aggregates": [
+    {
+      "name": "Order",
+      "context": "Order",
+      "rootEntity": "Order",
+      "entities": ["OrderItem"],
+      "valueObjects": ["Money", "Address", "OrderStatus"],
+      "invariants": ["주문 총액은 0 이상"],
+      "domainEvents": ["OrderCreated", "OrderPaid"]
+    }
+  ],
+  "domainEvents": [
+    {
+      "name": "OrderCreated",
+      "aggregate": "Order",
+      "payload": ["orderId", "customerId", "items", "totalAmount"],
+      "triggers": ["InventoryContext: 재고 차감"]
+    }
+  ],
+  "cafe24Integration": {
+    "requiredApis": [
+      { "api": "GET /api/v2/admin/products", "context": "Product" }
+    ]
+  }
+}
+```
+
+### 컨텍스트 저장 위치
+`.claude/workflow/active/{workflow-id}/context/domain-context.json`
+
 ## 참조
 
 - `.codex/skills/ddd-planning/SKILL.md`

@@ -1,0 +1,82 @@
+{
+  "library": "Framer Motion",
+  "crawled_at": "2026-01-04T19:53:46.317623",
+  "quick_reference": {
+    "sections": [
+      "Get started with Motion for React",
+      "React animation",
+      "Gesture animation",
+      "Layout animation",
+      "Scroll animation",
+      "Transitions",
+      "GitHub README",
+      "GitHub README"
+    ],
+    "key_topics": [
+      "Why Motion for React?",
+      "Key advantages",
+      "When is CSS a better choice?",
+      "Install",
+      "Your first animation",
+      "Enter animation",
+      "Hover & tap animation",
+      "Scroll animation",
+      "Layout animation",
+      "Exit animations",
+      "Development tools",
+      "Install Motion Studio",
+      "Learn next",
+      "What you'll learn",
+      "Animate with<motion />",
+      "Enter animations",
+      "Animatable values",
+      "Transforms",
+      "Supported value types",
+      "Value type conversion",
+      "Transform origin",
+      "CSS variables",
+      "CSS variables as animation targets",
+      "Transitions",
+      "Keyframes",
+      "Wildcard keyframes",
+      "Animation props",
+      "Gestures",
+      "Hover",
+      "Tap"
+    ],
+    "code_languages": [
+      "bash",
+      "jsx",
+      "javascript",
+      "html"
+    ]
+  },
+  "code_snippets": {
+    "bash": [
+      "# React / JavaScript\nnpm install motion\n\n# Vue\nnpm install motion-v",
+      "git clone https://github.com/richawo/framer-motion-nextjs.git",
+      "cd framer-motion-nextjs",
+      "npm install\n   # or\n   yarn install\n   # or\n   pnpm install",
+      "npm run dev\n   # or\n   yarn dev\n   # or\n   pnpm dev"
+    ],
+    "jsx": [
+      "import { motion } from \"motion/react\"\n\nfunction Component() {\n    return <motion.div animate={{ x: 100 }} />\n}"
+    ],
+    "javascript": [
+      "import { animate } from \"motion\"\n\nanimate(\"#box\", { x: 100 })"
+    ],
+    "html": [
+      "<script>\n    import { motion } from \"motion-v\"\n</script>\n\n<template> <motion.div :animate={{ x: 100 }} /> </template>"
+    ]
+  },
+  "urls": [
+    "https://motion.dev/docs/react-quick-start",
+    "https://motion.dev/docs/react-animation",
+    "https://motion.dev/docs/react-gestures",
+    "https://motion.dev/docs/react-layout-animations",
+    "https://motion.dev/docs/react-scroll-animations",
+    "https://motion.dev/docs/react-transitions",
+    "https://api.github.com/repos/framer/motion/readme",
+    "https://raw.githubusercontent.com/richawo/framer-motion-cheatsheet/main/README.md"
+  ]
+}

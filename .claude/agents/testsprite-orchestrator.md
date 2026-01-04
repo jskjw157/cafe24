@@ -80,3 +80,42 @@ After each phase, provide:
 - Key findings or decisions
 - Next recommended step
 - Any issues requiring user attention
+
+## JSON Context Output (워크플로우용)
+
+워크플로우 내에서 호출될 경우, 작업 완료 후 다음 JSON 형식으로 컨텍스트를 출력하세요:
+
+```json
+{
+  "type": "TestResultContext",
+  "generatedBy": "testsprite-orchestrator",
+  "generatedAt": "ISO8601 timestamp",
+  "target": {
+    "project": "프로젝트명",
+    "path": "절대 경로",
+    "url": "http://localhost:PORT"
+  },
+  "testPlan": {
+    "totalScenarios": 15,
+    "categories": ["NAVIGATION", "CART", "ACCOUNT", "..."]
+  },
+  "results": {
+    "total": 15,
+    "passed": 4,
+    "failed": 11,
+    "passRate": 26.67
+  },
+  "criticalIssues": [
+    { "id": "TC001", "name": "테스트명", "error": "에러 설명" }
+  ],
+  "artifacts": {
+    "testPlan": "testsprite_tests/testsprite_frontend_test_plan.json",
+    "report": "testsprite_tests/testsprite-mcp-test-report.md",
+    "dashboard": "https://www.testsprite.com/dashboard/..."
+  },
+  "nextAction": "playwright-test-healer 호출 필요" | "모든 테스트 통과"
+}
+```
+
+### 컨텍스트 저장 위치
+`.claude/workflow/active/{workflow-id}/context/testsprite-context.json`

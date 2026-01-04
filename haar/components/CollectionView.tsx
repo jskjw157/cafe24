@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface Product {
   id: number;
@@ -70,10 +71,14 @@ const CollectionView: React.FC<CollectionViewProps> = ({ onProductClick }) => {
 
       {/* Product Grid Area - AMBUSH-style: Clean White Background with Generous Spacing */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px bg-gray-100">
-        {products.map((product) => (
-          <div
+        {products.map((product, idx) => (
+          <motion.div
             key={product.id}
             onClick={() => onProductClick?.(product.id)}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: idx * 0.05 }}
             className="group relative aspect-square overflow-hidden cursor-pointer bg-white"
           >
             {/* Product Image */}
@@ -109,7 +114,7 @@ const CollectionView: React.FC<CollectionViewProps> = ({ onProductClick }) => {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
 
         {/* Placeholder cells to complete the grid */}

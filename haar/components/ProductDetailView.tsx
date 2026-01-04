@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface ProductDetailProps {
   productId?: number;
@@ -55,8 +56,12 @@ const ProductDetailView: React.FC<ProductDetailProps> = ({
         {/* Left: Product Images */}
         <div className="lg:w-1/2 flex flex-col">
           {product.images.map((img, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
               className="aspect-square bg-[#f5f5f5] flex items-center justify-center overflow-hidden"
             >
               <img
@@ -64,7 +69,7 @@ const ProductDetailView: React.FC<ProductDetailProps> = ({
                 alt={`${product.name} view ${idx + 1}`}
                 className="w-3/4 h-3/4 object-contain grayscale hover:grayscale-0 transition-all duration-700 ease-out"
               />
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -126,11 +131,10 @@ const ProductDetailView: React.FC<ProductDetailProps> = ({
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`w-7 h-7 text-xs font-bold border transition-all ${
-                    selectedSize === size
+                  className={`w-7 h-7 text-xs font-bold border transition-all ${selectedSize === size
                       ? 'bg-black text-white border-black'
                       : 'bg-white text-black border-gray-300 hover:border-black'
-                  }`}
+                    }`}
                 >
                   {size}
                 </button>
@@ -145,11 +149,10 @@ const ProductDetailView: React.FC<ProductDetailProps> = ({
           <button
             onClick={handleAddToCart}
             disabled={!selectedSize}
-            className={`w-full py-3.5 text-xs font-bold tracking-[0.15em] uppercase transition-all ${
-              selectedSize
+            className={`w-full py-3.5 text-xs font-bold tracking-[0.15em] uppercase transition-all ${selectedSize
                 ? 'bg-black text-white hover:bg-gray-800'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-            }`}
+              }`}
           >
             ADD TO CART
           </button>

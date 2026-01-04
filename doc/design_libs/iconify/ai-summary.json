@@ -1,0 +1,52 @@
+{
+  "library": "Iconify",
+  "crawled_at": "2026-01-04T19:53:38.104650",
+  "quick_reference": {
+    "sections": [
+      "Iconify Icon web componentâ",
+      "Icons on demandâ",
+      "Iconsâ",
+      "Iconify APIâ"
+    ],
+    "key_topics": [
+      "News",
+      "Documentation",
+      "Usage",
+      "Icons",
+      "Libraries",
+      "API",
+      "Articles / Blog",
+      "Usageâ",
+      "Supported frameworksâ",
+      "Layout shiftâ",
+      "Icon data on demandâ",
+      "Shadow DOMâ",
+      "SSR hydrationâ",
+      "Rendering only visible iconsâ",
+      "Why not use icon font?â",
+      "How does it work?â",
+      "Advantagesâ",
+      "Componentsâ",
+      "Web componentâ",
+      "UI frameworksâ",
+      "Icon dataâ",
+      "What makes Iconify different?â",
+      "Icon setsâ",
+      "Custom iconsâ",
+      "Add an icon setâ",
+      "Hosting APIâ",
+      "Public APIâ",
+      "Redundancyâ",
+      "Queriesâ",
+      "API providersâ"
+    ],
+    "code_languages": []
+  },
+  "code_snippets": {},
+  "urls": [
+    "https://iconify.design/docs/iconify-icon/",
+    "https://iconify.design/docs/icon-components/",
+    "https://iconify.design/docs/icons/",
+    "https://iconify.design/docs/api/"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "../schemas/workflow-template.schema.json",
+  "id": "cafe24-app-development",
+  "name": "Cafe24 App Development Pipeline",
+  "description": "Cafe24 앱스토어 앱 개발 워크플로우 (API 학습 -> 요구사항 -> OAuth -> 구현)",
+  "version": "1.0.0",
+
+  "phases": [
+    {
+      "id": "api-crawling",
+      "name": "API 문서 수집",
+      "agent": "cafe24-api-crawler",
+      "order": 1,
+      "description": "Cafe24 개발자 포털 API 문서 크롤링, 지식베이스 구축",
+      "inputContext": ["user-request"],
+      "outputContext": "ApiKnowledgeContext",
+      "estimatedTokens": 3000,
+      "timeout": 600000,
+      "optional": true,
+      "skipCondition": "knowledge-base-exists"
+    },
+    {
+      "id": "requirements",
+      "name": "앱 요구사항 분석",
+      "agent": "app-requirement-analyzer",
+      "order": 2,
+      "description": "앱 아이디어 분석, 필요 API/권한 도출",
+      "inputContext": ["user-request", "ApiKnowledgeContext"],
+      "outputContext": "RequirementContext",
+      "dependsOn": ["api-crawling"],
+      "estimatedTokens": 5000,
+      "timeout": 300000
+    },
+    {
+      "id": "oauth-generation",
+      "name": "OAuth 모듈 생성",
+      "agent": "cafe24-oauth-generator",
+      "order": 3,
+      "description": "Cafe24 OAuth 인증 모듈 자동 생성",
+      "inputContext": ["RequirementContext"],
+      "outputContext": "OAuthContext",
+      "dependsOn": ["requirements"],
+      "estimatedTokens": 4000,
+      "timeout": 300000
+    },
+    {
+      "id": "backend-implementation",
+      "name": "앱 백엔드 구현",
+      "agent": "fastapi-expert",
+      "order": 4,
+      "description": "FastAPI 기반 앱 서버 구현",
+      "inputContext": ["RequirementContext", "OAuthContext"],
+      "outputContext": "ImplementationContext",
+      "dependsOn": ["oauth-generation"],
+      "estimatedTokens": 12000,
+      "timeout": 900000
+    },
+    {
+      "id": "frontend-embed",
+      "name": "프론트엔드 임베드",
+      "agent": "cafe24-skin-expert",
+      "order": 5,
+      "description": "Cafe24 스킨에 앱 UI 임베드",
+      "inputContext": ["ImplementationContext"],
+      "outputContext": "FrontendContext",
+      "dependsOn": ["backend-implementation"],
+      "estimatedTokens": 8000,
+      "timeout": 600000
+    }
+  ],
+
+  "qualityGates": [
+    {
+      "id": "api-scope-review",
+      "afterPhase": "requirements",
+      "criteria": [
+        {"type": "context-validation", "field": "cafe24.requiredScopes", "minCount": 1},
+        {"type": "user-approval", "message": "필요한 API 권한을 확인해주세요"}
+      ],
+      "blocking": true
+    },
+    {
+      "id": "oauth-test",
+      "afterPhase": "oauth-generation",
+      "criteria": [
+        {"type": "context-validation", "field": "module.files", "minCount": 1}
+      ],
+      "blocking": true
+    }
+  ],
+
+  "errorHandling": {
+    "retryPolicy": {
+      "maxRetries": 2,
+      "backoffMs": 5000
+    },
+    "escalation": {
+      "target": "tech-lead",
+      "conditions": ["max-retries-exceeded", "oauth-error"]
+    }
+  },
+
+  "metadata": {
+    "category": "cafe24-app",
+    "tags": ["cafe24", "oauth", "app-store"],
+    "estimatedDuration": "1-3 hours",
+    "estimatedCost": "$4-8"
+  }
+}

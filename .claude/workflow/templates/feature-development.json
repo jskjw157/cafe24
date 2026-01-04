@@ -1,0 +1,128 @@
+{
+  "$schema": "../schemas/workflow-template.schema.json",
+  "id": "feature-development",
+  "name": "Feature Development Pipeline",
+  "description": "신규 기능 개발을 위한 표준 워크플로우 (요구사항 -> DDD -> 계획 -> 구현 -> 테스트)",
+  "version": "1.0.0",
+
+  "phases": [
+    {
+      "id": "requirements",
+      "name": "요구사항 분석",
+      "agent": "app-requirement-analyzer",
+      "order": 1,
+      "description": "아이디어/벤치마킹 대상 분석, 기능 목록 도출",
+      "inputContext": ["user-request"],
+      "outputContext": "RequirementContext",
+      "estimatedTokens": 5000,
+      "timeout": 300000
+    },
+    {
+      "id": "design",
+      "name": "도메인 설계",
+      "agent": "ddd-expert",
+      "order": 2,
+      "description": "Bounded Context, Aggregate, Domain Event 설계",
+      "inputContext": ["RequirementContext"],
+      "outputContext": "DomainContext",
+      "dependsOn": ["requirements"],
+      "estimatedTokens": 8000,
+      "timeout": 600000
+    },
+    {
+      "id": "planning",
+      "name": "개발 계획 수립",
+      "agent": "feature-planning-expert",
+      "order": 3,
+      "description": "Phase 분할, TDD 단계, 품질 게이트 정의",
+      "inputContext": ["RequirementContext", "DomainContext"],
+      "outputContext": "PlanningContext",
+      "dependsOn": ["design"],
+      "estimatedTokens": 6000,
+      "timeout": 300000
+    },
+    {
+      "id": "backend-implementation",
+      "name": "백엔드 구현",
+      "agent": "fastapi-expert",
+      "order": 4,
+      "description": "FastAPI 기반 API 구현",
+      "inputContext": ["DomainContext", "PlanningContext"],
+      "outputContext": "ImplementationContext",
+      "dependsOn": ["planning"],
+      "estimatedTokens": 15000,
+      "timeout": 900000
+    },
+    {
+      "id": "frontend-implementation",
+      "name": "프론트엔드 구현",
+      "agent": "cafe24-skin-expert",
+      "order": 5,
+      "description": "Cafe24 스킨/템플릿 구현",
+      "inputContext": ["ImplementationContext", "PlanningContext"],
+      "outputContext": "FrontendContext",
+      "dependsOn": ["backend-implementation"],
+      "estimatedTokens": 10000,
+      "timeout": 600000
+    },
+    {
+      "id": "testing",
+      "name": "E2E 테스트",
+      "agent": "testsprite-orchestrator",
+      "order": 6,
+      "description": "TestSprite MCP로 E2E 테스트 자동화",
+      "inputContext": ["ImplementationContext", "FrontendContext"],
+      "outputContext": "TestContext",
+      "dependsOn": ["frontend-implementation"],
+      "estimatedTokens": 8000,
+      "timeout": 600000
+    }
+  ],
+
+  "qualityGates": [
+    {
+      "id": "design-review",
+      "afterPhase": "design",
+      "criteria": [
+        {"type": "context-validation", "field": "strategic.boundedContexts", "minCount": 1},
+        {"type": "context-validation", "field": "tactical.aggregates", "minCount": 1}
+      ],
+      "blocking": true
+    },
+    {
+      "id": "implementation-review",
+      "afterPhase": "backend-implementation",
+      "criteria": [
+        {"type": "context-validation", "field": "artifacts.files", "minCount": 1},
+        {"type": "context-validation", "field": "api.endpoints", "minCount": 1}
+      ],
+      "blocking": true
+    },
+    {
+      "id": "test-pass",
+      "afterPhase": "testing",
+      "criteria": [
+        {"type": "metric", "field": "results.passed", "operator": ">=", "threshold": 0.8}
+      ],
+      "blocking": false
+    }
+  ],
+
+  "errorHandling": {
+    "retryPolicy": {
+      "maxRetries": 2,
+      "backoffMs": 5000
+    },
+    "escalation": {
+      "target": "tech-lead",
+      "conditions": ["max-retries-exceeded", "validation-failed", "timeout"]
+    }
+  },
+
+  "metadata": {
+    "category": "development",
+    "tags": ["feature", "full-stack", "tdd"],
+    "estimatedDuration": "2-4 hours",
+    "estimatedCost": "$6-10"
+  }
+}

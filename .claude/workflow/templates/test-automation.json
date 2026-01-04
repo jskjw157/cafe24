@@ -1,0 +1,112 @@
+{
+  "$schema": "../schemas/workflow-template.schema.json",
+  "id": "test-automation",
+  "name": "Test Automation Pipeline",
+  "description": "E2E 테스트 자동화 워크플로우 (계획 -> 생성 -> 실행 -> 수정)",
+  "version": "1.0.0",
+
+  "phases": [
+    {
+      "id": "test-planning",
+      "name": "테스트 계획",
+      "agent": "playwright-test-planner",
+      "order": 1,
+      "description": "테스트 시나리오 및 케이스 계획",
+      "inputContext": ["user-request", "codebase-context"],
+      "outputContext": "TestPlanContext",
+      "estimatedTokens": 4000,
+      "timeout": 300000
+    },
+    {
+      "id": "test-generation",
+      "name": "테스트 코드 생성",
+      "agent": "playwright-test-generator",
+      "order": 2,
+      "description": "Playwright 테스트 코드 자동 생성",
+      "inputContext": ["TestPlanContext"],
+      "outputContext": "TestCodeContext",
+      "dependsOn": ["test-planning"],
+      "estimatedTokens": 8000,
+      "timeout": 600000
+    },
+    {
+      "id": "test-execution",
+      "name": "테스트 실행",
+      "agent": "testsprite-orchestrator",
+      "order": 3,
+      "description": "TestSprite MCP로 테스트 실행",
+      "inputContext": ["TestCodeContext"],
+      "outputContext": "TestResultContext",
+      "dependsOn": ["test-generation"],
+      "estimatedTokens": 5000,
+      "timeout": 900000
+    },
+    {
+      "id": "test-healing",
+      "name": "테스트 수정",
+      "agent": "playwright-test-healer",
+      "order": 4,
+      "description": "실패한 테스트 분석 및 자동 수정",
+      "inputContext": ["TestResultContext", "TestCodeContext"],
+      "outputContext": "HealedTestContext",
+      "dependsOn": ["test-execution"],
+      "conditional": {
+        "field": "results.failed",
+        "operator": ">",
+        "value": 0
+      },
+      "estimatedTokens": 6000,
+      "timeout": 600000
+    }
+  ],
+
+  "loops": [
+    {
+      "id": "heal-retry-loop",
+      "phases": ["test-execution", "test-healing"],
+      "maxIterations": 3,
+      "exitCondition": {
+        "field": "results.failed",
+        "operator": "==",
+        "value": 0
+      }
+    }
+  ],
+
+  "qualityGates": [
+    {
+      "id": "test-coverage",
+      "afterPhase": "test-generation",
+      "criteria": [
+        {"type": "context-validation", "field": "testCases", "minCount": 1}
+      ],
+      "blocking": true
+    },
+    {
+      "id": "test-pass-rate",
+      "afterPhase": "test-execution",
+      "criteria": [
+        {"type": "metric", "field": "results.passed", "operator": ">=", "threshold": 0.7}
+      ],
+      "blocking": false
+    }
+  ],
+
+  "errorHandling": {
+    "retryPolicy": {
+      "maxRetries": 1,
+      "backoffMs": 3000
+    },
+    "escalation": {
+      "target": "tech-lead",
+      "conditions": ["max-heal-iterations", "infrastructure-error"]
+    }
+  },
+
+  "metadata": {
+    "category": "testing",
+    "tags": ["e2e", "playwright", "automation"],
+    "estimatedDuration": "30-60 minutes",
+    "estimatedCost": "$2-4"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "../schemas/workflow-template.schema.json",
+  "id": "document-driven-development",
+  "name": "Document-Driven Development Pipeline",
+  "description": "기획 문서 기반 개발 워크플로우 (검증 -> 도메인 추출 -> 이슈 생성 -> 계획)",
+  "version": "1.0.0",
+
+  "phases": [
+    {
+      "id": "document-validation",
+      "name": "문서 검증",
+      "agent": "docs-validator",
+      "order": 1,
+      "description": "기획 문서 정합성 검증 (화면정의서, DB정의서, API계약서)",
+      "inputContext": ["user-request", "document-paths"],
+      "outputContext": "ValidationContext",
+      "estimatedTokens": 4000,
+      "timeout": 300000
+    },
+    {
+      "id": "domain-extraction",
+      "name": "도메인 추출",
+      "agent": "ddd-expert",
+      "order": 2,
+      "description": "문서에서 Bounded Context, Aggregate, Event 추출",
+      "inputContext": ["ValidationContext", "document-paths"],
+      "outputContext": "DomainContext",
+      "dependsOn": ["document-validation"],
+      "conditional": {
+        "field": "validation.isValid",
+        "operator": "==",
+        "value": true
+      },
+      "estimatedTokens": 8000,
+      "timeout": 600000
+    },
+    {
+      "id": "issue-creation",
+      "name": "GitHub 이슈 생성",
+      "agent": "github-issues-expert",
+      "order": 3,
+      "description": "마일스톤 및 이슈 자동 생성",
+      "inputContext": ["DomainContext", "ValidationContext"],
+      "outputContext": "IssueContext",
+      "dependsOn": ["domain-extraction"],
+      "estimatedTokens": 3000,
+      "timeout": 300000
+    },
+    {
+      "id": "planning",
+      "name": "개발 계획 수립",
+      "agent": "feature-planning-expert",
+      "order": 4,
+      "description": "이슈 기반 Phase 계획, TDD 단계 정의",
+      "inputContext": ["IssueContext", "DomainContext"],
+      "outputContext": "PlanningContext",
+      "dependsOn": ["issue-creation"],
+      "estimatedTokens": 6000,
+      "timeout": 300000
+    }
+  ],
+
+  "qualityGates": [
+    {
+      "id": "document-valid",
+      "afterPhase": "document-validation",
+      "criteria": [
+        {"type": "context-validation", "field": "validation.isValid", "equals": true},
+        {"type": "context-validation", "field": "validation.score", "operator": ">=", "threshold": 70}
+      ],
+      "blocking": true,
+      "onFailure": {
+        "action": "request-user-input",
+        "message": "문서 정합성 검증 실패. 발견된 이슈를 확인하고 수정해주세요."
+      }
+    },
+    {
+      "id": "issue-created",
+      "afterPhase": "issue-creation",
+      "criteria": [
+        {"type": "context-validation", "field": "issues", "minCount": 1},
+        {"type": "user-approval", "message": "생성된 이슈를 확인해주세요"}
+      ],
+      "blocking": false
+    }
+  ],
+
+  "errorHandling": {
+    "retryPolicy": {
+      "maxRetries": 1,
+      "backoffMs": 3000
+    },
+    "escalation": {
+      "target": "tech-lead",
+      "conditions": ["document-invalid", "github-api-error"]
+    },
+    "rollback": {
+      "onPhase": "issue-creation",
+      "action": "delete-created-issues"
+    }
+  },
+
+  "metadata": {
+    "category": "planning",
+    "tags": ["documentation", "github", "planning"],
+    "estimatedDuration": "30-60 minutes",
+    "estimatedCost": "$3-5"
+  }
+}
