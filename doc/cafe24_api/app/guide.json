@@ -1,0 +1,38 @@
+{
+  "oauth": {
+    "authorize_url": "https://{mall_id}.cafe24api.com/api/v2/oauth/authorize",
+    "token_url": "https://{mall_id}.cafe24api.com/api/v2/oauth/token",
+    "grant_types": [
+      "authorization_code",
+      "refresh_token"
+    ],
+    "scopes": [
+      "mall.read_product",
+      "mall.write_product",
+      "mall.read_order",
+      "mall.write_order",
+      "mall.read_customer",
+      "mall.write_customer",
+      "mall.read_category",
+      "mall.write_category",
+      "mall.read_promotion",
+      "mall.write_promotion",
+      "mall.read_application",
+      "mall.write_application"
+    ]
+  },
+  "webhooks": {
+    "events": [
+      "order.created",
+      "order.updated",
+      "order.canceled",
+      "product.created",
+      "product.updated",
+      "product.deleted",
+      "customer.created",
+      "customer.updated"
+    ],
+    "format": "JSON",
+    "retry": "3 times with exponential backoff"
+  }
+}

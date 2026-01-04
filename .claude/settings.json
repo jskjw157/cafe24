@@ -1,0 +1,124 @@
+{
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": false,
+    "typescript-lsp@claude-plugins-official": true,
+    "agent-sdk-dev@claude-plugins-official": false,
+    "figma@claude-plugins-official": true,
+    "ralph-wiggum@claude-plugins-official": false,
+    "explanatory-output-style@claude-plugins-official": true,
+    "Notion@claude-plugins-official": false,
+    "plugin-dev@claude-plugins-official": true,
+    "linear@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "greptile@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true,
+    "sentry@claude-plugins-official": false,
+    "claude-opus-4-5-migration@claude-code-plugins": true,
+    "code-review@claude-code-plugins": true,
+    "taskmaster@taskmaster": false,
+    "supabase@claude-plugins-official": true,
+    "accessibility-compliance@claude-code-workflows": true,
+    "agent-orchestration@claude-code-workflows": true,
+    "api-scaffolding@claude-code-workflows": true,
+    "api-testing-observability@claude-code-workflows": true,
+    "application-performance@claude-code-workflows": true,
+    "backend-api-security@claude-code-workflows": true,
+    "backend-development@claude-code-workflows": true,
+    "business-analytics@claude-code-workflows": true,
+    "c4-architecture@claude-code-workflows": false,
+    "cicd-automation@claude-code-workflows": false,
+    "cloud-infrastructure@claude-code-workflows": false,
+    "code-documentation@claude-code-workflows": true,
+    "code-refactoring@claude-code-workflows": true,
+    "code-review-ai@claude-code-workflows": true,
+    "codebase-cleanup@claude-code-workflows": true,
+    "comprehensive-review@claude-code-workflows": true,
+    "content-marketing@claude-code-workflows": true,
+    "context-management@claude-code-workflows": true,
+    "customer-sales-automation@claude-code-workflows": true,
+    "data-engineering@claude-code-workflows": true,
+    "data-validation-suite@claude-code-workflows": true,
+    "database-cloud-optimization@claude-code-workflows": false,
+    "database-design@claude-code-workflows": false,
+    "database-migrations@claude-code-workflows": false,
+    "debugging-toolkit@claude-code-workflows": true,
+    "dependency-management@claude-code-workflows": false,
+    "deployment-strategies@claude-code-workflows": false,
+    "deployment-validation@claude-code-workflows": false,
+    "developer-essentials@claude-code-workflows": true,
+    "distributed-debugging@claude-code-workflows": true,
+    "documentation-generation@claude-code-workflows": true,
+    "error-debugging@claude-code-workflows": true,
+    "error-diagnostics@claude-code-workflows": true,
+    "framework-migration@claude-code-workflows": true,
+    "frontend-mobile-development@claude-code-workflows": true,
+    "frontend-mobile-security@claude-code-workflows": true,
+    "full-stack-orchestration@claude-code-workflows": true,
+    "functional-programming@claude-code-workflows": false,
+    "ai-ml-toolkit@claude-code-templates": false,
+    "documentation-generator@claude-code-templates": true,
+    "nextjs-vercel-pro@claude-code-templates": true,
+    "performance-optimizer@claude-code-templates": true,
+    "performance-testing-review@claude-code-workflows": true,
+    "python-development@claude-code-workflows": true,
+    "security-pro@claude-code-templates": false,
+    "testing-suite@claude-code-templates": false
+  },
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json,sys; data=json.load(sys.stdin); path=data.get('tool_input',{}).get('file_path',''); blocked=['.env','secrets/','.pem','.key','credentials']; result=any(b in path for b in blocked); print(f'BLOCKED: Cannot modify sensitive file: {path}') if result else None; sys.exit(2 if result else 0)\""
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.url // empty' | { read url; [[ -n \"$url\" && ! \"$url\" =~ (api\\.|/api/|\\.json$|\\.xml$) ]] && echo \"[Script-First] For HTML pages, consider: python3 script/url_to_cafe24_skin.py --url '$url' (80-95% token savings)\"; exit 0; }",
+            "statusMessage": "Checking URL type..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read f; [[ -n \"$f\" && \"$f\" == *.html && (\"$f\" == *skin5/* || \"$f\" == *cafe24-skins/*) ]] && { echo \"[Cafe24 Skin] Replacement codes in $f:\"; grep -oE '\\{\\$[^}]+\\}' \"$f\" 2>/dev/null | sort -u | head -5; }; exit 0; }"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read f; [[ -n \"$f\" && \"$f\" == *.claude/pipeline-state/* ]] && echo \"[Pipeline] State updated: $f\" >> .claude/pipeline-state/activity.log; exit 0; }"
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_result.content // empty' 2>/dev/null | wc -c | { read size; [[ $size -gt 50000 ]] && echo \"[HtmlSlim] Large HTML detected (${size} chars). Use: python3 script/url_to_cafe24_skin.py for 80-95% token savings\"; exit 0; }",
+            "statusMessage": "Checking HTML size..."
+          }
+        ]
+      }
+    ]
+  }
+}

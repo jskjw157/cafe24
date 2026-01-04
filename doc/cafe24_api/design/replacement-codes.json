@@ -1,0 +1,233 @@
+[
+  {
+    "code": "{$image_big}",
+    "description": "상품 대표 이미지 (상세 이미지)",
+    "category": "product_image",
+    "context": [
+      "index.html",
+      "list.html"
+    ],
+    "example": "<img src=\"{$image_big}\" alt=\"{$product_name}\">"
+  },
+  {
+    "code": "{$image_medium}",
+    "description": "상품 중간 이미지 (목록 이미지)",
+    "category": "product_image",
+    "context": [
+      "index.html",
+      "list.html"
+    ],
+    "example": "<img src=\"{$image_medium}\" alt=\"{$product_name}\">"
+  },
+  {
+    "code": "{$image_tiny}",
+    "description": "상품 축소 이미지 (작은 목록 이미지)",
+    "category": "product_image",
+    "context": [
+      "index.html",
+      "list.html"
+    ],
+    "example": "<img src=\"{$image_tiny}\" alt=\"{$product_name}\">"
+  },
+  {
+    "code": "{$image_small}",
+    "description": "상품 작은 이미지 (썸네일)",
+    "category": "product_image",
+    "context": [
+      "index.html",
+      "list.html"
+    ],
+    "example": "<img src=\"{$image_small}\" alt=\"{$product_name}\">"
+  },
+  {
+    "code": "{$big_img}",
+    "description": "상품 대표 이미지 (상세 이미지) - 상세 페이지용",
+    "category": "product_image",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<img src=\"{$big_img}\" alt=\"\">"
+  },
+  {
+    "code": "{$medium_img}",
+    "description": "상품 중간 이미지 - 상세 페이지용",
+    "category": "product_image",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<img src=\"{$medium_img}\" alt=\"\">"
+  },
+  {
+    "code": "{$tiny_img}",
+    "description": "상품 축소 이미지 - 상세 페이지용",
+    "category": "product_image",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<img src=\"{$tiny_img}\" alt=\"\">"
+  },
+  {
+    "code": "{$small_img}",
+    "description": "상품 썸네일 이미지 - 상세 페이지용",
+    "category": "product_image",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<img src=\"{$small_img}\" alt=\"\">"
+  },
+  {
+    "code": "{$product_name}",
+    "description": "상품명",
+    "category": "product",
+    "context": [
+      "detail.html",
+      "list.html",
+      "cart.html"
+    ],
+    "example": "<h1 class=\"product-name\">{$product_name}</h1>"
+  },
+  {
+    "code": "{$product_no}",
+    "description": "상품 번호",
+    "category": "product",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<input type=\"hidden\" name=\"product_no\" value=\"{$product_no}\">"
+  },
+  {
+    "code": "{$product_price}",
+    "description": "상품 판매가",
+    "category": "product",
+    "context": [
+      "detail.html",
+      "list.html"
+    ],
+    "example": "<span class=\"price\">{$product_price}원</span>"
+  },
+  {
+    "code": "{$product_custom}",
+    "description": "상품 시중가",
+    "category": "product",
+    "context": [
+      "detail.html",
+      "list.html"
+    ],
+    "example": "<del class=\"original-price\">{$product_custom}원</del>"
+  },
+  {
+    "code": "{$product_summary}",
+    "description": "상품 간략 설명",
+    "category": "product",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<p class=\"summary\">{$product_summary}</p>"
+  },
+  {
+    "code": "{$prd_detail}",
+    "description": "상품 상세 설명 (HTML)",
+    "category": "product",
+    "context": [
+      "detail.html"
+    ],
+    "example": "<div class=\"detail-content\">{$prd_detail}</div>"
+  },
+  {
+    "code": "{$mall_name}",
+    "description": "쇼핑몰 이름",
+    "category": "layout",
+    "context": [
+      "layout.html",
+      "header.html"
+    ],
+    "example": "<title>{$mall_name}</title>"
+  },
+  {
+    "code": "{$mall_id}",
+    "description": "쇼핑몰 ID",
+    "category": "layout",
+    "context": [
+      "*.html"
+    ],
+    "example": "<meta name=\"mall_id\" content=\"{$mall_id}\">"
+  },
+  {
+    "code": "{$link_product_list}",
+    "description": "카테고리 링크 URL",
+    "category": "layout",
+    "context": [
+      "navigation.html",
+      "menu.html"
+    ],
+    "example": "<a href=\"{$link_product_list}\">{$name_or_img_tag}</a>"
+  },
+  {
+    "code": "{$name_or_img_tag}",
+    "description": "카테고리명 또는 이미지",
+    "category": "layout",
+    "context": [
+      "navigation.html",
+      "menu.html"
+    ],
+    "example": "<a href=\"{$link_product_list}\">{$name_or_img_tag}</a>"
+  },
+  {
+    "code": "{$name}",
+    "description": "회원 이름",
+    "category": "member",
+    "context": [
+      "mypage.html",
+      "order.html"
+    ],
+    "example": "<span class=\"member-name\">{$name}</span>"
+  },
+  {
+    "code": "{$id}",
+    "description": "회원 아이디",
+    "category": "member",
+    "context": [
+      "mypage.html"
+    ],
+    "example": "<span class=\"member-id\">{$id}</span>"
+  },
+  {
+    "code": "{$email}",
+    "description": "회원 이메일",
+    "category": "member",
+    "context": [
+      "mypage.html",
+      "order.html"
+    ],
+    "example": "<input type=\"email\" value=\"{$email}\">"
+  },
+  {
+    "code": "{$order_id}",
+    "description": "주문 번호",
+    "category": "order",
+    "context": [
+      "order_complete.html",
+      "order_detail.html"
+    ],
+    "example": "<span class=\"order-id\">{$order_id}</span>"
+  },
+  {
+    "code": "{$order_date}",
+    "description": "주문 일시",
+    "category": "order",
+    "context": [
+      "order_complete.html"
+    ],
+    "example": "<span class=\"order-date\">{$order_date}</span>"
+  },
+  {
+    "code": "{$total_price}",
+    "description": "주문 총 금액",
+    "category": "order",
+    "context": [
+      "cart.html",
+      "order.html"
+    ],
+    "example": "<span class=\"total\">{$total_price}원</span>"
+  }
+]

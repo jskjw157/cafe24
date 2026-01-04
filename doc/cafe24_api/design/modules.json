@@ -1,0 +1,153 @@
+[
+  {
+    "name": "Layout_LogoTop",
+    "description": "로고 및 상단 네비게이션 영역 표시 모듈",
+    "category": "Layout",
+    "page_type": "all",
+    "variables": [
+      "mall_name",
+      "mall_logo"
+    ]
+  },
+  {
+    "name": "Layout_category",
+    "description": "카테고리 목록 표시 모듈",
+    "category": "Layout",
+    "page_type": "all",
+    "variables": [
+      "link_product_list",
+      "name_or_img_tag"
+    ]
+  },
+  {
+    "name": "product_listmain",
+    "description": "메인 페이지 상품 목록 모듈",
+    "category": "Product",
+    "page_type": "index.html",
+    "variables": [
+      "image_big",
+      "image_medium",
+      "product_name",
+      "product_price"
+    ]
+  },
+  {
+    "name": "product_listrecommend",
+    "description": "추천 상품 목록 모듈",
+    "category": "Product",
+    "page_type": "list.html",
+    "variables": [
+      "image_medium",
+      "product_name",
+      "product_price"
+    ]
+  },
+  {
+    "name": "product_listnew",
+    "description": "신상품 목록 모듈",
+    "category": "Product",
+    "page_type": "list.html",
+    "variables": [
+      "image_medium",
+      "product_name",
+      "product_price"
+    ]
+  },
+  {
+    "name": "product_listnormal",
+    "description": "일반 상품 목록 모듈",
+    "category": "Product",
+    "page_type": "list.html",
+    "variables": [
+      "image_medium",
+      "product_name",
+      "product_price"
+    ]
+  },
+  {
+    "name": "product_detail",
+    "description": "상품 상세 정보 모듈",
+    "category": "Product",
+    "page_type": "detail.html",
+    "variables": [
+      "big_img",
+      "product_name",
+      "product_price",
+      "prd_detail"
+    ]
+  },
+  {
+    "name": "product_addimage",
+    "description": "상품 추가 이미지 모듈",
+    "category": "Product",
+    "page_type": "detail.html",
+    "variables": [
+      "big_img",
+      "medium_img",
+      "small_img"
+    ]
+  },
+  {
+    "name": "product_relation",
+    "description": "관련 상품 모듈",
+    "category": "Product",
+    "page_type": "detail.html",
+    "variables": [
+      "image_medium",
+      "product_name"
+    ]
+  },
+  {
+    "name": "order_form",
+    "description": "주문서 작성 모듈",
+    "category": "Order",
+    "page_type": "order.html",
+    "variables": [
+      "name",
+      "email",
+      "total_price"
+    ]
+  },
+  {
+    "name": "member_login",
+    "description": "로그인 모듈",
+    "category": "Member",
+    "page_type": "login.html",
+    "variables": [
+      "id"
+    ]
+  },
+  {
+    "name": "member_join",
+    "description": "회원가입 모듈",
+    "category": "Member",
+    "page_type": "join.html",
+    "variables": [
+      "name",
+      "id",
+      "email"
+    ]
+  },
+  {
+    "name": "board_list",
+    "description": "게시판 목록 모듈",
+    "category": "Board",
+    "page_type": "board_list.html",
+    "variables": [
+      "title",
+      "writer",
+      "date"
+    ]
+  },
+  {
+    "name": "xans-layout-footer",
+    "description": "푸터 모듈",
+    "category": "Layout",
+    "page_type": "all",
+    "variables": [
+      "company_name",
+      "ceo_name",
+      "address"
+    ]
+  }
+]

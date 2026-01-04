@@ -1,0 +1,96 @@
+{
+  "projectName": "haar",
+  "projectType": "frontend",
+  "description": "HAAR - Premium fashion jewelry e-commerce website with modern UI inspired by AMBUSH brand aesthetic",
+  "techStack": {
+    "framework": "React 19",
+    "buildTool": "Vite 6",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS (CDN)",
+    "additionalLibraries": [
+      "@google/genai (AI integration)"
+    ]
+  },
+  "developmentServer": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "command": "npm run dev"
+  },
+  "features": [
+    {
+      "name": "Navigation & Menu",
+      "description": "Slide-out menu with expandable categories (Jewelry, Accessories, Collections)",
+      "components": ["App.tsx"]
+    },
+    {
+      "name": "Home View",
+      "description": "Artistic landing page with grain overlay and abstract gradient effects",
+      "components": ["App.tsx"]
+    },
+    {
+      "name": "Account/Login",
+      "description": "User account management view",
+      "components": ["AccountView.tsx"]
+    },
+    {
+      "name": "Product Collection",
+      "description": "Product listing with category filtering",
+      "components": ["CollectionView.tsx"]
+    },
+    {
+      "name": "Product Detail",
+      "description": "Individual product view with add-to-cart functionality",
+      "components": ["ProductDetailView.tsx"]
+    },
+    {
+      "name": "Shopping Cart",
+      "description": "Cart management with item count, checkout flow",
+      "components": ["CartView.tsx"]
+    }
+  ],
+  "views": [
+    "HOME",
+    "ACCOUNT",
+    "COLLECTION",
+    "PRODUCT_DETAIL",
+    "CART"
+  ],
+  "userFlows": [
+    {
+      "name": "Browse Products",
+      "steps": ["Open menu", "Select category", "View collection", "Click product", "View details"]
+    },
+    {
+      "name": "Add to Cart",
+      "steps": ["View product detail", "Click add to cart", "Navigate to cart"]
+    },
+    {
+      "name": "Account Access",
+      "steps": ["Click login/user icon", "View account page"]
+    },
+    {
+      "name": "Checkout Flow",
+      "steps": ["Open cart", "Review items", "Click checkout"]
+    }
+  ],
+  "sourceFiles": [
+    "App.tsx",
+    "index.tsx",
+    "types.ts",
+    "components/AccountView.tsx",
+    "components/CollectionView.tsx",
+    "components/ProductDetailView.tsx",
+    "components/CartView.tsx",
+    "components/Icons.tsx",
+    "services/geminiService.ts"
+  ],
+  "testRecommendations": [
+    "Navigation between views",
+    "Menu open/close functionality",
+    "Category expansion in menu",
+    "Add to cart functionality",
+    "Cart item count updates",
+    "Product detail display",
+    "Responsive header states (light/dark views)"
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "generated_at": "2026-01-04T03:39:20.412202",
+  "stats": {
+    "pages_crawled": 0,
+    "api_endpoints": 25,
+    "replacement_codes": 24,
+    "modules": 14,
+    "errors": []
+  },
+  "api": {
+    "total": 27,
+    "categories": [
+      "Scripttags",
+      "Admin API",
+      "Categories",
+      "Customers",
+      "Webhooks",
+      "Front API",
+      "Coupons",
+      "Products",
+      "Orders"
+    ],
+    "endpoints": [
+      {
+        "path": "/api/v2/admin/{resource}",
+        "method": "GET/POST/PUT/DELETE",
+        "desc": "Cafe24 Admin API - 쇼핑몰 관리자용 API. OAuth 2.0 인증 필요."
+      },
+      {
+        "path": "/api/v2/front/{resource}",
+        "method": "GET",
+        "desc": "Cafe24 Front API - 공개 정보 조회용 API. client_id만 필요."
+      },
+      {
+        "path": "/api/v2/admin/products",
+        "method": "GET",
+        "desc": "상품 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/products/{product_no}",
+        "method": "GET",
+        "desc": "상품 상세 조회"
+      },
+      {
+        "path": "/api/v2/admin/products",
+        "method": "POST",
+        "desc": "상품 등록"
+      },
+      {
+        "path": "/api/v2/admin/products/{product_no}",
+        "method": "PUT",
+        "desc": "상품 수정"
+      },
+      {
+        "path": "/api/v2/admin/products/{product_no}",
+        "method": "DELETE",
+        "desc": "상품 삭제"
+      },
+      {
+        "path": "/api/v2/admin/products/count",
+        "method": "GET",
+        "desc": "상품 수 조회"
+      },
+      {
+        "path": "/api/v2/admin/orders",
+        "method": "GET",
+        "desc": "주문 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/orders/{order_id}",
+        "method": "GET",
+        "desc": "주문 상세 조회"
+      },
+      {
+        "path": "/api/v2/admin/orders/{order_id}",
+        "method": "PUT",
+        "desc": "주문 상태 변경"
+      },
+      {
+        "path": "/api/v2/admin/orders/count",
+        "method": "GET",
+        "desc": "주문 수 조회"
+      },
+      {
+        "path": "/api/v2/admin/customers",
+        "method": "GET",
+        "desc": "회원 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/customers/{member_id}",
+        "method": "GET",
+        "desc": "회원 상세 조회"
+      },
+      {
+        "path": "/api/v2/admin/customers/{member_id}/points",
+        "method": "GET",
+        "desc": "회원 적립금 조회"
+      },
+      {
+        "path": "/api/v2/admin/categories",
+        "method": "GET",
+        "desc": "카테고리 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/categories/{category_no}",
+        "method": "GET",
+        "desc": "카테고리 상세 조회"
+      },
+      {
+        "path": "/api/v2/admin/categories",
+        "method": "POST",
+        "desc": "카테고리 생성"
+      },
+      {
+        "path": "/api/v2/admin/coupons",
+        "method": "GET",
+        "desc": "쿠폰 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/coupons/{coupon_no}",
+        "method": "GET",
+        "desc": "쿠폰 상세 조회"
+      },
+      {
+        "path": "/api/v2/admin/coupons",
+        "method": "POST",
+        "desc": "쿠폰 발행"
+      },
+      {
+        "path": "/api/v2/admin/scripttags",
+        "method": "GET",
+        "desc": "스크립트 태그 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/scripttags",
+        "method": "POST",
+        "desc": "스크립트 태그 등록"
+      },
+      {
+        "path": "/api/v2/admin/scripttags/{script_no}",
+        "method": "DELETE",
+        "desc": "스크립트 태그 삭제"
+      },
+      {
+        "path": "/api/v2/admin/webhooks",
+        "method": "GET",
+        "desc": "웹훅 목록 조회"
+      },
+      {
+        "path": "/api/v2/admin/webhooks",
+        "method": "POST",
+        "desc": "웹훅 등록"
+      },
+      {
+        "path": "/api/v2/admin/webhooks/{webhook_no}",
+        "method": "DELETE",
+        "desc": "웹훅 삭제"
+      }
+    ]
+  },
+  "replacement_codes": {
+    "total": 24,
+    "categories": [
+      "product_image",
+      "product",
+      "member",
+      "layout",
+      "order"
+    ],
+    "codes": [
+      {
+        "code": "{$image_big}",
+        "desc": "상품 대표 이미지 (상세 이미지)",
+        "category": "product_image"
+      },
+      {
+        "code": "{$image_medium}",
+        "desc": "상품 중간 이미지 (목록 이미지)",
+        "category": "product_image"
+      },
+      {
+        "code": "{$image_tiny}",
+        "desc": "상품 축소 이미지 (작은 목록 이미지)",
+        "category": "product_image"
+      },
+      {
+        "code": "{$image_small}",
+        "desc": "상품 작은 이미지 (썸네일)",
+        "category": "product_image"
+      },
+      {
+        "code": "{$big_img}",
+        "desc": "상품 대표 이미지 (상세 이미지) - 상세 페이지용",
+        "category": "product_image"
+      },
+      {
+        "code": "{$medium_img}",
+        "desc": "상품 중간 이미지 - 상세 페이지용",
+        "category": "product_image"
+      },
+      {
+        "code": "{$tiny_img}",
+        "desc": "상품 축소 이미지 - 상세 페이지용",
+        "category": "product_image"
+      },
+      {
+        "code": "{$small_img}",
+        "desc": "상품 썸네일 이미지 - 상세 페이지용",
+        "category": "product_image"
+      },
+      {
+        "code": "{$product_name}",
+        "desc": "상품명",
+        "category": "product"
+      },
+      {
+        "code": "{$product_no}",
+        "desc": "상품 번호",
+        "category": "product"
+      },
+      {
+        "code": "{$product_price}",
+        "desc": "상품 판매가",
+        "category": "product"
+      },
+      {
+        "code": "{$product_custom}",
+        "desc": "상품 시중가",
+        "category": "product"
+      },
+      {
+        "code": "{$product_summary}",
+        "desc": "상품 간략 설명",
+        "category": "product"
+      },
+      {
+        "code": "{$prd_detail}",
+        "desc": "상품 상세 설명 (HTML)",
+        "category": "product"
+      },
+      {
+        "code": "{$mall_name}",
+        "desc": "쇼핑몰 이름",
+        "category": "layout"
+      },
+      {
+        "code": "{$mall_id}",
+        "desc": "쇼핑몰 ID",
+        "category": "layout"
+      },
+      {
+        "code": "{$link_product_list}",
+        "desc": "카테고리 링크 URL",
+        "category": "layout"
+      },
+      {
+        "code": "{$name_or_img_tag}",
+        "desc": "카테고리명 또는 이미지",
+        "category": "layout"
+      },
+      {
+        "code": "{$name}",
+        "desc": "회원 이름",
+        "category": "member"
+      },
+      {
+        "code": "{$id}",
+        "desc": "회원 아이디",
+        "category": "member"
+      },
+      {
+        "code": "{$email}",
+        "desc": "회원 이메일",
+        "category": "member"
+      },
+      {
+        "code": "{$order_id}",
+        "desc": "주문 번호",
+        "category": "order"
+      },
+      {
+        "code": "{$order_date}",
+        "desc": "주문 일시",
+        "category": "order"
+      },
+      {
+        "code": "{$total_price}",
+        "desc": "주문 총 금액",
+        "category": "order"
+      }
+    ]
+  },
+  "modules": {
+    "total": 14,
+    "categories": [
+      "Order",
+      "Board",
+      "Product",
+      "Layout",
+      "Member"
+    ],
+    "modules": [
+      {
+        "name": "Layout_LogoTop",
+        "desc": "로고 및 상단 네비게이션 영역 표시 모듈",
+        "page": "all"
+      },
+      {
+        "name": "Layout_category",
+        "desc": "카테고리 목록 표시 모듈",
+        "page": "all"
+      },
+      {
+        "name": "product_listmain",
+        "desc": "메인 페이지 상품 목록 모듈",
+        "page": "index.html"
+      },
+      {
+        "name": "product_listrecommend",
+        "desc": "추천 상품 목록 모듈",
+        "page": "list.html"
+      },
+      {
+        "name": "product_listnew",
+        "desc": "신상품 목록 모듈",
+        "page": "list.html"
+      },
+      {
+        "name": "product_listnormal",
+        "desc": "일반 상품 목록 모듈",
+        "page": "list.html"
+      },
+      {
+        "name": "product_detail",
+        "desc": "상품 상세 정보 모듈",
+        "page": "detail.html"
+      },
+      {
+        "name": "product_addimage",
+        "desc": "상품 추가 이미지 모듈",
+        "page": "detail.html"
+      },
+      {
+        "name": "product_relation",
+        "desc": "관련 상품 모듈",
+        "page": "detail.html"
+      },
+      {
+        "name": "order_form",
+        "desc": "주문서 작성 모듈",
+        "page": "order.html"
+      },
+      {
+        "name": "member_login",
+        "desc": "로그인 모듈",
+        "page": "login.html"
+      },
+      {
+        "name": "member_join",
+        "desc": "회원가입 모듈",
+        "page": "join.html"
+      },
+      {
+        "name": "board_list",
+        "desc": "게시판 목록 모듈",
+        "page": "board_list.html"
+      },
+      {
+        "name": "xans-layout-footer",
+        "desc": "푸터 모듈",
+        "page": "all"
+      }
+    ]
+  }
+}

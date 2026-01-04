@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "loginUser": "jskjw157@gmail.com",
+  "loginPassword": "wldnjs12",
+  "executionArgs": {
+    "projectName": "haar",
+    "projectPath": "/Users/ohchaeeun/source/cafe24/haar",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-WjSxWRcI87_o-4aZqsZnP8cb7YU7m74sHdFWmrPUhF1BOBMfSJr0ecskefKMwSdHvrQ5GEXOb2c8-pzWRXEvZm7YpxCg3kHHZNLhqPG19exgptLJPlB49tQARp3wb6d_L8U"
+    }
+  },
+  "proxy": "http://c9a2a223-31c2-4e88-92d6-7bcc2ae3bbb3:WR5wLbufrVpJUDZhFS2lBfONJpeI8398@tun.testsprite.com:8080"
+}

@@ -1,0 +1,441 @@
+[
+  {
+    "id": "TC001",
+    "title": "Navigation Menu Open and Close Functionality",
+    "description": "Verify that the slide-out navigation menu opens and closes correctly upon user interaction.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the application home page"
+      },
+      {
+        "type": "action",
+        "description": "Click on the menu icon to open the navigation menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the navigation menu is visible and slide-out animation completes"
+      },
+      {
+        "type": "action",
+        "description": "Click on the close icon inside navigation menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the navigation menu is hidden and slide-in animation completes"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Category Expansion and Collapse in Navigation Menu",
+    "description": "Verify that expandable categories (Jewelry, Accessories, Collections) in the slide-out menu expand and collapse correctly with smooth transitions.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the navigation menu"
+      },
+      {
+        "type": "action",
+        "description": "Click on the 'Jewelry' category to expand"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify subcategories or items under 'Jewelry' are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Click on the 'Jewelry' category to collapse"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify subcategories or items under 'Jewelry' are hidden"
+      },
+      {
+        "type": "action",
+        "description": "Repeat expand/collapse steps for 'Accessories' and 'Collections' categories"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Home Page Artistic Elements Rendering",
+    "description": "Verify the home landing page renders the grain overlay and abstract gradient effects consistent with the design specification.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the home page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify grain overlay effect is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify abstract gradient backgrounds are rendered as specified"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "User Login and Account Access with State Persistence",
+    "description": "Verify that a user can log in successfully, access the account page, and that login state persists across page reloads.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login view via user icon or direct path"
+      },
+      {
+        "type": "action",
+        "description": "Enter valid user credentials and submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is logged in and redirected to account view"
+      },
+      {
+        "type": "action",
+        "description": "Refresh the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user remains logged in with account details visible"
+      },
+      {
+        "type": "action",
+        "description": "Log out and verify user is redirected or logged out state is shown"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Product Collection Filtering by Category",
+    "description": "Verify product collection view supports filtering products correctly based on selected category.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the collection view"
+      },
+      {
+        "type": "action",
+        "description": "Apply filter for 'Jewelry' category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only products belonging to 'Jewelry' category are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Change filter to 'Accessories' category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only products belonging to 'Accessories' category are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Clear filters"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all products are displayed without filtering"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Product Detail Display Accuracy",
+    "description": "Verify product detail page displays accurate and complete product information including images, name, price, and description.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Select a product from the collection view to open detail page"
+      },
+      {
+        "type": "assertion",
+        "description": "Check product images are rendered and can be viewed"
+      },
+      {
+        "type": "assertion",
+        "description": "Validate product name and price are displayed correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify product description and additional details are present"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Add to Cart Functionality and Cart Item Count Update",
+    "description": "Verify adding a product from the product detail page updates the shopping cart item count correctly and reflects accurate items in the cart.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open a product detail page"
+      },
+      {
+        "type": "action",
+        "description": "Click 'Add to Cart' button"
+      },
+      {
+        "type": "assertion",
+        "description": "Check the cart icon updates with correct item count increment"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the shopping cart page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the added product is listed with correct quantity and price"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Shopping Cart Checkout Flow",
+    "description": "Validate the checkout flow starts from the cart with correct item review capability and proceeds towards checkout.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Add one or more items to the shopping cart"
+      },
+      {
+        "type": "action",
+        "description": "Open the shopping cart page"
+      },
+      {
+        "type": "assertion",
+        "description": "Review all items, quantities, and prices for accuracy"
+      },
+      {
+        "type": "action",
+        "description": "Click the 'Checkout' button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the checkout process initiates and user is taken to appropriate checkout page or flow"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Responsive Design Verification",
+    "description": "Verify that the application UI adapts correctly to desktop (1440px), tablet (768px), and mobile (375px) screen sizes including menus, product displays, and forms.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the application at 1440px viewport width"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that all components including navigation menu, home page, collections, product details, cart, and account are displayed correctly and usable"
+      },
+      {
+        "type": "action",
+        "description": "Resize viewport to 768px (tablet)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all views respond appropriately, the menu is accessible, and content is readable and properly formatted"
+      },
+      {
+        "type": "action",
+        "description": "Resize viewport to 375px (mobile)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile layout with slide-out menu, product listings, and cart functions correctly and all UI elements remain usable"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Design Tokens and Visual Effects Consistency",
+    "description": "Verify the usage of design tokens including color palettes, typography, and visual effects like grain overlay is consistent across all pages and components.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Browse through Home, Collection, Product Detail, Cart, and Account views"
+      },
+      {
+        "type": "assertion",
+        "description": "Check colors, fonts, and visual effects match design tokens and project theme"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no inconsistent styling or deviations from the design system"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Invalid Login Credentials Handling",
+    "description": "Verify login view handles invalid user credentials gracefully by showing appropriate error messages.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login view"
+      },
+      {
+        "type": "action",
+        "description": "Enter invalid username/email and password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Check error message indicating invalid credentials is displayed and login is unsuccessful"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Add to Cart When No Product Selected",
+    "description": "Verify that trying to add to cart without selecting required options (if any) shows an error or prevents the action.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to product detail page with options (e.g. size, color)"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to click 'Add to Cart' without selecting required product options"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that appropriate validation message is shown and product is not added to cart"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Empty Shopping Cart Behavior",
+    "description": "Verify the behavior and UI when opening the shopping cart with no items added.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Ensure shopping cart is empty"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the shopping cart page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify message or UI elements indicate empty cart state"
+      },
+      {
+        "type": "assertion",
+        "description": "Checkout button should be disabled or not accessible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Navigation Between Views",
+    "description": "Verify navigation between main app views (Home, Account, Collection, Product Detail, Cart) is functional and state is preserved as per design.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Home view"
+      },
+      {
+        "type": "action",
+        "description": "Use navigation menu to open Collection view"
+      },
+      {
+        "type": "assertion",
+        "description": "Collection view should load with correct content"
+      },
+      {
+        "type": "action",
+        "description": "Select a product to open Product Detail view"
+      },
+      {
+        "type": "assertion",
+        "description": "Product detail page displays correct product"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to Cart view"
+      },
+      {
+        "type": "assertion",
+        "description": "Cart page is displayed with current items"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to Account view"
+      },
+      {
+        "type": "assertion",
+        "description": "Account page is displayed with user info or login option"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Responsive Header States (Light and Dark View Modes)",
+    "description": "Verify header components adapt correctly to light and dark states across different viewport sizes.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Switch to light mode (if supported)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify header UI elements render correctly with light theme colors and styles"
+      },
+      {
+        "type": "action",
+        "description": "Switch to dark mode (if supported)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify header UI elements render correctly with dark theme colors and styles"
+      },
+      {
+        "type": "action",
+        "description": "Resize viewport to tablet and mobile sizes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify header remains visible, legible and functional in all modes and sizes"
+      }
+    ]
+  }
+]

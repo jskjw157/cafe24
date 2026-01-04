@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "github-fetcher": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "github-fetcher-mcp",
+        "--repoIdentifier",
+        "facebook/react/main"
+      ],
+      "env": {}
+    },
+    "docfork": {
+      "type": "http",
+      "url": "https://mcp.docfork.com/mcp"
+    }
+  }
+}

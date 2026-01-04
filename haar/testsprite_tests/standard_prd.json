@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "project": "haar",
+    "date": "2025-12-30",
+    "prepared_by": "Project Team"
+  },
+  "product_overview": "HAAR is a premium fashion jewelry e-commerce website with a modern UI inspired by the AMBUSH brand aesthetic, implemented as a React 19 frontend using Vite 6 and TypeScript with Tailwind CSS for styling and integrated AI features.",
+  "core_goals": [
+    "Deliver a modern, artistic, and responsive e-commerce frontend focusing on fashion jewelry.",
+    "Implement comprehensive product browsing with category filters and detailed product views.",
+    "Provide seamless user account management including login and profile access.",
+    "Support robust shopping cart functionality with smooth add-to-cart and checkout flows.",
+    "Establish a scalable design system with consistent branding tokens and effects."
+  ],
+  "key_features": [
+    "Slide-out navigation menu with expandable categories (Jewelry, Accessories, Collections).",
+    "Artistic home landing page with grain overlay and abstract gradients.",
+    "User account management and login view with state persistence.",
+    "Product collection view supporting category-based filtering and listing.",
+    "Detailed product pages with add-to-cart functionality.",
+    "Shopping cart management including item count display and checkout process."
+  ],
+  "user_flow_summary": [
+    "Browse products by opening the menu, selecting categories, viewing product collections, and accessing product details.",
+    "Add products to the shopping cart from product detail pages and navigate to cart for review.",
+    "Access and manage user account from login or user icon to view account details.",
+    "Checkout flow starting from the cart, reviewing items, and proceeding to checkout."
+  ],
+  "validation_criteria": [
+    "All essential pages implemented as React components: Home, Collection, Product Detail, Cart, and Account.",
+    "Navigation menu expands/collapses categories correctly and supports smooth transitions.",
+    "Add-to-cart functionality updates cart item counts accurately.",
+    "Responsive design works correctly across desktop (1440px), tablet (768px), and mobile (375px) viewports.",
+    "Product detail displays accurate and complete product information.",
+    "System uses defined design tokens including colors, typography, and visual effects consistently.",
+    "Checkout flow initiates correctly from the cart with item review capability."
+  ],
+  "code_summary": {
+    "projectName": "haar",
+    "projectType": "frontend",
+    "description": "HAAR - Premium fashion jewelry e-commerce website with modern UI inspired by AMBUSH brand aesthetic",
+    "techStack": {
+      "framework": "React 19",
+      "buildTool": "Vite 6",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS (CDN)",
+      "additionalLibraries": [
+        "@google/genai (AI integration)"
+      ]
+    },
+    "developmentServer": {
+      "port": 3000,
+      "host": "0.0.0.0",
+      "command": "npm run dev"
+    },
+    "features": [
+      {
+        "name": "Navigation & Menu",
+        "description": "Slide-out menu with expandable categories (Jewelry, Accessories, Collections)",
+        "components": [
+          "App.tsx"
+        ]
+      },
+      {
+        "name": "Home View",
+        "description": "Artistic landing page with grain overlay and abstract gradient effects",
+        "components": [
+          "App.tsx"
+        ]
+      },
+      {
+        "name": "Account/Login",
+        "description": "User account management view",
+        "components": [
+          "AccountView.tsx"
+        ]
+      },
+      {
+        "name": "Product Collection",
+        "description": "Product listing with category filtering",
+        "components": [
+          "CollectionView.tsx"
+        ]
+      },
+      {
+        "name": "Product Detail",
+        "description": "Individual product view with add-to-cart functionality",
+        "components": [
+          "ProductDetailView.tsx"
+        ]
+      },
+      {
+        "name": "Shopping Cart",
+        "description": "Cart management with item count, checkout flow",
+        "components": [
+          "CartView.tsx"
+        ]
+      }
+    ],
+    "views": [
+      "HOME",
+      "ACCOUNT",
+      "COLLECTION",
+      "PRODUCT_DETAIL",
+      "CART"
+    ],
+    "userFlows": [
+      {
+        "name": "Browse Products",
+        "steps": [
+          "Open menu",
+          "Select category",
+          "View collection",
+          "Click product",
+          "View details"
+        ]
+      },
+      {
+        "name": "Add to Cart",
+        "steps": [
+          "View product detail",
+          "Click add to cart",
+          "Navigate to cart"
+        ]
+      },
+      {
+        "name": "Account Access",
+        "steps": [
+          "Click login/user icon",
+          "View account page"
+        ]
+      },
+      {
+        "name": "Checkout Flow",
+        "steps": [
+          "Open cart",
+          "Review items",
+          "Click checkout"
+        ]
+      }
+    ],
+    "sourceFiles": [
+      "App.tsx",
+      "index.tsx",
+      "types.ts",
+      "components/AccountView.tsx",
+      "components/CollectionView.tsx",
+      "components/ProductDetailView.tsx",
+      "components/CartView.tsx",
+      "components/Icons.tsx",
+      "services/geminiService.ts"
+    ],
+    "testRecommendations": [
+      "Navigation between views",
+      "Menu open/close functionality",
+      "Category expansion in menu",
+      "Add to cart functionality",
+      "Cart item count updates",
+      "Product detail display",
+      "Responsive header states (light/dark views)"
+    ]
+  }
+}

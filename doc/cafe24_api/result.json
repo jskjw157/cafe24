@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "output_dir": "doc/cafe24_api",
+  "stats": {
+    "pages_crawled": 0,
+    "api_endpoints": 25,
+    "replacement_codes": 24,
+    "modules": 14,
+    "errors": []
+  },
+  "files": [
+    "api/endpoints.json",
+    "design/replacement-codes.json",
+    "design/modules.json",
+    "app/guide.json",
+    "index.json",
+    "SUMMARY.md"
+  ]
+}
